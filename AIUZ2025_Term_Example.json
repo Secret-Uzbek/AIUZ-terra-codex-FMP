@@ -1,0 +1,36 @@
+{
+  "term_id": "T-ENRG-041XKJ",
+  "forms": {
+    "ru": "энергия",
+    "en": "energy",
+    "uz": "energiya"
+  },
+  "symbol": "⚡",
+  "ontology": [
+    "физика",
+    "термодинамика"
+  ],
+  "semantic_quarks": [
+    "движение",
+    "преобразование",
+    "потенциал"
+  ],
+  "context": {
+    "domain": "инженерия",
+    "use": "высокочастотно"
+  },
+  "action_model": "преобразует → передаёт",
+  "crossfield": {
+    "bio": "фотосинтез",
+    "code": "solar_panel()"
+  },
+  "origin": "греч. energeia",
+  "relations": {
+    "syn": [
+      "мощность"
+    ],
+    "ant": [
+      "вакуум"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+layer: L0
+bundle_name: AIUZ_CodexTerra_Manifesto_Core
+version: 1.0
+session_id: AIUZ_SESSION_JULY07_FINAL
+curated_by: Abdukarimov A.A.
+verified_by: AI Assistant (SciSpace)
+
+components:
+  - file: aiuz_pr_manifesto.md
+    title: "AIUZ Manifesto — Обращение ко Вселенной"
+    type: manifest
+    themes: [language-zero, culture-ethics, codex-terra]
+
+  - file: aiuz_white_paper.md
+    title: "AIUZ White Paper — Язык Вселенной"
+    type: whitepaper
+    themes: [semantic-interface, universal-communication, evolutionary-architecture]
+
+  - file: aiuz_one_pager.md
+    title: "AIUZ One Pager — Цивилизационный взгляд"
+    type: overview
+    themes: [interface-language, futures-design, UCOM-core]
+
+  - file: Uzbek_German_Thesaurus_Report.md
+    title: "Uz-DE Thesaurus: Лексическая капсула будущего"
+    type: thesaurus_report
+    themes: [language-bridge, sustainability, educational-access]
+
+  - file: Project_Workflow_Structure.txt
+    title: "AIUZ: От философии к действию"
+    type: workflow_diagram
+    themes: [systems-thinking, meaning-to-action, interlayer-mapping]
+
+export_format: [yaml, md, pdf]
+target_use: [curation, publication, capsule, archive]
+license: CC-BY-SA 4.0
+status: stable

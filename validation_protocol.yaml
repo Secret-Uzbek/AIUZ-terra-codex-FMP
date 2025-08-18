@@ -1,0 +1,61 @@
+protocol_version: 1.0
+aiuz_session_id: AIUZ_SESSION_JULY07_FINAL
+validation_type: lexical_multilingual_document_validation
+
+rules:
+  - document_type: thesaurus
+    language: ["uz", "de"]
+    format: ["docx", "md", "json"]
+    domain: ["tourism", "logistics", "core"]
+    validation_level: strict
+    lexical_structure:
+      required_fields: ["term", "translation", "part_of_speech", "example", "frequency"]
+      multilingual: true
+      frequency_source: ["uzbekcorpus.uz", "DWDS", "SketchEngine"]
+    metadata_compliance:
+      session_id: true
+      version: true
+      license: required
+    technical_ready: true
+    license_status: declared
+    author_verified: true
+
+  - document_type: article
+    language: ["uz", "de", "en"]
+    format: ["docx"]
+    domain: ["lexicography", "methodology"]
+    validation_level: relaxed
+    metadata_compliance:
+      session_id: true
+      version: true
+    license_status: declared
+
+  - document_type: dissertation
+    language: ["uz", "de", "ru"]
+    format: ["docx"]
+    validation_level: strict
+    lexical_structure:
+      required_sections: ["introduction", "methodology", "model", "application"]
+    multilingual: true
+    author_verified: true
+    license_status: declared
+
+  - document_type: module
+    language: ["uz", "de"]
+    format: ["json", "md"]
+    domain: ["education", "infrastructure"]
+    validation_level: strict
+    metadata_compliance:
+      session_id: true
+      version: true
+      conforms_to: AIUZ_Project_Document_Standard_v1.0
+
+  - document_type: declaration
+    language: ["ru", "uz"]
+    format: ["md", "docx"]
+    validation_level: strict
+    metadata_compliance:
+      author_name: required
+      license: required
+    license_status: declared
+    author_verified: true

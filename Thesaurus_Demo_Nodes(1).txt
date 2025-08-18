@@ -1,0 +1,12 @@
+
+ГНЕЗДО: TA'LIM / BILDUNG
+  uzb: ta'lim, o'qituvchi, maktab, fan, kurs, diplom, grant
+  deu: Bildung, Lehrer, Schule, Fach, Kurs, Diplom, Stipendium
+
+ГНЕЗДО: ENERGETIKA / ENERGIE
+  uzb: quyosh, shamol, energiya, zaxira, stansiya, ishlab chiqarish
+  deu: Sonne, Wind, Energie, Reserve, Station, Produktion
+
+ГНЕЗДО: TURIZM / TOURISMUS
+  uzb: sayohat, yo‘nalish, mehmonxona, gid, ekskursiya, viza
+  deu: Reise, Route, Hotel, Führer, Exkursion, Visum

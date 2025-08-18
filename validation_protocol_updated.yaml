@@ -1,0 +1,106 @@
+aiuz_session_id: AIUZ_SESSION_JULY07_FINAL
+protocol_version: 1.0
+rules:
+- author_verified: true
+  document_type: thesaurus
+  domain:
+  - tourism
+  - logistics
+  - core
+  format:
+  - docx
+  - md
+  - json
+  language:
+  - uz
+  - de
+  lexical_structure:
+    frequency_source:
+    - uzbekcorpus.uz
+    - DWDS
+    - SketchEngine
+    multilingual: true
+    required_fields:
+    - term
+    - translation
+    - part_of_speech
+    - example
+    - frequency
+  license_status: declared
+  metadata_compliance:
+    license: required
+    session_id: true
+    version: true
+  technical_ready: true
+  validation_level: strict
+- document_type: article
+  domain:
+  - lexicography
+  - methodology
+  format:
+  - docx
+  language:
+  - uz
+  - de
+  - en
+  license_status: declared
+  metadata_compliance:
+    session_id: true
+    version: true
+  validation_level: relaxed
+- author_verified: true
+  document_type: dissertation
+  format:
+  - docx
+  language:
+  - uz
+  - de
+  - ru
+  lexical_structure:
+    required_sections:
+    - introduction
+    - methodology
+    - model
+    - application
+  license_status: declared
+  multilingual: true
+  validation_level: strict
+- document_type: module
+  domain:
+  - education
+  - infrastructure
+  format:
+  - json
+  - md
+  language:
+  - uz
+  - de
+  metadata_compliance:
+    conforms_to: AIUZ_Project_Document_Standard_v1.0
+    session_id: true
+    version: true
+  validation_level: strict
+- author_verified: true
+  document_type: declaration
+  format:
+  - md
+  - docx
+  language:
+  - ru
+  - uz
+  license_status: declared
+  metadata_compliance:
+    author_name: required
+    license: required
+  validation_level: strict
+validation_protocol:
+  rules:
+  - field: inventory.status
+    must_be_in_thesaurus: logistics.inventory.status
+  - field: facility.type
+    must_be_in_thesaurus: corpus.facilities
+  - endpoint: /api/shipment
+    method: POST
+    validate_with: api_integration.endpoints.shipment_create
+  thesaurus_path: ./thesaurus_logistics.yaml
+validation_type: lexical_multilingual_document_validation

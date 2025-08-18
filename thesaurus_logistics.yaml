@@ -1,0 +1,81 @@
+thesaurus:
+  api_integration:
+    auth:
+      method: OAuth2
+      scopes:
+      - read:inventory
+      - write:shipment
+      - track:update
+      token_endpoint: /api/auth/token
+    endpoints:
+      inventory_check: GET /api/inventory/{sku}
+      shipment_create: POST /api/shipment
+      tracking_update: PATCH /api/tracking/{id}
+    responses:
+      errors:
+        '400': Bad Request
+        '401': Unauthorized
+        '404': Not Found
+      success:
+        code: 200
+        format: application/json
+  corpus:
+    commodities:
+      classification:
+      - perishable
+      - hazardous
+      - fragile
+      - bulk
+      metadata:
+      - sku
+      - dimensions
+      - weight
+      - handling_instructions
+    facilities:
+    - warehouse
+    - distribution_center
+    - cross_dock
+    units:
+    - container
+    - pallet
+    - crate
+    - box
+    zones:
+    - loading_dock
+    - storage_area
+    - picking_zone
+    - quarantine
+  logistics:
+    inventory:
+      status:
+      - in_stock
+      - out_of_stock
+      - reserved
+      - in_transit
+      tracking:
+      - RFID
+      - barcode
+      - GPS
+    routing:
+      constraints:
+      - time_window
+      - capacity
+      - priority
+      optimization_algorithms:
+      - dijkstra
+      - genetic
+      - greedy
+    supply_chain:
+      inbound:
+      - supplier
+      - customs
+      - receiving
+      outbound:
+      - dispatch
+      - delivery
+      - last_mile
+    transport_modes:
+    - truck
+    - ship
+    - rail
+    - drone

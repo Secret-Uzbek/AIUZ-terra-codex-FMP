@@ -1,0 +1,26 @@
+[
+  {
+    "inventory": {
+      "status": "в наличии"
+    },
+    "facility": {
+      "type": "центр распределения"
+    }
+  },
+  {
+    "inventory": {
+      "status": "in_transit"
+    },
+    "facility": {
+      "type": "cross_dock"
+    }
+  },
+  {
+    "inventory": {
+      "status": "нет в наличии"
+    },
+    "facility": {
+      "type": "unknown_location"
+    }
+  }
+]
