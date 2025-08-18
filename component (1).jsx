@@ -1,424 +1,315 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { Upload, FileText, Image, Music, Video, Book, Globe, Cpu, Heart, Eye, Ear, Brain, Zap, Star, Settings, Plus, Minus, RotateCcw, Play, Pause, Volume2, VolumeX, Sun, Moon } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 
-const TerraUniversalProcessor = () => {
-  const { useStoredState } = hatch;
-  
-  // Core State Management
-  const [currentMode, setCurrentMode] = useStoredState('terra_mode', 'simple');
-  const [accessibility, setAccessibility] = useStoredState('accessibility', {
-    fontSize: 'medium',
-    contrast: 'normal',
-    voiceEnabled: false,
-    simplifiedUI: false,
-    colorBlind: false,
-    motor: false
+const QuantumStateManager = () => {
+  // Состояние квантовой системы
+  const [quantumState, setQuantumState] = useState({
+    mode: 'SUPERPOSITION',
+    coherenceTime: 100,
+    entanglementLevel: 85,
+    measurementCount: 0,
+    qubits: [
+      { id: 1, state: '|0⟩ + |1⟩', probability: [0.7, 0.3], entangled: true },
+      { id: 2, state: '|+⟩', probability: [0.5, 0.5], entangled: true },
+      { id: 3, state: '|0⟩', probability: [1.0, 0.0], entangled: false },
+      { id: 4, state: '|1⟩', probability: [0.0, 1.0], entangled: false },
+      { id: 5, state: '|ψ⟩', probability: [0.6, 0.4], entangled: true }
+    ],
+    decoherenceRate: 2.3
   });
-  const [userProfile, setUserProfile] = useStoredState('user_profile', {
-    age: null,
-    capabilities: [],
-    preferences: [],
-    language: 'ru'
-  });
-  const [files, setFiles] = useStoredState('uploaded_files', []);
-  const [projects, setProjects] = useStoredState('projects', []);
-  const [activeProject, setActiveProject] = useState(null);
-  const [processing, setProcessing] = useState(false);
-  const [darkMode, setDarkMode] = useStoredState('dark_mode', false);
-  
-  const fileInputRef = useRef(null);
-  const dragRef = useRef(null);
 
-  // Fractal Metascience Processing Engine
-  const fractalProcessor = {
-    // Quantum-Galactic Analysis Pipeline
-    analyzeFile: (file) => {
-      const analysis = {
-        quantum: analyzeQuantumLevel(file),
-        individual: analyzeIndividualLevel(file),
-        family: analyzeFamilyLevel(file),
-        community: analyzeCommunityLevel(file),
-        culture: analyzeCultureLevel(file),
-        planetary: analyzePlanetaryLevel(file),
-        galactic: analyzeGalacticLevel(file)
-      };
-      return analysis;
-    },
-    
-    // Universal Transformation Engine
-    transform: (file, targetFormat, userContext) => {
-      switch(targetFormat) {
-        case 'comic':
-          return createComicFromDrawings(file, userContext);
-        case 'cookbook':
-          return createCookbookFromNotes(file, userContext);
-        case 'encyclopedia':
-          return createEncyclopediaFromDocs(file, userContext);
-        case 'parser':
-          return createParserFromData(file, userContext);
-        case 'story':
-          return createStoryFromImages(file, userContext);
-        case 'learning':
-          return createLearningMaterial(file, userContext);
-        default:
-          return enhanceWithFractalScience(file, userContext);
-      }
+  const [animationActive, setAnimationActive] = useState(true);
+  const [measurements, setMeasurements] = useState([]);
+
+  // Эффект для симуляции декогеренции
+  useEffect(() => {
+    if (quantumState.mode === 'SUPERPOSITION' && animationActive) {
+      const interval = setInterval(() => {
+        setQuantumState(prev => ({
+          ...prev,
+          coherenceTime: Math.max(0, prev.coherenceTime - prev.decoherenceRate),
+          entanglementLevel: Math.max(0, prev.entanglementLevel - 0.5)
+        }));
+      }, 1000);
+
+      return () => clearInterval(interval);
     }
-  };
+  }, [quantumState.mode, animationActive]);
 
-  // Accessibility Engine
-  const accessibilityEngine = {
-    adjustInterface: () => {
-      const base = darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900';
-      const fontSize = {
-        small: 'text-sm',
-        medium: 'text-base',
-        large: 'text-lg',
-        xlarge: 'text-xl',
-        xxlarge: 'text-2xl'
-      }[accessibility.fontSize];
-      const contrast = accessibility.contrast === 'high' ? 'contrast-150' : '';
-      return `${base} ${fontSize} ${contrast}`;
-    },
-    
-    getButtonSize: () => {
-      if (accessibility.motor) return 'p-4 text-xl min-w-[80px] min-h-[80px]';
-      if (userProfile.age && userProfile.age < 10) return 'p-3 text-lg min-w-[60px] min-h-[60px]';
-      return 'p-2 text-base min-w-[40px] min-h-[40px]';
-    }
-  };
-
-  // File Processing Handlers
-  const handleFileUpload = useCallback((uploadedFiles) => {
-    setProcessing(true);
-    const processedFiles = Array.from(uploadedFiles).map(file => ({
-      id: Date.now() + Math.random(),
-      name: file.name,
-      type: file.type,
-      size: file.size,
-      fractalAnalysis: fractalProcessor.analyzeFile(file),
-      uploadTime: new Date().toISOString(),
-      suggestions: generateProcessingSuggestions(file, userProfile)
+  // Переключение квантового режима
+  const switchQuantumMode = (newMode) => {
+    setQuantumState(prev => ({
+      ...prev,
+      mode: newMode,
+      coherenceTime: newMode === 'SUPERPOSITION' ? 100 : prev.coherenceTime,
+      entanglementLevel: newMode === 'ENTANGLEMENT' ? 95 : prev.entanglementLevel
     }));
-    
-    setFiles(prev => [...prev, ...processedFiles]);
-    setProcessing(false);
-  }, [userProfile]);
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
   };
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const droppedFiles = e.dataTransfer.files;
-    if (droppedFiles.length > 0) {
-      handleFileUpload(droppedFiles);
+  // Квантовое измерение
+  const performQuantumMeasurement = () => {
+    const measurementResult = quantumState.qubits.map(qubit => ({
+      qubitId: qubit.id,
+      measuredState: Math.random() < qubit.probability[0] ? '|0⟩' : '|1⟩',
+      probability: qubit.probability[0]
+    }));
+
+    const newMeasurement = {
+      timestamp: new Date().toLocaleTimeString(),
+      results: measurementResult,
+      coherenceBefore: quantumState.coherenceTime,
+      entanglementBefore: quantumState.entanglementLevel
+    };
+
+    setMeasurements(prev => [newMeasurement, ...prev.slice(0, 4)]);
+    
+    setQuantumState(prev => ({
+      ...prev,
+      measurementCount: prev.measurementCount + 1,
+      coherenceTime: Math.max(20, prev.coherenceTime - 15),
+      entanglementLevel: Math.max(30, prev.entanglementLevel - 20),
+      qubits: prev.qubits.map(qubit => ({
+        ...qubit,
+        entangled: Math.random() > 0.3
+      }))
+    }));
+  };
+
+  // Восстановление квантового состояния
+  const restoreQuantumState = () => {
+    setQuantumState(prev => ({
+      ...prev,
+      coherenceTime: 100,
+      entanglementLevel: 85,
+      qubits: prev.qubits.map(qubit => ({
+        ...qubit,
+        entangled: qubit.id <= 2
+      }))
+    }));
+  };
+
+  // Создание квантового запутывания
+  const createEntanglement = () => {
+    setQuantumState(prev => ({
+      ...prev,
+      mode: 'ENTANGLEMENT',
+      entanglementLevel: Math.min(100, prev.entanglementLevel + 30),
+      qubits: prev.qubits.map(qubit => ({
+        ...qubit,
+        entangled: true,
+        state: '|ψ⟩⊗|φ⟩'
+      }))
+    }));
+  };
+
+  // Получение цвета для квантового режима
+  const getModeColor = (mode) => {
+    switch (mode) {
+      case 'SUPERPOSITION': return 'text-purple-400 bg-purple-900';
+      case 'ENTANGLEMENT': return 'text-blue-400 bg-blue-900';
+      case 'CLASSICAL': return 'text-gray-400 bg-gray-700';
+      case 'MEASUREMENT': return 'text-yellow-400 bg-yellow-900';
+      default: return 'text-purple-400 bg-purple-900';
     }
   };
 
-  // Age-Appropriate Interface Modes
-  const interfaceModes = {
-    simple: { // 5-12 years, severe disabilities
-      title: '🌟 Волшебный Помощник',
-      buttons: ['🎨 Создать', '📚 Читать', '🎵 Слушать', '🎮 Играть'],
-      colors: 'from-pink-300 to-purple-300'
-    },
-    standard: { // 13-65 years, normal abilities
-      title: '🌍 Terra Knowledge Hub',
-      buttons: ['📄 Обработать', '🔍 Анализ', '🛠️ Инструменты', '📊 Проекты'],
-      colors: 'from-blue-400 to-green-400'
-    },
-    professional: { // Researchers, specialists
-      title: '🔬 Fractal Metascience Lab',
-      buttons: ['⚛️ Квантовый', '🧬 Анализ ДНК', '🌌 Галактический', '📈 Модели'],
-      colors: 'from-indigo-500 to-purple-600'
-    },
-    accessibility: { // Visual/hearing/motor impairments
-      title: '♿ Универсальный Доступ',
-      buttons: ['👁️ Зрение', '👂 Слух', '🤲 Движение', '🧠 Память'],
-      colors: 'from-orange-400 to-red-400'
-    }
+  // Получение цвета когерентности
+  const getCoherenceColor = (coherence) => {
+    if (coherence > 70) return 'text-green-400';
+    if (coherence > 40) return 'text-yellow-400';
+    return 'text-red-400';
   };
 
-  const currentInterface = interfaceModes[currentMode];
-
-  // Processing Suggestions Generator
-  const generateProcessingSuggestions = (file, profile) => {
-    const suggestions = [];
-    
-    if (file.type.startsWith('image/')) {
-      if (profile.age && profile.age < 12) {
-        suggestions.push('🎨 Создать комикс', '📖 Сделать книжку', '🎭 Анимация');
-      } else {
-        suggestions.push('🔍 Анализ изображения', '📊 Извлечь данные', '🎨 Художественная обработка');
-      }
-    }
-    
-    if (file.type.includes('text') || file.name.includes('.txt')) {
-      suggestions.push('📚 Создать энциклопедию', '🔄 Перевести', '📖 Адаптировать для возраста');
-    }
-    
-    if (file.type.includes('audio')) {
-      suggestions.push('📝 Транскрипция', '🎵 Музыкальный анализ', '🗣️ Голосовой помощник');
-    }
-    
-    return suggestions;
-  };
-
-  // Core Processing Functions (Fractal Metascience Integration)
-  const analyzeQuantumLevel = (file) => ({
-    coherence: Math.random() * 100,
-    entanglement: Math.random() * 100,
-    superposition: Math.random() * 100
-  });
-
-  const analyzeIndividualLevel = (file) => ({
-    personalRelevance: Math.random() * 100,
-    emotionalResonance: Math.random() * 100,
-    cognitiveLoad: Math.random() * 100
-  });
-
-  const analyzeFamilyLevel = (file) => ({
-    shareability: Math.random() * 100,
-    culturalContext: Math.random() * 100,
-    generationalValue: Math.random() * 100
-  });
-
-  const analyzeCommunityLevel = (file) => ({
-    socialImpact: Math.random() * 100,
-    educationalValue: Math.random() * 100,
-    collaborationPotential: Math.random() * 100
-  });
-
-  const analyzeCultureLevel = (file) => ({
-    culturalSignificance: Math.random() * 100,
-    historicalContext: Math.random() * 100,
-    linguisticPatterns: Math.random() * 100
-  });
-
-  const analyzePlanetaryLevel = (file) => ({
-    globalRelevance: Math.random() * 100,
-    sustainabilityImpact: Math.random() * 100,
-    biodiversityConnection: Math.random() * 100
-  });
-
-  const analyzeGalacticLevel = (file) => ({
-    universalPrinciples: Math.random() * 100,
-    cosmicSignificance: Math.random() * 100,
-    transcendentValue: Math.random() * 100
-  });
-
-  // Transformation Functions
-  const createComicFromDrawings = (file, context) => ({
-    type: 'comic',
-    title: `Приключения ${context.age < 10 ? 'Малыша' : 'Героя'}`,
-    pages: 8,
-    style: 'colorful',
-    narration: 'simple'
-  });
-
-  const createCookbookFromNotes = (file, context) => ({
-    type: 'cookbook',
-    title: 'Семейные Рецепты',
-    recipes: 20,
-    difficulty: 'adaptive',
-    dietary: 'flexible'
-  });
-
-  const createEncyclopediaFromDocs = (file, context) => ({
-    type: 'encyclopedia',
-    entries: 100,
-    crossReferences: true,
-    multimedia: true,
-    ageAppropriate: true
-  });
-
-  // Main Render
   return (
-    <div className={`w-full h-full transition-all duration-300 ${accessibilityEngine.adjustInterface()}`}>
-      {/* Header */}
-      <div className={`bg-gradient-to-r ${currentInterface.colors} p-4 text-white`}>
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className={`font-bold ${accessibility.fontSize === 'large' || accessibility.fontSize === 'xlarge' ? 'text-3xl' : 'text-2xl'}`}>
-              {currentInterface.title}
-            </h1>
-            <p className="opacity-90">v7.0 • Фрактальная Метанаука • Универсальный Процессор</p>
+    <div className="w-full h-full bg-gray-900 text-white p-6 overflow-auto" style={{ minHeight: '700px' }}>
+      {/* Заголовок */}
+      <div className="mb-6 text-center">
+        <h1 className="text-2xl font-bold mb-2 text-cyan-400">
+          🌀 QUANTUM STATE MANAGER
+        </h1>
+        <p className="text-gray-400">TerraMemoryDNA v5.0 Quantum Controller</p>
+      </div>
+
+      {/* Текущее квантовое состояние */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="bg-gray-800 p-4 rounded-lg">
+          <div className="text-sm text-gray-400">Квантовый режим</div>
+          <div className={`text-lg font-bold px-2 py-1 rounded mt-1 ${getModeColor(quantumState.mode)}`}>
+            {quantumState.mode}
           </div>
-          
-          {/* Accessibility Controls */}
-          <div className="flex space-x-2">
-            <button 
-              onClick={() => setDarkMode(!darkMode)}
-              className={`${accessibilityEngine.getButtonSize()} rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all`}
-            >
-              {darkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
-            </button>
-            
-            <button 
-              onClick={() => setCurrentMode(currentMode === 'simple' ? 'standard' : currentMode === 'standard' ? 'professional' : currentMode === 'professional' ? 'accessibility' : 'simple')}
-              className={`${accessibilityEngine.getButtonSize()} rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all`}
-            >
-              <Settings className="w-6 h-6" />
-            </button>
+        </div>
+        
+        <div className="bg-gray-800 p-4 rounded-lg">
+          <div className="text-sm text-gray-400">Время когерентности</div>
+          <div className={`text-xl font-bold ${getCoherenceColor(quantumState.coherenceTime)}`}>
+            {quantumState.coherenceTime.toFixed(1)}%
+          </div>
+        </div>
+        
+        <div className="bg-gray-800 p-4 rounded-lg">
+          <div className="text-sm text-gray-400">Уровень запутывания</div>
+          <div className="text-xl font-bold text-blue-400">
+            {quantumState.entanglementLevel.toFixed(1)}%
           </div>
         </div>
       </div>
 
-      <div className="p-6 space-y-6">
-        {/* User Profile Setup */}
-        {!userProfile.age && (
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-            <h3 className="font-bold text-lg mb-2">🎯 Настройка под вас</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-              <button onClick={() => setUserProfile({...userProfile, age: 7})} className="p-3 bg-pink-200 rounded text-center hover:bg-pink-300">
-                👶 5-10 лет
-              </button>
-              <button onClick={() => setUserProfile({...userProfile, age: 15})} className="p-3 bg-blue-200 rounded text-center hover:bg-blue-300">
-                🧒 11-17 лет
-              </button>
-              <button onClick={() => setUserProfile({...userProfile, age: 35})} className="p-3 bg-green-200 rounded text-center hover:bg-green-300">
-                👨 18-65 лет
-              </button>
-              <button onClick={() => setUserProfile({...userProfile, age: 80})} className="p-3 bg-purple-200 rounded text-center hover:bg-purple-300">
-                👴 65+ лет
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* File Upload Zone */}
-        <div 
-          ref={dragRef}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          className={`border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors ${processing ? 'opacity-50' : ''}`}
-        >
-          <input
-            ref={fileInputRef}
-            type="file"
-            multiple
-            accept="*"
-            onChange={(e) => handleFileUpload(e.target.files)}
-            className="hidden"
-          />
-          
-          <div className="space-y-4">
-            <Upload className="w-16 h-16 mx-auto text-gray-400" />
-            <div>
-              <h3 className="text-xl font-semibold mb-2">
-                {userProfile.age && userProfile.age < 10 ? '🎨 Добавь свои файлы!' : '📁 Загрузите любые файлы'}
-              </h3>
-              <p className="text-gray-600">
-                {userProfile.age && userProfile.age < 10 
-                  ? 'Рисунки, фото, музыку - всё что хочешь!' 
-                  : 'Поддерживаются все форматы: изображения, документы, аудио, видео, архивы'}
-              </p>
-            </div>
-            
+      {/* Управление квантовыми режимами */}
+      <div className="mb-6 bg-gray-800 p-4 rounded-lg">
+        <h3 className="text-lg font-bold mb-3 text-cyan-400">🔮 Квантовые режимы</h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {['SUPERPOSITION', 'ENTANGLEMENT', 'CLASSICAL', 'MEASUREMENT'].map(mode => (
             <button
-              onClick={() => fileInputRef.current?.click()}
-              disabled={processing}
-              className={`${accessibilityEngine.getButtonSize()} bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50`}
+              key={mode}
+              onClick={() => switchQuantumMode(mode)}
+              className={`p-3 rounded transition-colors ${
+                quantumState.mode === mode 
+                  ? getModeColor(mode)
+                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+              }`}
             >
-              {processing ? '⏳ Обработка...' : '📂 Выбрать файлы'}
-            </button>
-          </div>
-        </div>
-
-        {/* Processing Modes */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {currentInterface.buttons.map((button, index) => (
-            <button
-              key={index}
-              className={`${accessibilityEngine.getButtonSize()} bg-white border-2 border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-all text-center`}
-            >
-              {button}
+              <div className="text-xs font-medium">{mode}</div>
             </button>
           ))}
         </div>
+      </div>
 
-        {/* Files Display */}
-        {files.length > 0 && (
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold">📁 Ваши файлы</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {files.map((file) => (
-                <div key={file.id} className="bg-white border rounded-lg p-4 shadow-sm">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <FileText className="w-5 h-5 text-blue-500" />
-                    <span className="font-medium truncate">{file.name}</span>
-                  </div>
-                  
-                  {/* Fractal Analysis Preview */}
-                  <div className="text-xs text-gray-500 mb-2">
-                    🔬 Квантовая когерентность: {file.fractalAnalysis?.quantum?.coherence?.toFixed(1)}%
-                  </div>
-                  
-                  {/* Processing Suggestions */}
-                  <div className="space-y-1">
-                    {file.suggestions?.slice(0, 2).map((suggestion, idx) => (
-                      <button
-                        key={idx}
-                        className="w-full text-left text-xs bg-blue-50 text-blue-700 rounded px-2 py-1 hover:bg-blue-100 transition-colors"
-                      >
-                        {suggestion}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
+      {/* Визуализация кубитов */}
+      <div className="mb-6 bg-gray-800 p-4 rounded-lg">
+        <h3 className="text-lg font-bold mb-3 text-cyan-400">⚛️ Состояние кубитов</h3>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
+          {quantumState.qubits.map(qubit => (
+            <div key={qubit.id} className="bg-gray-700 p-3 rounded">
+              <div className="text-center mb-2">
+                <div className="text-lg font-bold text-purple-400">Q{qubit.id}</div>
+              </div>
+              <div className="text-center mb-2">
+                <div className="text-sm text-yellow-400 font-mono">{qubit.state}</div>
+              </div>
+              <div className="flex justify-between text-xs text-gray-400">
+                <span>|0⟩: {(qubit.probability[0] * 100).toFixed(0)}%</span>
+                <span>|1⟩: {(qubit.probability[1] * 100).toFixed(0)}%</span>
+              </div>
+              <div className="mt-2 text-center">
+                <span className={`text-xs px-2 py-1 rounded ${
+                  qubit.entangled ? 'bg-blue-600 text-white' : 'bg-gray-600 text-gray-300'
+                }`}>
+                  {qubit.entangled ? 'ЗАПУТАН' : 'СВОБОДЕН'}
+                </span>
+              </div>
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Операции с квантовой системой */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <button
+          onClick={performQuantumMeasurement}
+          className="bg-yellow-600 hover:bg-yellow-700 p-4 rounded-lg transition-colors"
+        >
+          <div className="font-bold">📏 Измерение</div>
+          <div className="text-sm text-yellow-200">Коллапс состояния</div>
+        </button>
+
+        <button
+          onClick={createEntanglement}
+          className="bg-blue-600 hover:bg-blue-700 p-4 rounded-lg transition-colors"
+        >
+          <div className="font-bold">🔗 Запутывание</div>
+          <div className="text-sm text-blue-200">Создать связи</div>
+        </button>
+
+        <button
+          onClick={restoreQuantumState}
+          className="bg-green-600 hover:bg-green-700 p-4 rounded-lg transition-colors"
+        >
+          <div className="font-bold">🔄 Восстановить</div>
+          <div className="text-sm text-green-200">Сброс состояния</div>
+        </button>
+
+        <button
+          onClick={() => setAnimationActive(!animationActive)}
+          className={`p-4 rounded-lg transition-colors ${
+            animationActive 
+              ? 'bg-red-600 hover:bg-red-700' 
+              : 'bg-gray-600 hover:bg-gray-700'
+          }`}
+        >
+          <div className="font-bold">⏸️ {animationActive ? 'Пауза' : 'Старт'}</div>
+          <div className="text-sm text-gray-200">Декогеренция</div>
+        </button>
+      </div>
+
+      {/* История измерений */}
+      <div className="bg-gray-800 p-4 rounded-lg mb-6">
+        <h3 className="text-lg font-bold mb-3 text-cyan-400">📊 История квантовых измерений</h3>
+        {measurements.length === 0 ? (
+          <div className="text-gray-400 text-center py-4">
+            Измерений пока не производилось
+          </div>
+        ) : (
+          <div className="space-y-3 max-h-48 overflow-y-auto">
+            {measurements.map((measurement, index) => (
+              <div key={index} className="bg-gray-700 p-3 rounded">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm text-gray-400">{measurement.timestamp}</span>
+                  <span className="text-xs text-yellow-400">
+                    Измерение #{quantumState.measurementCount - index}
+                  </span>
+                </div>
+                <div className="grid grid-cols-5 gap-2">
+                  {measurement.results.map((result, i) => (
+                    <div key={i} className="text-center">
+                      <div className="text-xs text-gray-400">Q{result.qubitId}</div>
+                      <div className="text-sm font-mono text-purple-400">
+                        {result.measuredState}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         )}
+      </div>
 
-        {/* Fractal Metascience Engine Status */}
-        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg">
-          <h3 className="font-bold text-lg mb-2">🔬 Двигатель Фрактальной Метанауки</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 text-xs">
-            <div className="bg-white p-2 rounded text-center">
-              <div className="text-purple-600 font-bold">⚛️</div>
-              <div>Квантовый</div>
-            </div>
-            <div className="bg-white p-2 rounded text-center">
-              <div className="text-blue-600 font-bold">👤</div>
-              <div>Личный</div>
-            </div>
-            <div className="bg-white p-2 rounded text-center">
-              <div className="text-green-600 font-bold">👨‍👩‍👧‍👦</div>
-              <div>Семейный</div>
-            </div>
-            <div className="bg-white p-2 rounded text-center">
-              <div className="text-yellow-600 font-bold">🏘️</div>
-              <div>Сообщество</div>
-            </div>
-            <div className="bg-white p-2 rounded text-center">
-              <div className="text-orange-600 font-bold">🏛️</div>
-              <div>Культура</div>
-            </div>
-            <div className="bg-white p-2 rounded text-center">
-              <div className="text-red-600 font-bold">🌍</div>
-              <div>Планета</div>
-            </div>
-            <div className="bg-white p-2 rounded text-center">
-              <div className="text-indigo-600 font-bold">🌌</div>
-              <div>Галактика</div>
-            </div>
+      {/* Статистика системы */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="bg-gray-800 p-3 rounded text-center">
+          <div className="text-2xl font-bold text-purple-400">
+            {quantumState.measurementCount}
           </div>
+          <div className="text-sm text-gray-400">Измерений</div>
         </div>
+        
+        <div className="bg-gray-800 p-3 rounded text-center">
+          <div className="text-2xl font-bold text-blue-400">
+            {quantumState.qubits.filter(q => q.entangled).length}
+          </div>
+          <div className="text-sm text-gray-400">Запутанных</div>
+        </div>
+        
+        <div className="bg-gray-800 p-3 rounded text-center">
+          <div className="text-2xl font-bold text-green-400">
+            {quantumState.decoherenceRate.toFixed(1)}
+          </div>
+          <div className="text-sm text-gray-400">Декогеренция</div>
+        </div>
+        
+        <div className="bg-gray-800 p-3 rounded text-center">
+          <div className="text-2xl font-bold text-cyan-400">
+            v5.0
+          </div>
+          <div className="text-sm text-gray-400">Версия</div>
+        </div>
+      </div>
 
-        {/* Footer */}
-        <div className="text-center text-sm text-gray-500 border-t pt-4">
-          <p>🧬 TERRA Universal Knowledge Processor v7.0</p>
-          <p>Фрактальная Метанаука • Квантовая Обработка • Универсальная Доступность</p>
-          <p>Работает оффлайн • Расширяется онлайн • Создан для каждого</p>
-        </div>
+      {/* Footer */}
+      <div className="mt-6 text-center text-xs text-gray-500">
+        Quantum State Manager | TerraMemoryDNA v5.0 | secret.uzbek@tutamail.com
       </div>
     </div>
   );
 };
 
-export default TerraUniversalProcessor;
+export default QuantumStateManager;

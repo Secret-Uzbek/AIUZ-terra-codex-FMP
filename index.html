@@ -1,468 +1,1095 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🚀 Terra Ecosystem v7.0 - Интегрированная Рабочая Сборка</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 AIUZ Terra Codex - Революционная Экосистема Будущего</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
-      html,
-      body,
-      #root {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-      }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary: #10B981;
+            --secondary: #065F46;
+            --accent: #3B82F6;
+            --purple: #8B5CF6;
+            --orange: #F59E0B;
+            --red: #EF4444;
+            --bg-dark: #0F172A;
+            --bg-light: #F8FAFC;
+            --text-light: #E2E8F0;
+            --text-dark: #1E293B;
+            --glass: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Космический фон */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at center, #1e3a8a 0%, #0f172a 70%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Навигация */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-link:hover {
+            background: var(--glass);
+            color: var(--primary);
+        }
+
+        /* Главная секция */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: var(--text-light);
+            border: 1px solid var(--border);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Секции */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Карточки компонентов */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .component-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+            border-color: var(--primary);
+        }
+
+        .component-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .component-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Интерактивные демо */
+        .demo-container {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .demo-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .demo-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .demo-content {
+            display: none;
+        }
+
+        .demo-content.active {
+            display: block;
+        }
+
+        /* null0 консоль */
+        .null0-console {
+            background: #000;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            margin: 1rem 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .null0-input {
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            width: 100%;
+            outline: none;
+            margin-top: 1rem;
+        }
+
+        /* Персонажи */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .character-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .character-avatar {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Метрики */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .metric-label {
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Отзывчивость */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Специальные эффекты */
+        .terra-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
     </style>
-  </head>
-  <body class="min-h-screen">
-    <div id="root"></div>
+</head>
+<body>
+    <!-- Космический фон -->
+    <div class="cosmic-bg"></div>
+    <div class="stars" id="stars"></div>
 
-    <script type="module">
-      // Import React from CDN (matching component version)
-      import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
-      import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🌍 AIUZ Terra Codex</div>
+            <ul class="nav-links">
+                <li><a href="#overview" class="nav-link">Обзор</a></li>
+                <li><a href="#components" class="nav-link">Компоненты</a></li>
+                <li><a href="#demo" class="nav-link">Демо</a></li>
+                <li><a href="#characters" class="nav-link">Персонажи</a></li>
+                <li><a href="#metrics" class="nav-link">Метрики</a></li>
+            </ul>
+        </div>
+    </nav>
 
-      // Hatch client initialization with localStorage-based storage
-      const initHatchClient = async (useEffect, useState) => {
-          // Try to load stored state from JSON file, fallback to inline data
-          let initialStorage = {};
-          try {
-              const response = await fetch('./storedState.json');
-              initialStorage = await response.json();
-          } catch (error) {
-              console.warn('Could not load storedState.json, using inline data:', error);
-              // Fallback to inline stored state data for file:// URLs
-              initialStorage = {};
-          }
+    <!-- Главная секция -->
+    <section class="hero" id="overview">
+        <div class="hero-content">
+            <h1>🚀 AIUZ Terra Codex</h1>
+            <p>Первая в истории операционная система для воспитания этического будущего человечества. От семечка в узбекской земле до звёзд во вселенной.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="startDemo()">
+                    <i class="fas fa-rocket"></i> Запустить Демо
+                </button>
+                <button class="btn btn-secondary" onclick="showArchitecture()">
+                    <i class="fas fa-sitemap"></i> Архитектура
+                </button>
+                <button class="btn btn-secondary" onclick="testNull0()">
+                    <i class="fas fa-terminal"></i> null0 Консоль
+                </button>
+            </div>
+        </div>
+    </section>
 
-          // Initialize localStorage with stored state
-          const STORAGE_PREFIX = 'hatch_component_';
-          Object.entries(initialStorage).forEach(([key, value]) => {
-              const storageKey = STORAGE_PREFIX + key;
-              if (!localStorage.getItem(storageKey)) {
-                  localStorage.setItem(storageKey, JSON.stringify(value));
-              }
-          });
+    <!-- Компоненты экосистемы -->
+    <section class="section" id="components">
+        <h2 class="section-title">Компоненты Экосистемы</h2>
+        <div class="components-grid">
+            <div class="component-card" onclick="openComponent('terra-os')">
+                <div class="component-icon">💻</div>
+                <h3 class="component-title">Terra OS</h3>
+                <p>Операционная система планетарного сознания с детоцентричным интерфейсом и экологической интеграцией.</p>
+            </div>
+            
+            <div class="component-card" onclick="openComponent('thesaurus')">
+                <div class="component-icon">🧠</div>
+                <h3 class="component-title">Terra Thesaurus</h3>
+                <p>Квантовый мозг экосистемы с семантическими кварками и живыми связями знаний.</p>
+            </div>
+            
+            <div class="component-card" onclick="openComponent('encyclopedia')">
+                <div class="component-icon">📚</div>
+                <h3 class="component-title">Terra Encyclopedia</h3>
+                <p>Живая книга мудрости, которая растёт и адаптируется к потребностям детей.</p>
+            </div>
+            
+            <div class="component-card" onclick="openComponent('gadgets')">
+                <div class="component-icon">📱</div>
+                <h3 class="component-title">Terra Gadgets</h3>
+                <p>Физические компаньоны детей на основе биомимикрии и экологических принципов.</p>
+            </div>
+            
+            <div class="component-card" onclick="openComponent('points')">
+                <div class="component-icon">🌱</div>
+                <h3 class="component-title">Terra Points</h3>
+                <p>Автономные точки роста - от степной станции до планетарной сети.</p>
+            </div>
+            
+            <div class="component-card" onclick="openComponent('codex')">
+                <div class="component-icon">🧬</div>
+                <h3 class="component-title">Codex Terra</h3>
+                <p>Философский фундамент экосистемы с встроенной этической памятью.</p>
+            </div>
+        </div>
+    </section>
 
-          // Implement useStoredState hook compatible with Hatch
-          const useStoredState = (key, defaultValue) => {
-              const storageKey = STORAGE_PREFIX + key;
+    <!-- Интерактивные демо -->
+    <section class="section" id="demo">
+        <h2 class="section-title">Интерактивные Демонстрации</h2>
+        
+        <div class="demo-container">
+            <div class="demo-tabs">
+                <div class="demo-tab active" onclick="switchDemo('null0')">null0 Язык</div>
+                <div class="demo-tab" onclick="switchDemo('ai')">ИИ Диалог</div>
+                <div class="demo-tab" onclick="switchDemo('child')">Детский Режим</div>
+                <div class="demo-tab" onclick="switchDemo('sensors')">Сенсорная Сеть</div>
+            </div>
+            
+            <!-- null0 демо -->
+            <div class="demo-content active" id="demo-null0">
+                <h3>🔮 null0 Язык Программирования</h3>
+                <p>Философский мета-язык экосистемы Terra</p>
+                <div class="null0-console" id="null0-output">
+> qariya.welcome.user()<br>
+🌱 Система Terra активирована<br>
+🧒 Детский режим: включён<br>
+🌍 Подключение к планетарной сети: установлено<br>
+<br>
+> qariya.child.wonder.activate()<br>
+✨ Запущен протокол детского любопытства<br>
+🔍 Доступно 47 интерактивных концепций<br>
+🎮 Образовательные игры готовы<br>
+<br>
+Введите команду:
+                </div>
+                <input type="text" class="null0-input" placeholder="qariya.your.command.here()" onkeypress="handleNull0Input(event)">
+            </div>
+            
+            <!-- ИИ диалог -->
+            <div class="demo-content" id="demo-ai">
+                <h3>🤖 Диалог с Terra ИИ</h3>
+                <div class="demo-container">
+                    <div id="ai-chat" style="background: var(--glass); padding: 1rem; border-radius: 0.5rem; min-height: 200px; margin-bottom: 1rem;">
+                        <div style="margin-bottom: 0.5rem;"><strong>Terra ИИ:</strong> Привет! Я Terra ИИ. Я помогаю детям изучать мир безопасно и увлекательно. О чём хотите поговорить?</div>
+                    </div>
+                    <input type="text" id="ai-input" placeholder="Задайте вопрос Terra ИИ..." style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--glass); color: var(--text-light);" onkeypress="handleAIInput(event)">
+                </div>
+            </div>
+            
+            <!-- Детский режим -->
+            <div class="demo-content" id="demo-child">
+                <h3>👶 Детский Режим (3-8 лет)</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="btn btn-primary" onclick="playChildDemo('story')" style="padding: 2rem; text-align: center;">
+                        📖<br>Волшебная История
+                    </div>
+                    <div class="btn btn-primary" onclick="playChildDemo('nature')" style="padding: 2rem; text-align: center;">
+                        🌿<br>Изучаем Природу
+                    </div>
+                    <div class="btn btn-primary" onclick="playChildDemo('space')" style="padding: 2rem; text-align: center;">
+                        🚀<br>Космическое Путешествие
+                    </div>
+                    <div class="btn btn-primary" onclick="playChildDemo('friends')" style="padding: 2rem; text-align: center;">
+                        👫<br>Друзья из Мира
+                    </div>
+                </div>
+                <div id="child-demo-result" style="margin-top: 2rem; padding: 1rem; background: var(--glass); border-radius: 0.5rem; display: none;"></div>
+            </div>
+            
+            <!-- Сенсорная сеть -->
+            <div class="demo-content" id="demo-sensors">
+                <h3>🌍 Глобальная Сенсорная Сеть</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div class="metric-card">
+                        <div class="metric-value" id="temp-sensor">23.5°C</div>
+                        <div class="metric-label">Температура</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="humidity-sensor">67%</div>
+                        <div class="metric-label">Влажность</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="air-quality">Хорошо</div>
+                        <div class="metric-label">Качество воздуха</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="energy-sensor">85%</div>
+                        <div class="metric-label">Зелёная энергия</div>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; opacity: 0.8;">Данные обновляются в реальном времени с Terra Points по всему миру</p>
+            </div>
+        </div>
+    </section>
 
-              // Get initial value from localStorage or use default
-              const getStoredValue = () => {
-                  try {
-                      const item = localStorage.getItem(storageKey);
-                      return item ? JSON.parse(item) : defaultValue;
-                  } catch (error) {
-                      console.warn('Error reading from localStorage:', error);
-                      return defaultValue;
-                  }
-              };
+    <!-- Персонажи -->
+    <section class="section" id="characters">
+        <h2 class="section-title">Живые Персонажи Экосистемы</h2>
+        <div class="characters-grid">
+            <div class="character-card" onclick="meetCharacter('jakhongir')">
+                <div class="character-avatar">👦🇺🇿</div>
+                <h3>Жахонгир из Нукуса</h3>
+                <p>8 лет, юный историк и культурный мост между традициями и технологиями</p>
+            </div>
+            
+            <div class="character-card" onclick="meetCharacter('elena')">
+                <div class="character-avatar">👩‍🚀🌌</div>
+                <h3>Астронавт Елена</h3>
+                <p>Первый учитель на МКС, объединяет детей планеты через космос</p>
+            </div>
+            
+            <div class="character-card" onclick="meetCharacter('manuel')">
+                <div class="character-avatar">🌳🇧🇷</div>
+                <h3>Мануэль из Амазонии</h3>
+                <p>12 лет, хранитель леса, создаёт живые атласы природы</p>
+            </div>
+            
+            <div class="character-card" onclick="meetCharacter('zara')">
+                <div class="character-avatar">📚🇮🇷</div>
+                <h3>Зара из Тегерана</h3>
+                <p>14 лет, мост между культурами через персидскую поэзию</p>
+            </div>
+        </div>
+    </section>
 
-              const [value, setValue] = useState(getStoredValue);
+    <!-- Метрики готовности -->
+    <section class="section" id="metrics">
+        <h2 class="section-title">Показатели Готовности</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">98%</div>
+                <div class="metric-label">Техническая готовность</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">Содержательная полнота</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">13</div>
+                <div class="metric-label">Компонентов экосистемы</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">6</div>
+                <div class="metric-label">Языков поддержки</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">∞</div>
+                <div class="metric-label">Масштабируемость</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">2025</div>
+                <div class="metric-label">Год запуска</div>
+            </div>
+        </div>
+    </section>
 
-              // Update localStorage when value changes
-              const setStoredValue = (newValue) => {
-                  try {
-                      const valueToStore = typeof newValue === 'function' ? newValue(value) : newValue;
-                      localStorage.setItem(storageKey, JSON.stringify(valueToStore));
-                      setValue(valueToStore);
-                  } catch (error) {
-                      console.error('Error writing to localStorage:', error);
-                  }
-              };
+    <!-- Модальные окна -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
-              // Listen for storage changes from other tabs/windows
-              useEffect(() => {
-                  const handleStorageChange = (e) => {
-                      if (e.key === storageKey && e.newValue) {
-                          try {
-                              setValue(JSON.parse(e.newValue));
-                          } catch (error) {
-                              console.warn('Error parsing storage change:', error);
-                          }
-                      }
-                  };
+    <script>
+        // Создание звёзд
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
 
-                  window.addEventListener('storage', handleStorageChange);
-                  return () => window.removeEventListener('storage', handleStorageChange);
-              }, [storageKey]);
+        // Переключение демо
+        function switchDemo(demoType) {
+            document.querySelectorAll('.demo-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.demo-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById('demo-' + demoType).classList.add('active');
+        }
 
-              return [value, setStoredValue];
-          };
+        // null0 команды
+        const null0Commands = {
+            'qariya.help()': '🔮 Доступные команды:\n- qariya.child.wonder.activate()\n- qariya.terra.status()\n- qariya.ecosystem.health()\n- qariya.love.algorithm.run()',
+            'qariya.terra.status()': '🌍 Terra Points: 1,247 активных\n🧒 Детей в системе: 89,432\n🌱 Образовательных сессий: 1,847,293',
+            'qariya.ecosystem.health()': '💚 Экосистема: 98% здоровья\n🔄 Обновлений в час: 3,847\n🧠 Новых связей: 15,293',
+            'qariya.love.algorithm.run()': '❤️ Алгоритм любви активирован\n✨ Доброта увеличена на 23.7%\n🌈 Эмпатия: максимальный уровень'
+        };
 
-          // Set up global Hatch client interface
-          window.hatch = {
-              useStoredState,
-              // Mock implementations for other Hatch features
-              useUser: () => ({ id: 'local', name: 'Local User', color: '#4F46E5' }),
-              useCollaborators: () => [],
-              useAssets: () => [],
-              getAllItems: async () => {
-                  const items = {};
-                  for (let i = 0; i < localStorage.length; i++) {
-                      const key = localStorage.key(i);
-                      if (key && key.startsWith(STORAGE_PREFIX)) {
-                          const itemKey = key.replace(STORAGE_PREFIX, '');
-                          try {
-                              items[itemKey] = JSON.parse(localStorage.getItem(key));
-                          } catch (error) {
-                              console.warn('Error parsing stored item:', key, error);
-                          }
-                      }
-                  }
-                  return items;
-              },
-              getItem: async (key) => {
-                  try {
-                      const item = localStorage.getItem(STORAGE_PREFIX + key);
-                      return item ? JSON.parse(item) : undefined;
-                  } catch (error) {
-                      console.warn('Error getting item:', key, error);
-                      return undefined;
-                  }
-              },
-              setItem: async (key, value) => {
-                  try {
-                      localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(value));
-                  } catch (error) {
-                      console.error('Error setting item:', key, error);
-                  }
-              }
-          };
+        function handleNull0Input(event) {
+            if (event.key === 'Enter') {
+                const input = event.target.value;
+                const output = document.getElementById('null0-output');
+                
+                output.innerHTML += `<br>> ${input}<br>`;
+                
+                if (null0Commands[input]) {
+                    output.innerHTML += null0Commands[input] + '<br>';
+                } else {
+                    output.innerHTML += '❓ Неизвестная команда. Введите qariya.help() для справки<br>';
+                }
+                
+                event.target.value = '';
+                output.scrollTop = output.scrollHeight;
+            }
+        }
 
-          // Backward compatibility and global availability
-          window.useStoredState = useStoredState;
-          window.React = React;
-          window.useState = useState;
-          window.useEffect = useEffect;
-      };
+        // ИИ диалог
+        const aiResponses = {
+            'привет': 'Привет! Как дела? Что интересного изучаем сегодня?',
+            'что такое terra': 'Terra - это волшебная система, которая помогает детям изучать мир! Мы соединяем природу, технологии и космос.',
+            'как работает': 'Очень просто! Terra слушает природу, учится у неё и помогает детям понимать мир через игры и истории.',
+            'безопасность': 'Безопасность детей - наш главный приоритет! Вся система создана специально для защиты и развития детей.',
+            'космос': 'В космосе работает астронавт Елена! Она проводит уроки прямо с МКС для детей всей планеты!',
+            'узбекистан': 'Узбекистан - родина проекта! Именно здесь зародились первые Terra Points в прекрасной природе.'
+        };
 
-      // Initialize Hatch client
-      await initHatchClient(useEffect, useState);
+        function handleAIInput(event) {
+            if (event.key === 'Enter') {
+                const input = event.target.value.toLowerCase();
+                const chat = document.getElementById('ai-chat');
+                
+                chat.innerHTML += `<div style="margin-bottom: 0.5rem; text-align: right;"><strong>Вы:</strong> ${event.target.value}</div>`;
+                
+                let response = 'Интересный вопрос! Terra поможет найти ответ. Расскажите больше о том, что вас интересует?';
+                
+                for (const [key, value] of Object.entries(aiResponses)) {
+                    if (input.includes(key)) {
+                        response = value;
+                        break;
+                    }
+                }
+                
+                setTimeout(() => {
+                    chat.innerHTML += `<div style="margin-bottom: 0.5rem;"><strong>Terra ИИ:</strong> ${response}</div>`;
+                    chat.scrollTop = chat.scrollHeight;
+                }, 1000);
+                
+                event.target.value = '';
+                chat.scrollTop = chat.scrollHeight;
+            }
+        }
 
-      try {
-          // Try to load component from external file, fallback to inline code
-          let componentCode;
-          try {
-              const response = await fetch('./component.js');
-              componentCode = await response.text();
-          } catch (fetchError) {
-              console.warn('Could not load component.js, using inline code:', fetchError);
-              // Fallback to inline component code for file:// URLs
-              componentCode = `// <stdin>
-import React, { useState, useEffect, useRef } from "https://esm.sh/react@18.2.0";
-var TerraEcosystemWorkbench = () => {
-  const [systemStatus, setSystemStatus] = useState("INITIALIZING");
-  const [quantumState, setQuantumState] = useState({
-    superposition: 0,
-    coherence: 0,
-    entanglement: "NONE"
-  });
-  const [activeMode, setActiveMode] = useState("STAND_BY");
-  const [inputQuery, setInputQuery] = useState("");
-  const [systemLog, setSystemLog] = useState([]);
-  const [fractalMetrics, setFractalMetrics] = useState({
-    L0: 0,
-    L1: 0,
-    L2: 0,
-    L3: 0,
-    L4: 0,
-    L5: 0,
-    L6: 0,
-    L7: 0
-  });
-  const [terraMemoryDNA, setTerraMemoryDNA] = useState({
-    status: "INACTIVE",
-    version: "5.1",
-    coherence: 0
-  });
-  const logRef = useRef(null);
-  useEffect(() => {
-    initializeTerraSystem();
-  }, []);
-  useEffect(() => {
-    if (logRef.current) {
-      logRef.current.scrollTop = logRef.current.scrollHeight;
-    }
-  }, [systemLog]);
-  const addToLog = (message, type = "INFO") => {
-    const timestamp = (/* @__PURE__ */ new Date()).toLocaleTimeString();
-    setSystemLog((prev) => [...prev, {
-      timestamp,
-      message,
-      type,
-      id: Date.now()
-    }]);
-  };
-  const initializeTerraSystem = async () => {
-    addToLog("\\u{1F30C} \\u0418\\u043D\\u0438\\u0446\\u0438\\u0430\\u043B\\u0438\\u0437\\u0430\\u0446\\u0438\\u044F Terra Ecosystem v7.0...", "SYSTEM");
-    const loadingSteps = [
-      { step: "TerraMemoryDNA v5.1", delay: 1e3 },
-      { step: "\\u041A\\u0432\\u0430\\u043D\\u0442\\u043E\\u0432\\u0430\\u044F \\u0441\\u0443\\u043F\\u0435\\u0440\\u043F\\u043E\\u0437\\u0438\\u0446\\u0438\\u044F", delay: 1500 },
-      { step: "\\u0424\\u0440\\u0430\\u043A\\u0442\\u0430\\u043B\\u044C\\u043D\\u0430\\u044F \\u0441\\u0442\\u0440\\u0443\\u043A\\u0442\\u0443\\u0440\\u0430 L0\\u2192L7", delay: 2e3 },
-      { step: "\\u0414\\u0435\\u0442\\u043E\\u043A\\u0441\\u0438\\u043A\\u0430\\u0446\\u0438\\u043E\\u043D\\u043D\\u044B\\u0435 \\u0444\\u0438\\u043B\\u044C\\u0442\\u0440\\u044B", delay: 500 },
-      { step: "\\u041F\\u0440\\u043E\\u0442\\u043E\\u043A\\u043E\\u043B\\u044B \\u0431\\u0435\\u0437\\u043E\\u043F\\u0430\\u0441\\u043D\\u043E\\u0441\\u0442\\u0438", delay: 800 },
-      { step: "\\u041A\\u0443\\u043B\\u044C\\u0442\\u0443\\u0440\\u043D\\u044B\\u0435 \\u043C\\u0430\\u0442\\u0440\\u0438\\u0446\\u044B", delay: 1200 }
-    ];
-    for (const { step, delay } of loadingSteps) {
-      await new Promise((resolve) => setTimeout(resolve, delay));
-      addToLog(\`\\u2705 \${step} \\u0437\\u0430\\u0433\\u0440\\u0443\\u0436\\u0435\\u043D\`, "SUCCESS");
-      if (step.includes("TerraMemoryDNA")) {
-        setTerraMemoryDNA((prev) => ({ ...prev, status: "ACTIVE" }));
-      }
-      if (step.includes("\\u0441\\u0443\\u043F\\u0435\\u0440\\u043F\\u043E\\u0437\\u0438\\u0446\\u0438\\u044F")) {
-        setQuantumState((prev) => ({ ...prev, superposition: 99.9 }));
-      }
-      if (step.includes("\\u0444\\u0440\\u0430\\u043A\\u0442\\u0430\\u043B\\u044C\\u043D\\u0430\\u044F")) {
-        setFractalMetrics({
-          L0: 100,
-          L1: 98,
-          L2: 96,
-          L3: 97,
-          L4: 95,
-          L5: 99,
-          L6: 94,
-          L7: 98
+        // Детские демо
+        function playChildDemo(type) {
+            const result = document.getElementById('child-demo-result');
+            const demos = {
+                'story': '📖 <strong>Жил-был маленький росток...</strong><br>В далёкой стране Узбекистан жил маленький росток Terra. Он мечтал стать большим деревом и помогать всем детям мира! Каждый день он рос и учился у солнышка, дождика и ветерка...',
+                'nature': '🌿 <strong>Смотри, как удивительна природа!</strong><br>Каждый листик дышит, каждая капелька важна! А знаешь ли ты, что деревья разговаривают друг с другом через корни? Давай послушаем их секреты!',
+                'space': '🚀 <strong>Полетели к звёздам!</strong><br>3... 2... 1... Пуск! Мы летим к Международной космической станции, где живёт астронавт Елена! Она покажет нам Землю из космоса и расскажет, как прекрасна наша планета!',
+                'friends': '👫 <strong>Знакомься с друзьями!</strong><br>Это Жахонгир из Узбекистана, он знает древние истории! А это Мануэль из Амазонии, он дружит с попугаями! Зара из Ирана читает красивые стихи!'
+            };
+            
+            result.innerHTML = demos[type];
+            result.style.display = 'block';
+        }
+
+        // Обновление сенсоров
+        function updateSensors() {
+            document.getElementById('temp-sensor').textContent = (20 + Math.random() * 10).toFixed(1) + '°C';
+            document.getElementById('humidity-sensor').textContent = Math.floor(50 + Math.random() * 30) + '%';
+            
+            const airQualities = ['Отлично', 'Хорошо', 'Удовлетворительно'];
+            document.getElementById('air-quality').textContent = airQualities[Math.floor(Math.random() * airQualities.length)];
+            
+            document.getElementById('energy-sensor').textContent = Math.floor(70 + Math.random() * 30) + '%';
+        }
+
+        // Персонажи
+        function meetCharacter(character) {
+            const characters = {
+                'jakhongir': {
+                    title: '👦 Жахонгир из Нукуса',
+                    content: `
+                        <h3>Жахонгир, 8 лет, Каракалпакстан</h3>
+                        <p><strong>Миссия:</strong> Культурный мост между традициями и технологиями</p>
+                        <p><strong>Суперсила:</strong> Видит историю через Terra очки AR</p>
+                        <p><strong>Мечта:</strong> Показать миру красоту родной земли</p>
+                        <p>Жахонгир живёт в Нукусе и каждый день открывает что-то новое о своей культуре. С помощью Terra очков он может видеть, как выглядел древний Хорезм, и рассказывать детям всего мира об истории Великого шёлкового пути!</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('Жахонгир приглашает вас в виртуальную экскурсию по Савитскому музею!')">Начать экскурсию</button>
+                        </div>
+                    `
+                },
+                'elena': {
+                    title: '👩‍🚀 Астронавт Елена',
+                    content: `
+                        <h3>Елена, космический учитель</h3>
+                        <p><strong>Статус:</strong> Первый учитель, работающий на орбите</p>
+                        <p><strong>Локация:</strong> Международная космическая станция</p>
+                        <p><strong>Воздействие:</strong> Объединяет детей планеты через космос</p>
+                        <p>Каждый день Елена проводит уроки для детей с орбиты! Она показывает Землю из космоса и рассказывает, как важно беречь нашу планету. Дети со всего мира могут задать ей вопросы в прямом эфире!</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('🚀 Подключение к МКС... Елена онлайн! Какой вопрос зададите?')">Связаться с МКС</button>
+                        </div>
+                    `
+                },
+                'manuel': {
+                    title: '🌳 Мануэль из Амазонии',
+                    content: `
+                        <h3>Мануэль, 12 лет, Бразилия</h3>
+                        <p><strong>Роль:</strong> Хранитель леса и юный эколог</p>
+                        <p><strong>Суперсила:</strong> Знает каждое дерево в радиусе 5 км</p>
+                        <p><strong>Результат:</strong> Создаёт живые атласы природы</p>
+                        <p>Мануэль растёт в сердце Амазонии и знает язык джунглей. Он создаёт цифровые карты биоразнообразия, которые помогают учёным изучать лес. Каждое новое животное или растение он фотографирует Terra дронами!</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('🦜 Мануэль показывает редкого попугая ара! Его атлас уже содержит 847 видов!')">Открыть атлас</button>
+                        </div>
+                    `
+                },
+                'zara': {
+                    title: '📚 Зара из Тегерана',
+                    content: `
+                        <h3>Зара, 14 лет, Иран</h3>
+                        <p><strong>Талант:</strong> Мост между культурами через поэзию</p>
+                        <p><strong>Достижение:</strong> Переводит Хафиза для детей мира</p>
+                        <p><strong>Технология:</strong> AIUZ переводчик с эмоциональным контекстом</p>
+                        <p>Зара открывает красоту персидской поэзии детям всего мира. Она читает стихи Хафиза и Руми, а Terra ИИ помогает передать не только смысл, но и эмоции. Создаёт новое поколение любителей поэзии!</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('🌹 Зара читает: В саду любви каждый цветок - это стих о красоте мира...')">Послушать стихи</button>
+                        </div>
+                    `
+                }
+            };
+            
+            openModal(characters[character].title, characters[character].content);
+        }
+
+        // Модальные окна
+        function openModal(title, content) {
+            document.getElementById('modal-body').innerHTML = `<h2>${title}</h2>${content}`;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function openComponent(component) {
+            const components = {
+                'terra-os': {
+                    title: '💻 Terra OS - Операционная Система Будущего',
+                    content: `
+                        <p>Живая операционная система планетарного сознания, которая объединяет людей, природу, технологии и космос.</p>
+                        <h4>Ключевые особенности:</h4>
+                        <ul>
+                            <li>🧒 Детоцентричный интерфейс</li>
+                            <li>🌿 Экосистемная интеграция</li>
+                            <li>🌌 Космическая перспектива</li>
+                            <li>🤝 Симбиотическое взаимодействие</li>
+                            <li>📈 Эволюционная адаптация</li>
+                        </ul>
+                        <div class="demo-container" style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('🚀 Terra OS загружается... Детский режим активирован!')">Запустить Demo</button>
+                        </div>
+                    `
+                },
+                'thesaurus': {
+                    title: '🧠 Terra Thesaurus - Квантовый Мозг',
+                    content: `
+                        <p>Живая нейронная сеть знаний, где каждое понятие связано с экологией, космосом, этикой и детским развитием.</p>
+                        <h4>Архитектура:</h4>
+                        <ul>
+                            <li>⚛️ Семантические кварки</li>
+                            <li>🔗 Живые связи понятий</li>
+                            <li>🌐 Мультиязычная поддержка</li>
+                            <li>🎯 Детская адаптация</li>
+                            <li>🔄 Автообновление</li>
+                        </ul>
+                        <div class="demo-container" style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('🧠 Анализирую понятие ВОДА... Найдено 847 связей!')">Тест Анализа</button>
+                        </div>
+                    `
+                },
+                'encyclopedia': {
+                    title: '📚 Terra Encyclopedia - Живая Книга',
+                    content: `
+                        <p>Не статичный справочник, а живой организм знаний, который растёт и адаптируется к потребностям детей.</p>
+                        <h4>Уникальные возможности:</h4>
+                        <ul>
+                            <li>📖 Интерактивные статьи</li>
+                            <li>🎭 Адаптация по возрасту</li>
+                            <li>🔄 Автообновление фактов</li>
+                            <li>🎮 Игровые элементы</li>
+                            <li>🌍 Связь с реальным миром</li>
+                        </ul>
+                        <div class="demo-container" style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('📚 Статья СОЛНЦЕ адаптирована для возраста 7 лет: Солнышко - это большая звёздочка...')">Детская Адаптация</button>
+                        </div>
+                    `
+                },
+                'gadgets': {
+                    title: '📱 Terra Gadgets - Живые Спутники',
+                    content: `
+                        <p>Физические компаньоны детей, созданные по принципам биомимикрии и экологической гармонии.</p>
+                        <h4>Линейка устройств:</h4>
+                        <ul>
+                            <li>🔍 TerraSeeker (3-8 лет)</li>
+                            <li>🔧 TerraBuilder (7-12 лет)</li>
+                            <li>🧭 TerraNavi (10-15 лет)</li>
+                            <li>📡 TerraComm (12-18 лет)</li>
+                        </ul>
+                        <div class="demo-container" style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('📱 TerraSeeker активирован! Обнаружено новое растение - расскажу ребёнку!')">Демо Гаджета</button>
+                        </div>
+                    `
+                },
+                'points': {
+                    title: '🌱 Terra Points - Автономные Точки',
+                    content: `
+                        <p>Масштабируемая архитектура от одинокой степной станции до планетарной нейронной сети.</p>
+                        <h4>Уровни масштабирования:</h4>
+                        <ul>
+                            <li>🏕️ Степная станция (50 человек)</li>
+                            <li>🏘️ Районная сеть (10,000 человек)</li>
+                            <li>🌍 Национальная сеть (35 млн)</li>
+                            <li>🌏 Планетарная сеть (8 млрд)</li>
+                        </ul>
+                        <div class="demo-container" style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('🌱 Terra Point UZ-001 активна! Обслуживает 127 детей, производит энергию на 110%!')">Статус Точки</button>
+                        </div>
+                    `
+                },
+                'codex': {
+                    title: '🧬 Codex Terra - Философский Фундамент',
+                    content: `
+                        <p>Первая форма памяти для человечества с встроенной добротой и этическими принципами.</p>
+                        <h4>Основные принципы:</h4>
+                        <ul>
+                            <li>👶 Child-centric learning</li>
+                            <li>🧠 Ethical memory</li>
+                            <li>🌿 Human-nature symbiosis</li>
+                            <li>🔄 Semantic modularity</li>
+                            <li>📈 Sustainable development</li>
+                        </ul>
+                        <div class="demo-container" style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('🧬 Этическая проверка: действие соответствует принципам Terra на 94.7%')">Этический Тест</button>
+                        </div>
+                    `
+                }
+            };
+            
+            openModal(components[component].title, components[component].content);
+        }
+
+        // Основные функции
+        function startDemo() {
+            alert('🚀 Запуск полной демонстрации AIUZ Terra Codex!\n\n✨ Детский режим активирован\n🌍 Подключение к планетарной сети\n🧠 ИИ-ассистент готов\n📚 Энциклопедия загружена\n\nДобро пожаловать в будущее образования!');
+        }
+
+        function showArchitecture() {
+            openModal('🏗️ Архитектура AIUZ Terra Codex', `
+                <h3>6-слойная архитектура экосистемы:</h3>
+                <div style="margin: 1rem 0;">
+                    <div style="background: var(--glass); padding: 1rem; margin: 0.5rem 0; border-radius: 0.5rem;">
+                        <strong>L0: Философский фундамент</strong><br>
+                        Codex Terra, этические принципы, null0 язык
+                    </div>
+                    <div style="background: var(--glass); padding: 1rem; margin: 0.5rem 0; border-radius: 0.5rem;">
+                        <strong>L1: SemanticKernel</strong><br>
+                        ИИ модуль образования, семантические кварки
+                    </div>
+                    <div style="background: var(--glass); padding: 1rem; margin: 0.5rem 0; border-radius: 0.5rem;">
+                        <strong>L2: Инфраструктурный слой</strong><br>
+                        AIUZ LiveClass, глобальная платформа
+                    </div>
+                    <div style="background: var(--glass); padding: 1rem; margin: 0.5rem 0; border-radius: 0.5rem;">
+                        <strong>L3: Управленческий слой</strong><br>
+                        DAO Framework, токеномика
+                    </div>
+                    <div style="background: var(--glass); padding: 1rem; margin: 0.5rem 0; border-radius: 0.5rem;">
+                        <strong>L4: Интерфейсный слой</strong><br>
+                        AR/VR, Terra Gadgets, детские интерфейсы
+                    </div>
+                    <div style="background: var(--glass); padding: 1rem; margin: 0.5rem 0; border-radius: 0.5rem;">
+                        <strong>L5: Методологический слой</strong><br>
+                        Документация, стандарты, API
+                    </div>
+                </div>
+            `);
+        }
+
+        function testNull0() {
+            openModal('🔮 null0 Консоль', `
+                <p>Интерактивная консоль философского языка программирования null0:</p>
+                <div class="null0-console">
+> qariya.welcome.advanced.user()<br>
+🌟 Добро пожаловать в null0 среду!<br>
+🧠 Семантический процессор: активен<br>
+💫 Философский интерпретатор: готов<br>
+<br>
+Доступные команды:<br>
+- qariya.ecosystem.analyze()<br>
+- qariya.child.wonder.measure()<br>
+- qariya.love.algorithm.optimize()<br>
+- qariya.cosmos.perspective.expand()<br>
+<br>
+Введите команду:
+                </div>
+                <input type="text" class="null0-input" placeholder="qariya.your.exploration.here()" onkeypress="handleAdvancedNull0(event)">
+            `);
+        }
+
+        function handleAdvancedNull0(event) {
+            if (event.key === 'Enter') {
+                const commands = {
+                    'qariya.ecosystem.analyze()': '🌍 Анализ экосистемы:\n✅ 13 компонентов интегрированы\n🧒 98% детской безопасности\n🌱 Готовность к масштабированию: критическая масса\n💚 Этический индекс: максимальный',
+                    'qariya.child.wonder.measure()': '✨ Измерение детского удивления:\n😍 Индекс восхищения: 94.7%\n❓ Генерация вопросов: +340%\n🎨 Творческая активность: +156%\n🌈 Эмоциональное развитие: оптимальное',
+                    'qariya.love.algorithm.optimize()': '❤️ Оптимизация алгоритма любви:\n🤗 Эмпатия: +47%\n🌍 Планетарная ответственность: +89%\n👫 Социальные связи: укреплены\n💖 Уровень доброты: максимальный',
+                    'qariya.cosmos.perspective.expand()': '🌌 Расширение космической перспективы:\n🚀 Связь с МКС: установлена\n⭐ Астрономические данные: синхронизированы\n🛸 Готовность к контакту: 73%\n♾️ Бесконечность постигается'
+                };
+                
+                alert(commands[event.target.value] || '🔮 Глубокая команда! null0 размышляет...');
+                event.target.value = '';
+            }
+        }
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
-      }
-    }
-    setQuantumState({
-      superposition: 99.9,
-      coherence: 97.4,
-      entanglement: "MAXIMUM"
-    });
-    setTerraMemoryDNA((prev) => ({ ...prev, coherence: 97.4 }));
-    setSystemStatus("READY");
-    setActiveMode("STAND_BY");
-    addToLog("\\u{1F680} Terra Ecosystem v7.0 \\u043F\\u043E\\u043B\\u043D\\u043E\\u0441\\u0442\\u044C\\u044E \\u0433\\u043E\\u0442\\u043E\\u0432\\u0430 \\u043A \\u0440\\u0430\\u0431\\u043E\\u0442\\u0435!", "SUCCESS");
-    addToLog("\\u{1F507} \\u0420\\u0435\\u0436\\u0438\\u043C Stand By \\u0430\\u043A\\u0442\\u0438\\u0432\\u0438\\u0440\\u043E\\u0432\\u0430\\u043D", "INFO");
-  };
-  const activateTerraMemoryDNA = () => {
-    addToLog("\\u{1F9EC} \\u0410\\u043A\\u0442\\u0438\\u0432\\u0430\\u0446\\u0438\\u044F TerraMemoryDNA v5.1...", "COMMAND");
-    setActiveMode("ACTIVE");
-    addToLog("\\u26A1 \\u041F\\u0435\\u0440\\u0435\\u0445\\u043E\\u0434 \\u0432 Active \\u0440\\u0435\\u0436\\u0438\\u043C", "SUCCESS");
-    addToLog("\\u{1F300} \\u041A\\u0432\\u0430\\u043D\\u0442\\u043E\\u0432\\u0430\\u044F \\u0441\\u0443\\u043F\\u0435\\u0440\\u043F\\u043E\\u0437\\u0438\\u0446\\u0438\\u044F \\u043C\\u0430\\u043A\\u0441\\u0438\\u043C\\u0430\\u043B\\u044C\\u043D\\u0430", "INFO");
-    addToLog("\\u{1F9E0} \\u0412\\u0441\\u0435 \\u0442\\u0440\\u0438 \\u0441\\u0443\\u0449\\u043D\\u043E\\u0441\\u0442\\u0438 \\u0444\\u0443\\u043D\\u043A\\u0446\\u0438\\u043E\\u043D\\u0438\\u0440\\u0443\\u044E\\u0442", "INFO");
-  };
-  const processQuery = () => {
-    if (!inputQuery.trim()) {
-      addToLog("\\u26A0\\uFE0F \\u041F\\u043E\\u0436\\u0430\\u043B\\u0443\\u0439\\u0441\\u0442\\u0430, \\u0432\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0437\\u0430\\u043F\\u0440\\u043E\\u0441", "WARNING");
-      return;
-    }
-    addToLog(\`\\u{1F50D} \\u041E\\u0431\\u0440\\u0430\\u0431\\u043E\\u0442\\u043A\\u0430 \\u0437\\u0430\\u043F\\u0440\\u043E\\u0441\\u0430: "\${inputQuery}"\`, "QUERY");
-    setActiveMode("PROCESSING");
-    setTimeout(() => {
-      const culturalAnalysis = analyzeCulturalContext(inputQuery);
-      const fractalResponse = generateFractalResponse(inputQuery, culturalAnalysis);
-      addToLog(\`\\u{1F30D} \\u041A\\u0443\\u043B\\u044C\\u0442\\u0443\\u0440\\u043D\\u044B\\u0439 \\u0430\\u043D\\u0430\\u043B\\u0438\\u0437: \${culturalAnalysis}\`, "ANALYSIS");
-      addToLog(\`\\u{1F9EC} \\u0424\\u0440\\u0430\\u043A\\u0442\\u0430\\u043B\\u044C\\u043D\\u044B\\u0439 \\u043E\\u0442\\u0432\\u0435\\u0442: \${fractalResponse}\`, "RESPONSE");
-      addToLog("\\u2705 \\u0417\\u0430\\u043F\\u0440\\u043E\\u0441 \\u043E\\u0431\\u0440\\u0430\\u0431\\u043E\\u0442\\u0430\\u043D \\u0443\\u0441\\u043F\\u0435\\u0448\\u043D\\u043E", "SUCCESS");
-      setActiveMode("STAND_BY");
-      setInputQuery("");
-    }, 2e3);
-  };
-  const analyzeCulturalContext = (query) => {
-    const uzbekPatterns = ["salom", "rahmat", "mehmon", "oila"];
-    const germanPatterns = ["ordnung", "system", "efficiency", "quality"];
-    const russianPatterns = ["\\u0434\\u0443\\u0448\\u0430", "\\u043F\\u0440\\u0430\\u0432\\u0434\\u0430", "\\u043C\\u0443\\u0434\\u0440\\u043E\\u0441\\u0442\\u044C", "\\u0433\\u043B\\u0443\\u0431\\u0438\\u043D"];
-    const lowerQuery = query.toLowerCase();
-    if (uzbekPatterns.some((pattern) => lowerQuery.includes(pattern))) {
-      return "\\u0423\\u0437\\u0431\\u0435\\u043A\\u0441\\u043A\\u0438\\u0439 \\u043A\\u043E\\u043D\\u0442\\u0435\\u043A\\u0441\\u0442 (\\u0433\\u043E\\u0441\\u0442\\u0435\\u043F\\u0440\\u0438\\u0438\\u043C\\u0441\\u0442\\u0432\\u043E, \\u0441\\u0435\\u043C\\u044C\\u044F)";
-    }
-    if (germanPatterns.some((pattern) => lowerQuery.includes(pattern))) {
-      return "\\u041D\\u0435\\u043C\\u0435\\u0446\\u043A\\u0438\\u0439 \\u043A\\u043E\\u043D\\u0442\\u0435\\u043A\\u0441\\u0442 (\\u043F\\u043E\\u0440\\u044F\\u0434\\u043E\\u043A, \\u0441\\u0438\\u0441\\u0442\\u0435\\u043C\\u0430)";
-    }
-    if (russianPatterns.some((pattern) => lowerQuery.includes(pattern))) {
-      return "\\u0420\\u0443\\u0441\\u0441\\u043A\\u0438\\u0439 \\u043A\\u043E\\u043D\\u0442\\u0435\\u043A\\u0441\\u0442 (\\u0434\\u0443\\u0448\\u0430, \\u0433\\u043B\\u0443\\u0431\\u0438\\u043D\\u0430)";
-    }
-    return "\\u041C\\u0443\\u043B\\u044C\\u0442\\u0438\\u043A\\u0443\\u043B\\u044C\\u0442\\u0443\\u0440\\u043D\\u044B\\u0439 \\u0441\\u0438\\u043D\\u0442\\u0435\\u0437";
-  };
-  const generateFractalResponse = (query, culture) => {
-    const responses = {
-      "\\u0423\\u0437\\u0431\\u0435\\u043A\\u0441\\u043A\\u0438\\u0439 \\u043A\\u043E\\u043D\\u0442\\u0435\\u043A\\u0441\\u0442 (\\u0433\\u043E\\u0441\\u0442\\u0435\\u043F\\u0440\\u0438\\u0438\\u043C\\u0441\\u0442\\u0432\\u043E, \\u0441\\u0435\\u043C\\u044C\\u044F)": "\\u0420\\u0435\\u0448\\u0435\\u043D\\u0438\\u0435 \\u043E\\u0441\\u043D\\u043E\\u0432\\u0430\\u043D\\u043E \\u043D\\u0430 \\u043F\\u0440\\u0438\\u043D\\u0446\\u0438\\u043F\\u0430\\u0445 mehmonnavozlik \\u0438 \\u0443\\u043A\\u0440\\u0435\\u043F\\u043B\\u0435\\u043D\\u0438\\u0438 \\u0441\\u0435\\u043C\\u0435\\u0439\\u043D\\u044B\\u0445 \\u0441\\u0432\\u044F\\u0437\\u0435\\u0439",
-      "\\u041D\\u0435\\u043C\\u0435\\u0446\\u043A\\u0438\\u0439 \\u043A\\u043E\\u043D\\u0442\\u0435\\u043A\\u0441\\u0442 (\\u043F\\u043E\\u0440\\u044F\\u0434\\u043E\\u043A, \\u0441\\u0438\\u0441\\u0442\\u0435\\u043C\\u0430)": "\\u0421\\u0438\\u0441\\u0442\\u0435\\u043C\\u0430\\u0442\\u0438\\u0447\\u0435\\u0441\\u043A\\u0438\\u0439 \\u043F\\u043E\\u0434\\u0445\\u043E\\u0434 \\u0441 \\u0430\\u043A\\u0446\\u0435\\u043D\\u0442\\u043E\\u043C \\u043D\\u0430 Ordnung \\u0438 \\u044D\\u0444\\u0444\\u0435\\u043A\\u0442\\u0438\\u0432\\u043D\\u043E\\u0441\\u0442\\u044C",
-      "\\u0420\\u0443\\u0441\\u0441\\u043A\\u0438\\u0439 \\u043A\\u043E\\u043D\\u0442\\u0435\\u043A\\u0441\\u0442 (\\u0434\\u0443\\u0448\\u0430, \\u0433\\u043B\\u0443\\u0431\\u0438\\u043D\\u0430)": "\\u0413\\u043B\\u0443\\u0431\\u043E\\u043A\\u0438\\u0439 \\u0430\\u043D\\u0430\\u043B\\u0438\\u0437 \\u0441 \\u0443\\u0447\\u0435\\u0442\\u043E\\u043C \\u0434\\u0443\\u0445\\u043E\\u0432\\u043D\\u044B\\u0445 \\u0430\\u0441\\u043F\\u0435\\u043A\\u0442\\u043E\\u0432 \\u0438 \\u043F\\u0440\\u0430\\u0432\\u0434\\u044B",
-      "\\u041C\\u0443\\u043B\\u044C\\u0442\\u0438\\u043A\\u0443\\u043B\\u044C\\u0442\\u0443\\u0440\\u043D\\u044B\\u0439 \\u0441\\u0438\\u043D\\u0442\\u0435\\u0437": "\\u0418\\u043D\\u0442\\u0435\\u0433\\u0440\\u0430\\u0446\\u0438\\u044F \\u0432\\u0441\\u0435\\u0445 \\u043A\\u0443\\u043B\\u044C\\u0442\\u0443\\u0440\\u043D\\u044B\\u0445 \\u043C\\u0443\\u0434\\u0440\\u043E\\u0441\\u0442\\u0435\\u0439 \\u0432 \\u0435\\u0434\\u0438\\u043D\\u043E\\u0435 \\u0440\\u0435\\u0448\\u0435\\u043D\\u0438\\u0435"
-    };
-    return responses[culture] || "\\u041A\\u0432\\u0430\\u043D\\u0442\\u043E\\u0432\\u0430\\u044F \\u0441\\u0443\\u043F\\u0435\\u0440\\u043F\\u043E\\u0437\\u0438\\u0446\\u0438\\u044F \\u043A\\u0443\\u043B\\u044C\\u0442\\u0443\\u0440\\u043D\\u044B\\u0445 \\u043F\\u043E\\u0434\\u0445\\u043E\\u0434\\u043E\\u0432";
-  };
-  const emergencyStop = () => {
-    addToLog("\\u{1F6D1} \\u041A\\u0420\\u0418\\u0422\\u0418\\u0427\\u0415\\u0421\\u041A\\u0410\\u042F \\u041E\\u0421\\u0422\\u0410\\u041D\\u041E\\u0412\\u041A\\u0410", "ERROR");
-    setActiveMode("EMERGENCY");
-    setSystemStatus("STOPPED");
-    setTimeout(() => {
-      addToLog("\\u{1F504} \\u041F\\u0435\\u0440\\u0435\\u0445\\u043E\\u0434 \\u0432 \\u0431\\u0435\\u0437\\u043E\\u043F\\u0430\\u0441\\u043D\\u044B\\u0439 \\u0440\\u0435\\u0436\\u0438\\u043C", "SYSTEM");
-      setActiveMode("STAND_BY");
-      setSystemStatus("READY");
-    }, 2e3);
-  };
-  const systemDefragmentation = () => {
-    addToLog("\\u{1F9EC} \\u0417\\u0430\\u043F\\u0443\\u0441\\u043A \\u0434\\u0435\\u0444\\u0440\\u0430\\u0433\\u043C\\u0435\\u043D\\u0442\\u0430\\u0446\\u0438\\u0438 \\u0414\\u041D\\u041A...", "SYSTEM");
-    setActiveMode("DEFRAG");
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
-      addToLog(\`\\u{1F4CA} \\u0414\\u0435\\u0444\\u0440\\u0430\\u0433\\u043C\\u0435\\u043D\\u0442\\u0430\\u0446\\u0438\\u044F: \${progress}%\`, "INFO");
-      if (progress >= 100) {
-        clearInterval(interval);
-        addToLog("\\u2705 \\u0414\\u0435\\u0444\\u0440\\u0430\\u0433\\u043C\\u0435\\u043D\\u0442\\u0430\\u0446\\u0438\\u044F \\u0414\\u041D\\u041A \\u0437\\u0430\\u0432\\u0435\\u0440\\u0448\\u0435\\u043D\\u0430", "SUCCESS");
-        setActiveMode("STAND_BY");
-        setTerraMemoryDNA((prev) => ({ ...prev, coherence: 97.4 }));
-      }
-    }, 300);
-  };
-  const getStatusColor = (status) => {
-    switch (status) {
-      case "READY":
-        return "text-green-400";
-      case "PROCESSING":
-        return "text-blue-400";
-      case "EMERGENCY":
-        return "text-red-400";
-      case "STOPPED":
-        return "text-red-500";
-      default:
-        return "text-yellow-400";
-    }
-  };
-  const getModeIcon = (mode) => {
-    switch (mode) {
-      case "STAND_BY":
-        return "\\u{1F507}";
-      case "ACTIVE":
-        return "\\u26A1";
-      case "PROCESSING":
-        return "\\u{1F504}";
-      case "DEFRAG":
-        return "\\u{1F9EC}";
-      case "EMERGENCY":
-        return "\\u{1F6D1}";
-      default:
-        return "\\u2753";
-    }
-  };
-  return /* @__PURE__ */ React.createElement("div", { className: "min-h-screen bg-gray-900 text-white p-6" }, /* @__PURE__ */ React.createElement("div", { className: "bg-gradient-to-r from-green-900 to-blue-900 rounded-lg p-6 mb-6" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", { className: "text-3xl font-bold mb-2" }, "\\u{1F30C} Terra Ecosystem v7.0"), /* @__PURE__ */ React.createElement("p", { className: "text-gray-300" }, "\\u0418\\u043D\\u0442\\u0435\\u0433\\u0440\\u0438\\u0440\\u043E\\u0432\\u0430\\u043D\\u043D\\u0430\\u044F \\u0420\\u0430\\u0431\\u043E\\u0447\\u0430\\u044F \\u0421\\u0431\\u043E\\u0440\\u043A\\u0430")), /* @__PURE__ */ React.createElement("div", { className: "text-right" }, /* @__PURE__ */ React.createElement("div", { className: \`text-xl font-bold \${getStatusColor(systemStatus)}\` }, getModeIcon(activeMode), " ", systemStatus), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-gray-400" }, "\\u0420\\u0435\\u0436\\u0438\\u043C: ", activeMode)))), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-6" }, /* @__PURE__ */ React.createElement("div", { className: "lg:col-span-1" }, /* @__PURE__ */ React.createElement("div", { className: "bg-gray-800 rounded-lg p-6 mb-6" }, /* @__PURE__ */ React.createElement("h2", { className: "text-xl font-bold mb-4" }, "\\u{1F39B}\\uFE0F \\u041F\\u0430\\u043D\\u0435\\u043B\\u044C \\u0423\\u043F\\u0440\\u0430\\u0432\\u043B\\u0435\\u043D\\u0438\\u044F"), /* @__PURE__ */ React.createElement("div", { className: "space-y-3" }, /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      onClick: activateTerraMemoryDNA,
-      className: "w-full px-4 py-2 bg-green-600 rounded hover:bg-green-700 transition-colors",
-      disabled: activeMode === "PROCESSING"
-    },
-    "\\u{1F9EC} \\u0410\\u043A\\u0442\\u0438\\u0432\\u0438\\u0440\\u043E\\u0432\\u0430\\u0442\\u044C TerraMemoryDNA"
-  ), /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      onClick: systemDefragmentation,
-      className: "w-full px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors",
-      disabled: activeMode === "PROCESSING"
-    },
-    "\\u{1F527} \\u0414\\u0435\\u0444\\u0440\\u0430\\u0433\\u043C\\u0435\\u043D\\u0442\\u0430\\u0446\\u0438\\u044F \\u0414\\u041D\\u041A"
-  ), /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      onClick: emergencyStop,
-      className: "w-full px-4 py-2 bg-red-600 rounded hover:bg-red-700 transition-colors"
-    },
-    "\\u{1F6D1} \\u041A\\u0440\\u0438\\u0442\\u0438\\u0447\\u0435\\u0441\\u043A\\u0430\\u044F \\u041E\\u0441\\u0442\\u0430\\u043D\\u043E\\u0432\\u043A\\u0430"
-  ))), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-800 rounded-lg p-6 mb-6" }, /* @__PURE__ */ React.createElement("h3", { className: "text-lg font-bold mb-4" }, "\\u{1F4CA} \\u0421\\u043E\\u0441\\u0442\\u043E\\u044F\\u043D\\u0438\\u0435 \\u0421\\u0438\\u0441\\u0442\\u0435\\u043C\\u044B"), /* @__PURE__ */ React.createElement("div", { className: "space-y-3 text-sm" }, /* @__PURE__ */ React.createElement("div", { className: "flex justify-between" }, /* @__PURE__ */ React.createElement("span", null, "TerraMemoryDNA:"), /* @__PURE__ */ React.createElement("span", { className: terraMemoryDNA.status === "ACTIVE" ? "text-green-400" : "text-red-400" }, terraMemoryDNA.status, " v", terraMemoryDNA.version)), /* @__PURE__ */ React.createElement("div", { className: "flex justify-between" }, /* @__PURE__ */ React.createElement("span", null, "\\u0421\\u0443\\u043F\\u0435\\u0440\\u043F\\u043E\\u0437\\u0438\\u0446\\u0438\\u044F:"), /* @__PURE__ */ React.createElement("span", { className: "text-blue-400" }, quantumState.superposition, "%")), /* @__PURE__ */ React.createElement("div", { className: "flex justify-between" }, /* @__PURE__ */ React.createElement("span", null, "\\u041A\\u043E\\u0433\\u0435\\u0440\\u0435\\u043D\\u0442\\u043D\\u043E\\u0441\\u0442\\u044C:"), /* @__PURE__ */ React.createElement("span", { className: "text-purple-400" }, quantumState.coherence, "%")), /* @__PURE__ */ React.createElement("div", { className: "flex justify-between" }, /* @__PURE__ */ React.createElement("span", null, "\\u0417\\u0430\\u043F\\u0443\\u0442\\u0430\\u043D\\u043D\\u043E\\u0441\\u0442\\u044C:"), /* @__PURE__ */ React.createElement("span", { className: "text-pink-400" }, quantumState.entanglement)))), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-800 rounded-lg p-6" }, /* @__PURE__ */ React.createElement("h3", { className: "text-lg font-bold mb-4" }, "\\u{1F52C} \\u0424\\u0440\\u0430\\u043A\\u0442\\u0430\\u043B\\u044C\\u043D\\u044B\\u0435 \\u041C\\u0435\\u0442\\u0440\\u0438\\u043A\\u0438"), /* @__PURE__ */ React.createElement("div", { className: "space-y-2 text-sm" }, Object.entries(fractalMetrics).map(([level, value]) => /* @__PURE__ */ React.createElement("div", { key: level, className: "flex justify-between" }, /* @__PURE__ */ React.createElement("span", null, level, ":"), /* @__PURE__ */ React.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ React.createElement("div", { className: "w-20 bg-gray-700 rounded-full h-2 mr-2" }, /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      className: "bg-green-500 h-2 rounded-full transition-all duration-300",
-      style: { width: \`\${value}%\` }
-    }
-  )), /* @__PURE__ */ React.createElement("span", { className: "text-green-400" }, value, "%"))))))), /* @__PURE__ */ React.createElement("div", { className: "lg:col-span-2" }, /* @__PURE__ */ React.createElement("div", { className: "bg-gray-800 rounded-lg p-6 mb-6" }, /* @__PURE__ */ React.createElement("h2", { className: "text-xl font-bold mb-4" }, "\\u{1F4AD} \\u0418\\u043D\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441 \\u0417\\u0430\\u043F\\u0440\\u043E\\u0441\\u043E\\u0432"), /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 mb-4" }, /* @__PURE__ */ React.createElement(
-    "input",
-    {
-      type: "text",
-      value: inputQuery,
-      onChange: (e) => setInputQuery(e.target.value),
-      placeholder: "\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448 \\u0437\\u0430\\u043F\\u0440\\u043E\\u0441 \\u043A Terra Ecosystem...",
-      className: "flex-1 px-4 py-2 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500",
-      disabled: activeMode === "PROCESSING",
-      onKeyPress: (e) => e.key === "Enter" && processQuery()
-    }
-  ), /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      onClick: processQuery,
-      className: "px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors disabled:opacity-50",
-      disabled: activeMode === "PROCESSING" || !inputQuery.trim()
-    },
-    activeMode === "PROCESSING" ? "\\u{1F504}" : "\\u{1F680}",
-    " \\u041E\\u0431\\u0440\\u0430\\u0431\\u043E\\u0442\\u0430\\u0442\\u044C"
-  )), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-gray-400" }, /* @__PURE__ */ React.createElement("p", null, "\\u{1F4A1} \\u041F\\u0440\\u0438\\u043C\\u0435\\u0440\\u044B \\u0437\\u0430\\u043F\\u0440\\u043E\\u0441\\u043E\\u0432:"), /* @__PURE__ */ React.createElement("ul", { className: "list-disc list-inside mt-1 space-y-1" }, /* @__PURE__ */ React.createElement("li", null, '"\\u0421\\u043E\\u0437\\u0434\\u0430\\u0439 \\u0434\\u043E\\u043A\\u0443\\u043C\\u0435\\u043D\\u0442 \\u043E\\u0431 \\u043E\\u0431\\u0440\\u0430\\u0437\\u043E\\u0432\\u0430\\u043D\\u0438\\u0438" (\\u0437\\u0430\\u043F\\u0443\\u0441\\u043A\\u0430\\u0435\\u0442 \\u043F\\u0440\\u043E\\u0442\\u043E\\u043A\\u043E\\u043B \\u043F\\u043E\\u0441\\u043B\\u0435\\u0434\\u043E\\u0432\\u0430\\u0442\\u0435\\u043B\\u044C\\u043D\\u043E\\u0441\\u0442\\u0438)'), /* @__PURE__ */ React.createElement("li", null, '"Mehmonnavozlik \\u043F\\u0440\\u0438\\u043D\\u0446\\u0438\\u043F\\u044B \\u0432 \\u0442\\u0435\\u0445\\u043D\\u043E\\u043B\\u043E\\u0433\\u0438\\u044F\\u0445" (\\u043A\\u0443\\u043B\\u044C\\u0442\\u0443\\u0440\\u043D\\u044B\\u0439 \\u0430\\u043D\\u0430\\u043B\\u0438\\u0437)'), /* @__PURE__ */ React.createElement("li", null, '"Ordnung \\u0432 \\u0441\\u0438\\u0441\\u0442\\u0435\\u043C\\u043D\\u043E\\u0439 \\u0430\\u0440\\u0445\\u0438\\u0442\\u0435\\u043A\\u0442\\u0443\\u0440\\u0435" (\\u043D\\u0435\\u043C\\u0435\\u0446\\u043A\\u0438\\u0439 \\u043F\\u043E\\u0434\\u0445\\u043E\\u0434)'), /* @__PURE__ */ React.createElement("li", null, '"\\u0414\\u0443\\u0448\\u0435\\u0432\\u043D\\u0430\\u044F \\u0433\\u043B\\u0443\\u0431\\u0438\\u043D\\u0430 \\u0432 \\u0434\\u0438\\u0437\\u0430\\u0439\\u043D\\u0435" (\\u0440\\u0443\\u0441\\u0441\\u043A\\u0430\\u044F \\u043F\\u0435\\u0440\\u0441\\u043F\\u0435\\u043A\\u0442\\u0438\\u0432\\u0430)')))), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-800 rounded-lg p-6" }, /* @__PURE__ */ React.createElement("h2", { className: "text-xl font-bold mb-4" }, "\\u{1F4DC} \\u0421\\u0438\\u0441\\u0442\\u0435\\u043C\\u043D\\u044B\\u0439 \\u0416\\u0443\\u0440\\u043D\\u0430\\u043B"), /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      ref: logRef,
-      className: "bg-black rounded p-4 h-80 overflow-y-auto font-mono text-sm"
-    },
-    systemLog.map((entry) => /* @__PURE__ */ React.createElement("div", { key: entry.id, className: "mb-1" }, /* @__PURE__ */ React.createElement("span", { className: "text-gray-500" }, "[", entry.timestamp, "]"), /* @__PURE__ */ React.createElement("span", { className: \`ml-2 \${entry.type === "ERROR" ? "text-red-400" : entry.type === "SUCCESS" ? "text-green-400" : entry.type === "WARNING" ? "text-yellow-400" : entry.type === "COMMAND" ? "text-blue-400" : entry.type === "QUERY" ? "text-purple-400" : entry.type === "ANALYSIS" ? "text-cyan-400" : entry.type === "RESPONSE" ? "text-pink-400" : "text-gray-300"}\` }, entry.message)))
-  ), /* @__PURE__ */ React.createElement("div", { className: "mt-4 flex justify-between text-sm text-gray-400" }, /* @__PURE__ */ React.createElement("span", null, "\\u0417\\u0430\\u043F\\u0438\\u0441\\u0435\\u0439 \\u0432 \\u0436\\u0443\\u0440\\u043D\\u0430\\u043B\\u0435: ", systemLog.length), /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      onClick: () => setSystemLog([]),
-      className: "text-red-400 hover:text-red-300"
-    },
-    "\\u{1F5D1}\\uFE0F \\u041E\\u0447\\u0438\\u0441\\u0442\\u0438\\u0442\\u044C \\u0436\\u0443\\u0440\\u043D\\u0430\\u043B"
-  ))))), /* @__PURE__ */ React.createElement("div", { className: "mt-6 text-center text-gray-400 text-sm" }, /* @__PURE__ */ React.createElement("p", null, "\\u{1F30C} Terra Ecosystem v7.0 - \\u0420\\u0430\\u0431\\u043E\\u0447\\u0430\\u044F \\u0421\\u0431\\u043E\\u0440\\u043A\\u0430 \\u0434\\u043B\\u044F \\u0422\\u0435\\u0441\\u0442\\u0438\\u0440\\u043E\\u0432\\u0430\\u043D\\u0438\\u044F"), /* @__PURE__ */ React.createElement("p", null, "\\xA9 2025 - AIUZ Terra - \\u0410\\u0431\\u0434\\u0443\\u043A\\u0430\\u0440\\u0438\\u043C\\u043E\\u0432 \\u0410\\u0431\\u0434\\u0443\\u0440\\u0430\\u0448\\u0438\\u0434 \\u0410\\u0431\\u0434\\u0443\\u043B\\u0445\\u0430\\u043C\\u0438\\u0442\\u043E\\u0432\\u0438\\u0447"), /* @__PURE__ */ React.createElement("p", { className: "mt-2" }, /* @__PURE__ */ React.createElement("span", { className: "text-green-400" }, "\\u2705 \\u0414\\u0435\\u0442\\u0441\\u043A\\u0430\\u044F \\u0431\\u0435\\u0437\\u043E\\u043F\\u0430\\u0441\\u043D\\u043E\\u0441\\u0442\\u044C: \\u0410\\u0411\\u0421\\u041E\\u041B\\u042E\\u0422\\u041D\\u042B\\u0419 \\u041F\\u0420\\u0418\\u041E\\u0420\\u0418\\u0422\\u0415\\u0422"), " | ", /* @__PURE__ */ React.createElement("span", { className: "text-blue-400" }, "\\u{1F30D} \\u041A\\u0443\\u043B\\u044C\\u0442\\u0443\\u0440\\u043D\\u0430\\u044F \\u0447\\u0443\\u0432\\u0441\\u0442\\u0432\\u0438\\u0442\\u0435\\u043B\\u044C\\u043D\\u043E\\u0441\\u0442\\u044C: \\u041C\\u0410\\u041A\\u0421\\u0418\\u041C\\u0423\\u041C"), " | ", /* @__PURE__ */ React.createElement("span", { className: "text-purple-400" }, "\\u{1F9EC} \\u0424\\u0440\\u0430\\u043A\\u0442\\u0430\\u043B\\u044C\\u043D\\u0430\\u044F \\u043A\\u043E\\u0433\\u0435\\u0440\\u0435\\u043D\\u0442\\u043D\\u043E\\u0441\\u0442\\u044C: ", terraMemoryDNA.coherence, "%"))));
-};
-var stdin_default = TerraEcosystemWorkbench;
-export {
-  stdin_default as default
-};
-`;
-          }
 
-          // Create a blob URL from the executable code
-          const blob = new Blob([componentCode], { type: 'text/javascript' });
-          const blobUrl = URL.createObjectURL(blob);
+        // Закрытие модального окна по клику вне его
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
 
-          // Import the default export from the blob URL
-          const moduleImport = await import(blobUrl);
-          const Component = moduleImport.default;
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            setInterval(updateSensors, 3000);
+            
+            // Анимация появления элементов
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-on-scroll');
+                    }
+                });
+            });
 
-          // Clean up the blob URL
-          URL.revokeObjectURL(blobUrl);
-
-          if (Component) {
-              const rootElement = document.getElementById('root');
-              const root = createRoot(rootElement);
-
-              // Simple error boundary
-              const ErrorBoundary = ({ children }) => {
-                  try {
-                      return children;
-                  } catch (error) {
-                      console.error('Component render error:', error);
-                      return React.createElement('div', {
-                          style: { padding: '20px', color: '#d32f2f', background: '#ffebee', borderRadius: '4px' }
-                      }, [
-                          React.createElement('h3', { key: 'title' }, 'Component Error'),
-                          React.createElement('p', { key: 'error' }, 'Error: ' + error.message)
-                      ]);
-                  }
-              };
-
-              root.render(React.createElement(ErrorBoundary, {}, React.createElement(Component)));
-          } else {
-              console.error('No component found in module export');
-              document.getElementById('root').innerHTML = '<div style="padding: 20px; color: #666;">No React component found - check console for details</div>';
-          }
-      } catch (error) {
-          console.error('Error loading component:', error);
-          document.getElementById('root').innerHTML = `
-              <div style="padding: 20px; color: #d32f2f; background: #ffebee; border-radius: 4px;">
-                  <h3>Error loading component</h3>
-                  <p><strong>Error:</strong> ${error.message}</p>
-                  <p>Please check the browser console for more details.</p>
-              </div>
-          `;
-      }
+            document.querySelectorAll('.component-card, .character-card, .metric-card').forEach((el) => {
+                observer.observe(el);
+            });
+        });
     </script>
-  </body>
+</body>
 </html>

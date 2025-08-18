@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+      <defs>
+        <radialGradient id="quantumCore" cx="50%" cy="50%">
+          <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+          <stop offset="30%" style="stop-color:#2196F3;stop-opacity:0.8" />
+          <stop offset="60%" style="stop-color:#9C27B0;stop-opacity:0.6" />
+          <stop offset="100%" style="stop-color:#FF9800;stop-opacity:0.3" />
+        </radialGradient>
+        
+        <radialGradient id="galaxyField" cx="50%" cy="50%">
+          <stop offset="0%" style="stop-color:#000051;stop-opacity:0.1" />
+          <stop offset="100%" style="stop-color:#000051;stop-opacity:0.8" />
+        </radialGradient>
+      </defs>
+      
+      <!-- Галактический фон -->
+      <rect width="800" height="600" fill="url(#galaxyField)"/>
+      
+      <!-- Галактический уровень -->
+      <circle cx="400" cy="300" r="280" fill="none" stroke="#9C27B0" stroke-width="1" opacity="0.3"/>
+      <text x="400" y="50" text-anchor="middle" fill="#9C27B0" font-size="14" opacity="0.7">
+        ГАЛАКТИЧЕСКОЕ СОЗНАНИЕ
+      </text>
+      
+      <!-- Планетарный уровень -->
+      <circle cx="400" cy="300" r="220" fill="none" stroke="#2196F3" stroke-width="2" opacity="0.5"/>
+      <text x="400" y="100" text-anchor="middle" fill="#2196F3" font-size="12">
+        ПЛАНЕТАРНЫЙ РАЗУМ
+      </text>
+      
+      <!-- Национальный уровень -->
+      <circle cx="400" cy="300" r="170" fill="none" stroke="#00BCD4" stroke-width="2" opacity="0.6"/>
+      <text x="400" y="145" text-anchor="middle" fill="#00BCD4" font-size="11">
+        НАЦИОНАЛЬНЫЕ СИСТЕМЫ
+      </text>
+      
+      <!-- Региональный уровень -->
+      <circle cx="400" cy="300" r="120" fill="none" stroke="#4CAF50" stroke-width="3" opacity="0.7"/>
+      <text x="400" y="195" text-anchor="middle" fill="#4CAF50" font-size="10">
+        РЕГИОНАЛЬНЫЕ КУЛЬТУРЫ
+      </text>
+      
+      <!-- Сообщественный уровень -->
+      <circle cx="400" cy="300" r="80" fill="none" stroke="#8BC34A" stroke-width="3" opacity="0.8"/>
+      <text x="400" y="235" text-anchor="middle" fill="#8BC34A" font-size="9">
+        СООБЩЕСТВА
+      </text>
+      
+      <!-- Семейный уровень -->
+      <circle cx="400" cy="300" r="50" fill="none" stroke="#FFC107" stroke-width="4" opacity="0.9"/>
+      <text x="400" y="265" text-anchor="middle" fill="#FFC107" font-size="8">
+        СЕМЬИ
+      </text>
+      
+      <!-- Индивидуальный уровень -->
+      <circle cx="400" cy="300" r="25" fill="url(#quantumCore)" stroke="#FF9800" stroke-width="3"/>
+      <text x="400" y="305" text-anchor="middle" fill="white" font-size="7" font-weight="bold">
+        РЕБЁНОК
+      </text>
+      
+      <!-- Квантовый уровень -->
+      <circle cx="400" cy="300" r="8" fill="#FFEB3B" opacity="0.9"/>
+      <text x="400" y="340" text-anchor="middle" fill="#FFEB3B" font-size="6">
+        КВАНТ СОЗНАНИЯ
+      </text>
+      
+      <!-- Связи между уровнями -->
+      <path d="M 400 292 Q 450 250 500 200" stroke="#4CAF50" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M 400 308 Q 350 350 300 400" stroke="#2196F3" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M 392 300 Q 300 300 200 300" stroke="#9C27B0" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M 408 300 Q 500 300 600 300" stroke="#FF9800" stroke-width="2" fill="none" opacity="0.6"/>
+      
+      <!-- Пульсирующие точки научных дисциплин -->
+      <circle cx="320" cy="200" r="3" fill="#4CAF50">
+        <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="325" y="205" fill="#4CAF50" font-size="6">Биология</text>
+      
+      <circle cx="480" cy="180" r="3" fill="#2196F3">
+        <animate attributeName="r" values="3;6;3" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <text x="485" y="185" fill="#2196F3" font-size="6">Физика</text>
+      
+      <circle cx="550" cy="320" r="3" fill="#9C27B0">
+        <animate attributeName="r" values="3;6;3" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="555" y="325" fill="#9C27B0" font-size="6">Психология</text>
+      
+      <circle cx="350" cy="420" r="3" fill="#FF9800">
+        <animate attributeName="r" values="3;6;3" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="355" y="425" fill="#FF9800" font-size="6">Этика</text>
+      
+      <circle cx="250" cy="300" r="3" fill="#00BCD4">
+        <animate attributeName="r" values="3;6;3" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="255" y="305" fill="#00BCD4" font-size="6">Социология</text>
+      
+      <!-- Волны роста и развития -->
+      <circle cx="400" cy="300" r="30" fill="none" stroke="#4CAF50" stroke-width="1" opacity="0.3">
+        <animate attributeName="r" values="30;100;200;280" dur="8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;0.4;0.1;0" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      
+      <circle cx="400" cy="300" r="40" fill="none" stroke="#2196F3" stroke-width="1" opacity="0.3">
+        <animate attributeName="r" values="40;120;220;280" dur="10s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0.3;0.1;0" dur="10s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
