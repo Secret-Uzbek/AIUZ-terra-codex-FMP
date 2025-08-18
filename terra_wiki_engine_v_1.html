@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terra Wiki Engine v1.0</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; background: #f3f4f6; color: #111827; }
+    h1 { font-size: 1.8rem; color: #2563eb; }
+    .section { margin-top: 2rem; }
+    button { background: #2563eb; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; }
+    input[type="file"] { margin-top: 1rem; }
+    textarea { width: 100%; height: 200px; margin-top: 1rem; }
+    .doc { background: white; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <h1>📚 Terra Wiki Engine v1.0</h1>
+
+  <div class="section">
+    <h2>📂 Добавить документ</h2>
+    <input type="file" id="fileInput" multiple>
+  </div>
+
+  <div class="section">
+    <h2>🧠 Архив памяти</h2>
+    <div id="docsContainer"></div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const docsContainer = document.getElementById('docsContainer');
+
+    let storedDocs = JSON.parse(localStorage.getItem('terraDocs') || '[]');
+
+    function renderDocs() {
+      docsContainer.innerHTML = '';
+      storedDocs.forEach((doc, i) => {
+        const div = document.createElement('div');
+        div.className = 'doc';
+        div.innerHTML = `<h3>${doc.name}</h3><pre>${doc.content}</pre>`;
+        docsContainer.appendChild(div);
+      });
+    }
+
+    fileInput.addEventListener('change', (event) => {
+      const files = Array.from(event.target.files);
+
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          storedDocs.push({ name: file.name, content: e.target.result });
+          localStorage.setItem('terraDocs', JSON.stringify(storedDocs));
+          renderDocs();
+        };
+        reader.readAsText(file);
+      });
+    });
+
+    renderDocs();
+  </script>
+</body>
+</html>

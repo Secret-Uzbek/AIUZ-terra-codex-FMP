@@ -1,516 +1,373 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-const { useStoredState } = hatch;
+const InteractiveSystems = () => {
+  const [activeSystem, setActiveSystem] = useState('ecosystem');
+  const [dataFlow, setDataFlow] = useState([]);
+  const [connections, setConnections] = useState([]);
+  const [animationSpeed, setAnimationSpeed] = useState(1);
+  const canvasRef = useRef(null);
 
-const UzbekistanEcoCalculator = () => {
-  const [region, setRegion] = useStoredState('eco_region', 'tashkent');
-  const [season, setSeason] = useStoredState('eco_season', 'summer');
-  const [buildingType, setBuildingType] = useStoredState('eco_building_type', 'green_station');
-  const [calculations, setCalculations] = useState({});
-  const [language, setLanguage] = useStoredState('eco_language', 'ru');
-
-  const translations = {
-    ru: {
-      title: '🌱 Эко-Калькулятор для Климата Узбекистана',
-      subtitle: 'TERRA v6.0 - Адаптация к местным условиям',
-      region: 'Регион',
-      season: 'Сезон',
-      buildingType: 'Тип здания',
-      calculate: 'Рассчитать экопараметры',
-      results: 'Результаты расчета',
-      temperature: 'Температура',
-      humidity: 'Влажность',
-      solar: 'Солнечная энергия',
-      wind: 'Ветровая энергия',
-      water: 'Потребность в воде',
-      cooling: 'Охлаждение',
-      heating: 'Отопление',
-      materials: 'Рекомендуемые материалы',
-      efficiency: 'Энергоэффективность'
+  const systems = {
+    ecosystem: {
+      name: 'Terra Ecosystem',
+      color: '#00FFB3',
+      nodes: [
+        { id: 'child', label: '👶 Ребёнок', x: 200, y: 150, type: 'primary' },
+        { id: 'ai', label: '🤖 ИИ', x: 350, y: 150, type: 'primary' },
+        { id: 'nature', label: '🌱 Природа', x: 275, y: 80, type: 'secondary' },
+        { id: 'education', label: '📚 Образование', x: 120, y: 220, type: 'secondary' },
+        { id: 'technology', label: '⚛️ Технологии', x: 430, y: 220, type: 'secondary' },
+        { id: 'safety', label: '🛡️ Безопасность', x: 275, y: 250, type: 'support' }
+      ],
+      connections: [
+        { from: 'child', to: 'ai', type: 'bidirectional', strength: 0.9 },
+        { from: 'child', to: 'nature', type: 'bidirectional', strength: 0.8 },
+        { from: 'child', to: 'education', type: 'input', strength: 0.7 },
+        { from: 'ai', to: 'technology', type: 'output', strength: 0.8 },
+        { from: 'nature', to: 'ai', type: 'input', strength: 0.6 },
+        { from: 'safety', to: 'child', type: 'protection', strength: 1.0 },
+        { from: 'safety', to: 'ai', type: 'regulation', strength: 0.9 }
+      ]
     },
-    uz: {
-      title: '🌱 O\'zbekiston Iqlimi uchun Eko-Kalkulyator',
-      subtitle: 'TERRA v6.0 - Mahalliy sharoitlarga moslashish',
-      region: 'Hudud',
-      season: 'Fasl',
-      buildingType: 'Bino turi',
-      calculate: 'Eko-parametrlarni hisoblash',
-      results: 'Hisoblash natijalari',
-      temperature: 'Harorat',
-      humidity: 'Namlik',
-      solar: 'Quyosh energiyasi',
-      wind: 'Shamol energiyasi',
-      water: 'Suv ehtiyoji',
-      cooling: 'Sovutish',
-      heating: 'Isitish',
-      materials: 'Tavsiya etilgan materiallar',
-      efficiency: 'Energiya samaradorligi'
+    interdisciplinary: {
+      name: 'Системная междисциплинарность',
+      color: '#9370DB',
+      nodes: [
+        { id: 'quantum', label: '⚛️ Квант', x: 275, y: 100, type: 'primary' },
+        { id: 'bio', label: '🧬 Био', x: 200, y: 180, type: 'primary' },
+        { id: 'neuro', label: '🧠 Нейро', x: 350, y: 180, type: 'primary' },
+        { id: 'tech', label: '💻 Тех', x: 120, y: 260, type: 'secondary' },
+        { id: 'eco', label: '🌍 Эко', x: 275, y: 280, type: 'secondary' },
+        { id: 'cosmic', label: '🌌 Космо', x: 430, y: 260, type: 'secondary' },
+        { id: 'system', label: '🔄 Система', x: 275, y: 200, type: 'core' }
+      ],
+      connections: [
+        { from: 'system', to: 'quantum', type: 'emerge', strength: 0.9 },
+        { from: 'system', to: 'bio', type: 'emerge', strength: 0.9 },
+        { from: 'system', to: 'neuro', type: 'emerge', strength: 0.9 },
+        { from: 'quantum', to: 'bio', type: 'influence', strength: 0.7 },
+        { from: 'bio', to: 'neuro', type: 'influence', strength: 0.8 },
+        { from: 'neuro', to: 'tech', type: 'application', strength: 0.6 },
+        { from: 'bio', to: 'eco', type: 'integration', strength: 0.8 },
+        { from: 'quantum', to: 'cosmic', type: 'scale', strength: 0.7 }
+      ]
     },
-    de: {
-      title: '🌱 Öko-Rechner für Usbekistans Klima',
-      subtitle: 'TERRA v6.0 - Anpassung an lokale Bedingungen',
-      region: 'Region',
-      season: 'Jahreszeit',
-      buildingType: 'Gebäudetyp',
-      calculate: 'Öko-Parameter berechnen',
-      results: 'Berechnungsergebnisse',
-      temperature: 'Temperatur',
-      humidity: 'Luftfeuchtigkeit',
-      solar: 'Solarenergie',
-      wind: 'Windenergie',
-      water: 'Wasserbedarf',
-      cooling: 'Kühlung',
-      heating: 'Heizung',
-      materials: 'Empfohlene Materialien',
-      efficiency: 'Energieeffizienz'
-    },
-    en: {
-      title: '🌱 Eco-Calculator for Uzbekistan Climate',
-      subtitle: 'TERRA v6.0 - Adaptation to local conditions',
-      region: 'Region',
-      season: 'Season',
-      buildingType: 'Building Type',
-      calculate: 'Calculate eco-parameters',
-      results: 'Calculation Results',
-      temperature: 'Temperature',
-      humidity: 'Humidity',
-      solar: 'Solar Energy',
-      wind: 'Wind Energy',
-      water: 'Water Demand',
-      cooling: 'Cooling',
-      heating: 'Heating',
-      materials: 'Recommended Materials',
-      efficiency: 'Energy Efficiency'
+    communication: {
+      name: 'Межвидовая коммуникация',
+      color: '#32CD32',
+      nodes: [
+        { id: 'human', label: '👤 Человек', x: 275, y: 150, type: 'primary' },
+        { id: 'plant', label: '🌿 Растения', x: 150, y: 100, type: 'species' },
+        { id: 'animal', label: '🐾 Животные', x: 400, y: 100, type: 'species' },
+        { id: 'water', label: '💧 Вода', x: 150, y: 200, type: 'species' },
+        { id: 'soil', label: '🌍 Почва', x: 400, y: 200, type: 'species' },
+        { id: 'ai_translator', label: '🔤 ИИ-переводчик', x: 275, y: 250, type: 'bridge' }
+      ],
+      connections: [
+        { from: 'human', to: 'plant', type: 'chemical', strength: 0.6 },
+        { from: 'human', to: 'animal', type: 'sound', strength: 0.8 },
+        { from: 'human', to: 'water', type: 'vibration', strength: 0.5 },
+        { from: 'human', to: 'soil', type: 'electromagnetic', strength: 0.4 },
+        { from: 'ai_translator', to: 'human', type: 'interface', strength: 0.9 },
+        { from: 'ai_translator', to: 'plant', type: 'decode', strength: 0.7 },
+        { from: 'ai_translator', to: 'animal', type: 'decode', strength: 0.8 }
+      ]
     }
   };
 
-  const t = translations[language];
+  const currentSystem = systems[activeSystem];
 
-  const regions = {
-    ru: {
-      tashkent: 'Ташкент',
-      samarkand: 'Самарканд',
-      bukhara: 'Бухара',
-      khiva: 'Хива',
-      namangan: 'Наманган',
-      andijan: 'Андижан',
-      fergana: 'Фергана',
-      nukus: 'Нукус',
-      termez: 'Термез',
-      karshi: 'Карши'
-    },
-    uz: {
-      tashkent: 'Toshkent',
-      samarkand: 'Samarqand',
-      bukhara: 'Buxoro',
-      khiva: 'Xiva',
-      namangan: 'Namangan',
-      andijan: 'Andijon',
-      fergana: 'Farg\'ona',
-      nukus: 'Nukus',
-      termez: 'Termiz',
-      karshi: 'Qarshi'
-    },
-    de: {
-      tashkent: 'Taschkent',
-      samarkand: 'Samarkand',
-      bukhara: 'Buchara',
-      khiva: 'Chiwa',
-      namangan: 'Namangan',
-      andijan: 'Andijon',
-      fergana: 'Fergana',
-      nukus: 'Nukus',
-      termez: 'Termez',
-      karshi: 'Qarshi'
-    },
-    en: {
-      tashkent: 'Tashkent',
-      samarkand: 'Samarkand',
-      bukhara: 'Bukhara',
-      khiva: 'Khiva',
-      namangan: 'Namangan',
-      andijan: 'Andijan',
-      fergana: 'Fergana',
-      nukus: 'Nukus',
-      termez: 'Termez',
-      karshi: 'Karshi'
-    }
-  };
+  // Анимация потоков данных
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const connection = currentSystem.connections[Math.floor(Math.random() * currentSystem.connections.length)];
+      const fromNode = currentSystem.nodes.find(n => n.id === connection.from);
+      const toNode = currentSystem.nodes.find(n => n.id === connection.to);
+      
+      if (fromNode && toNode) {
+        const newFlow = {
+          id: Date.now(),
+          fromX: fromNode.x,
+          fromY: fromNode.y,
+          toX: toNode.x,
+          toY: toNode.y,
+          progress: 0,
+          type: connection.type,
+          strength: connection.strength
+        };
+        
+        setDataFlow(prev => [...prev, newFlow]);
+        
+        setTimeout(() => {
+          setDataFlow(prev => prev.filter(flow => flow.id !== newFlow.id));
+        }, 2000);
+      }
+    }, 1000 / animationSpeed);
 
-  const seasons = {
-    ru: { spring: 'Весна', summer: 'Лето', autumn: 'Осень', winter: 'Зима' },
-    uz: { spring: 'Bahor', summer: 'Yoz', autumn: 'Kuz', winter: 'Qish' },
-    de: { spring: 'Frühling', summer: 'Sommer', autumn: 'Herbst', winter: 'Winter' },
-    en: { spring: 'Spring', summer: 'Summer', autumn: 'Autumn', winter: 'Winter' }
-  };
+    return () => clearInterval(interval);
+  }, [activeSystem, animationSpeed, currentSystem]);
 
-  const buildingTypes = {
-    ru: {
-      green_station: 'Зеленая станция',
-      residential: 'Жилое здание',
-      commercial: 'Коммерческое здание',
-      industrial: 'Промышленное здание',
-      educational: 'Образовательное здание'
-    },
-    uz: {
-      green_station: 'Yashil stansiya',
-      residential: 'Turar-joy binosi',
-      commercial: 'Tijorat binosi',
-      industrial: 'Sanoat binosi',
-      educational: 'Ta\'lim binosi'
-    },
-    de: {
-      green_station: 'Grüne Station',
-      residential: 'Wohngebäude',
-      commercial: 'Gewerbegebäude',
-      industrial: 'Industriegebäude',
-      educational: 'Bildungsgebäude'
-    },
-    en: {
-      green_station: 'Green Station',
-      residential: 'Residential Building',
-      commercial: 'Commercial Building',
-      industrial: 'Industrial Building',
-      educational: 'Educational Building'
-    }
-  };
-
-  // Климатические данные Узбекистана
-  const climateData = {
-    tashkent: {
-      spring: { temp: [15, 25], humidity: 65, solar: 6.5, wind: 3.2, precipitation: 45 },
-      summer: { temp: [25, 40], humidity: 35, solar: 8.8, wind: 2.8, precipitation: 15 },
-      autumn: { temp: [10, 22], humidity: 55, solar: 5.2, wind: 3.5, precipitation: 35 },
-      winter: { temp: [-5, 8], humidity: 75, solar: 3.1, wind: 4.1, precipitation: 55 }
-    },
-    samarkand: {
-      spring: { temp: [16, 26], humidity: 60, solar: 7.0, wind: 3.8, precipitation: 40 },
-      summer: { temp: [26, 42], humidity: 30, solar: 9.2, wind: 3.2, precipitation: 10 },
-      autumn: { temp: [12, 24], humidity: 50, solar: 5.8, wind: 4.0, precipitation: 30 },
-      winter: { temp: [-3, 10], humidity: 70, solar: 3.5, wind: 4.5, precipitation: 50 }
-    },
-    bukhara: {
-      spring: { temp: [18, 28], humidity: 55, solar: 7.2, wind: 4.2, precipitation: 35 },
-      summer: { temp: [28, 45], humidity: 25, solar: 9.5, wind: 3.8, precipitation: 8 },
-      autumn: { temp: [14, 26], humidity: 45, solar: 6.0, wind: 4.5, precipitation: 25 },
-      winter: { temp: [0, 12], humidity: 65, solar: 3.8, wind: 5.0, precipitation: 45 }
-    },
-    nukus: {
-      spring: { temp: [12, 22], humidity: 70, solar: 6.0, wind: 5.5, precipitation: 50 },
-      summer: { temp: [22, 38], humidity: 40, solar: 8.5, wind: 4.8, precipitation: 20 },
-      autumn: { temp: [8, 20], humidity: 60, solar: 4.8, wind: 6.0, precipitation: 40 },
-      winter: { temp: [-8, 5], humidity: 80, solar: 2.5, wind: 6.5, precipitation: 65 }
-    }
-  };
-
-  const calculateEcoParameters = () => {
-    const climate = climateData[region]?.[season] || climateData.tashkent.summer;
+  // Анимация движения частиц
+  useEffect(() => {
+    let animationId;
     
-    const calc = {
-      avgTemp: Math.round((climate.temp[0] + climate.temp[1]) / 2),
-      tempRange: `${climate.temp[0]}°C - ${climate.temp[1]}°C`,
-      humidity: `${climate.humidity}%`,
-      solarPotential: `${climate.solar} кВт⋅ч/м²⋅день`,
-      windPotential: `${climate.wind} м/с средняя`,
+    const animate = () => {
+      setDataFlow(prev => prev.map(flow => ({
+        ...flow,
+        progress: Math.min(flow.progress + 0.02 * animationSpeed, 1)
+      })));
       
-      // Расчеты для зданий
-      coolingNeeds: Math.max(0, (climate.temp[1] - 24) * 15),
-      heatingNeeds: Math.max(0, (18 - climate.temp[0]) * 12),
-      waterConsumption: 150 + (climate.temp[1] - 20) * 5,
-      
-      // Энергоэффективность
-      solarEfficiency: Math.min(95, climate.solar * 10 + 20),
-      ventilationNeeds: climate.humidity > 60 ? 'Высокие' : climate.humidity > 40 ? 'Средние' : 'Низкие',
-      
-      // Рекомендуемые материалы для региона
-      materials: getMaterialsForClimate(climate),
-      
-      // Адаптационные меры
-      adaptations: getClimateAdaptations(climate, region, season)
+      animationId = requestAnimationFrame(animate);
     };
     
-    setCalculations(calc);
+    animate();
+    return () => cancelAnimationFrame(animationId);
+  }, [animationSpeed]);
+
+  const getNodeStyle = (node) => {
+    const baseClasses = "absolute rounded-full flex items-center justify-center text-sm font-medium border-2 transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-lg";
+    
+    const sizeClasses = {
+      primary: "w-16 h-16",
+      secondary: "w-12 h-12", 
+      support: "w-10 h-10",
+      species: "w-12 h-12",
+      bridge: "w-14 h-14",
+      core: "w-18 h-18"
+    };
+
+    const colorStyles = {
+      primary: { backgroundColor: currentSystem.color, borderColor: 'white' },
+      secondary: { backgroundColor: currentSystem.color + '80', borderColor: currentSystem.color },
+      support: { backgroundColor: '#FFB6C1', borderColor: '#FF69B4' },
+      species: { backgroundColor: '#90EE90', borderColor: '#32CD32' },
+      bridge: { backgroundColor: '#87CEEB', borderColor: '#4169E1' },
+      core: { backgroundColor: currentSystem.color, borderColor: 'white', boxShadow: `0 0 20px ${currentSystem.color}` }
+    };
+
+    return {
+      className: `${baseClasses} ${sizeClasses[node.type] || sizeClasses.secondary}`,
+      style: {
+        left: `${node.x - 32}px`,
+        top: `${node.y - 32}px`,
+        ...colorStyles[node.type]
+      }
+    };
   };
 
-  const getMaterialsForClimate = (climate) => {
-    const materials = [];
+  const getConnectionPath = (from, to) => {
+    const fromNode = currentSystem.nodes.find(n => n.id === from);
+    const toNode = currentSystem.nodes.find(n => n.id === to);
     
-    if (climate.temp[1] > 35) {
-      materials.push('Светоотражающие покрытия');
-      materials.push('Термоизоляционные блоки');
-    }
+    if (!fromNode || !toNode) return '';
     
-    if (climate.temp[0] < 5) {
-      materials.push('Утеплители из эко-материалов');
-      materials.push('Тройные стеклопакеты');
-    }
+    // Создаём плавную кривую
+    const midX = (fromNode.x + toNode.x) / 2;
+    const midY = (fromNode.y + toNode.y) / 2 - 20;
     
-    if (climate.humidity > 65) {
-      materials.push('Влагостойкие материалы');
-      materials.push('Антигрибковые покрытия');
-    }
-    
-    if (climate.solar > 7) {
-      materials.push('Солнечные панели высокой эффективности');
-      materials.push('Фотовольтаические материалы');
-    }
-    
-    if (climate.wind > 4) {
-      materials.push('Ветрозащитные конструкции');
-      materials.push('Малые ветрогенераторы');
-    }
-    
-    return materials.length > 0 ? materials : ['Стандартные эко-материалы'];
+    return `M ${fromNode.x} ${fromNode.y} Q ${midX} ${midY} ${toNode.x} ${toNode.y}`;
   };
 
-  const getClimateAdaptations = (climate, region, season) => {
-    const adaptations = [];
-    
-    // Для жаркого климата
-    if (climate.temp[1] > 38) {
-      adaptations.push('Система испарительного охлаждения');
-      adaptations.push('Зеленые крыши и фасады');
-      adaptations.push('Естественная вентиляция');
-    }
-    
-    // Для холодного климата  
-    if (climate.temp[0] < 0) {
-      adaptations.push('Пассивное солнечное отопление');
-      adaptations.push('Тепловые насосы');
-      adaptations.push('Рекуперация тепла');
-    }
-    
-    // Для засушливого климата
-    if (climate.precipitation < 30) {
-      adaptations.push('Сбор дождевой воды');
-      adaptations.push('Капельное орошение');
-      adaptations.push('Ксерофитные растения');
-    }
-    
-    // Для ветреного климата
-    if (climate.wind > 5) {
-      adaptations.push('Ветрозащитные посадки');
-      adaptations.push('Использование ветровой энергии');
-    }
-    
-    return adaptations.length > 0 ? adaptations : ['Стандартные меры адаптации'];
+  const getFlowPosition = (flow) => {
+    const dx = flow.toX - flow.fromX;
+    const dy = flow.toY - flow.fromY;
+    const x = flow.fromX + dx * flow.progress;
+    const y = flow.fromY + dy * flow.progress;
+    return { x, y };
   };
-
-  useEffect(() => {
-    calculateEcoParameters();
-  }, [region, season, buildingType]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-900 via-blue-900 to-teal-800 p-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-block bg-green-400 text-black px-6 py-2 rounded-full mb-4 font-bold">
-            🌱 TERRA v6.0 ECO CALCULATOR
-          </div>
-          <h1 className="text-4xl font-bold text-white mb-2">{t.title}</h1>
-          <p className="text-xl text-green-200">{t.subtitle}</p>
-          
-          {/* Language Selector */}
-          <div className="flex justify-center gap-4 mt-6">
-            {['ru', 'uz', 'de', 'en'].map(lang => (
-              <button
-                key={lang}
-                onClick={() => setLanguage(lang)}
-                className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-                  language === lang 
-                    ? 'bg-green-400 text-black' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                {lang === 'ru' && '🇷🇺 РУ'}
-                {lang === 'uz' && '🇺🇿 UZ'}
-                {lang === 'de' && '🇩🇪 DE'}
-                {lang === 'en' && '🇬🇧 EN'}
-              </button>
-            ))}
-          </div>
+    <div className="relative w-full h-full min-h-[700px] bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 flex flex-col">
+      
+      {/* Заголовок и контролы */}
+      <div className="flex justify-between items-center p-6 bg-black bg-opacity-30">
+        <div>
+          <h1 className="text-3xl font-bold text-white mb-2">
+            🎨 Интерактивные Диаграммы
+          </h1>
+          <h2 className="text-lg text-gray-300">
+            Системы в движении
+          </h2>
         </div>
+        
+        <div className="flex space-x-4">
+          {Object.entries(systems).map(([key, system]) => (
+            <button
+              key={key}
+              onClick={() => setActiveSystem(key)}
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                activeSystem === key
+                  ? 'bg-white text-gray-900'
+                  : 'bg-gray-700 text-white hover:bg-gray-600'
+              }`}
+            >
+              {system.name}
+            </button>
+          ))}
+        </div>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Input Panel */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <h2 className="text-2xl font-bold text-white mb-6">⚙️ Параметры</h2>
+      {/* Контролы анимации */}
+      <div className="flex justify-center p-4 space-x-4">
+        <div className="flex items-center space-x-2 text-white">
+          <span className="text-sm">Скорость:</span>
+          {[0.5, 1, 2, 3].map(speed => (
+            <button
+              key={speed}
+              onClick={() => setAnimationSpeed(speed)}
+              className={`px-3 py-1 rounded transition-all ${
+                animationSpeed === speed
+                  ? 'bg-cyan-500 text-white'
+                  : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+              }`}
+            >
+              {speed}x
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Основная диаграмма */}
+      <div className="flex-1 relative overflow-hidden">
+        <div className="absolute inset-0" ref={canvasRef}>
+          
+          {/* SVG для соединений */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none">
+            {/* Статические соединения */}
+            {currentSystem.connections.map((connection, index) => (
+              <path
+                key={index}
+                d={getConnectionPath(connection.from, connection.to)}
+                stroke={currentSystem.color}
+                strokeWidth={Math.max(1, connection.strength * 3)}
+                fill="none"
+                opacity={0.3}
+                strokeDasharray={connection.type === 'bidirectional' ? '5,5' : 'none'}
+              />
+            ))}
             
-            <div className="space-y-6">
-              <div>
-                <label className="block text-white mb-3 font-semibold">{t.region}:</label>
-                <select
-                  value={region}
-                  onChange={(e) => setRegion(e.target.value)}
-                  className="w-full p-3 rounded-lg bg-white/20 text-white border border-white/30"
-                >
-                  {Object.entries(regions[language]).map(([key, value]) => (
-                    <option key={key} value={key} className="bg-gray-800">{value}</option>
-                  ))}
-                </select>
-              </div>
+            {/* Стрелки направления */}
+            {currentSystem.connections.map((connection, index) => {
+              const fromNode = currentSystem.nodes.find(n => n.id === connection.from);
+              const toNode = currentSystem.nodes.find(n => n.id === connection.to);
+              if (!fromNode || !toNode) return null;
+              
+              const angle = Math.atan2(toNode.y - fromNode.y, toNode.x - fromNode.x);
+              const arrowX = toNode.x - Math.cos(angle) * 35;
+              const arrowY = toNode.y - Math.sin(angle) * 35;
+              
+              return (
+                <polygon
+                  key={`arrow-${index}`}
+                  points="0,-5 10,0 0,5"
+                  fill={currentSystem.color}
+                  opacity={0.6}
+                  transform={`translate(${arrowX}, ${arrowY}) rotate(${angle * 180 / Math.PI})`}
+                />
+              );
+            })}
+          </svg>
 
-              <div>
-                <label className="block text-white mb-3 font-semibold">{t.season}:</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {Object.entries(seasons[language]).map(([key, value]) => (
-                    <button
-                      key={key}
-                      onClick={() => setSeason(key)}
-                      className={`p-3 rounded-lg font-semibold transition-all ${
-                        season === key 
-                          ? 'bg-green-500 text-white' 
-                          : 'bg-white/20 text-white hover:bg-white/30'
-                      }`}
-                    >
-                      {value}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-white mb-3 font-semibold">{t.buildingType}:</label>
-                <select
-                  value={buildingType}
-                  onChange={(e) => setBuildingType(e.target.value)}
-                  className="w-full p-3 rounded-lg bg-white/20 text-white border border-white/30"
-                >
-                  {Object.entries(buildingTypes[language]).map(([key, value]) => (
-                    <option key={key} value={key} className="bg-gray-800">{value}</option>
-                  ))}
-                </select>
-              </div>
-
-              <button
-                onClick={calculateEcoParameters}
-                className="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white p-4 rounded-lg font-bold hover:from-green-600 hover:to-teal-600 transition-all"
+          {/* Узлы системы */}
+          {currentSystem.nodes.map((node) => {
+            const nodeStyle = getNodeStyle(node);
+            return (
+              <div
+                key={node.id}
+                className={nodeStyle.className}
+                style={nodeStyle.style}
+                title={node.label}
               >
-                🔄 {t.calculate}
-              </button>
-            </div>
+                <span className="text-center leading-tight">
+                  {node.label}
+                </span>
+              </div>
+            );
+          })}
 
-            {/* Карта Узбекистана */}
-            <div className="mt-6 bg-white/5 p-4 rounded-lg">
-              <h3 className="text-white font-bold mb-2">🗺️ Карта регионов</h3>
-              <div className="grid grid-cols-3 gap-1 text-xs">
-                {Object.entries(regions[language]).map(([key, value]) => (
-                  <div
-                    key={key}
-                    onClick={() => setRegion(key)}
-                    className={`p-2 rounded cursor-pointer text-center transition-all ${
-                      region === key ? 'bg-green-500 text-white' : 'bg-white/20 text-white/80 hover:bg-white/30'
-                    }`}
-                  >
-                    {value}
-                  </div>
+          {/* Анимированные частицы потока данных */}
+          {dataFlow.map((flow) => {
+            const position = getFlowPosition(flow);
+            return (
+              <div
+                key={flow.id}
+                className="absolute w-3 h-3 rounded-full pointer-events-none transition-all duration-75"
+                style={{
+                  left: `${position.x - 6}px`,
+                  top: `${position.y - 6}px`,
+                  backgroundColor: currentSystem.color,
+                  boxShadow: `0 0 10px ${currentSystem.color}`,
+                  opacity: Math.sin(flow.progress * Math.PI) // Плавное появление и исчезание
+                }}
+              />
+            );
+          })}
+
+          {/* Эффекты взаимодействия */}
+          {currentSystem.nodes.map((node, index) => (
+            <div
+              key={`pulse-${node.id}`}
+              className="absolute rounded-full pointer-events-none animate-ping"
+              style={{
+                left: `${node.x - 40}px`,
+                top: `${node.y - 40}px`,
+                width: '80px',
+                height: '80px',
+                backgroundColor: currentSystem.color,
+                opacity: 0.1,
+                animationDelay: `${index * 0.5}s`,
+                animationDuration: '3s'
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Информационная панель */}
+      <div className="p-6 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-xl font-bold text-white mb-4">
+            {currentSystem.name}
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+            <div>
+              <h4 className="font-medium text-cyan-300 mb-2">Узлы системы:</h4>
+              <div className="text-gray-300 space-y-1">
+                {currentSystem.nodes.map(node => (
+                  <div key={node.id}>{node.label}</div>
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* Results Panel */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-              <h2 className="text-2xl font-bold text-white mb-6">📊 {t.results}</h2>
-              
-              {calculations.avgTemp && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Климатические показатели */}
-                  <div className="space-y-4">
-                    <div className="bg-red-500/20 p-4 rounded-lg border border-red-400">
-                      <h3 className="text-red-300 font-bold mb-2">🌡️ {t.temperature}</h3>
-                      <p className="text-white text-lg">{calculations.tempRange}</p>
-                      <p className="text-white/80">Среднее: {calculations.avgTemp}°C</p>
-                    </div>
-
-                    <div className="bg-blue-500/20 p-4 rounded-lg border border-blue-400">
-                      <h3 className="text-blue-300 font-bold mb-2">💧 {t.humidity}</h3>
-                      <p className="text-white text-lg">{calculations.humidity}</p>
-                    </div>
-
-                    <div className="bg-yellow-500/20 p-4 rounded-lg border border-yellow-400">
-                      <h3 className="text-yellow-300 font-bold mb-2">☀️ {t.solar}</h3>
-                      <p className="text-white text-lg">{calculations.solarPotential}</p>
-                      <p className="text-white/80">Эффективность: {calculations.solarEfficiency}%</p>
-                    </div>
-
-                    <div className="bg-gray-500/20 p-4 rounded-lg border border-gray-400">
-                      <h3 className="text-gray-300 font-bold mb-2">💨 {t.wind}</h3>
-                      <p className="text-white text-lg">{calculations.windPotential}</p>
-                    </div>
-                  </div>
-
-                  {/* Энергетические потребности */}
-                  <div className="space-y-4">
-                    <div className="bg-cyan-500/20 p-4 rounded-lg border border-cyan-400">
-                      <h3 className="text-cyan-300 font-bold mb-2">❄️ {t.cooling}</h3>
-                      <p className="text-white text-lg">{calculations.coolingNeeds} кВт⋅ч/м²</p>
-                    </div>
-
-                    <div className="bg-orange-500/20 p-4 rounded-lg border border-orange-400">
-                      <h3 className="text-orange-300 font-bold mb-2">🔥 {t.heating}</h3>
-                      <p className="text-white text-lg">{calculations.heatingNeeds} кВт⋅ч/м²</p>
-                    </div>
-
-                    <div className="bg-purple-500/20 p-4 rounded-lg border border-purple-400">
-                      <h3 className="text-purple-300 font-bold mb-2">💧 {t.water}</h3>
-                      <p className="text-white text-lg">{calculations.waterConsumption} л/чел⋅день</p>
-                    </div>
-
-                    <div className="bg-green-500/20 p-4 rounded-lg border border-green-400">
-                      <h3 className="text-green-300 font-bold mb-2">🌬️ Вентиляция</h3>
-                      <p className="text-white text-lg">Потребности: {calculations.ventilationNeeds}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Рекомендации */}
-            {calculations.materials && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                  <h3 className="text-xl font-bold text-white mb-4">🏗️ {t.materials}</h3>
-                  <ul className="space-y-2">
-                    {calculations.materials.map((material, index) => (
-                      <li key={index} className="text-white flex items-center">
-                        <span className="text-green-400 mr-2">•</span>
-                        {material}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                  <h3 className="text-xl font-bold text-white mb-4">🔧 Адаптационные меры</h3>
-                  <ul className="space-y-2">
-                    {calculations.adaptations.map((adaptation, index) => (
-                      <li key={index} className="text-white flex items-center">
-                        <span className="text-blue-400 mr-2">•</span>
-                        {adaptation}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div>
+              <h4 className="font-medium text-purple-300 mb-2">Типы связей:</h4>
+              <div className="text-gray-300 space-y-1">
+                <div>↔️ Двунаправленные</div>
+                <div>→ Влияние</div>
+                <div>⚡ Эмерджентные</div>
+                <div>🔄 Обратная связь</div>
               </div>
-            )}
+            </div>
+            <div>
+              <h4 className="font-medium text-green-300 mb-2">Характеристики:</h4>
+              <div className="text-gray-300 space-y-1">
+                <div>Узлов: {currentSystem.nodes.length}</div>
+                <div>Связей: {currentSystem.connections.length}</div>
+                <div>Активных потоков: {dataFlow.length}</div>
+                <div>Скорость: {animationSpeed}x</div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Footer */}
-        <div className="text-center mt-8 text-white/80">
-          <div className="bg-green-400/20 rounded-lg p-4 border border-green-400/30">
-            <p className="font-bold">🌱 TERRA v6.0 ECO CALCULATOR UZBEKISTAN</p>
-            <p>CREATOR: Абдурашид Абдукаримов | secret.uzbek@tutamail.com</p>
-            <p>Климатические данные адаптированы для всех регионов Узбекистана</p>
-            <p className="text-sm">⚡ Quantum Eco-Calculation Engine | {new Date().toLocaleString('ru-RU')}</p>
-          </div>
-        </div>
+      {/* Подпись проекта */}
+      <div className="absolute bottom-4 right-4 text-xs text-gray-500 text-right">
+        <div>Terra Interactive Systems</div>
+        <div>Dynamic Visualization Engine</div>
+        <div>Real-time Data Flow Simulation</div>
       </div>
     </div>
   );
 };
 
-export default UzbekistanEcoCalculator;
+export default InteractiveSystems;

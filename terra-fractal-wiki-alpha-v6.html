@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>🧬 Terra Fractal Wiki</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; background: #f9f9f9; }
+    textarea { width: 100%; height: 150px; }
+    button { padding: 8px 16px; margin-top: 10px; }
+    .card { background: white; border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+    .muted { color: #777; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>🧬 Terra Fractal Wiki</h1>
+  <textarea id="editor" placeholder="📝 Напиши здесь документ..."></textarea><br />
+  <button onclick="saveDoc()">💾 Сохранить</button>
+  <span id="status" class="muted">⌛ Внесены изменения...</span>
+  <div id="docs"></div>
+
+  <script>
+    let editor = document.getElementById('editor');
+    let status = document.getElementById('status');
+    let docs = JSON.parse(localStorage.getItem('terra_documents') || '[]');
+
+    function renderDocs() {
+      const container = document.getElementById('docs');
+      container.innerHTML = '';
+      docs.forEach(doc => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const date = new Date(doc.date).toLocaleString();
+        card.innerHTML = '<div class="muted">📅 ' + date + '</div><div>' + doc.text.replace(/\n/g, "<br>") + '</div>';
+        container.appendChild(card);
+      });
+    }
+
+    function saveDoc() {
+      if (!editor.value.trim()) return;
+      docs.push({ text: editor.value, date: new Date().toISOString() });
+      localStorage.setItem('terra_documents', JSON.stringify(docs));
+      editor.value = '';
+      status.innerText = '✅ Автосохранено';
+      renderDocs();
+    }
+
+    editor.addEventListener('input', () => status.innerText = '⌛ Внесены изменения...');
+    renderDocs();
+  </script>
+</body>
+</html>

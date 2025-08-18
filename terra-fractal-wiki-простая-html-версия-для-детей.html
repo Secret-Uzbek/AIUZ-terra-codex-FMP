@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧬 Terra Fractal Wiki - Карта Знаний</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e293b, #7c3aed, #3730a3);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .btn.active {
+            background: #06b6d4;
+            box-shadow: 0 4px 15px rgba(6,182,212,0.3);
+        }
+        
+        .main-container {
+            display: flex;
+            height: calc(100vh - 200px);
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .visualization {
+            flex: 1;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fractal-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .level-circle {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            font-weight: bold;
+            text-align: center;
+            font-size: 12px;
+            user-select: none;
+        }
+        
+        .level-circle:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+        
+        .level-circle.active {
+            transform: scale(1.3);
+            box-shadow: 0 0 30px currentColor;
+            z-index: 5;
+        }
+        
+        .center-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border-radius: 50%;
+            text-align: center;
+            min-width: 120px;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sidebar {
+            width: 320px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .level-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .level-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+        
+        .level-item.active {
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.02);
+        }
+        
+        .level-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .level-desc {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .concept-list {
+            margin-top: 15px;
+        }
+        
+        .concept-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .concept-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .search-box::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 11px;
+            opacity: 0.6;
+            text-align: right;
+        }
+        
+        .connection-line {
+            position: absolute;
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+            transform-origin: left center;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                gap: 10px;
+            }
+            
+            .btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        
+        .rotate {
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">🧬 Terra Fractal Wiki</h1>
+        <p class="subtitle">Интерактивная карта знаний для детей</p>
+        
+        <div class="controls">
+            <button class="btn active" onclick="setView('fractal')">🌀 Фрактальный вид</button>
+            <button class="btn" onclick="setView('simple')">📚 Простой список</button>
+            <button class="btn" onclick="toggleAnimation()">⚡ Анимация</button>
+            <button class="btn" onclick="resetView()">🔄 Сброс</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="visualization" id="visualization">
+            <div class="fractal-container" id="fractalContainer">
+                <div class="center-indicator">
+                    <div style="font-size: 24px; margin-bottom: 5px;" id="centerLevel">3</div>
+                    <div style="font-size: 14px;" id="centerName">Образование</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <input type="text" class="search-box" placeholder="🔍 Поиск..." onkeyup="filterContent(this.value)">
+            
+            <h3 style="margin-bottom: 15px;">🎯 Уровни знаний</h3>
+            <div id="levelsList"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>🧬 TerraMemoryDNA v5.0</div>
+        <div>👨‍💼 Абдурашид Абдукаримов</div>
+        <div>Создано для детей с любовью ❤️</div>
+    </div>
+
+    <script>
+        const fractalLevels = {
+            0: {
+                name: "Квантовое поле",
+                color: "#9333ea",
+                concepts: [
+                    "Квантовая суперпозиция",
+                    "TerraMemoryDNA v5.0", 
+                    "Трёхсущностная архитектура"
+                ]
+            },
+            1: {
+                name: "Информационные структуры",
+                color: "#0ea5e9", 
+                concepts: [
+                    "Terra Protocols v7.0",
+                    "Document Protocol v2.0",
+                    "Terra Brand Book v2.0"
+                ]
+            },
+            2: {
+                name: "Системная архитектура",
+                color: "#10b981",
+                concepts: [
+                    "Фрактальная метанаука",
+                    "Системная междисциплинарность",
+                    "DAO Governance Model"
+                ]
+            },
+            3: {
+                name: "Образовательные системы",
+                color: "#f59e0b",
+                concepts: [
+                    "Child Safety First",
+                    "AIUZ Terra Ecosystem", 
+                    "Cultural Preservation"
+                ]
+            },
+            4: {
+                name: "Технологические решения",
+                color: "#ef4444",
+                concepts: [
+                    "Переводчик-Парсер",
+                    "Детоксификация ИИ",
+                    "Vendor Independence"
+                ]
+            },
+            5: {
+                name: "Глобальные инициативы", 
+                color: "#8b5cf6",
+                concepts: [
+                    "AIUZ Автономные станции",
+                    "Зеленые точки роста",
+                    "Мультикультурная адаптация"
+                ]
+            },
+            6: {
+                name: "Трансцендентное измерение",
+                color: "#ec4899",
+                concepts: [
+                    "Council of Memory",
+                    "Terra Legacy",
+                    "Видение будущего"
+                ]
+            }
+        };
+
+        let currentLevel = 3;
+        let animationEnabled = true;
+        let currentView = 'fractal';
+
+        function initializeApp() {
+            renderFractal();
+            renderSidebar();
+            startAnimation();
+        }
+
+        function renderFractal() {
+            const container = document.getElementById('fractalContainer');
+            const centerX = container.clientWidth / 2;
+            const centerY = container.clientHeight / 2;
+            
+            // Очистка контейнера
+            const existingCircles = container.querySelectorAll('.level-circle');
+            existingCircles.forEach(circle => circle.remove());
+            
+            const existingLines = container.querySelectorAll('.connection-line');
+            existingLines.forEach(line => line.remove());
+
+            // Создание кругов для каждого уровня
+            Object.keys(fractalLevels).forEach((level, index) => {
+                const levelData = fractalLevels[level];
+                const angle = (index / Object.keys(fractalLevels).length) * 2 * Math.PI;
+                const radius = 150 + (level * 20);
+                
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+                
+                const circle = document.createElement('div');
+                circle.className = `level-circle ${level == currentLevel ? 'active' : ''}`;
+                circle.style.left = (x - 30) + 'px';
+                circle.style.top = (y - 30) + 'px';
+                circle.style.width = level == currentLevel ? '60px' : '40px';
+                circle.style.height = level == currentLevel ? '60px' : '40px';
+                circle.style.backgroundColor = levelData.color;
+                circle.style.color = 'white';
+                circle.innerHTML = level;
+                circle.onclick = () => selectLevel(level);
+                
+                if (animationEnabled) {
+                    circle.classList.add('pulse');
+                }
+                
+                container.appendChild(circle);
+                
+                // Добавление линий связи
+                if (index < Object.keys(fractalLevels).length - 1) {
+                    const nextIndex = (index + 1) % Object.keys(fractalLevels).length;
+                    const nextAngle = (nextIndex / Object.keys(fractalLevels).length) * 2 * Math.PI;
+                    const nextX = centerX + Math.cos(nextAngle) * (150 + (level * 20));
+                    const nextY = centerY + Math.sin(nextAngle) * (150 + (level * 20));
+                    
+                    const line = document.createElement('div');
+                    line.className = 'connection-line';
+                    line.style.left = x + 'px';
+                    line.style.top = y + 'px';
+                    line.style.width = Math.sqrt(Math.pow(nextX - x, 2) + Math.pow(nextY - y, 2)) + 'px';
+                    line.style.transform = `rotate(${Math.atan2(nextY - y, nextX - x)}rad)`;
+                    
+                    container.appendChild(line);
+                }
+            });
+            
+            updateCenterIndicator();
+        }
+
+        function renderSidebar() {
+            const levelsList = document.getElementById('levelsList');
+            levelsList.innerHTML = '';
+            
+            Object.keys(fractalLevels).forEach(level => {
+                const levelData = fractalLevels[level];
+                
+                const levelItem = document.createElement('div');
+                levelItem.className = `level-item ${level == currentLevel ? 'active' : ''}`;
+                levelItem.style.borderLeft = `4px solid ${levelData.color}`;
+                
+                levelItem.innerHTML = `
+                    <div class="level-name">Уровень ${level}</div>
+                    <div class="level-desc">${levelData.name}</div>
+                    <div class="concept-list">
+                        ${levelData.concepts.map(concept => 
+                            `<div class="concept-item">${concept}</div>`
+                        ).join('')}
+                    </div>
+                `;
+                
+                levelItem.onclick = () => selectLevel(level);
+                levelsList.appendChild(levelItem);
+            });
+        }
+
+        function selectLevel(level) {
+            currentLevel = parseInt(level);
+            updateCenterIndicator();
+            renderFractal();
+            renderSidebar();
+        }
+
+        function updateCenterIndicator() {
+            const centerLevel = document.getElementById('centerLevel');
+            const centerName = document.getElementById('centerName'); 
+            const levelData = fractalLevels[currentLevel];
+            
+            centerLevel.textContent = currentLevel;
+            centerName.textContent = levelData.name;
+            centerLevel.parentElement.style.background = `radial-gradient(circle, ${levelData.color}40, rgba(0,0,0,0.8))`;
+        }
+
+        function setView(view) {
+            currentView = view;
+            
+            // Обновление активной кнопки
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (view === 'fractal') {
+                renderFractal();
+            } else if (view === 'simple') {
+                renderSimpleList();
+            }
+        }
+
+        function renderSimpleList() {
+            const container = document.getElementById('fractalContainer');
+            container.innerHTML = `
+                <div style="padding: 20px; overflow-y: auto; height: 100%;">
+                    <h2 style="margin-bottom: 20px; text-align: center;">📚 Все уровни знаний</h2>
+                    ${Object.keys(fractalLevels).map(level => {
+                        const levelData = fractalLevels[level];
+                        return `
+                            <div style="margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; border-left: 4px solid ${levelData.color};">
+                                <h3 style="color: ${levelData.color}; margin-bottom: 10px;">
+                                    Уровень ${level}: ${levelData.name}
+                                </h3>
+                                <ul style="margin-left: 20px;">
+                                    ${levelData.concepts.map(concept => `<li style="margin: 5px 0;">${concept}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function toggleAnimation() {
+            animationEnabled = !animationEnabled;
+            event.target.textContent = animationEnabled ? '⚡ Анимация' : '⏸️ Пауза';
+            
+            if (animationEnabled) {
+                startAnimation();
+            } else {
+                stopAnimation();
+            }
+        }
+
+        function startAnimation() {
+            if (!animationEnabled) return;
+            
+            const circles = document.querySelectorAll('.level-circle');
+            circles.forEach((circle, index) => {
+                circle.classList.add('pulse');
+                circle.style.animationDelay = `${index * 0.3}s`;
+            });
+            
+            const container = document.getElementById('fractalContainer');
+            container.classList.add('rotate');
+        }
+
+        function stopAnimation() {
+            const circles = document.querySelectorAll('.level-circle');
+            circles.forEach(circle => {
+                circle.classList.remove('pulse');
+            });
+            
+            const container = document.getElementById('fractalContainer');
+            container.classList.remove('rotate');
+        }
+
+        function resetView() {
+            currentLevel = 3;
+            currentView = 'fractal';
+            animationEnabled = true;
+            
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.btn').classList.add('active');
+            
+            renderFractal();
+            renderSidebar();
+            startAnimation();
+        }
+
+        function filterContent(searchTerm) {
+            const levelItems = document.querySelectorAll('.level-item');
+            
+            if (!searchTerm) {
+                levelItems.forEach(item => item.style.display = 'block');
+                return;
+            }
+            
+            levelItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm.toLowerCase())) {
+                    item.style.display = 'block';
+                    item.style.background = 'rgba(255,255,255,0.2)';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Обработка изменения размера окна
+        window.addEventListener('resize', () => {
+            if (currentView === 'fractal') {
+                setTimeout(renderFractal, 100);
+            }
+        });
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧬 Terra Fractal Wiki - Карта Знаний</title>
+  <script type="module" crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script type="module" crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script type="module" crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+    #root {
+      padding: 2rem;
+      max-width: 768px;
+      margin: auto;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 1rem;
+      border-radius: 10px;
+      border: none;
+      resize: vertical;
+      font-size: 1rem;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #06b6d4;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .doc-card {
+      background: rgba(255,255,255,0.05);
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 10px;
+    }
+    .doc-card small {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    function TerraFractalWiki() {
+      const [documents, setDocuments] = React.useState(() => {
+        const stored = localStorage.getItem("terra_documents");
+        return stored ? JSON.parse(stored) : [];
+      });
+      const [currentText, setCurrentText] = React.useState("");
+      const [saved, setSaved] = React.useState(true);
+
+      React.useEffect(() => {
+        localStorage.setItem("terra_documents", JSON.stringify(documents));
+      }, [documents]);
+
+      const addNewDocument = () => {
+        if (!currentText.trim()) return;
+        setDocuments(prev => [...prev, { text: currentText, date: new Date().toISOString() }]);
+        setCurrentText("");
+        setSaved(true);
+      };
+
+      return (
+        <div>
+          <h1 style={{ fontSize: "2rem", marginBottom: "1rem", textAlign: "center" }}>
+            🧬 Terra Fractal Wiki
+          </h1>
+
+          <textarea
+            placeholder="📝 Напиши здесь документ..."
+            value={currentText}
+            onChange={e => {
+              setCurrentText(e.target.value);
+              setSaved(false);
+            }}
+          />
+
+          <button onClick={addNewDocument}>💾 Сохранить</button>
+          <p style={{ marginTop: "0.5rem", fontSize: "0.9rem", color: saved ? "#10b981" : "#f59e0b" }}>
+            {saved ? "✅ Автосохранено" : "⌛ Внесены изменения..."}
+          </p>
+
+          {documents.map((doc, idx) => (
+            <div key={idx} className="doc-card">
+              <small>📅 {new Date(doc.date).toLocaleString()}</small>
+              <p style={{ whiteSpace: "pre-wrap" }}>{doc.text}</p>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<TerraFractalWiki />);
+  </script>
+</body>
+</html>

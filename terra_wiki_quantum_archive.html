@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧬 Terra Quantum Archive</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 10px;
+      background: #1e40af;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    label[for="import"] {
+      background: #0ea5e9;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .encrypted {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧬 Terra Quantum Archive</h1>
+  <textarea id="wikiInput" placeholder="Напиши документ..."></textarea>
+  <div>
+    <button onclick="saveEntry()">💾 Сохранить</button>
+    <button onclick="exportArchive()">📦 Экспорт архива</button>
+    <label for="import">📂 Импорт архива</label>
+    <input type="file" id="import" accept=".json" onchange="importArchive(event)" />
+  </div>
+  <div class="encrypted">
+    <label><input type="checkbox" id="encryptToggle"> 🔐 Шифровать архив</label>
+    <input type="password" id="password" placeholder="Пароль (опц.)" />
+  </div>
+  <ul id="entries"></ul>
+
+  <script>
+    let entries = JSON.parse(localStorage.getItem("terra_entries") || "[]");
+    render();
+
+    function saveEntry() {
+      const input = document.getElementById("wikiInput").value.trim();
+      if (!input) return;
+      entries.push({
+        text: input,
+        timestamp: new Date().toISOString(),
+      });
+      document.getElementById("wikiInput").value = "";
+      persist();
+      render();
+    }
+
+    function persist() {
+      localStorage.setItem("terra_entries", JSON.stringify(entries));
+    }
+
+    function render() {
+      const list = document.getElementById("entries");
+      list.innerHTML = entries.map(
+        (e) =>
+          `<li>📄 ${new Date(e.timestamp).toLocaleString()}<br><pre>${e.text}</pre></li>`
+      ).join("\n");
+    }
+
+    function exportArchive() {
+      let data = JSON.stringify(entries);
+      const shouldEncrypt = document.getElementById("encryptToggle").checked;
+      const password = document.getElementById("password").value;
+
+      if (shouldEncrypt && password) {
+        data = btoa(encrypt(data, password));
+      }
+
+      const blob = new Blob([data], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = shouldEncrypt ? "terra_encrypted.terra.json" : "terra_archive.json";
+      link.click();
+    }
+
+    function importArchive(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        let content = e.target.result;
+        const password = document.getElementById("password").value;
+        try {
+          if (content.startsWith("ey")) {
+            // plain JSON
+            entries = JSON.parse(content);
+          } else {
+            // Encrypted
+            const decrypted = decrypt(atob(content), password);
+            entries = JSON.parse(decrypted);
+          }
+          persist();
+          render();
+          alert("✅ Архив успешно импортирован!");
+        } catch (e) {
+          alert("❌ Ошибка импорта или неверный пароль");
+        }
+      };
+
+      reader.readAsText(file);
+    }
+
+    function encrypt(text, pass) {
+      return Array.from(text).map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ pass.charCodeAt(i % pass.length))).join("");
+    }
+
+    function decrypt(text, pass) {
+      return encrypt(text, pass); // XOR обратим
+    }
+  </script>
+</body>
+</html>
