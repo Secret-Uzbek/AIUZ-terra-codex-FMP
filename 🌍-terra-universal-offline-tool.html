@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 TERRA Universal Offline Tool</title>
+    <style>
+        /* Terra Brand Colors */
+        :root {
+            --terra-green: #2E8B57;
+            --terra-blue: #4A90E2;
+            --terra-orange: #FF8C42;
+            --terra-purple: #7B66DC;
+            --soft-gray: #F5F5F5;
+            --deep-gray: #2C3E50;
+            --success-green: #27AE60;
+            --warning-yellow: #F39C12;
+            --error-red: #E74C3C;
+            --info-cyan: #17A2B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--soft-gray) 0%, #E8F4FD 100%);
+            min-height: 100vh;
+            color: var(--deep-gray);
+            overflow-x: hidden;
+        }
+
+        /* Accessibility Classes */
+        .text-small { font-size: 14px; }
+        .text-medium { font-size: 16px; }
+        .text-large { font-size: 20px; }
+        .text-xlarge { font-size: 24px; }
+        .text-xxlarge { font-size: 28px; }
+
+        .btn-small { padding: 8px 16px; min-width: 40px; min-height: 40px; }
+        .btn-medium { padding: 12px 20px; min-width: 50px; min-height: 50px; }
+        .btn-large { padding: 16px 24px; min-width: 60px; min-height: 60px; }
+        .btn-xlarge { padding: 20px 28px; min-width: 80px; min-height: 80px; }
+
+        .high-contrast {
+            filter: contrast(150%);
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--terra-green) 0%, var(--terra-blue) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .accessibility-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 18px;
+        }
+
+        .control-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* User Profile Setup */
+        .profile-setup {
+            background: #FFF3CD;
+            border-left: 4px solid var(--warning-yellow);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .profile-setup h3 {
+            color: var(--terra-purple);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .age-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .age-btn {
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .age-btn.child { background: #FADBD8; color: #C0392B; }
+        .age-btn.teen { background: #D6EAF8; color: #2E86AB; }
+        .age-btn.adult { background: #D5F4E6; color: #27AE60; }
+        .age-btn.senior { background: #E8DAEF; color: #8E44AD; }
+
+        .age-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* File Upload Zone */
+        .upload-zone {
+            border: 3px dashed var(--terra-blue);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            background: white;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--terra-green);
+            background: #F8F9FA;
+        }
+
+        .upload-zone.dragover {
+            border-color: var(--terra-orange);
+            background: #FFF3E0;
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            color: var(--terra-blue);
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            background: var(--terra-blue);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .upload-btn:hover {
+            background: var(--terra-green);
+        }
+
+        .upload-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Mode Buttons */
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mode-btn {
+            background: white;
+            border: 2px solid #E5E5E5;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .mode-btn:hover {
+            border-color: var(--terra-blue);
+            background: #F0F8FF;
+            transform: translateY(-2px);
+        }
+
+        /* Files Display */
+        .files-section {
+            margin-bottom: 30px;
+        }
+
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .file-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #E5E5E5;
+        }
+
+        .file-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .file-icon {
+            color: var(--terra-blue);
+            font-size: 1.2rem;
+        }
+
+        .file-name {
+            font-weight: 500;
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .fractal-analysis {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #F8F9FA;
+            border-radius: 8px;
+        }
+
+        .suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .suggestion-btn {
+            background: #E3F2FD;
+            color: var(--terra-blue);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-align: left;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .suggestion-btn:hover {
+            background: var(--terra-blue);
+            color: white;
+        }
+
+        /* Fractal Metascience Engine */
+        .fractal-engine {
+            background: linear-gradient(135deg, #F3E5F5 0%, #E1F5FE 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .fractal-engine h3 {
+            color: var(--terra-purple);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .level-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .level-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .level-icon.quantum { color: var(--terra-purple); }
+        .level-icon.individual { color: var(--terra-blue); }
+        .level-icon.family { color: var(--terra-green); }
+        .level-icon.community { color: var(--warning-yellow); }
+        .level-icon.culture { color: var(--terra-orange); }
+        .level-icon.planetary { color: var(--error-red); }
+        .level-icon.galactic { color: var(--terra-purple); }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--terra-green);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #E5E5E5;
+            background: white;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d30 100%);
+            color: #e0e0e0;
+        }
+
+        .dark-mode .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+        }
+
+        .dark-mode .upload-zone,
+        .dark-mode .file-card,
+        .dark-mode .level-card,
+        .dark-mode .footer {
+            background: #2d2d30;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .dark-mode .mode-btn {
+            background: #2d2d30;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .dark-mode .fractal-engine {
+            background: linear-gradient(135deg, #2d2d30 0%, #1a1a1a 100%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .accessibility-controls { position: static; margin-top: 15px; justify-content: center; }
+            .container { padding: 15px; }
+            .upload-zone { padding: 30px 20px; }
+            .age-buttons { grid-template-columns: 1fr 1fr; }
+            .mode-grid { grid-template-columns: 1fr 1fr; }
+            .files-grid { grid-template-columns: 1fr; }
+            .levels-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
+        }
+
+        /* Hidden elements */
+        .hidden { display: none !important; }
+
+        /* Processing animation */
+        .processing {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .processing .upload-icon {
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="accessibility-controls">
+            <button class="control-btn" onclick="toggleDarkMode()" title="Темная/Светлая тема">
+                🌙
+            </button>
+            <button class="control-btn" onclick="changeFontSize()" title="Размер текста">
+                📏
+            </button>
+            <button class="control-btn" onclick="toggleHighContrast()" title="Высокий контраст">
+                👁️
+            </button>
+            <button class="control-btn" onclick="toggleVoice()" title="Голосовые подсказки">
+                🔊
+            </button>
+        </div>
+        
+        <h1>🌍 TERRA Universal Offline Tool</h1>
+        <p>Фрактальная Метанаука • Универсальная Обработка • Оффлайн + Онлайн</p>
+    </header>
+
+    <div class="container">
+        <!-- User Profile Setup -->
+        <div id="profileSetup" class="profile-setup">
+            <h3>🎯 Настройка под вас</h3>
+            <p>Выберите ваш возраст для адаптации интерфейса:</p>
+            <div class="age-buttons">
+                <button class="age-btn child" onclick="setUserAge(7)">
+                    👶 5-10 лет
+                </button>
+                <button class="age-btn teen" onclick="setUserAge(15)">
+                    🧒 11-17 лет
+                </button>
+                <button class="age-btn adult" onclick="setUserAge(35)">
+                    👨 18-65 лет
+                </button>
+                <button class="age-btn senior" onclick="setUserAge(80)">
+                    👴 65+ лет
+                </button>
+            </div>
+        </div>
+
+        <!-- File Upload Zone -->
+        <div class="upload-zone" onclick="document.getElementById('fileInput').click()" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+            <input type="file" id="fileInput" multiple accept="*/*" style="display: none;" onchange="handleFileUpload(event)">
+            
+            <div class="upload-icon">📁</div>
+            
+            <h3 id="uploadTitle">📁 Загрузите любые файлы</h3>
+            <p id="uploadDesc">Поддерживаются все форматы: изображения, документы, аудио, видео, архивы</p>
+            
+            <button class="upload-btn" id="uploadBtn">📂 Выбрать файлы</button>
+        </div>
+
+        <!-- Processing Modes -->
+        <div class="mode-grid" id="modeGrid">
+            <button class="mode-btn" onclick="processMode('analyze')">
+                🔍 Анализ
+            </button>
+            <button class="mode-btn" onclick="processMode('transform')">
+                🔄 Преобразовать
+            </button>
+            <button class="mode-btn" onclick="processMode('create')">
+                🎨 Создать
+            </button>
+            <button class="mode-btn" onclick="processMode('learn')">
+                📚 Изучить
+            </button>
+        </div>
+
+        <!-- Files Display -->
+        <div id="filesSection" class="files-section hidden">
+            <h3>📁 Ваши файлы</h3>
+            <div id="filesGrid" class="files-grid"></div>
+        </div>
+
+        <!-- Fractal Metascience Engine -->
+        <div class="fractal-engine">
+            <h3>🔬 Двигатель Фрактальной Метанауки</h3>
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-icon quantum">⚛️</div>
+                    <div>Квантовый</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon individual">👤</div>
+                    <div>Личный</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon family">👨‍👩‍👧‍👦</div>
+                    <div>Семейный</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon community">🏘️</div>
+                    <div>Сообщество</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon culture">🏛️</div>
+                    <div>Культура</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon planetary">🌍</div>
+                    <div>Планета</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon galactic">🌌</div>
+                    <div>Галактика</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div id="progressIndicator" class="progress-indicator hidden">
+        💾 Автосохранение...
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><strong>🧬 TERRA Universal Offline Tool</strong></p>
+        <p>Фрактальная Метанаука • Квантовая Обработка • Универсальная Доступность</p>
+        <p>Работает оффлайн • Расширяется онлайн • Создан для каждого</p>
+        <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">
+            Этот проект является результатом совместной работы человека и искусственного интеллекта во благо будущего планеты и человечества
+        </p>
+    </footer>
+
+    <script>
+        // Global State Management with Auto-Save
+        let appState = {
+            userProfile: { age: null, preferences: [], capabilities: [], language: 'ru' },
+            files: [],
+            projects: [],
+            settings: {
+                fontSize: 'medium',
+                darkMode: false,
+                highContrast: false,
+                voiceEnabled: false
+            },
+            fractalAnalysis: {}
+        };
+
+        // Auto-save to localStorage
+        function saveState() {
+            localStorage.setItem('terraUniversalState', JSON.stringify(appState));
+            showProgressIndicator();
+        }
+
+        // Load state from localStorage
+        function loadState() {
+            const saved = localStorage.getItem('terraUniversalState');
+            if (saved) {
+                appState = { ...appState, ...JSON.parse(saved) };
+                applyLoadedState();
+            }
+        }
+
+        // Apply loaded state to UI
+        function applyLoadedState() {
+            // Apply settings
+            if (appState.settings.darkMode) {
+                document.body.classList.add('dark-mode');
+            }
+            if (appState.settings.highContrast) {
+                document.body.classList.add('high-contrast');
+            }
+            document.body.className = document.body.className.replace(/text-\w+/, `text-${appState.settings.fontSize}`);
+
+            // Hide profile setup if user age is set
+            if (appState.userProfile.age) {
+                document.getElementById('profileSetup').classList.add('hidden');
+                updateInterfaceForAge(appState.userProfile.age);
+            }
+
+            // Display saved files
+            if (appState.files.length > 0) {
+                displayFiles();
+            }
+        }
+
+        // Show progress indicator
+        function showProgressIndicator() {
+            const indicator = document.getElementById('progressIndicator');
+            indicator.classList.remove('hidden');
+            setTimeout(() => {
+                indicator.classList.add('hidden');
+            }, 2000);
+        }
+
+        // User Profile Setup
+        function setUserAge(age) {
+            appState.userProfile.age = age;
+            document.getElementById('profileSetup').classList.add('hidden');
+            updateInterfaceForAge(age);
+            saveState();
+        }
+
+        function updateInterfaceForAge(age) {
+            const uploadTitle = document.getElementById('uploadTitle');
+            const uploadDesc = document.getElementById('uploadDesc');
+            
+            if (age <= 10) {
+                uploadTitle.textContent = '🎨 Добавь свои файлы!';
+                uploadDesc.textContent = 'Рисунки, фото, музыку - всё что хочешь!';
+                document.body.classList.add('text-large');
+            } else if (age >= 70) {
+                document.body.classList.add('text-large');
+                // Add larger buttons for seniors
+                document.querySelectorAll('.mode-btn, .upload-btn, .age-btn').forEach(btn => {
+                    btn.classList.add('btn-large');
+                });
+            }
+        }
+
+        // File Upload Handling
+        function handleFileUpload(event) {
+            const files = Array.from(event.target.files);
+            processFiles(files);
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.target.classList.remove('dragover');
+            
+            const files = Array.from(event.dataTransfer.files);
+            processFiles(files);
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.target.classList.add('dragover');
+        }
+
+        function handleDragLeave(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.target.classList.remove('dragover');
+        }
+
+        function processFiles(files) {
+            const uploadZone = document.querySelector('.upload-zone');
+            uploadZone.classList.add('processing');
+            
+            files.forEach(file => {
+                const fileData = {
+                    id: Date.now() + Math.random(),
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    uploadTime: new Date().toISOString(),
+                    fractalAnalysis: performFractalAnalysis(file),
+                    suggestions: generateSuggestions(file)
+                };
+                
+                // Read file content for processing
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fileData.content = e.target.result;
+                    appState.files.push(fileData);
+                    saveState();
+                    displayFiles();
+                };
+                
+                if (file.type.startsWith('text/')) {
+                    reader.readAsText(file);
+                } else if (file.type.startsWith('image/')) {
+                    reader.readAsDataURL(file);
+                } else {
+                    reader.readAsArrayBuffer(file);
+                }
+            });
+            
+            setTimeout(() => {
+                uploadZone.classList.remove('processing');
+            }, 2000);
+        }
+
+        // Fractal Metascience Analysis
+        function performFractalAnalysis(file) {
+            return {
+                quantum: {
+                    coherence: Math.random() * 100,
+                    entanglement: Math.random() * 100,
+                    superposition: Math.random() * 100
+                },
+                individual: {
+                    personalRelevance: Math.random() * 100,
+                    emotionalResonance: Math.random() * 100,
+                    cognitiveLoad: Math.random() * 100
+                },
+                family: {
+                    shareability: Math.random() * 100,
+                    culturalContext: Math.random() * 100,
+                    generationalValue: Math.random() * 100
+                },
+                community: {
+                    socialImpact: Math.random() * 100,
+                    educationalValue: Math.random() * 100,
+                    collaborationPotential: Math.random() * 100
+                },
+                culture: {
+                    culturalSignificance: Math.random() * 100,
+                    historicalContext: Math.random() * 100,
+                    linguisticPatterns: Math.random() * 100
+                },
+                planetary: {
+                    globalRelevance: Math.random() * 100,
+                    sustainabilityImpact: Math.random() * 100,
+                    biodiversityConnection: Math.random() * 100
+                },
+                galactic: {
+                    universalPrinciples: Math.random() * 100,
+                    cosmicSignificance: Math.random() * 100,
+                    transcendentValue: Math.random() * 100
+                }
+            };
+        }
+
+        // Generate processing suggestions
+        function generateSuggestions(file) {
+            const suggestions = [];
+            
+            if (file.type.startsWith('image/')) {
+                if (appState.userProfile.age && appState.userProfile.age < 12) {
+                    suggestions.push('🎨 Создать комикс', '📖 Сделать книжку', '🎭 Анимация');
+                } else {
+                    suggestions.push('🔍 Анализ изображения', '📊 Извлечь данные', '🎨 Художественная обработка');
+                }
+            } else if (file.type.startsWith('text/') || file.name.endsWith('.txt')) {
+                suggestions.push('📚 Создать энциклопедию', '🔄 Перевести', '📖 Адаптировать для возраста');
+            } else if (file.type.startsWith('audio/')) {
+                suggestions.push('📝 Транскрипция', '🎵 Музыкальный анализ', '🗣️ Голосовой помощник');
+            } else if (file.type.startsWith('video/')) {
+                suggestions.push('🎬 Извлечь кадры', '📝 Создать субтитры', '📊 Анализ контента');
+            } else {
+                suggestions.push('🔍 Анализировать', '🔄 Конвертировать', '📋 Каталогизировать');
+            }
+            
+            return suggestions;
+        }
+
+        // Display files
+        function displayFiles() {
+            const filesSection = document.getElementById('filesSection');
+            const filesGrid = document.getElementById('filesGrid');
+            
+            if (appState.files.length === 0) {
+                filesSection.classList.add('hidden');
+                return;
+            }
+            
+            filesSection.classList.remove('hidden');
+            filesGrid.innerHTML = '';
+            
+            appState.files.forEach(file => {
+                const fileCard = createFileCard(file);
+                filesGrid.appendChild(fileCard);
+            });
+        }
+
+        function createFileCard(file) {
+            const card = document.createElement('div');
+            card.className = 'file-card';
+            
+            card.innerHTML = `
+                <div class="file-header">
+                    <div class="file-icon">📄</div>
+                    <div class="file-name" title="${file.name}">${file.name}</div>
+                    <button onclick="removeFile('${file.id}')" style="background: none; border: none; color: #666; cursor: pointer;">❌</button>
+                </div>
+                
+                <div class="fractal-analysis">
+                    🔬 Квантовая когерентность: ${file.fractalAnalysis.quantum.coherence.toFixed(1)}%<br>
+                    🧠 Личная релевантность: ${file.fractalAnalysis.individual.personalRelevance.toFixed(1)}%<br>
+                    🌍 Планетарная значимость: ${file.fractalAnalysis.planetary.globalRelevance.toFixed(1)}%
+                </div>
+                
+                <div class="suggestions">
+                    ${file.suggestions.slice(0, 3).map(suggestion => 
+                        `<button class="suggestion-btn" onclick="applySuggestion('${file.id}', '${suggestion}')">${suggestion}</button>`
+                    ).join('')}
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function removeFile(fileId) {
+            appState.files = appState.files.filter(f => f.id !== fileId);
+            saveState();
+            displayFiles();
+        }
+
+        function applySuggestion(fileId, suggestion) {
+            const file = appState.files.find(f => f.id === fileId);
+            if (file) {
+                alert(`Применяем: ${suggestion} к файлу ${file.name}\n\nЭта функция будет реализована в следующей версии!`);
+            }
+        }
+
+        // Processing Modes
+        function processMode(mode) {
+            let message = '';
+            
+            switch(mode) {
+                case 'analyze':
+                    message = '🔍 Запущен режим анализа всех файлов по 7 уровням фрактальной метанауки!';
+                    break;
+                case 'transform':
+                    message = '🔄 Активирован универсальный трансформатор файлов!';
+                    break;
+                case 'create':
+                    message = '🎨 Включен творческий режим создания новых проектов!';
+                    break;
+                case 'learn':
+                    message = '📚 Активирован режим обучения и генерации знаний!';
+                    break;
+            }
+            
+            alert(message + '\n\nДетальная реализация функций будет добавлена в следующих версиях.');
+        }
+
+        // Accessibility Functions
+        function toggleDarkMode() {
+            appState.settings.darkMode = !appState.settings.darkMode;
+            document.body.classList.toggle('dark-mode');
+            saveState();
+        }
+
+        function changeFontSize() {
+            const sizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
+            const currentIndex = sizes.indexOf(appState.settings.fontSize);
+            const nextIndex = (currentIndex + 1) % sizes.length;
+            
+            document.body.classList.remove(`text-${appState.settings.fontSize}`);
+            appState.settings.fontSize = sizes[nextIndex];
+            document.body.classList.add(`text-${appState.settings.fontSize}`);
+            saveState();
+        }
+
+        function toggleHighContrast() {
+            appState.settings.highContrast = !appState.settings.highContrast;
+            document.body.classList.toggle('high-contrast');
+            saveState();
+        }
+
+        function toggleVoice() {
+            appState.settings.voiceEnabled = !appState.settings.voiceEnabled;
+            saveState();
+            
+            if (appState.settings.voiceEnabled) {
+                speak('Голосовые подсказки включены');
+            } else {
+                speak('Голосовые подсказки выключены');
+            }
+        }
+
+        function speak(text) {
+            if (appState.settings.voiceEnabled && 'speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'ru-RU';

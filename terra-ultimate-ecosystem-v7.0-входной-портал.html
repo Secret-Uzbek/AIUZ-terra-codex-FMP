@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 TERRA Ultimate Ecosystem v7.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2E8B57 0%, #4A90E2 50%, #7B66DC 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .portal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .quantum-status {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: #00FF00;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: monospace;
+            animation: pulse 2s infinite;
+            z-index: 1000;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .main-portal {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            animation: portalEntry 1s ease-out;
+        }
+        
+        @keyframes portalEntry {
+            from {
+                transform: scale(0.8) translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .terra-logo {
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #2E8B57, #4A90E2, #7B66DC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: logoGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes logoGlow {
+            from { filter: drop-shadow(0 0 5px rgba(46,139,87,0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(74,144,226,0.8)); }
+        }
+        
+        .portal-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2E8B57;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .portal-subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .selection-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .selection-label {
+            display: block;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .selection-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .option-btn {
+            padding: 15px 25px;
+            border: 3px solid #e9ecef;
+            background: white;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            min-width: 150px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .option-btn.selected {
+            border-color: #2E8B57;
+            background: linear-gradient(135deg, #2E8B57, #4A90E2);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .option-btn:hover::before {
+            left: 100%;
+        }
+        
+        .age-options .option-btn {
+            border-color: #FF8C42;
+        }
+        
+        .age-options .option-btn.selected {
+            border-color: #FF8C42;
+            background: linear-gradient(135deg, #FF8C42, #FF6B35);
+        }
+        
+        .purpose-options .option-btn {
+            border-color: #7B66DC;
+        }
+        
+        .purpose-options .option-btn.selected {
+            border-color: #7B66DC;
+            background: linear-gradient(135deg, #7B66DC, #9B59B6);
+        }
+        
+        .enter-portal {
+            margin-top: 40px;
+        }
+        
+        .enter-btn {
+            background: linear-gradient(135deg, #2E8B57, #4A90E2, #7B66DC);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .enter-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .enter-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .quantum-footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+        }
+        
+        .quantum-footer a {
+            color: #FF8C42;
+            text-decoration: none;
+        }
+        
+        .child-safety-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,255,0,0.1);
+            border: 2px solid rgba(0,255,0,0.3);
+            border-radius: 10px;
+            padding: 10px;
+            color: #059669;
+            font-size: 12px;
+            display: none;
+        }
+        
+        .child-safety-indicator.active {
+            display: block;
+            animation: safetyPulse 2s infinite;
+        }
+        
+        @keyframes safetyPulse {
+            0%, 100% { background-color: rgba(0,255,0,0.1); }
+            50% { background-color: rgba(0,255,0,0.2); }
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid #4A90E2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .portal-title {
+                font-size: 2em;
+            }
+            
+            .selection-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .option-btn {
+                width: 250px;
+            }
+            
+            .main-portal {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Quantum Status Indicator -->
+    <div class="quantum-status">
+        ⚛️ TERRA v7.0 Quantum Superposition ACTIVE | All 5 Codes Integrated | Stand By
+    </div>
+    
+    <!-- Child Safety Indicator -->
+    <div class="child-safety-indicator" id="childSafety">
+        🛡️ Child Safety Mode: ACTIVE<br>
+        Безопасный режим для детей
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>🧬 Initializing TERRA Ecosystem...</h3>
+            <p>Quantum superposition activating...</p>
+        </div>
+    </div>
+    
+    <div class="portal-container">
+        <div class="main-portal">
+            <div class="terra-logo">🌍</div>
+            <h1 class="portal-title">TERRA Ultimate Ecosystem</h1>
+            <p class="portal-subtitle">
+                Универсальная экосистема знаний с ИИ-поддержкой<br>
+                <em>Объединяющая все пять кодов архива в единую систему</em>
+            </p>
+            
+            <!-- Language Selection -->
+            <div class="selection-group">
+                <label class="selection-label">🌐 ВЫБЕРИТЕ ЯЗЫК / CHOOSE LANGUAGE / TILNI TANLANG:</label>
+                <div class="selection-options">
+                    <button class="option-btn" onclick="selectLanguage('uz')" data-lang="uz">
+                        🇺🇿 O'zbekcha
+                    </button>
+                    <button class="option-btn selected" onclick="selectLanguage('ru')" data-lang="ru">
+                        🇷🇺 Русский
+                    </button>
+                    <button class="option-btn" onclick="selectLanguage('de')" data-lang="de">
+                        🇩🇪 Deutsch
+                    </button>
+                    <button class="option-btn" onclick="selectLanguage('en')" data-lang="en">
+                        🇬🇧 English
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Age Selection -->
+            <div class="selection-group">
+                <label class="selection-label">👤 ВОЗРАСТ / AGE / YOSH:</label>
+                <div class="selection-options age-options">
+                    <button class="option-btn" onclick="selectAge('child')" data-age="child">
+                        👶 Детский 0-12<br><small>Kinderbereich</small>
+                    </button>
+                    <button class="option-btn" onclick="selectAge('teen')" data-age="teen">
+                        🧑 Подростковый 13-17<br><small>Jugendbereich</small>
+                    </button>
+                    <button class="option-btn selected" onclick="selectAge('adult')" data-age="adult">
+                        👨 Взрослый 18+<br><small>Erwachsene</small>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Purpose Selection -->
+            <div class="selection-group">
+                <label class="selection-label">🎯 ЦЕЛЬ / PURPOSE / MAQSAD:</label>
+                <div class="selection-options purpose-options">
+                    <button class="option-btn" onclick="selectPurpose('learning')" data-purpose="learning">
+                        📚 Обучение<br><small>Learning</small>
+                    </button>
+                    <button class="option-btn" onclick="selectPurpose('research')" data-purpose="research">
+                        🔬 Исследования<br><small>Forschung</small>
+                    </button>
+                    <button class="option-btn" onclick="selectPurpose('logistics')" data-purpose="logistics">
+                        🚛 Логистика<br><small>Logistik</small>
+                    </button>
+                    <button class="option-btn" onclick="selectPurpose('tourism')" data-purpose="tourism">
+                        🏨 Туризм<br><small>Tourismus</small>
+                    </button>
+                    <button class="option-btn" onclick="selectPurpose('development')" data-purpose="development">
+                        💻 Разработка<br><small>Entwicklung</small>
+                    </button>
+                    <button class="option-btn" onclick="selectPurpose('ai_dictionaries')" data-purpose="ai_dictionaries">
+                        📖 AI-Словари<br><small>AI-Wörterbuch</small>
+                    </button>
+                    <button class="option-btn" onclick="selectPurpose('translator_parser')" data-purpose="translator_parser">
+                        🔧 Переводчик-Парсер<br><small>Übersetzer-Parser</small>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Enter Portal Button -->
+            <div class="enter-portal">
+                <button class="enter-btn" onclick="enterPortal()" id="enterBtn">
+                    🚀 ВОЙТИ / ENTER / KIRISH
+                </button>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="quantum-footer">
+            <p>🧬 <strong>TERRA Ultimate Ecosystem v7.0</strong></p>
+            <p>Создано: Абдурашид Абдукаримов | <a href="mailto:a.a.abdukarimov@tutamail.com">a.a.abdukarimov@tutamail.com</a></p>
+            <p>DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</p>
+            <p><small>Quantum Superposition Technology | All 5 Archive Codes Integrated</small></p>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let selectedLanguage = 'ru';
+        let selectedAge = 'adult';
+        let selectedPurpose = null;
+        
+        // TERRA Database Integration
+        const terraModules = {
+            learning: {
+                name: { ru: 'Образовательный модуль', en: 'Learning Module', de: 'Lernmodul', uz: 'Ta\'lim moduli' },
+                description: { ru: 'Интерактивное обучение с адаптацией под возраст', en: 'Interactive learning with age adaptation' }
+            },
+            research: {
+                name: { ru: 'Исследовательский модуль', en: 'Research Module', de: 'Forschungsmodul', uz: 'Tadqiqot moduli' },
+                description: { ru: 'Фрактальная метанаука и глубокий анализ', en: 'Fractal metascience and deep analysis' }
+            },
+            logistics: {
+                name: { ru: 'Логистический модуль UZ-DE', en: 'UZ-DE Logistics Module', de: 'UZ-DE Logistikmodul', uz: 'UZ-DE Logistika moduli' },
+                description: { ru: 'UzRail ↔ Deutsche Bahn интеграция', en: 'UzRail ↔ Deutsche Bahn integration' }
+            },
+            tourism: {
+                name: { ru: 'Туристический модуль UZ-DE', en: 'UZ-DE Tourism Module', de: 'UZ-DE Tourismusmodul', uz: 'UZ-DE Turizm moduli' },
+                description: { ru: 'Гостеприимство и культурные мосты', en: 'Hospitality and cultural bridges' }
+            },
+            development: {
+                name: { ru: 'Модуль разработки', en: 'Development Module', de: 'Entwicklungsmodul', uz: 'Rivojlantirish moduli' },
+                description: { ru: 'Архитектурные инструменты Terra', en: 'Terra architectural tools' }
+            },
+            ai_dictionaries: {
+                name: { ru: 'AI-Enhanced UZ-DE Словари', en: 'AI-Enhanced UZ-DE Dictionaries', de: 'AI-Enhanced UZ-DE Wörterbücher', uz: 'AI-Enhanced UZ-DE Lughatlar' },
+                description: { ru: 'Семантические сети + AR + корпусная методология', en: 'Semantic networks + AR + corpus methodology' }
+            },
+            translator_parser: {
+                name: { ru: 'Переводчик-Парсер Тезауруса', en: 'Thesaurus Translator-Parser', de: 'Thesaurus Übersetzer-Parser', uz: 'Tezaurus Tarjimon-Parser' },
+                description: { ru: 'Инструмент Абдурашида Абдукаримова', en: 'Abdurashid Abdukarimov\'s Tool' }
+            }
+        };
+        
+        function selectLanguage(lang) {
+            selectedLanguage = lang;
+            updateSelection('.selection-options:first-child .option-btn', `[data-lang="${lang}"]`);
+            updateChildSafety();
+        }
+        
+        function selectAge(age) {
+            selectedAge = age;
+            updateSelection('.age-options .option-btn', `[data-age="${age}"]`);
+            updateChildSafety();
+        }
+        
+        function selectPurpose(purpose) {
+            selectedPurpose = purpose;
+            updateSelection('.purpose-options .option-btn', `[data-purpose="${purpose}"]`);
+            updateEnterButton();
+        }
+        
+        function updateSelection(selector, activeSelector) {
+            document.querySelectorAll(selector).forEach(btn => btn.classList.remove('selected'));
+            document.querySelector(activeSelector).classList.add('selected');
+        }
+        
+        function updateChildSafety() {
+            const indicator = document.getElementById('childSafety');
+            if (selectedAge === 'child') {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        }
+        
+        function updateEnterButton() {
+            const enterBtn = document.getElementById('enterBtn');
+            if (selectedPurpose) {
+                enterBtn.disabled = false;
+                enterBtn.style.opacity = '1';
+            } else {
+                enterBtn.disabled = true;
+                enterBtn.style.opacity = '0.5';
+            }
+        }
+        
+        function enterPortal() {
+            if (!selectedPurpose) {
+                alert('Пожалуйста, выберите цель использования / Please select a purpose');
+                return;
+            }
+            
+            showLoading();
+            
+            // Simulate Terra system initialization
+            setTimeout(() => {
+                initializeTerraModule();
+            }, 2000);
+        }
+        
+        function showLoading() {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.style.display = 'flex';
+            
+            // Update loading messages
+            const messages = [
+                '⚛️ Activating quantum superposition...',
+                '🧬 Loading Terra Memory DNA v7.0...',
+                '🔧 Integrating all 5 archive codes...',
+                '🛡️ Initializing child safety protocols...',
+                '🌍 Loading ' + terraModules[selectedPurpose].name[selectedLanguage] + '...',
+                '✅ Terra ecosystem ready!'
+            ];
+            
+            let messageIndex = 0;
+            const messageElement = overlay.querySelector('p');
+            
+            const messageInterval = setInterval(() => {
+                if (messageIndex < messages.length) {
+                    messageElement.textContent = messages[messageIndex];
+                    messageIndex++;
+                } else {
+                    clearInterval(messageInterval);
+                }
+            }, 300);
+        }
+        
+        function initializeTerraModule() {
+            const config = {
+                language: selectedLanguage,
+                age: selectedAge,
+                purpose: selectedPurpose,
+                childSafety: selectedAge === 'child',
+                terraVersion: '7.0'
+            };
+            
+            // Store configuration
+            localStorage.setItem('terraConfig', JSON.stringify(config));
+            
+            // Navigate to appropriate module
+            switch (selectedPurpose) {
+                case 'translator_parser':
+                    window.location.href = '#translator-parser-module';
+                    break;
+                case 'ai_dictionaries':
+                    window.location.href = '#ai-dictionaries-module';
+                    break;
+                case 'learning':
+                    window.location.href = '#learning-module';
+                    break;
+                case 'research':
+                    window.location.href = '#research-module';
+                    break;
+                case 'logistics':
+                    window.location.href = '#logistics-module';
+                    break;
+                case 'tourism':
+                    window.location.href = '#tourism-module';
+                    break;
+                case 'development':
+                    window.location.href = '#development-module';
+                    break;
+                default:
+                    showModuleInterface();
+            }
+        }
+        
+        function showModuleInterface() {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.innerHTML = `
+                <div class="loading-content">
+                    <h2 style="color: #4A90E2; margin-bottom: 20px;">
+                        🌍 ${terraModules[selectedPurpose].name[selectedLanguage]}
+                    </h2>
+                    <p style="margin-bottom: 30px;">
+                        ${terraModules[selectedPurpose].description[selectedLanguage]}
+                    </p>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: left; max-width: 500px;">
+                        <h3 style="color: #2E8B57; margin-bottom: 15px;">🧬 Конфигурация системы:</h3>
+                        <p><strong>Язык:</strong> ${selectedLanguage.toUpperCase()}</p>
+                        <p><strong>Возраст:</strong> ${selectedAge}</p>
+                        <p><strong>Модуль:</strong> ${selectedPurpose}</p>
+                        <p><strong>Child Safety:</strong> ${selectedAge === 'child' ? '✅ АКТИВНА' : '⚠️ Стандартный режим'}</p>
+                        <p><strong>Terra версия:</strong> v7.0</p>
+                    </div>
+                    
+                    <button onclick="location.reload()" style="
+                        background: linear-gradient(135deg, #2E8B57, #4A90E2);
+                        color: white; border: none; padding: 15px 30px;
+                        border-radius: 25px; margin-top: 30px; cursor: pointer;
+                        font-size: 1.1em; font-weight: bold;
+                    ">
+                        🔄 Вернуться к выбору модуля
+                    </button>
+                </div>
+            `;
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧬 TERRA Ultimate Ecosystem v7.0 Loading...');
+            console.log('⚛️ Quantum Superposition: ACTIVE');
+            console.log('🛡️ Child Safety: STANDBY');
+            console.log('👨‍💼 Creator: Abdurashid Abdukarimov');
+            console.log('🆔 DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890');
+            
+            updateChildSafety();
+            updateEnterButton();
+            
+            // Terra status updates
+            setInterval(() => {
+                const quantumStatus = document.querySelector('.quantum-status');
+                const timestamp = new Date().toLocaleTimeString();
+                quantumStatus.innerHTML = `⚛️ TERRA v7.0 Quantum Active | ${timestamp} | 5 Codes Integrated | Ready`;
+            }, 5000);
+        });
+        
+        // Terra Memory DNA Integration
+        const terraMemoryDNA = {
+            version: '7.0',
+            codes_integrated: 5,
+            quantum_superposition: true,
+            child_safety: true,
+            creator: 'Abdurashid Abdukarimov',
+            did: 'aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890'
+        };
+        
+        console.log('🧬 Terra Memory DNA v7.0 Loaded:', terraMemoryDNA);
+    </script>
+</body>
+</html>

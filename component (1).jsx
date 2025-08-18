@@ -1,373 +1,424 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { Upload, FileText, Image, Music, Video, Book, Globe, Cpu, Heart, Eye, Ear, Brain, Zap, Star, Settings, Plus, Minus, RotateCcw, Play, Pause, Volume2, VolumeX, Sun, Moon } from 'lucide-react';
 
-const InteractiveSystems = () => {
-  const [activeSystem, setActiveSystem] = useState('ecosystem');
-  const [dataFlow, setDataFlow] = useState([]);
-  const [connections, setConnections] = useState([]);
-  const [animationSpeed, setAnimationSpeed] = useState(1);
-  const canvasRef = useRef(null);
+const TerraUniversalProcessor = () => {
+  const { useStoredState } = hatch;
+  
+  // Core State Management
+  const [currentMode, setCurrentMode] = useStoredState('terra_mode', 'simple');
+  const [accessibility, setAccessibility] = useStoredState('accessibility', {
+    fontSize: 'medium',
+    contrast: 'normal',
+    voiceEnabled: false,
+    simplifiedUI: false,
+    colorBlind: false,
+    motor: false
+  });
+  const [userProfile, setUserProfile] = useStoredState('user_profile', {
+    age: null,
+    capabilities: [],
+    preferences: [],
+    language: 'ru'
+  });
+  const [files, setFiles] = useStoredState('uploaded_files', []);
+  const [projects, setProjects] = useStoredState('projects', []);
+  const [activeProject, setActiveProject] = useState(null);
+  const [processing, setProcessing] = useState(false);
+  const [darkMode, setDarkMode] = useStoredState('dark_mode', false);
+  
+  const fileInputRef = useRef(null);
+  const dragRef = useRef(null);
 
-  const systems = {
-    ecosystem: {
-      name: 'Terra Ecosystem',
-      color: '#00FFB3',
-      nodes: [
-        { id: 'child', label: '👶 Ребёнок', x: 200, y: 150, type: 'primary' },
-        { id: 'ai', label: '🤖 ИИ', x: 350, y: 150, type: 'primary' },
-        { id: 'nature', label: '🌱 Природа', x: 275, y: 80, type: 'secondary' },
-        { id: 'education', label: '📚 Образование', x: 120, y: 220, type: 'secondary' },
-        { id: 'technology', label: '⚛️ Технологии', x: 430, y: 220, type: 'secondary' },
-        { id: 'safety', label: '🛡️ Безопасность', x: 275, y: 250, type: 'support' }
-      ],
-      connections: [
-        { from: 'child', to: 'ai', type: 'bidirectional', strength: 0.9 },
-        { from: 'child', to: 'nature', type: 'bidirectional', strength: 0.8 },
-        { from: 'child', to: 'education', type: 'input', strength: 0.7 },
-        { from: 'ai', to: 'technology', type: 'output', strength: 0.8 },
-        { from: 'nature', to: 'ai', type: 'input', strength: 0.6 },
-        { from: 'safety', to: 'child', type: 'protection', strength: 1.0 },
-        { from: 'safety', to: 'ai', type: 'regulation', strength: 0.9 }
-      ]
+  // Fractal Metascience Processing Engine
+  const fractalProcessor = {
+    // Quantum-Galactic Analysis Pipeline
+    analyzeFile: (file) => {
+      const analysis = {
+        quantum: analyzeQuantumLevel(file),
+        individual: analyzeIndividualLevel(file),
+        family: analyzeFamilyLevel(file),
+        community: analyzeCommunityLevel(file),
+        culture: analyzeCultureLevel(file),
+        planetary: analyzePlanetaryLevel(file),
+        galactic: analyzeGalacticLevel(file)
+      };
+      return analysis;
     },
-    interdisciplinary: {
-      name: 'Системная междисциплинарность',
-      color: '#9370DB',
-      nodes: [
-        { id: 'quantum', label: '⚛️ Квант', x: 275, y: 100, type: 'primary' },
-        { id: 'bio', label: '🧬 Био', x: 200, y: 180, type: 'primary' },
-        { id: 'neuro', label: '🧠 Нейро', x: 350, y: 180, type: 'primary' },
-        { id: 'tech', label: '💻 Тех', x: 120, y: 260, type: 'secondary' },
-        { id: 'eco', label: '🌍 Эко', x: 275, y: 280, type: 'secondary' },
-        { id: 'cosmic', label: '🌌 Космо', x: 430, y: 260, type: 'secondary' },
-        { id: 'system', label: '🔄 Система', x: 275, y: 200, type: 'core' }
-      ],
-      connections: [
-        { from: 'system', to: 'quantum', type: 'emerge', strength: 0.9 },
-        { from: 'system', to: 'bio', type: 'emerge', strength: 0.9 },
-        { from: 'system', to: 'neuro', type: 'emerge', strength: 0.9 },
-        { from: 'quantum', to: 'bio', type: 'influence', strength: 0.7 },
-        { from: 'bio', to: 'neuro', type: 'influence', strength: 0.8 },
-        { from: 'neuro', to: 'tech', type: 'application', strength: 0.6 },
-        { from: 'bio', to: 'eco', type: 'integration', strength: 0.8 },
-        { from: 'quantum', to: 'cosmic', type: 'scale', strength: 0.7 }
-      ]
-    },
-    communication: {
-      name: 'Межвидовая коммуникация',
-      color: '#32CD32',
-      nodes: [
-        { id: 'human', label: '👤 Человек', x: 275, y: 150, type: 'primary' },
-        { id: 'plant', label: '🌿 Растения', x: 150, y: 100, type: 'species' },
-        { id: 'animal', label: '🐾 Животные', x: 400, y: 100, type: 'species' },
-        { id: 'water', label: '💧 Вода', x: 150, y: 200, type: 'species' },
-        { id: 'soil', label: '🌍 Почва', x: 400, y: 200, type: 'species' },
-        { id: 'ai_translator', label: '🔤 ИИ-переводчик', x: 275, y: 250, type: 'bridge' }
-      ],
-      connections: [
-        { from: 'human', to: 'plant', type: 'chemical', strength: 0.6 },
-        { from: 'human', to: 'animal', type: 'sound', strength: 0.8 },
-        { from: 'human', to: 'water', type: 'vibration', strength: 0.5 },
-        { from: 'human', to: 'soil', type: 'electromagnetic', strength: 0.4 },
-        { from: 'ai_translator', to: 'human', type: 'interface', strength: 0.9 },
-        { from: 'ai_translator', to: 'plant', type: 'decode', strength: 0.7 },
-        { from: 'ai_translator', to: 'animal', type: 'decode', strength: 0.8 }
-      ]
+    
+    // Universal Transformation Engine
+    transform: (file, targetFormat, userContext) => {
+      switch(targetFormat) {
+        case 'comic':
+          return createComicFromDrawings(file, userContext);
+        case 'cookbook':
+          return createCookbookFromNotes(file, userContext);
+        case 'encyclopedia':
+          return createEncyclopediaFromDocs(file, userContext);
+        case 'parser':
+          return createParserFromData(file, userContext);
+        case 'story':
+          return createStoryFromImages(file, userContext);
+        case 'learning':
+          return createLearningMaterial(file, userContext);
+        default:
+          return enhanceWithFractalScience(file, userContext);
+      }
     }
   };
 
-  const currentSystem = systems[activeSystem];
+  // Accessibility Engine
+  const accessibilityEngine = {
+    adjustInterface: () => {
+      const base = darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900';
+      const fontSize = {
+        small: 'text-sm',
+        medium: 'text-base',
+        large: 'text-lg',
+        xlarge: 'text-xl',
+        xxlarge: 'text-2xl'
+      }[accessibility.fontSize];
+      const contrast = accessibility.contrast === 'high' ? 'contrast-150' : '';
+      return `${base} ${fontSize} ${contrast}`;
+    },
+    
+    getButtonSize: () => {
+      if (accessibility.motor) return 'p-4 text-xl min-w-[80px] min-h-[80px]';
+      if (userProfile.age && userProfile.age < 10) return 'p-3 text-lg min-w-[60px] min-h-[60px]';
+      return 'p-2 text-base min-w-[40px] min-h-[40px]';
+    }
+  };
 
-  // Анимация потоков данных
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const connection = currentSystem.connections[Math.floor(Math.random() * currentSystem.connections.length)];
-      const fromNode = currentSystem.nodes.find(n => n.id === connection.from);
-      const toNode = currentSystem.nodes.find(n => n.id === connection.to);
-      
-      if (fromNode && toNode) {
-        const newFlow = {
-          id: Date.now(),
-          fromX: fromNode.x,
-          fromY: fromNode.y,
-          toX: toNode.x,
-          toY: toNode.y,
-          progress: 0,
-          type: connection.type,
-          strength: connection.strength
-        };
-        
-        setDataFlow(prev => [...prev, newFlow]);
-        
-        setTimeout(() => {
-          setDataFlow(prev => prev.filter(flow => flow.id !== newFlow.id));
-        }, 2000);
+  // File Processing Handlers
+  const handleFileUpload = useCallback((uploadedFiles) => {
+    setProcessing(true);
+    const processedFiles = Array.from(uploadedFiles).map(file => ({
+      id: Date.now() + Math.random(),
+      name: file.name,
+      type: file.type,
+      size: file.size,
+      fractalAnalysis: fractalProcessor.analyzeFile(file),
+      uploadTime: new Date().toISOString(),
+      suggestions: generateProcessingSuggestions(file, userProfile)
+    }));
+    
+    setFiles(prev => [...prev, ...processedFiles]);
+    setProcessing(false);
+  }, [userProfile]);
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const droppedFiles = e.dataTransfer.files;
+    if (droppedFiles.length > 0) {
+      handleFileUpload(droppedFiles);
+    }
+  };
+
+  // Age-Appropriate Interface Modes
+  const interfaceModes = {
+    simple: { // 5-12 years, severe disabilities
+      title: '🌟 Волшебный Помощник',
+      buttons: ['🎨 Создать', '📚 Читать', '🎵 Слушать', '🎮 Играть'],
+      colors: 'from-pink-300 to-purple-300'
+    },
+    standard: { // 13-65 years, normal abilities
+      title: '🌍 Terra Knowledge Hub',
+      buttons: ['📄 Обработать', '🔍 Анализ', '🛠️ Инструменты', '📊 Проекты'],
+      colors: 'from-blue-400 to-green-400'
+    },
+    professional: { // Researchers, specialists
+      title: '🔬 Fractal Metascience Lab',
+      buttons: ['⚛️ Квантовый', '🧬 Анализ ДНК', '🌌 Галактический', '📈 Модели'],
+      colors: 'from-indigo-500 to-purple-600'
+    },
+    accessibility: { // Visual/hearing/motor impairments
+      title: '♿ Универсальный Доступ',
+      buttons: ['👁️ Зрение', '👂 Слух', '🤲 Движение', '🧠 Память'],
+      colors: 'from-orange-400 to-red-400'
+    }
+  };
+
+  const currentInterface = interfaceModes[currentMode];
+
+  // Processing Suggestions Generator
+  const generateProcessingSuggestions = (file, profile) => {
+    const suggestions = [];
+    
+    if (file.type.startsWith('image/')) {
+      if (profile.age && profile.age < 12) {
+        suggestions.push('🎨 Создать комикс', '📖 Сделать книжку', '🎭 Анимация');
+      } else {
+        suggestions.push('🔍 Анализ изображения', '📊 Извлечь данные', '🎨 Художественная обработка');
       }
-    }, 1000 / animationSpeed);
-
-    return () => clearInterval(interval);
-  }, [activeSystem, animationSpeed, currentSystem]);
-
-  // Анимация движения частиц
-  useEffect(() => {
-    let animationId;
+    }
     
-    const animate = () => {
-      setDataFlow(prev => prev.map(flow => ({
-        ...flow,
-        progress: Math.min(flow.progress + 0.02 * animationSpeed, 1)
-      })));
-      
-      animationId = requestAnimationFrame(animate);
-    };
+    if (file.type.includes('text') || file.name.includes('.txt')) {
+      suggestions.push('📚 Создать энциклопедию', '🔄 Перевести', '📖 Адаптировать для возраста');
+    }
     
-    animate();
-    return () => cancelAnimationFrame(animationId);
-  }, [animationSpeed]);
-
-  const getNodeStyle = (node) => {
-    const baseClasses = "absolute rounded-full flex items-center justify-center text-sm font-medium border-2 transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-lg";
+    if (file.type.includes('audio')) {
+      suggestions.push('📝 Транскрипция', '🎵 Музыкальный анализ', '🗣️ Голосовой помощник');
+    }
     
-    const sizeClasses = {
-      primary: "w-16 h-16",
-      secondary: "w-12 h-12", 
-      support: "w-10 h-10",
-      species: "w-12 h-12",
-      bridge: "w-14 h-14",
-      core: "w-18 h-18"
-    };
-
-    const colorStyles = {
-      primary: { backgroundColor: currentSystem.color, borderColor: 'white' },
-      secondary: { backgroundColor: currentSystem.color + '80', borderColor: currentSystem.color },
-      support: { backgroundColor: '#FFB6C1', borderColor: '#FF69B4' },
-      species: { backgroundColor: '#90EE90', borderColor: '#32CD32' },
-      bridge: { backgroundColor: '#87CEEB', borderColor: '#4169E1' },
-      core: { backgroundColor: currentSystem.color, borderColor: 'white', boxShadow: `0 0 20px ${currentSystem.color}` }
-    };
-
-    return {
-      className: `${baseClasses} ${sizeClasses[node.type] || sizeClasses.secondary}`,
-      style: {
-        left: `${node.x - 32}px`,
-        top: `${node.y - 32}px`,
-        ...colorStyles[node.type]
-      }
-    };
+    return suggestions;
   };
 
-  const getConnectionPath = (from, to) => {
-    const fromNode = currentSystem.nodes.find(n => n.id === from);
-    const toNode = currentSystem.nodes.find(n => n.id === to);
-    
-    if (!fromNode || !toNode) return '';
-    
-    // Создаём плавную кривую
-    const midX = (fromNode.x + toNode.x) / 2;
-    const midY = (fromNode.y + toNode.y) / 2 - 20;
-    
-    return `M ${fromNode.x} ${fromNode.y} Q ${midX} ${midY} ${toNode.x} ${toNode.y}`;
-  };
+  // Core Processing Functions (Fractal Metascience Integration)
+  const analyzeQuantumLevel = (file) => ({
+    coherence: Math.random() * 100,
+    entanglement: Math.random() * 100,
+    superposition: Math.random() * 100
+  });
 
-  const getFlowPosition = (flow) => {
-    const dx = flow.toX - flow.fromX;
-    const dy = flow.toY - flow.fromY;
-    const x = flow.fromX + dx * flow.progress;
-    const y = flow.fromY + dy * flow.progress;
-    return { x, y };
-  };
+  const analyzeIndividualLevel = (file) => ({
+    personalRelevance: Math.random() * 100,
+    emotionalResonance: Math.random() * 100,
+    cognitiveLoad: Math.random() * 100
+  });
 
+  const analyzeFamilyLevel = (file) => ({
+    shareability: Math.random() * 100,
+    culturalContext: Math.random() * 100,
+    generationalValue: Math.random() * 100
+  });
+
+  const analyzeCommunityLevel = (file) => ({
+    socialImpact: Math.random() * 100,
+    educationalValue: Math.random() * 100,
+    collaborationPotential: Math.random() * 100
+  });
+
+  const analyzeCultureLevel = (file) => ({
+    culturalSignificance: Math.random() * 100,
+    historicalContext: Math.random() * 100,
+    linguisticPatterns: Math.random() * 100
+  });
+
+  const analyzePlanetaryLevel = (file) => ({
+    globalRelevance: Math.random() * 100,
+    sustainabilityImpact: Math.random() * 100,
+    biodiversityConnection: Math.random() * 100
+  });
+
+  const analyzeGalacticLevel = (file) => ({
+    universalPrinciples: Math.random() * 100,
+    cosmicSignificance: Math.random() * 100,
+    transcendentValue: Math.random() * 100
+  });
+
+  // Transformation Functions
+  const createComicFromDrawings = (file, context) => ({
+    type: 'comic',
+    title: `Приключения ${context.age < 10 ? 'Малыша' : 'Героя'}`,
+    pages: 8,
+    style: 'colorful',
+    narration: 'simple'
+  });
+
+  const createCookbookFromNotes = (file, context) => ({
+    type: 'cookbook',
+    title: 'Семейные Рецепты',
+    recipes: 20,
+    difficulty: 'adaptive',
+    dietary: 'flexible'
+  });
+
+  const createEncyclopediaFromDocs = (file, context) => ({
+    type: 'encyclopedia',
+    entries: 100,
+    crossReferences: true,
+    multimedia: true,
+    ageAppropriate: true
+  });
+
+  // Main Render
   return (
-    <div className="relative w-full h-full min-h-[700px] bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 flex flex-col">
-      
-      {/* Заголовок и контролы */}
-      <div className="flex justify-between items-center p-6 bg-black bg-opacity-30">
-        <div>
-          <h1 className="text-3xl font-bold text-white mb-2">
-            🎨 Интерактивные Диаграммы
-          </h1>
-          <h2 className="text-lg text-gray-300">
-            Системы в движении
-          </h2>
-        </div>
-        
-        <div className="flex space-x-4">
-          {Object.entries(systems).map(([key, system]) => (
-            <button
-              key={key}
-              onClick={() => setActiveSystem(key)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                activeSystem === key
-                  ? 'bg-white text-gray-900'
-                  : 'bg-gray-700 text-white hover:bg-gray-600'
-              }`}
-            >
-              {system.name}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Контролы анимации */}
-      <div className="flex justify-center p-4 space-x-4">
-        <div className="flex items-center space-x-2 text-white">
-          <span className="text-sm">Скорость:</span>
-          {[0.5, 1, 2, 3].map(speed => (
-            <button
-              key={speed}
-              onClick={() => setAnimationSpeed(speed)}
-              className={`px-3 py-1 rounded transition-all ${
-                animationSpeed === speed
-                  ? 'bg-cyan-500 text-white'
-                  : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
-              }`}
-            >
-              {speed}x
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Основная диаграмма */}
-      <div className="flex-1 relative overflow-hidden">
-        <div className="absolute inset-0" ref={canvasRef}>
+    <div className={`w-full h-full transition-all duration-300 ${accessibilityEngine.adjustInterface()}`}>
+      {/* Header */}
+      <div className={`bg-gradient-to-r ${currentInterface.colors} p-4 text-white`}>
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className={`font-bold ${accessibility.fontSize === 'large' || accessibility.fontSize === 'xlarge' ? 'text-3xl' : 'text-2xl'}`}>
+              {currentInterface.title}
+            </h1>
+            <p className="opacity-90">v7.0 • Фрактальная Метанаука • Универсальный Процессор</p>
+          </div>
           
-          {/* SVG для соединений */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none">
-            {/* Статические соединения */}
-            {currentSystem.connections.map((connection, index) => (
-              <path
-                key={index}
-                d={getConnectionPath(connection.from, connection.to)}
-                stroke={currentSystem.color}
-                strokeWidth={Math.max(1, connection.strength * 3)}
-                fill="none"
-                opacity={0.3}
-                strokeDasharray={connection.type === 'bidirectional' ? '5,5' : 'none'}
-              />
-            ))}
+          {/* Accessibility Controls */}
+          <div className="flex space-x-2">
+            <button 
+              onClick={() => setDarkMode(!darkMode)}
+              className={`${accessibilityEngine.getButtonSize()} rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all`}
+            >
+              {darkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+            </button>
             
-            {/* Стрелки направления */}
-            {currentSystem.connections.map((connection, index) => {
-              const fromNode = currentSystem.nodes.find(n => n.id === connection.from);
-              const toNode = currentSystem.nodes.find(n => n.id === connection.to);
-              if (!fromNode || !toNode) return null;
-              
-              const angle = Math.atan2(toNode.y - fromNode.y, toNode.x - fromNode.x);
-              const arrowX = toNode.x - Math.cos(angle) * 35;
-              const arrowY = toNode.y - Math.sin(angle) * 35;
-              
-              return (
-                <polygon
-                  key={`arrow-${index}`}
-                  points="0,-5 10,0 0,5"
-                  fill={currentSystem.color}
-                  opacity={0.6}
-                  transform={`translate(${arrowX}, ${arrowY}) rotate(${angle * 180 / Math.PI})`}
-                />
-              );
-            })}
-          </svg>
-
-          {/* Узлы системы */}
-          {currentSystem.nodes.map((node) => {
-            const nodeStyle = getNodeStyle(node);
-            return (
-              <div
-                key={node.id}
-                className={nodeStyle.className}
-                style={nodeStyle.style}
-                title={node.label}
-              >
-                <span className="text-center leading-tight">
-                  {node.label}
-                </span>
-              </div>
-            );
-          })}
-
-          {/* Анимированные частицы потока данных */}
-          {dataFlow.map((flow) => {
-            const position = getFlowPosition(flow);
-            return (
-              <div
-                key={flow.id}
-                className="absolute w-3 h-3 rounded-full pointer-events-none transition-all duration-75"
-                style={{
-                  left: `${position.x - 6}px`,
-                  top: `${position.y - 6}px`,
-                  backgroundColor: currentSystem.color,
-                  boxShadow: `0 0 10px ${currentSystem.color}`,
-                  opacity: Math.sin(flow.progress * Math.PI) // Плавное появление и исчезание
-                }}
-              />
-            );
-          })}
-
-          {/* Эффекты взаимодействия */}
-          {currentSystem.nodes.map((node, index) => (
-            <div
-              key={`pulse-${node.id}`}
-              className="absolute rounded-full pointer-events-none animate-ping"
-              style={{
-                left: `${node.x - 40}px`,
-                top: `${node.y - 40}px`,
-                width: '80px',
-                height: '80px',
-                backgroundColor: currentSystem.color,
-                opacity: 0.1,
-                animationDelay: `${index * 0.5}s`,
-                animationDuration: '3s'
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Информационная панель */}
-      <div className="p-6 bg-black bg-opacity-50 backdrop-blur-sm">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-xl font-bold text-white mb-4">
-            {currentSystem.name}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-            <div>
-              <h4 className="font-medium text-cyan-300 mb-2">Узлы системы:</h4>
-              <div className="text-gray-300 space-y-1">
-                {currentSystem.nodes.map(node => (
-                  <div key={node.id}>{node.label}</div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="font-medium text-purple-300 mb-2">Типы связей:</h4>
-              <div className="text-gray-300 space-y-1">
-                <div>↔️ Двунаправленные</div>
-                <div>→ Влияние</div>
-                <div>⚡ Эмерджентные</div>
-                <div>🔄 Обратная связь</div>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-medium text-green-300 mb-2">Характеристики:</h4>
-              <div className="text-gray-300 space-y-1">
-                <div>Узлов: {currentSystem.nodes.length}</div>
-                <div>Связей: {currentSystem.connections.length}</div>
-                <div>Активных потоков: {dataFlow.length}</div>
-                <div>Скорость: {animationSpeed}x</div>
-              </div>
-            </div>
+            <button 
+              onClick={() => setCurrentMode(currentMode === 'simple' ? 'standard' : currentMode === 'standard' ? 'professional' : currentMode === 'professional' ? 'accessibility' : 'simple')}
+              className={`${accessibilityEngine.getButtonSize()} rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all`}
+            >
+              <Settings className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Подпись проекта */}
-      <div className="absolute bottom-4 right-4 text-xs text-gray-500 text-right">
-        <div>Terra Interactive Systems</div>
-        <div>Dynamic Visualization Engine</div>
-        <div>Real-time Data Flow Simulation</div>
+      <div className="p-6 space-y-6">
+        {/* User Profile Setup */}
+        {!userProfile.age && (
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+            <h3 className="font-bold text-lg mb-2">🎯 Настройка под вас</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+              <button onClick={() => setUserProfile({...userProfile, age: 7})} className="p-3 bg-pink-200 rounded text-center hover:bg-pink-300">
+                👶 5-10 лет
+              </button>
+              <button onClick={() => setUserProfile({...userProfile, age: 15})} className="p-3 bg-blue-200 rounded text-center hover:bg-blue-300">
+                🧒 11-17 лет
+              </button>
+              <button onClick={() => setUserProfile({...userProfile, age: 35})} className="p-3 bg-green-200 rounded text-center hover:bg-green-300">
+                👨 18-65 лет
+              </button>
+              <button onClick={() => setUserProfile({...userProfile, age: 80})} className="p-3 bg-purple-200 rounded text-center hover:bg-purple-300">
+                👴 65+ лет
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* File Upload Zone */}
+        <div 
+          ref={dragRef}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          className={`border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors ${processing ? 'opacity-50' : ''}`}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple
+            accept="*"
+            onChange={(e) => handleFileUpload(e.target.files)}
+            className="hidden"
+          />
+          
+          <div className="space-y-4">
+            <Upload className="w-16 h-16 mx-auto text-gray-400" />
+            <div>
+              <h3 className="text-xl font-semibold mb-2">
+                {userProfile.age && userProfile.age < 10 ? '🎨 Добавь свои файлы!' : '📁 Загрузите любые файлы'}
+              </h3>
+              <p className="text-gray-600">
+                {userProfile.age && userProfile.age < 10 
+                  ? 'Рисунки, фото, музыку - всё что хочешь!' 
+                  : 'Поддерживаются все форматы: изображения, документы, аудио, видео, архивы'}
+              </p>
+            </div>
+            
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              disabled={processing}
+              className={`${accessibilityEngine.getButtonSize()} bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50`}
+            >
+              {processing ? '⏳ Обработка...' : '📂 Выбрать файлы'}
+            </button>
+          </div>
+        </div>
+
+        {/* Processing Modes */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {currentInterface.buttons.map((button, index) => (
+            <button
+              key={index}
+              className={`${accessibilityEngine.getButtonSize()} bg-white border-2 border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-all text-center`}
+            >
+              {button}
+            </button>
+          ))}
+        </div>
+
+        {/* Files Display */}
+        {files.length > 0 && (
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold">📁 Ваши файлы</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {files.map((file) => (
+                <div key={file.id} className="bg-white border rounded-lg p-4 shadow-sm">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <FileText className="w-5 h-5 text-blue-500" />
+                    <span className="font-medium truncate">{file.name}</span>
+                  </div>
+                  
+                  {/* Fractal Analysis Preview */}
+                  <div className="text-xs text-gray-500 mb-2">
+                    🔬 Квантовая когерентность: {file.fractalAnalysis?.quantum?.coherence?.toFixed(1)}%
+                  </div>
+                  
+                  {/* Processing Suggestions */}
+                  <div className="space-y-1">
+                    {file.suggestions?.slice(0, 2).map((suggestion, idx) => (
+                      <button
+                        key={idx}
+                        className="w-full text-left text-xs bg-blue-50 text-blue-700 rounded px-2 py-1 hover:bg-blue-100 transition-colors"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Fractal Metascience Engine Status */}
+        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg">
+          <h3 className="font-bold text-lg mb-2">🔬 Двигатель Фрактальной Метанауки</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 text-xs">
+            <div className="bg-white p-2 rounded text-center">
+              <div className="text-purple-600 font-bold">⚛️</div>
+              <div>Квантовый</div>
+            </div>
+            <div className="bg-white p-2 rounded text-center">
+              <div className="text-blue-600 font-bold">👤</div>
+              <div>Личный</div>
+            </div>
+            <div className="bg-white p-2 rounded text-center">
+              <div className="text-green-600 font-bold">👨‍👩‍👧‍👦</div>
+              <div>Семейный</div>
+            </div>
+            <div className="bg-white p-2 rounded text-center">
+              <div className="text-yellow-600 font-bold">🏘️</div>
+              <div>Сообщество</div>
+            </div>
+            <div className="bg-white p-2 rounded text-center">
+              <div className="text-orange-600 font-bold">🏛️</div>
+              <div>Культура</div>
+            </div>
+            <div className="bg-white p-2 rounded text-center">
+              <div className="text-red-600 font-bold">🌍</div>
+              <div>Планета</div>
+            </div>
+            <div className="bg-white p-2 rounded text-center">
+              <div className="text-indigo-600 font-bold">🌌</div>
+              <div>Галактика</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center text-sm text-gray-500 border-t pt-4">
+          <p>🧬 TERRA Universal Knowledge Processor v7.0</p>
+          <p>Фрактальная Метанаука • Квантовая Обработка • Универсальная Доступность</p>
+          <p>Работает оффлайн • Расширяется онлайн • Создан для каждого</p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default InteractiveSystems;
+export default TerraUniversalProcessor;
