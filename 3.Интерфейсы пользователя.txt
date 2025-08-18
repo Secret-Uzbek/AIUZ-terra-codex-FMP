@@ -1,0 +1,17 @@
+class ARInterface:
+    def __init__(self, device):
+        self.device = device
+
+    def display_content(self, content):
+        self.device.render(content)
+
+    def interact_via_gestures(self, gesture):
+        if gesture == "swipe_left":
+            self.navigate_to_previous_page()
+
+class VoiceInterface:
+    def __init__(self, voice_recognition_model):
+        self.model = voice_recognition_model
+
+    def process_voice_command(self, voice_input):
+        return self.model.interpret(voice_input)
