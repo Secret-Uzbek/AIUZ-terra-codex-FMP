@@ -1,0 +1,31 @@
+{
+  "Terra Codex v1.0": {
+    "source": "AIUZ_Terra_Codex_v1.0",
+    "descendants": {
+      "Terra Science v3.0": {
+        "source": "AIUZ_TERRA_Codex_v3.5",
+        "descendants": {
+          "Codex Consolidated v3.5": {
+            "source": "AIUZ_TERRA_Codex_v3.5_Standardized",
+            "descendants": {
+              "TerraMemoryDNA v4.5": {
+                "source": "AIUZ_TERRA_Codex_v3.5",
+                "descendants": {
+                  "TerraMemoryDNA v5.0 Organic": {
+                    "source": "terra-archive-complete-autofixed-v3.0",
+                    "descendants": {
+                      "Interaction Protocol v7.0": {
+                        "source": "AIUZ_Interaction_Protocol_v7.0",
+                        "descendants": {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
