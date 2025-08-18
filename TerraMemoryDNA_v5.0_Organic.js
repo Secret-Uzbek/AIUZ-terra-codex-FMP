@@ -264,33 +264,33 @@ const TerraMemoryDNA_v50_Organic = {
       const priority_order = ["critical", "high", "medium", "low"];
       
       for (const priority of priority_order) {
-        for (const [strand_name, strand] of Object.entries(this.dna_architecture.dna_strands)) {
+        for (const [strand_name, strand] of Object.entries(TerraMemoryDNA_v50_Organic.dna_architecture.dna_strands)) {
           if (strand.priority === priority) {
-            this.optimize_strand(strand);
+            TerraMemoryDNA_v50_Organic.organic_algorithms.optimize_strand(strand);
           }
         }
       }
       
       // Пересчет использования памяти
-      this.dna_architecture.current_usage = Object.values(this.dna_architecture.dna_strands)
+      TerraMemoryDNA_v50_Organic.dna_architecture.current_usage = Object.values(TerraMemoryDNA_v50_Organic.dna_architecture.dna_strands)
         .reduce((total, strand) => total + strand.metadata.total_size, 0);
         
-      this.dna_architecture.fragmentation_level = this.calculate_fragmentation();
+      TerraMemoryDNA_v50_Organic.dna_architecture.fragmentation_level = TerraMemoryDNA_v50_Organic.organic_algorithms.calculate_fragmentation();
     },
     
     // Органическое сжатие
     organic_compression: function(data) {
-      const patterns = this.extract_patterns(data);
-      const structure = this.create_organic_structure(data);
-      const essence = this.extract_essence(data);
-      const connections = this.find_connections(data);
+      const patterns = TerraMemoryDNA_v50_Organic.organic_algorithms.extract_patterns(data);
+      const structure = TerraMemoryDNA_v50_Organic.organic_algorithms.create_organic_structure(data);
+      const essence = TerraMemoryDNA_v50_Organic.organic_algorithms.extract_essence(data);
+      const connections = TerraMemoryDNA_v50_Organic.organic_algorithms.find_connections(data);
       
       return {
         patterns: patterns,
         structure: structure,
         essence: essence,
         connections: connections,
-        compression_ratio: this.dna_architecture.compression_ratio,
+        compression_ratio: TerraMemoryDNA_v50_Organic.dna_architecture.compression_ratio,
         timestamp: new Date().toISOString()
       };
     },
@@ -355,6 +355,127 @@ const TerraMemoryDNA_v50_Organic = {
       );
       
       return Math.min(1.0, variance / (total_sequences * 2));
+    },
+    
+    // Оптимизация ДНК нити
+    optimize_strand: function(strand) {
+      // Сортировка по важности (новые - важнее)
+      strand.sequences.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      
+      // Удаление дубликатов
+      const unique_sequences = [];
+      const seen_checksums = new Set();
+      
+      for (const sequence of strand.sequences) {
+        if (!seen_checksums.has(sequence.checksum)) {
+          unique_sequences.push(sequence);
+          seen_checksums.add(sequence.checksum);
+        }
+      }
+      
+      strand.sequences = unique_sequences;
+      
+      // Пересчет размера
+      strand.metadata.total_size = strand.sequences.reduce((total, seq) => total + seq.size, 0);
+    },
+    
+    // Извлечение паттернов
+    extract_patterns: function(data) {
+      const str = JSON.stringify(data);
+      const patterns = {
+        keywords: [],
+        structure_type: typeof data,
+        size: str.length,
+        complexity: (str.match(/[{}[\]]/g) || []).length
+      };
+      
+      // Поиск ключевых слов
+      const keywords = str.match(/[a-zA-Z_][a-zA-Z0-9_]{3,}/g) || [];
+      patterns.keywords = [...new Set(keywords)].slice(0, 10);
+      
+      return patterns;
+    },
+    
+    // Создание органической структуры
+    create_organic_structure: function(data) {
+      return {
+        type: Array.isArray(data) ? 'array' : typeof data,
+        depth: this.calculate_depth(data),
+        branches: this.count_branches(data),
+        leaves: this.count_leaves(data)
+      };
+    },
+    
+    // Извлечение сущности
+    extract_essence: function(data) {
+      const str = JSON.stringify(data);
+      return {
+        core_data: data,
+        fingerprint: this.calculate_checksum(data),
+        semantic_weight: str.length,
+        priority_indicators: this.find_priority_indicators(str)
+      };
+    },
+    
+    // Поиск связей
+    find_connections: function(data) {
+      const connections = {
+        internal: [],
+        external: [],
+        references: []
+      };
+      
+      const str = JSON.stringify(data);
+      
+      // Поиск ссылок на другие объекты
+      const refs = str.match(/"[a-zA-Z_][a-zA-Z0-9_]*"/g) || [];
+      connections.references = [...new Set(refs)].slice(0, 5);
+      
+      return connections;
+    },
+    
+    // Вспомогательные методы
+    calculate_depth: function(obj, depth = 0) {
+      if (typeof obj !== 'object' || obj === null) return depth;
+      if (depth > 10) return depth; // Защита от бесконечной рекурсии
+      
+      let maxDepth = depth;
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          const currentDepth = this.calculate_depth(obj[key], depth + 1);
+          maxDepth = Math.max(maxDepth, currentDepth);
+        }
+      }
+      return maxDepth;
+    },
+    
+    count_branches: function(obj) {
+      if (typeof obj !== 'object' || obj === null) return 0;
+      return Object.keys(obj).length;
+    },
+    
+    count_leaves: function(obj) {
+      if (typeof obj !== 'object' || obj === null) return 1;
+      let count = 0;
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          count += this.count_leaves(obj[key]);
+        }
+      }
+      return count;
+    },
+    
+    find_priority_indicators: function(str) {
+      const indicators = [];
+      const priorityWords = ['critical', 'important', 'urgent', 'high', 'priority'];
+      
+      for (const word of priorityWords) {
+        if (str.toLowerCase().includes(word)) {
+          indicators.push(word);
+        }
+      }
+      
+      return indicators;
     }
   },
   

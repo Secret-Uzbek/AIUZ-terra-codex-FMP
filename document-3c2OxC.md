@@ -1,5 +1,14 @@
 # AIUZ Ecosystem v2 - Исторический архив
 
+**\[DOCUMENT\_TYPE]:** Module\
+**\[VERSION]:** 2.0.0\
+**\[AUTHOR\_ID]:** AIUZ2025\
+**\[DATE\_CREATED]:** 2025-07-08\
+**\[LANGUAGE\_SCOPE]:** UZ-RU-DE-EN-∅\
+**\[HASH]:** AIUZ-\[autogen\_SHA256]\
+**\[SESSION\_ID]:** AIUZ\_SESSION\_V2\_STD\
+**\[QR\_SIGNATURE]:** AIUZ://auth/\[autogen\_SHA256]@aiuz2025.local
+
 **Дата создания:** 8 июля 2025\
 **Автор:** AIUZ2025\
 **Статус:** АРХИВНАЯ ВЕРСИЯ (не для производственного использования)\

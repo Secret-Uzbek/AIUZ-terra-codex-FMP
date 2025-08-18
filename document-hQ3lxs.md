@@ -1,5 +1,14 @@
 # AIUZ Ecosystem v4.0 - Улучшенная архитектура
 
+**\[DOCUMENT\_TYPE]:** Module\
+**\[VERSION]:** 4.0.0\
+**\[AUTHOR\_ID]:** AIUZ2025\
+**\[DATE\_CREATED]:** 2025-07-16\
+**\[LANGUAGE\_SCOPE]:** UZ-RU-DE-EN-∅\
+**\[HASH]:** AIUZ-\[autogen\_SHA256]\
+**\[SESSION\_ID]:** AIUZ\_SESSION\_V4\_STD\
+**\[QR\_SIGNATURE]:** AIUZ://auth/\[autogen\_SHA256]@aiuz2025.local
+
 **Дата создания:** 16 июля 2025\
 **Автор:** AIUZ2025\
 **Версия:** 4.0 Enhanced\
