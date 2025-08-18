@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Archive Manager</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #222;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            font-weight: normal;
+            margin: 0 0 10px 0;
+            color: #000;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #54595d;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 2px solid #a2a9b1;
+            border-radius: 2px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #36c;
+        }
+        
+        .search-button {
+            background: #36c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        .search-button:hover {
+            background: #2a4b8d;
+        }
+        
+        .upload-button {
+            background: #00af89;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        
+        .upload-button:hover {
+            background: #008c6c;
+        }
+        
+        .buttons {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .language-switch {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .language-switch a {
+            color: #0645ad;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 0.9em;
+        }
+        
+        .language-switch a:hover {
+            text-decoration: underline;
+        }
+        
+        .stats {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #54595d;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .file-info {
+            background: #e8f4f8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        
+        .results {
+            margin-top: 20px;
+            border-top: 1px solid #a2a9b1;
+            padding-top: 20px;
+        }
+        
+        .result-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eaecf0;
+        }
+        
+        .result-title {
+            font-weight: bold;
+            color: #0645ad;
+            cursor: pointer;
+        }
+        
+        .result-title:hover {
+            text-decoration: underline;
+        }
+        
+        .result-snippet {
+            color: #54595d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terra Archive Manager</h1>
+        <div class="subtitle">Семантический архиватор знаний</div>
+        
+        <div class="language-switch">
+            <a href="#" onclick="switchLanguage('uz')">O'zbek</a>
+            <a href="#" onclick="switchLanguage('ru')">Русский</a>
+            <a href="#" onclick="switchLanguage('en')">English</a>
+            <a href="#" onclick="switchLanguage('de')">Deutsch</a>
+        </div>
+        
+        <input type="text" class="search-box" id="searchInput" placeholder="Поиск в архиве знаний..." onkeypress="handleEnter(event)">
+        
+        <div class="buttons">
+            <button class="search-button" onclick="performSearch()">Найти</button>
+            <button class="upload-button" onclick="openUploader()">Загрузить файлы</button>
+        </div>
+        
+        <input type="file" id="fileInput" multiple style="display: none;" onchange="handleFiles(this.files)">
+        
+        <div id="fileInfo" class="file-info hidden"></div>
+        <div id="searchResults" class="results hidden"></div>
+        
+        <div class="stats">
+            <span id="statsText">Архивов: 0 | Обработано файлов: 0 | Система: L0</span>
+        </div>
+    </div>
+
+    <script>
+        // Простая система управления состоянием
+        var terraState = {
+            currentLanguage: 'ru',
+            archives: JSON.parse(localStorage.getItem('terra_archives') || '[]'),
+            totalFiles: 0,
+            systemLevel: 0
+        };
+        
+        var languages = {
+            ru: {
+                title: 'Terra Archive Manager',
+                subtitle: 'Семантический архиватор знаний',
+                searchPlaceholder: 'Поиск в архиве знаний...',
+                searchButton: 'Найти',
+                uploadButton: 'Загрузить файлы',
+                statsTemplate: 'Архивов: {archives} | Обработано файлов: {files} | Система: L{level}'
+            },
+            en: {
+                title: 'Terra Archive Manager',
+                subtitle: 'Semantic Knowledge Archiver',
+                searchPlaceholder: 'Search knowledge archive...',
+                searchButton: 'Search',
+                uploadButton: 'Upload Files',
+                statsTemplate: 'Archives: {archives} | Files processed: {files} | System: L{level}'
+            },
+            uz: {
+                title: 'Terra Archive Manager',
+                subtitle: 'Semantik Bilim Arxivchi',
+                searchPlaceholder: 'Bilim arxivida qidirish...',
+                searchButton: 'Qidirish',
+                uploadButton: 'Fayllarni yuklash',
+                statsTemplate: 'Arxivlar: {archives} | Faylllar: {files} | Tizim: L{level}'
+            },
+            de: {
+                title: 'Terra Archive Manager',
+                subtitle: 'Semantischer Wissensarchivierer',
+                searchPlaceholder: 'Wissensarchiv durchsuchen...',
+                searchButton: 'Suchen',
+                uploadButton: 'Dateien hochladen',
+                statsTemplate: 'Archive: {archives} | Dateien: {files} | System: L{level}'
+            }
+        };
+        
+        function switchLanguage(lang) {
+            terraState.currentLanguage = lang;
+            updateInterface();
+            localStorage.setItem('terra_language', lang);
+        }
+        
+        function updateInterface() {
+            var lang = languages[terraState.currentLanguage];
+            document.querySelector('h1').textContent = lang.title;
+            document.querySelector('.subtitle').textContent = lang.subtitle;
+            document.getElementById('searchInput').placeholder = lang.searchPlaceholder;
+            document.querySelector('.search-button').textContent = lang.searchButton;
+            document.querySelector('.upload-button').textContent = lang.uploadButton;
+            updateStats();
+        }
+        
+        function updateStats() {
+            var lang = languages[terraState.currentLanguage];
+            var stats = lang.statsTemplate
+                .replace('{archives}', terraState.archives.length)
+                .replace('{files}', terraState.totalFiles)
+                .replace('{level}', terraState.systemLevel);
+            document.getElementById('statsText').textContent = stats;
+        }
+        
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+        
+        function performSearch() {
+            var query = document.getElementById('searchInput').value.trim();
+            if (!query) return;
+            
+            var results = searchArchives(query);
+            displaySearchResults(results, query);
+        }
+        
+        function searchArchives(query) {
+            var results = [];
+            var queryLower = query.toLowerCase();
+            
+            for (var i = 0; i < terraState.archives.length; i++) {
+                var archive = terraState.archives[i];
+                var score = 0;
+                var snippets = [];
+                
+                // Поиск в заголовке
+                if (archive.title && archive.title.toLowerCase().indexOf(queryLower) !== -1) {
+                    score += 10;
+                    snippets.push(archive.title);
+                }
+                
+                // Поиск в содержимом
+                if (archive.content && archive.content.toLowerCase().indexOf(queryLower) !== -1) {
+                    score += 5;
+                    var contentSnippet = extractSnippet(archive.content, query);
+                    if (contentSnippet) snippets.push(contentSnippet);
+                }
+                
+                // Поиск в файлах
+                if (archive.files) {
+                    for (var j = 0; j < archive.files.length; j++) {
+                        var file = archive.files[j];
+                        if (file.name.toLowerCase().indexOf(queryLower) !== -1) {
+                            score += 3;
+                            snippets.push('Файл: ' + file.name);
+                        }
+                    }
+                }
+                
+                if (score > 0) {
+                    results.push({
+                        archive: archive,
+                        score: score,
+                        snippets: snippets
+                    });
+                }
+            }
+            
+            return results.sort(function(a, b) { return b.score - a.score; });
+        }
+        
+        function extractSnippet(text, query) {
+            var index = text.toLowerCase().indexOf(query.toLowerCase());
+            if (index === -1) return null;
+            
+            var start = Math.max(0, index - 50);
+            var end = Math.min(text.length, index + query.length + 50);
+            var snippet = text.substring(start, end);
+            
+            if (start > 0) snippet = '...' + snippet;
+            if (end < text.length) snippet = snippet + '...';
+            
+            return snippet;
+        }
+        
+        function displaySearchResults(results, query) {
+            var container = document.getElementById('searchResults');
+            container.innerHTML = '';
+            
+            if (results.length === 0) {
+                container.innerHTML = '<div class="result-item">По запросу "' + query + '" ничего не найдено.</div>';
+            } else {
+                for (var i = 0; i < Math.min(results.length, 10); i++) {
+                    var result = results[i];
+                    var resultElement = document.createElement('div');
+                    resultElement.className = 'result-item';
+                    
+                    var title = result.archive.title || 'Архив #' + result.archive.id;
+                    var snippet = result.snippets.join(' • ');
+                    
+                    resultElement.innerHTML = 
+                        '<div class="result-title" onclick="showArchiveDetails(\'' + result.archive.id + '\')">' + 
+                        title + 
+                        '</div>' +
+                        '<div class="result-snippet">' + snippet + '</div>';
+                    
+                    container.appendChild(resultElement);
+                }
+            }
+            
+            container.classList.remove('hidden');
+        }
+        
+        function openUploader() {
+            document.getElementById('fileInput').click();
+        }
+        
+        function handleFiles(files) {
+            if (!files || files.length === 0) return;
+            
+            var fileInfo = document.getElementById('fileInfo');
+            var fileList = [];
+            
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                fileList.push(file.name + ' (' + formatFileSize(file.size) + ')');
+            }
+            
+            fileInfo.innerHTML = '<strong>Выбранные файлы:</strong><br>' + fileList.join('<br>');
+            fileInfo.classList.remove('hidden');
+            
+            // Обработка файлов
+            processFiles(files);
+        }
+        
+        function processFiles(files) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+                
+                reader.onload = (function(file) {
+                    return function(e) {
+                        var archive = {
+                            id: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                            timestamp: new Date().toISOString(),
+                            title: file.name,
+                            content: e.target.result.substring(0, 10000), // Ограничиваем размер
+                            files: [{
+                                name: file.name,
+                                size: file.size,
+                                type: file.type
+                            }],
+                            keywords: extractKeywords(e.target.result),
+                            processed: true
+                        };
+                        
+                        terraState.archives.push(archive);
+                        terraState.totalFiles++;
+                        
+                        saveToStorage();
+                        updateStats();
+                        
+                        setTimeout(function() {
+                            document.getElementById('fileInfo').innerHTML += '<br><span style="color: green;">✓ ' + file.name + ' обработан</span>';
+                        }, i * 500);
+                    };
+                })(file);
+                
+                if (file.type.startsWith('text/') || file.name.endsWith('.txt') || file.name.endsWith('.md')) {
+                    reader.readAsText(file);
+                } else {
+                    // Для бинарных файлов сохраняем только метаданные
+                    var archive = {
+                        id: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                        timestamp: new Date().toISOString(),
+                        title: file.name,
+                        content: 'Бинарный файл: ' + file.type,
+                        files: [{
+                            name: file.name,
+                            size: file.size,
+                            type: file.type
+                        }],
+                        keywords: [file.name.split('.')[0]],
+                        processed: true
+                    };
+                    
+                    terraState.archives.push(archive);
+                    terraState.totalFiles++;
+                }
+            }
+            
+            saveToStorage();
+            updateStats();
+        }
+        
+        function extractKeywords(text) {
+            if (!text || typeof text !== 'string') return [];
+            
+            var words = text.toLowerCase()
+                .replace(/[^\wа-яё\s]/gi, ' ')
+                .split(/\s+/)
+                .filter(function(word) {
+                    return word.length > 3;
+                });
+            
+            var wordCount = {};
+            for (var i = 0; i < words.length; i++) {
+                wordCount[words[i]] = (wordCount[words[i]] || 0) + 1;
+            }
+            
+            var keywords = Object.keys(wordCount)
+                .sort(function(a, b) { return wordCount[b] - wordCount[a]; })
+                .slice(0, 10);
+            
+            return keywords;
+        }
+        
+        function showArchiveDetails(archiveId) {
+            var archive = terraState.archives.find(function(a) { return a.id === archiveId; });
+            if (!archive) return;
+            
+            var details = 'Заголовок: ' + archive.title + '\n' +
+                         'Дата: ' + new Date(archive.timestamp).toLocaleString() + '\n' +
+                         'Файлов: ' + (archive.files ? archive.files.length : 0) + '\n' +
+                         'Ключевые слова: ' + (archive.keywords ? archive.keywords.join(', ') : 'нет') + '\n\n' +
+                         'Содержимое:\n' + (archive.content || '').substring(0, 500);
+            
+            alert(details);
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 B';
+            var k = 1024;
+            var sizes = ['B', 'KB', 'MB', 'GB'];
+            var i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+        
+        function saveToStorage() {
+            try {
+                localStorage.setItem('terra_archives', JSON.stringify(terraState.archives));
+                localStorage.setItem('terra_total_files', terraState.totalFiles.toString());
+            } catch (e) {
+                console.log('Ошибка сохранения в localStorage:', e);
+            }
+        }
+        
+        function loadFromStorage() {
+            try {
+                var saved = localStorage.getItem('terra_language');
+                if (saved) {
+                    terraState.currentLanguage = saved;
+                }
+                
+                var savedFiles = localStorage.getItem('terra_total_files');
+                if (savedFiles) {
+                    terraState.totalFiles = parseInt(savedFiles) || 0;
+                }
+            } catch (e) {
+                console.log('Ошибка загрузки из localStorage:', e);
+            }
+        }
+        
+        // Инициализация
+        loadFromStorage();
+        updateInterface();
+        
+        console.log('🌍 Terra Archive Manager готов к работе');
+        console.log('📊 Архивов загружено:', terraState.archives.length);
+    </script>
+</body>
+</html>

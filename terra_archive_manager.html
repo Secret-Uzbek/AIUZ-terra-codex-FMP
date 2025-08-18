@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terra Archive Manager 2.0 – Full System</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F5F5F5;
+      color: #2C3E50;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #7B66DC;
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
+    main {
+      max-width: 960px;
+      margin: 24px auto;
+      padding: 16px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .upload-section {
+      margin-top: 24px;
+    }
+    input[type="file"] {
+      display: block;
+      margin: 12px 0;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      margin-top: 12px;
+    }
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 12px;
+      color: #999;
+    }
+    .section-block {
+      margin-bottom: 32px;
+    }
+    .thesaurus, .encyclopedia {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #FAFAFA;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📂 Terra Archive Manager 2.0 – Full System</h1>
+    <p>SemanticCore • Parser • Thesaurus • Encyclopedia • Terra OS</p>
+  </header>
+  <main>
+    <section class="section-block">
+      <h2>📥 Upload Your Files</h2>
+      <div class="upload-section">
+        <input type="file" id="fileInput" multiple />
+        <button onclick="handleFiles()">Load Files</button>
+        <div id="fileList"></div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>🔢 Parse & View</h2>
+      <button onclick="parseFiles()">Parse All</button>
+      <textarea id="output" readonly></textarea>
+    </section>
+
+    <section class="section-block">
+      <h2>📖 Create New Entry</h2>
+      <input type="text" id="entryTitle" placeholder="Dictionary / Article Title" />
+      <textarea id="entryContent" placeholder="Type content here..."></textarea>
+      <button onclick="saveEntry()">Save to Local Archive</button>
+    </section>
+
+    <section class="section-block">
+      <h2>📚 Thesaurus Search</h2>
+      <input type="text" id="thesaurusInput" placeholder="Enter term...">
+      <button onclick="searchThesaurus()">Search</button>
+      <div class="thesaurus" id="thesaurusOutput"></div>
+    </section>
+
+    <section class="section-block">
+      <h2>🌐 Encyclopedia Module</h2>
+      <input type="text" id="encyclopediaInput" placeholder="Topic...">
+      <button onclick="generateEncyclopedia()">Generate</button>
+      <div class="encyclopedia" id="encyclopediaOutput"></div>
+    </section>
+  </main>
+  <footer>
+    Terra Archive Manager 2.0 — Full Edition. Offline/Online, with/without AI. | © 2025 AIUZ / Abdurashid Abdukarimov
+  </footer>
+
+  <script>
+    let files = [];
+
+    function handleFiles() {
+      const input = document.getElementById('fileInput');
+      files = Array.from(input.files);
+      const list = document.getElementById('fileList');
+      list.innerHTML = '';
+      files.forEach(f => {
+        const div = document.createElement('div');
+        div.textContent = `✔ ${f.name}`;
+        list.appendChild(div);
+      });
+    }
+
+    function parseFiles() {
+      const output = document.getElementById('output');
+      output.value = '';
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          output.value += `--- ${file.name} ---\n`;
+          output.value += e.target.result + '\n\n';
+        };
+        reader.readAsText(file);
+      });
+    }
+
+    function saveEntry() {
+      const title = document.getElementById('entryTitle').value.trim();
+      const content = document.getElementById('entryContent').value.trim();
+      if (!title || !content) {
+        alert('Please fill in both fields.');
+        return;
+      }
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.download = title.replace(/\s+/g, '_') + '.tam';
+      a.href = URL.createObjectURL(blob);
+      a.click();
+    }
+
+    function searchThesaurus() {
+      const term = document.getElementById('thesaurusInput').value.trim().toLowerCase();
+      const output = document.getElementById('thesaurusOutput');
+      output.textContent = '';
+      if (!term) {
+        output.textContent = 'Please enter a term.';
+        return;
+      }
+      // Sample hardcoded thesaurus
+      const thesaurus = {
+        'green': ['eco', 'sustainable', 'renewable', 'natural'],
+        'economy': ['finance', 'market', 'system', 'exchange']
+      };
+      output.textContent = thesaurus[term]?.join(', ') || 'No synonyms found.';
+    }
+
+    function generateEncyclopedia() {
+      const topic = document.getElementById('encyclopediaInput').value.trim();
+      const output = document.getElementById('encyclopediaOutput');
+      output.textContent = '';
+      if (!topic) {
+        output.textContent = 'Please enter a topic.';
+        return;
+      }
+      // Placeholder encyclopedia logic
+      output.innerHTML = `<h4>${topic}</h4><p>This is a generated entry for <strong>${topic}</strong>. SemanticCore and Terra OS principles will enhance this in full deployment.</p>`;
+    }
+  </script>
+</body>
+</html>

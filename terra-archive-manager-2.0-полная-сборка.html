@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Archive Manager 2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .terra-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .terra-card { backdrop-filter: blur(10px); }
+        .pulse-animation { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100">
+
+<div class="container mx-auto px-4 py-8">
+    <!-- Заголовок -->
+    <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">🚀 Terra Archive Manager 2.0</h1>
+        <p class="text-gray-600">Семантический архиватор с фрактальной метанаукой L0-L7</p>
+        <p class="text-sm text-gray-500 mt-2">Автор: Абдукаримов Абдурашид Абдулхамитович</p>
+    </div>
+
+    <!-- Статус системы -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">🔍 Статус системы</h2>
+        <div id="systemStatus" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="text-center p-4 bg-gray-50 rounded">
+                <div class="text-lg font-semibold" id="l0Status">L0 Kernel</div>
+                <div class="text-sm text-red-500" id="l0State">Загрузка...</div>
+            </div>
+            <div class="text-center p-4 bg-gray-50 rounded">
+                <div class="text-lg font-semibold" id="analyzerStatus">Analyzer</div>
+                <div class="text-sm text-red-500" id="analyzerState">Загрузка...</div>
+            </div>
+            <div class="text-center p-4 bg-gray-50 rounded">
+                <div class="text-lg font-semibold" id="ethicalStatus">Ethical Layer</div>
+                <div class="text-sm text-red-500" id="ethicalState">Загрузка...</div>
+            </div>
+            <div class="text-center p-4 bg-gray-50 rounded">
+                <div class="text-lg font-semibold" id="integrationStatus">Integration</div>
+                <div class="text-sm text-red-500" id="integrationState">Загрузка...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной интерфейс -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Панель архивирования -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">📦 Архивирование документов</h2>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Текст для архивирования:</label>
+                <textarea 
+                    id="archiveInput" 
+                    rows="6" 
+                    class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                    placeholder="Введите текст для архивирования и семантического анализа..."
+                ></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">User DID (опционально):</label>
+                <input 
+                    id="userDid" 
+                    type="text" 
+                    class="w-full p-2 border border-gray-300 rounded-md"
+                    value="aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890"
+                    placeholder="Идентификатор пользователя"
+                />
+            </div>
+
+            <div class="flex gap-3">
+                <button 
+                    id="archiveBtn" 
+                    class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
+                >
+                    🚀 Архивировать
+                </button>
+                <button 
+                    id="analyzeBtn" 
+                    class="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200"
+                >
+                    🧠 Только анализ
+                </button>
+            </div>
+
+            <div id="archiveResult" class="mt-4 p-4 bg-gray-50 rounded-md hidden">
+                <h3 class="font-semibold mb-2">Результат обработки:</h3>
+                <pre id="archiveOutput" class="text-sm overflow-auto max-h-40"></pre>
+            </div>
+        </div>
+
+        <!-- Панель поиска -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">🔍 Поиск в архиве</h2>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Поисковый запрос:</label>
+                <input 
+                    id="searchInput" 
+                    type="text" 
+                    class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500"
+                    placeholder="Введите запрос для поиска..."
+                />
+            </div>
+
+            <button 
+                id="searchBtn" 
+                class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200 mb-4"
+            >
+                🔍 Найти
+            </button>
+
+            <div id="searchResult" class="mt-4 p-4 bg-gray-50 rounded-md hidden">
+                <h3 class="font-semibold mb-2">Результаты поиска:</h3>
+                <div id="searchOutput" class="text-sm"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Информационная панель -->
+    <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-2xl font-semibold mb-4">ℹ️ Информация о системе</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="text-center p-4 bg-blue-50 rounded">
+                <div class="text-2xl font-bold text-blue-600" id="totalProcessed">0</div>
+                <div class="text-sm text-gray-600">Обработано документов</div>
+            </div>
+            <div class="text-center p-4 bg-green-50 rounded">
+                <div class="text-2xl font-bold text-green-600" id="conceptsFound">0</div>
+                <div class="text-sm text-gray-600">Найдено концепций</div>
+            </div>
+            <div class="text-center p-4 bg-purple-50 rounded">
+                <div class="text-2xl font-bold text-purple-600" id="currentLevel">L0</div>
+                <div class="text-sm text-gray-600">Текущий уровень</div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button 
+                id="systemInfoBtn" 
+                class="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition duration-200"
+            >
+                📊 Подробная информация
+            </button>
+            <button 
+                id="compatibilityBtn" 
+                class="ml-2 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition duration-200"
+            >
+                🔧 Отчет совместимости
+            </button>
+        </div>
+
+        <div id="detailedInfo" class="mt-4 p-4 bg-gray-50 rounded-md hidden">
+            <pre id="detailedOutput" class="text-sm overflow-auto max-h-60"></pre>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <div class="mt-8 text-center text-gray-500 text-sm">
+        <p>🧬 Terra Archive Manager 2.0 | Фрактальная архитектура L0-L7</p>
+        <p>Совместимость: IE5+ до современных браузеров | Pentium I до современных ПК</p>
+    </div>
+</div>
+
+<script>
+// ===== ИНТЕГРАЦИЯ ВСЕХ КОМПОНЕНТОВ TERRA =====
+
+// L0 SemanticKernel
+function L0SemanticKernel() {
+    this.version = "1.0-L0";
+    this.author = "Абдукаримов Абдурашид Абдулхамитович";
+    this.did = "aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890";
+    
+    this.ontology = {
+        "архив": ["сохранение", "хранение", "файл"],
+        "семантика": ["смысл", "значение", "контекст"],
+        "анализ": ["исследование", "изучение", "разбор"],
+        "документ": ["текст", "файл", "запись"],
+        "знание": ["информация", "данные", "факт"]
+    };
+    
+    this.stopWords = [
+        "а", "в", "и", "к", "на", "не", "о", "с", "то", "что",
+        "для", "как", "из", "или", "это", "от", "за", "по", "до"
+    ];
+    
+    this.ethicalFilters = [
+        "насилие", "наркотики", "дискриминация", "ненависть"
+    ];
+    
+    this.localKnowledge = {};
+    this.verifiedUsers = [
+        "aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890"
+    ];
+}
+
+L0SemanticKernel.prototype.processRequest = function(userInput, userDid) {
+    if (!this.verifyUser(userDid)) {
+        return "Ошибка: Пользователь не верифицирован";
+    }
+    
+    var intent = this.simpleIntentAnalysis(userInput);
+    var keywords = this.extractKeywords(userInput);
+    
+    if (!this.simpleEthicalCheck(userInput)) {
+        return "Запрос отклонен по этическим соображениям";
+    }
+    
+    var response = this.localKnowledgeSearch(keywords, intent);
+    this.logSession(userDid, userInput, response);
+    
+    return response;
+};
+
+L0SemanticKernel.prototype.verifyUser = function(userDid) {
+    for (var i = 0; i < this.verifiedUsers.length; i++) {
+        if (this.verifiedUsers[i] === userDid) return true;
+    }
+    return false;
+};
+
+L0SemanticKernel.prototype.simpleIntentAnalysis = function(text) {
+    text = text.toLowerCase();
+    
+    if (text.indexOf("архив") !== -1 || text.indexOf("сохран") !== -1) return "archive";
+    if (text.indexOf("найди") !== -1 || text.indexOf("поиск") !== -1) return "search";
+    if (text.indexOf("анализ") !== -1 || text.indexOf("изучи") !== -1) return "analyze";
+    if (text.indexOf("помощь") !== -1 || text.indexOf("объясни") !== -1) return "help";
+    
+    return "general";
+};
+
+L0SemanticKernel.prototype.extractKeywords = function(text) {
+    var words = text.toLowerCase().split(/\s+/);
+    var keywords = [];
+    
+    for (var i = 0; i < words.length; i++) {
+        var word = words[i].replace(/[^\w\u0400-\u04FF]/g, '');
+        
+        if (word.length > 2 && this.stopWords.indexOf(word) === -1) {
+            if (keywords.indexOf(word) === -1) {
+                keywords.push(word);
+            }
+        }
+    }
+    
+    return keywords;
+};
+
+L0SemanticKernel.prototype.simpleEthicalCheck = function(text) {
+    text = text.toLowerCase();
+    
+    for (var i = 0; i < this.ethicalFilters.length; i++) {
+        if (text.indexOf(this.ethicalFilters[i]) !== -1) {
+            return false;
+        }
+    }
+    
+    return true;
+};
+
+L0SemanticKernel.prototype.localKnowledgeSearch = function(keywords, intent) {
+    var relevantInfo = [];
+    
+    for (var i = 0; i < keywords.length; i++) {
+        var keyword = keywords[i];
+        
+        if (this.ontology[keyword]) {
+            relevantInfo.push("Найдена информация по термину '" + keyword + "': " + 
+                            this.ontology[keyword].join(", "));
+        }
+        
+        if (this.localKnowledge[keyword]) {
+            relevantInfo.push(this.localKnowledge[keyword]);
+        }
+    }
+    
+    if (relevantInfo.length === 0) {
+        return this.generateDefaultResponse(intent);
+    }
+    
+    return "На основе анализа найдена следующая информация:\n" + relevantInfo.join("\n");
+};
+
+L0SemanticKernel.prototype.generateDefaultResponse = function(intent) {
+    switch (intent) {
+        case "archive":
+            return "Для архивирования используйте функции Terra Archive Manager";
+        case "search":
+            return "Поиск выполнен. Информация не найдена в локальной базе";
+        case "analyze":
+            return "Анализ завершен. Используйте более конкретные запросы";
+        case "help":
+            return "Доступные команды: архивирование, поиск, анализ документов";
+        default:
+            return "Запрос обработан. Уточните, что именно вас интересует";
+    }
+};
+
+L0SemanticKernel.prototype.logSession = function(userDid, input, output) {
+    if (!window.terraSessionLog) {
+        window.terraSessionLog = [];
+    }
+    
+    window.terraSessionLog.push({
+        timestamp: new Date().toISOString(),
+        author: this.author,
+        did: this.did,
+        userDid: userDid,
+        input: input,
+        output: output
+    });
+    
+    if (window.terraSessionLog.length > 100) {
+        window.terraSessionLog = window.terraSessionLog.slice(-100);
+    }
+};
+
+// Offline Semantic Analyzer (упрощенная версия)
+function OfflineSemanticAnalyzer() {
+    this.version = "1.0-Offline";
+    this.author = "Абдукаримов Абдурашид Абдулхамитович";
+    
+    this.embeddedThesaurus = {
+        "анализ": ["исследование", "изучение", "разбор", "рассмотрение", "обзор"],
+        "документ": ["файл", "текст", "запись", "материал", "бумага"],
+        "архив": ["хранилище", "коллекция", "собрание", "банк", "база"],
+        "знание": ["информация", "данные", "сведения", "факты", "опыт"],
+        "проект": ["задача", "работа", "дело", "программа", "план"]
+    };
+    
+    this.analysisStats = {
+        totalAnalyzed: 0,
+        conceptsExtracted: 0,
+        domainsIdentified: 0,
+        lastAnalysis: null
+    };
+}
+
+OfflineSemanticAnalyzer.prototype.analyzeText = function(text) {
+    this.analysisStats.totalAnalyzed++;
+    this.analysisStats.lastAnalysis = new Date().toISOString();
+    
+    var analysis = {
+        timestamp: new Date().toISOString(),
+        originalText: text,
+        textLength: text.length,
+        concepts: [],
+        keywords: [],
+        intent: null,
+        semanticScore: 0,
+        summary: ""
+    };
+    
+    // Простой анализ
+    analysis.keywords = this.extractSimpleKeywords(text);
+    analysis.concepts = this.findConcepts(text);
+    analysis.semanticScore = Math.min((analysis.keywords.length * 10) + (analysis.concepts.length * 15), 100);
+    analysis.summary = "Анализ завершен. Найдено " + analysis.keywords.length + " ключевых слов и " + analysis.concepts.length + " концепций.";
+    
+    this.analysisStats.conceptsExtracted += analysis.concepts.length;
+    
+    return analysis;
+};
+
+OfflineSemanticAnalyzer.prototype.extractSimpleKeywords = function(text) {
+    var words = text.toLowerCase().split(/\s+/);
+    var keywords = [];
+    var stopWords = ["а", "в", "и", "к", "на", "не", "о", "с", "то", "что", "для", "как", "из", "или", "это"];
+    
+    for (var i = 0; i < words.length; i++) {
+        var word = words[i].replace(/[^\w\u0400-\u04FF]/g, '');
+        if (word.length > 2 && stopWords.indexOf(word) === -1) {
+            if (keywords.indexOf(word) === -1) {
+                keywords.push({word: word, frequency: 1, significance: 1});
+            }
+        }
+    }
+    
+    return keywords.slice(0, 10); // Ограничиваем количество
+};
+
+OfflineSemanticAnalyzer.prototype.findConcepts = function(text) {
+    var concepts = [];
+    var textLower = text.toLowerCase();
+    
+    for (var concept in this.embeddedThesaurus) {
+        if (textLower.indexOf(concept) !== -1) {
+            concepts.push({
+                concept: concept,
+                matches: [concept],
+                relevance: 1
+            });
+        }
+    }
+    
+    return concepts;
+};
+
+OfflineSemanticAnalyzer.prototype.getStats = function() {
+    return this.analysisStats;
+};
+
+// Terra Ethical Layer (упрощенная версия)
+function TerraEthicalLayer() {
+    this.version = "7.0-Terra";
+    this.author = "Абдукаримов Абдурашид Абдулхамитович";
+    
+    this.detoxStats = {
+        totalChecks: 0,
+        blockedContent: 0,
+        warningsIssued: 0,
+        enhancedContent: 0,
+        lastReset: new Date().toISOString()
+    };
+    
+    this.ethicalFilters = [
+        "насилие", "агрессия", "наркотики", "дискриминация", "ненависть"
+    ];
+}
+
+TerraEthicalLayer.prototype.validateContent = function(content, context) {
+    this.detoxStats.totalChecks++;
+    
+    var validation = {
+        timestamp: new Date().toISOString(),
+        originalContent: content,
+        context: context || {},
+        passed: true,
+        violations: [],
+        warnings: [],
+        enhancements: [],
+        processedContent: content,
+        confidence: 1.0
+    };
+    
+    // Простая этическая проверка
+    var contentLower = content.toLowerCase();
+    
+    for (var i = 0; i < this.ethicalFilters.length; i++) {
+        var filter = this.ethicalFilters[i];
+        if (contentLower.indexOf(filter) !== -1) {
+            validation.passed = false;
+            validation.violations.push({
+                type: "ethical_violation",
+                pattern: filter,
+                severity: "high",
+                message: "Обнаружен неэтичный контент: " + filter
+            });
+            this.detoxStats.blockedContent++;
+        }
+    }
+    
+    // Проверка на позитивный контент
+    var positivePatterns = ["знание", "обучение", "помощь", "развитие"];
+    for (var j = 0; j < positivePatterns.length; j++) {
+        if (contentLower.indexOf(positivePatterns[j]) !== -1) {
+            validation.enhancements.push({
+                type: "positive_content",
+                pattern: positivePatterns[j],
+                message: "Обнаружен позитивный контент"
+            });
+            this.detoxStats.enhancedContent++;
+        }
+    }
+    
+    return validation;
+};
+
+TerraEthicalLayer.prototype.getDetoxStats = function() {
+    return this.detoxStats;
+};
+
+// Terra Semantic Integration
+function TerraSemanticIntegration() {
+    this.version = "2.0-Integrated";
+    this.author = "Абдукаримов Абдурашид Абдулхамитович";
+    
+    this.l0Kernel = null;
+    this.offlineAnalyzer = null;
+    this.ethicalLayer = null;
+    this.archiveManager = null;
+    
+    this.currentLevel = 0;
+    this.integrationStats = {
+        totalProcessed: 0,
+        semanticAnalyses: 0,
+        ethicalChecks: 0,
+        archiveOperations: 0,
+        lastActivity: null
+    };
+    
+    this.initialize();
+}
+
+TerraSemanticIntegration.prototype.initialize = function() {
+    console.log("🧬 Инициализация Terra Semantic Integration...");
+    
+    try {
+        this.l0Kernel = new L0SemanticKernel();
+        this.offlineAnalyzer = new OfflineSemanticAnalyzer();
+        this.ethicalLayer = new TerraEthicalLayer();
+        this.archiveManager = this.createSimpleArchiveManager();
+        
+        console.log("✅ Terra Semantic Integration успешно инициализирована (L0)");
+        this.updateUI();
+        
+    } catch (error) {
+        console.error("❌ Ошибка инициализации:", error);
+    }
+};
+
+TerraSemanticIntegration.prototype.createSimpleArchiveManager = function() {
+    return {
+        level: 0,
+        archive: function(data) {
+            if (!window.terraSimpleArchive) {
+                window.terraSimpleArchive = [];
+            }
+            window.terraSimpleArchive.push({
+                timestamp: new Date().toISOString(),
+                data: data,
+                size: JSON.stringify(data).length
+            });
+            
+            if (window.terraSimpleArchive.length > 50) {
+                window.terraSimpleArchive = window.terraSimpleArchive.slice(-50);
+            }
+        },
+        
+        retrieve: function(query) {
+            if (!window.terraSimpleArchive) return [];
+            
+            var results = [];
+            for (var i = 0; i < window.terraSimpleArchive.length; i++) {
+                var item = window.terraSimpleArchive[i];
+                if (JSON.stringify(item.data).toLowerCase().indexOf(query.toLowerCase()) !== -1) {
+                    results.push(item);
+                }
+            }
+            return results;
+        }
+    };
+};
+
+TerraSemanticIntegration.prototype.processArchiveRequest = function(text, files, userDid) {
+    this.integrationStats.totalProcessed++;
+    this.integrationStats.lastActivity = new Date().toISOString();
+    
+    var result = {
+        timestamp: new Date().toISOString(),
+        level: this.currentLevel,
+        userDid: userDid,
+        originalRequest: text,
+        files: files || [],
+        ethicalValidation: null,
+        semanticAnalysis: null,
+        archiveResult: null,
+        success: false,
+        errors: [],
+        warnings: []
+    };
+    
+    try {
+        // 1. Этическая проверка
+        if (this.ethicalLayer) {
+            result.ethicalValidation = this.ethicalLayer.validateContent(text, {
+                archiveMode: true,
+                userDid: userDid
+            });
+            this.integrationStats.ethicalChecks++;
+        }
+        
+        // 2. Семантический анализ
+        if (this.offlineAnalyzer) {
+            result.semanticAnalysis = this.offlineAnalyzer.analyzeText(text);
+            this.integrationStats.semanticAnalyses++;
+        }
+        
+        // 3. Архивирование
+        if (this.archiveManager) {
+            var archiveData = {
+                text: result.ethicalValidation ? result.ethicalValidation.processedContent : text,
+                semantics: result.semanticAnalysis,
+                files: files,
+                metadata: {
+                    author: this.author,
+                    level: this.currentLevel,
+                    timestamp: result.timestamp
+                }
+            };
+            
+            this.archiveManager.archive(archiveData);
+            result.archiveResult = {
+                archived: true,
+                dataSize: JSON.stringify(archiveData).length,
+                method: "level_" + this.currentLevel
+            };
+            this.integrationStats.archiveOperations++;
+        }
+        
+        result.success = true;
+        
+    } catch (error) {
+        result.errors.push("Ошибка обработки: " + error.message);
+        console.error("❌ Ошибка в processArchiveRequest:", error);
+    }
+    
+    this.updateUI();
+    return result;
+};
+
+TerraSemanticIntegration.prototype.searchArchive = function(query, options) {
+    var searchResult = {
+        timestamp: new Date().toISOString(),
+        query: query,
+        level: this.currentLevel,
+        results: [],
+        totalFound: 0,
+        searchMethod: "simple_L0",
+        processingTime: 0
+    };
+    
+    var startTime = new Date().getTime();
+    
+    try {
+        if (this.archiveManager) {
+            searchResult.results = this.archiveManager.retrieve(query);
+        }
+        
+        searchResult.totalFound = searchResult.results.length;
+        
+    } catch (error) {
+        console.error("❌ Ошибка поиска:", error);
+        searchResult.error = error.message;
+    }
+    
+    searchResult.processingTime = new Date().getTime() - startTime;
+    return searchResult;
+};
+
+TerraSemanticIntegration.prototype.getSystemInfo = function() {
+    return {
+        version: this.version,
+        author: this.author,
+        currentLevel: this.currentLevel,
+        componentsLoaded: {
+            l0Kernel: !!this.l0Kernel,
+            offlineAnalyzer: !!this.offlineAnalyzer,
+            ethicalLayer: !!this.ethicalLayer,
+            archiveManager: !!this.archiveManager
+        },
+        statistics: this.integrationStats
+    };
+};
+
+TerraSemanticIntegration.prototype.updateUI = function() {
+    // Обновление статусов компонентов
+    document.getElementById('l0State').textContent = this.l0Kernel ? '✅ Готов' : '❌ Ошибка';
+    document.getElementById('l0State').className = this.l0Kernel ? 'text-sm text-green-500' : 'text-sm text-red-500';
+    
+    document.getElementById('analyzerState').textContent = this.offlineAnalyzer ? '✅ Готов' : '❌ Ошибка';
+    document.getElementById('analyzerState').className = this.offlineAnalyzer ? 'text-sm text-green-500' : 'text-sm text-red-500';
+    
+    document.getElementById('ethicalState').textContent = this.ethicalLayer ? '✅ Готов' : '❌ Ошибка';
+    document.getElementById('ethicalState').className = this.ethicalLayer ? 'text-sm text-green-500' : 'text-sm text-red-500';
+    
+    document.getElementById('integrationState').textContent = '✅ Готов';
+    document.getElementById('integrationState').className = 'text-sm text-green-500';
+    
+    // Обновление статистики
+    document.getElementById('totalProcessed').textContent = this.integrationStats.totalProcessed;
+    document.getElementById('conceptsFound').textContent = this.offlineAnalyzer ? this.offlineAnalyzer.getStats().conceptsExtracted : 0;
+    document.getElementById('currentLevel').textContent = 'L' + this.currentLevel;
+};
+
+// Инициализация системы
+var terraSystem = new TerraSemanticIntegration();
+
+// Обработчики событий
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Архивирование
+    document.getElementById('archiveBtn').addEventListener('click', function() {
+        var text = document.getElementById('archiveInput').value;
+        var userDid = document.getElementById('userDid').value;
+        
+        if (!text.trim()) {
+            alert('Введите текст для архивирования');
+            return;
+        }
+        
+        var result = terraSystem.processArchiveRequest(text, [], userDid);
+        
+        document.getElementById('archiveResult').classList.remove('hidden');
+        document.getElementById('archiveOutput').textContent = JSON.stringify(result, null, 2);
+        
+        // Очистка поля ввода
+        document.getElementById('archiveInput').value = '';
+    });
+    
+    // Только анализ
+    document.getElementById('analyzeBtn').addEventListener('click', function() {
+        var text = document.getElementById('archiveInput').value;
+        
+        if (!text.trim()) {
+            alert('Введите текст для анализа');
+            return;
+        }
+        
+        var analysis = terraSystem.offlineAnalyzer.analyzeText(text);
+        
+        document.getElementById('archiveResult').classList.remove('hidden');
+        document.getElementById('archiveOutput').textContent = JSON.stringify(analysis, null, 2);
+        
+        terraSystem.updateUI();
+    });
+    
+    // Поиск
+    document.getElementById('searchBtn').addEventListener('click', function() {
+        var query = document.getElementById('searchInput').value;
+        
+        if (!query.trim()) {
+            alert('Введите поисковый запрос');
+            return;
+        }
+        
+        var results = terraSystem.searchArchive(query);
+        
+        document.getElementById('searchResult').classList.remove('hidden');
+        document.getElementById('searchOutput').innerHTML = 
+            '<p><strong>Найдено результатов:</strong> ' + results.totalFound + '</p>' +
+            '<p><strong>Время поиска:</strong> ' + results.processingTime + 'мс</p>' +
+            '<pre>' + JSON.stringify(results.results, null, 2) + '</pre>';
+        
+        // Очистка поля поиска
+        document.getElementById('searchInput').value = '';
+    });
+    
+    // Информация о системе
+    document.getElementById('systemInfoBtn').addEventListener('click', function() {
+        var info = terraSystem.getSystemInfo();
+        
+        document.getElementById('detailedInfo').classList.remove('hidden');
+        document.getElementById('detailedOutput').textContent = JSON.stringify(info, null, 2);
+    });
+    
+    // Отчет совместимости
+    document.getElementById('compatibilityBtn').addEventListener('click', function() {
+        var compatibility = {
+            browser: navigator.userAgent,
+            version: terraSystem.version,
+            level: 'L' + terraSystem.currentLevel,
+            features: {
+                localStorage: typeof localStorage !== 'undefined',
+                indexedDB: typeof indexedDB !== 'undefined',
+                webWorkers: typeof Worker !== 'undefined'
+            },
+            performance: {
+                memory: navigator.deviceMemory || 'unknown',
+                connection: navigator.connection ? navigator.connection.effectiveType : 'unknown'
+            }
+        };
+        
+        document.getElementById('detailedInfo').classList.remove('hidden');
+        document.getElementById('detailedOutput').textContent = JSON.stringify(compatibility, null, 2);
+    });
+    
+});
+
+// Глобальный API
+window.TerraAPI = {
+    archive: function(text, files, userDid) {
+        return terraSystem.processArchiveRequest(text, files, userDid);
+    },
+    search: function(query, options) {
+        return terraSystem.searchArchive(query, options);
+    },
+    getSystemInfo: function() {
+        return terraSystem.getSystemInfo();
+    }
+};
+
+console.log("🚀 Terra Archive Manager 2.0 готов к работе!");
+</script>
+
+</body>
+</html>

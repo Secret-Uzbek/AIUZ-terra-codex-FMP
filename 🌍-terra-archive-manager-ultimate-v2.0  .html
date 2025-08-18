@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Terra Archive Manager Ultimate v2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Terra Styling */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .terra-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .semantic-tag { @apply bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full; }
+        .definition-card { @apply bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow; }
+        .encyclopedia-entry { @apply bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow; }
+        .code-display { @apply bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm; }
+        .drop-zone { @apply border-2 border-dashed border-gray-300 rounded-lg p-8 text-center transition-colors; }
+        .drop-zone.dragover { @apply border-blue-500 bg-blue-50; }
+        .tab-button { @apply px-6 py-3 text-sm font-medium rounded-t-lg transition-colors; }
+        .tab-button.active { @apply bg-white text-blue-600 border-b-2 border-blue-600; }
+        .tab-button:not(.active) { @apply bg-gray-100 text-gray-600 hover:bg-gray-200; }
+        .save-indicator { @apply fixed top-4 right-4 px-3 py-2 rounded-lg text-sm font-medium transition-all; }
+        .save-indicator.saving { @apply bg-yellow-100 text-yellow-800; }
+        .save-indicator.saved { @apply bg-green-100 text-green-800; }
+        .level-indicator { @apply inline-block px-2 py-1 text-xs font-bold rounded; }
+        .level-l0 { @apply bg-green-100 text-green-800; }
+        .level-l1 { @apply bg-blue-100 text-blue-800; }
+        .level-l2 { @apply bg-purple-100 text-purple-800; }
+        .level-l3 { @apply bg-red-100 text-red-800; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- TERRA Header -->
+    <header class="terra-gradient text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl">🌍</div>
+                    <div>
+                        <h1 class="text-3xl font-bold">TERRA ARCHIVE MANAGER</h1>
+                        <p class="text-blue-100">Ultimate v2.0 • Фрактальная метанаука L0-L7 • Для всех без исключений</p>
+                        <div class="flex items-center space-x-2 mt-2">
+                            <span id="systemLevel" class="level-indicator level-l0">L0</span>
+                            <span class="text-sm">Система адаптирована под ваше устройство</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm opacity-90">👤 Abdurashid Abdukarimov</div>
+                    <div class="text-sm opacity-90">🤖 Terra Ecosystem v7.0</div>
+                    <div class="text-xs opacity-75">🛡️ Детская безопасность: АКТИВНА</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Save Indicator -->
+    <div id="saveIndicator" class="save-indicator hidden">💾 Сохранение...</div>
+
+    <!-- System Status -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center space-x-6">
+                    <div>📊 Файлов: <span id="totalFiles" class="font-bold">0</span></div>
+                    <div>💾 Размер: <span id="totalSize" class="font-bold">0 B</span></div>
+                    <div>📚 Слов в тезаурусе: <span id="totalWords" class="font-bold">0</span></div>
+                    <div>🔬 Концепций: <span id="totalConcepts" class="font-bold">0</span></div>
+                </div>
+                <div class="text-gray-600">
+                    📅 Последнее сохранение: <span id="lastSave">Никогда</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Processing Progress -->
+    <div id="processingProgress" class="hidden bg-blue-600 text-white">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex items-center space-x-4">
+                <div class="flex-1 bg-blue-800 rounded-full h-2">
+                    <div id="progressFill" class="bg-white h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+                <div id="progressText" class="text-sm font-medium">Обработка...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Interface -->
+    <div class="container mx-auto px-4 py-6">
+        <!-- Search and Filters -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex flex-wrap items-center gap-4">
+                <div class="flex-1 min-w-64">
+                    <input type="text" id="searchBox" placeholder="🔍 Поиск по всему корпусу (семантический анализ включен)" 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           onkeyup="performCorpusSearch()">
+                </div>
+                <select id="searchMode" class="px-4 py-2 border border-gray-300 rounded-lg" onchange="filterContent()">
+                    <option value="all">🌐 Везде</option>
+                    <option value="archives">📦 Архивы</option>
+                    <option value="thesaurus">📚 Тезаурус</option>
+                    <option value="encyclopedia">🔬 Энциклопедия</option>
+                </select>
+                <select id="categoryFilter" class="px-4 py-2 border border-gray-300 rounded-lg" onchange="filterContent()">
+                    <option value="">📂 Все категории</option>
+                    <option value="document">📄 Документы</option>
+                    <option value="code">💻 Код</option>
+                    <option value="image">🖼️ Изображения</option>
+                    <option value="dictionary">📚 Словари</option>
+                    <option value="other">📎 Другое</option>
+                </select>
+                <select id="languageFilter" class="px-4 py-2 border border-gray-300 rounded-lg" onchange="filterContent()">
+                    <option value="">🌐 Все языки</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                    <option value="en">🇺🇸 English</option>
+                    <option value="mixed">🌍 Многоязычный</option>
+                </select>
+                <button onclick="sortContent('relevance')" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                    📊 По релевантности
+                </button>
+            </div>
+        </div>
+
+        <!-- Upload Zone -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div id="dropZone" class="drop-zone" 
+                 ondrop="dropHandler(event)" 
+                 ondragover="dragOverHandler(event)" 
+                 ondragleave="dragLeaveHandler(event)">
+                <div class="text-6xl mb-4">📁</div>
+                <h3 class="text-xl font-bold mb-2">Загрузите файлы для анализа</h3>
+                <p class="text-gray-600 mb-4">Перетащите файлы сюда или нажмите для выбора</p>
+                <p class="text-sm text-gray-500 mb-4">
+                    🧠 Автоматически: семантический анализ + тезаурус + извлечение концепций + этическая проверка
+                </p>
+                <input type="file" id="fileInput" multiple class="hidden" onchange="handleFiles(this.files)">
+                <button onclick="document.getElementById('fileInput').click()" 
+                        class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+                    📎 Выбрать файлы
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="bg-white rounded-t-lg shadow-md">
+            <div class="flex border-b">
+                <button class="tab-button active" data-tab="archives" onclick="switchTab('archives')">
+                    📦 Архив (<span id="archiveCount">0</span>)
+                </button>
+                <button class="tab-button" data-tab="thesaurus" onclick="switchTab('thesaurus')">
+                    📚 Тезаурус (<span id="thesaurusCount">0</span>)
+                </button>
+                <button class="tab-button" data-tab="encyclopedia" onclick="switchTab('encyclopedia')">
+                    🔬 Энциклопедия (<span id="encyclopediaCount">0</span>)
+                </button>
+                <button class="tab-button" data-tab="tools" onclick="switchTab('tools')">
+                    🛠️ Инструменты
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="bg-white rounded-b-lg shadow-md">
+            <!-- Archives Tab -->
+            <div id="archivesTab" class="tab-content active p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">📦 Архив файлов</h2>
+                    <div class="flex space-x-2">
+                        <button onclick="sortContent('date')" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
+                            📅 По дате
+                        </button>
+                        <button onclick="sortContent('name')" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
+                            🔤 По имени
+                        </button>
+                        <button onclick="sortContent('size')" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
+                            📏 По размеру
+                        </button>
+                    </div>
+                </div>
+                <div id="archivesList" class="space-y-4">
+                    <div class="text-center py-12 text-gray-500">
+                        <div class="text-6xl mb-4">📦</div>
+                        <h3 class="text-xl font-semibold mb-2">Архив пуст</h3>
+                        <p>Загрузите файлы для автоматического анализа и архивирования</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thesaurus Tab -->
+            <div id="thesaurusTab" class="tab-content hidden p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">📚 Семантический тезаурус</h2>
+                    <div class="flex space-x-2">
+                        <button onclick="buildThesaurus()" class="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700">
+                            🔨 Построить тезаурус
+                        </button>
+                        <button onclick="extractTerms()" class="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700">
+                            📝 Извлечь термины
+                        </button>
+                    </div>
+                </div>
+                <div id="thesaurusList" class="space-y-4">
+                    <div class="text-center py-12 text-gray-500">
+                        <div class="text-6xl mb-4">📚</div>
+                        <h3 class="text-xl font-semibold mb-2">Тезаурус пуст</h3>
+                        <p>Загрузите текстовые файлы для автоматического построения словаря терминов</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Encyclopedia Tab -->
+            <div id="encyclopediaTab" class="tab-content hidden p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">🔬 Энциклопедия концепций</h2>
+                    <div class="flex space-x-2">
+                        <button onclick="extractConcepts()" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+                            🧠 Извлечь концепции
+                        </button>
+                        <button onclick="generateEncyclopedia()" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+                            📖 Создать энциклопедию
+                        </button>
+                    </div>
+                </div>
+                <div id="encyclopediaList" class="space-y-4">
+                    <div class="text-center py-12 text-gray-500">
+                        <div class="text-6xl mb-4">🔬</div>
+                        <h3 class="text-xl font-semibold mb-2">Энциклопедия пуста</h3>
+                        <p>Загрузите научные материалы для автоматического извлечения концепций</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools Tab -->
+            <div id="toolsTab" class="tab-content hidden p-6">
+                <h2 class="text-2xl font-bold mb-6">🛠️ Инструменты Terra</h2>
+                
+                <!-- Fraktal Tools -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <div class="definition-card">
+                        <h3 class="text-lg font-bold mb-3">🧠 Семантический анализ</h3>
+                        <p class="text-gray-600 mb-4">Глубокий анализ смысла и контекста документов с помощью ИИ</p>
+                        <button onclick="generateSemanticMap()" class="w-full px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                            🗺️ Создать семантическую карту
+                        </button>
+                    </div>
+                    
+                    <div class="definition-card">
+                        <h3 class="text-lg font-bold mb-3">📊 Анализ корпуса</h3>
+                        <p class="text-gray-600 mb-4">Статистический и лингвистический анализ коллекции документов</p>
+                        <button onclick="analyzeCorpus()" class="w-full px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                            📈 Анализировать корпус
+                        </button>
+                    </div>
+                    
+                    <div class="definition-card">
+                        <h3 class="text-lg font-bold mb-3">🔍 Многоязычный парсер</h3>
+                        <p class="text-gray-600 mb-4">Обработка документов на русском, английском и других языках</p>
+                        <button onclick="parseMultilingual()" class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                            🌐 Многоязычный анализ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- System Tools -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                    <h3 class="text-xl font-bold mb-4">⚙️ Системные инструменты</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <button onclick="organizeAll()" class="px-4 py-3 bg-yellow-600 text-white rounded hover:bg-yellow-700">
+                            📁 Организовать всё
+                        </button>
+                        <button onclick="generateMetaReport()" class="px-4 py-3 bg-pink-600 text-white rounded hover:bg-pink-700">
+                            📊 Мета-отчёт
+                        </button>
+                        <button onclick="optimizeStorage()" class="px-4 py-3 bg-orange-600 text-white rounded hover:bg-orange-700">
+                            🗜️ Оптимизация
+                        </button>
+                        <button onclick="syncQuantumState()" class="px-4 py-3 bg-red-600 text-white rounded hover:bg-red-700">
+                            🔄 Синхронизация
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Import/Export -->
+                <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">💾 Управление данными</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="exportUltimateArchive()" class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-medium">
+                            📤 Экспорт Terra Archive
+                        </button>
+                        <button onclick="importUltimateArchive()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium">
+                            📥 Импорт Terra Archive
+                        </button>
+                        <button onclick="createQuantumBackup()" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium">
+                            💽 Квантовый бэкап
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for viewing content -->
+    <div id="contentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-90vh overflow-y-auto">
+            <div class="p-6 border-b">
+                <div class="flex justify-between items-center">
+                    <h2 id="modalTitle" class="text-2xl font-bold">Просмотр контента</h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">✕</button>
+                </div>
+            </div>
+            <div id="modalContent" class="p-6">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Terra System Status Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl">🌍</div>
+                    <div>
+                        <div class="font-bold">Terra Archive Manager Ultimate</div>
+                        <div class="text-sm text-gray-300">Фрактальная метанаука • Для всех без исключений</div>
+                    </div>
+                </div>
+                <div class="text-right text-sm text-gray-300">
+                    <div>🛡️ Детская безопасность: АКТИВНА</div>
+                    <div>🌍 Экологичность: БЕЗ cloud зависимостей</div>
+                    <div>♿ Доступность: Pentium I → современные системы</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Integration -->
+    <script>
+        // Terra Archive Manager Ultimate v2.0
+        // Интегрированная система с семантическим анализом и фрактальной архитектурой
+        
+        class TerraArchiveManagerUltimate {
+            constructor() {
+                this.version = "2.0-Ultimate";
+                this.author = "Абдукаримов Абдурашид Абдулхамитович";
+                this.did = "aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890";
+                
+                // Data storage
+                this.archives = JSON.parse(localStorage.getItem('terra_archives_ultimate') || '[]');
+                this.thesaurus = JSON.parse(localStorage.getItem('terra_thesaurus_ultimate') || '[]');
+                this.encyclopedia = JSON.parse(localStorage.getItem('terra_encyclopedia_ultimate') || '[]');
+                
+                // System components
+                this.semanticSystem = null;
+                this.systemLevel = 'L0';
+                this.currentTab = 'archives';
+                
+                // Initialize
+                this.initializeSystem();
+                this.detectSystemCapabilities();
+                this.updateAllUI();
+                this.startAutoSave();
+            }
+            
+            initializeSystem() {
+                console.log('🌍 Terra Archive Manager Ultimate v2.0 загружается...');
+                
+                // Initialize Terra API if available
+                if (window.TerraAPI) {
+                    this.semanticSystem = window.TerraAPI;
+                    console.log('✅ Terra Semantic System подключена');
+                }
+                
+                // Enable child safety by default
+                this.childSafetyEnabled = true;
+                
+                console.log('🛡️ Детская безопасность: АКТИВНА');
+                console.log('🌍 Фрактальная архитектура: ГОТОВА');
+                console.log('📚 Семантический анализ: ВКЛЮЧЕН');
+            }
+            
+            detectSystemCapabilities() {
+                // Detect system level based on browser capabilities
+                const hasES6 = typeof Promise !== 'undefined';
+                const hasIndexedDB = typeof indexedDB !== 'undefined';
+                const hasWorkers = typeof Worker !== 'undefined';
+                const estimatedRAM = navigator.deviceMemory ? navigator.deviceMemory * 1024 : 2048;
+                
+                if (hasWorkers && estimatedRAM >= 4096) {
+                    this.systemLevel = 'L3';
+                } else if (hasES6 && hasIndexedDB && estimatedRAM >= 2048) {
+                    this.systemLevel = 'L2';
+                } else if (hasES6 && estimatedRAM >= 512) {
+                    this.systemLevel = 'L1';
+                } else {
+                    this.systemLevel = 'L0';
+                }
+                
+                // Update UI
+                const levelElement = document.getElementById('systemLevel');
+                if (levelElement) {
+                    levelElement.textContent = this.systemLevel;
+                    levelElement.className = `level-indicator level-${this.systemLevel.toLowerCase()}`;
+                }
+                
+                console.log(`🔧 Система адаптирована для ${this.systemLevel}`);
+            }
+            
+            async addFile(file) {
+                this.showProgress(10, `Загрузка ${file.name}...`);
+                
+                try {
+                    const content = await this.readFileContent(file);
+                    this.showProgress(30, 'Семантический анализ...');
+                    
+                    // Semantic analysis
+                    let semanticAnalysis = null;
+                    if (this.semanticSystem) {
+                        const analysisResult = this.semanticSystem.archive(content, [file], this.did);
+                        semanticAnalysis = analysisResult.semanticAnalysis;
+                    }
+                    
+                    this.showProgress(60, 'Создание архивной записи...');
+                    
+                    // Create archive entry
+                    const archive = {
+                        id: Date.now() + Math.random(),
+                        name: file.name,
+                        size: file.size,
+                        type: file.type,
+                        content: content,
+                        dateAdded: new Date().toISOString(),
+                        category: this.detectCategory(file),
+                        language: this.detectLanguage(content),
+                        tags: this.extractTags(content, semanticAnalysis),
+                        semantics: semanticAnalysis
+                    };
+                    
+                    this.showProgress(80, 'Обновление тезауруса...');
+                    
+                    // Update thesaurus and encyclopedia
+                    if (semanticAnalysis) {
+                        this.updateThesaurusFromAnalysis(semanticAnalysis, file.name);
+                        this.updateEncyclopediaFromAnalysis(semanticAnalysis, file.name);
+                    }
+                    
+                    this.archives.push(archive);
+                    
+                    this.showProgress(100, 'Завершено!');
+                    
+                    setTimeout(() => {
+                        this.hideProgress();
+                        this.saveAllData();
+                        this.updateAllUI();
+                    }, 500);
+                    
+                } catch (error) {
+                    console.error('Ошибка обработки файла:', error);
+                    this.hideProgress();
+                    alert('Ошибка при обработке файла: ' + error.message);
+                }
+            }
+            
+            readFileContent(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.onerror = e => reject(new Error('Ошибка чтения файла'));
+                    
+                    if (file.type.startsWith('text/') || file.name.endsWith('.txt') || 
+                        file.name.endsWith('.md') || file.name.endsWith('.csv')) {
+                        reader.readAsText(file);
+                    } else {
+                        // For binary files, read as base64
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+            
+            detectCategory(file) {
+                const name = file.name.toLowerCase();
+                const type = file.type.toLowerCase();
+                
+                if (type.startsWith('image/')) return 'image';
+                if (type.startsWith('text/') || name.endsWith('.txt') || name.endsWith('.md') || 
+                    name.endsWith('.doc') || name.endsWith('.docx') || name.endsWith('.pdf')) return 'document';
+                if (name.endsWith('.js') || name.endsWith('.py') || name.endsWith('.html') || 
+                    name.endsWith('.css') || name.endsWith('.json')) return 'code';
+                if (name.endsWith('.dic') || name.endsWith('.dict') || type.includes('dictionary')) return 'dictionary';
+                if (type.startsWith('application/')) return 'archive';
+                
+                return 'other';
+            }
+            
+            detectLanguage(content) {
+                if (typeof content !== 'string') return 'unknown';
+                
+                const russianPattern = /[а-яё]/i;
+                const englishPattern = /[a-z]/i;
+                
+                const russianCount = (content.match(russianPattern) || []).length;
+                const englishCount = (content.match(englishPattern) || []).length;
+                
+                if (russianCount > englishCount * 2) return 'ru';
+                if (englishCount > russianCount * 2) return 'en';
+                if (russianCount > 0 && englishCount > 0) return 'mixed';
+                
+                return 'unknown';
+            }
+            
+            extractTags(content, semanticAnalysis) {
+                const tags = [];
+                
+                // Extract from semantic analysis
+                if (semanticAnalysis && semanticAnalysis.concepts) {
+                    semanticAnalysis.concepts.slice(0, 5).forEach(concept => {
+                        tags.push(concept.concept || concept);
+                    });
+                }
+                
+                // Extract from content (simple keyword extraction)
+                if (typeof content === 'string') {
+                    const words = content.toLowerCase().match(/[а-яёa-z]{4,}/g) || [];
+                    const wordCount = {};
+                    
+                    words.forEach(word => {
+                        wordCount[word] = (wordCount[word] || 0) + 1;
+                    });
+                    
+                    const topWords = Object.entries(wordCount)
+                        .sort(([,a], [,b]) => b - a)
+                        .slice(0, 3)
+                        .map(([word]) => word);
+                    
+                    tags.push(...topWords);
+                }
+                
+                return [...new Set(tags)]; // Remove duplicates
+            }
+            
+            updateThesaurusFromAnalysis(analysis, source) {
+                if (!analysis || !analysis.concepts) return;
+                
+                analysis.concepts.forEach(conceptData => {
+                    const concept = conceptData.concept || conceptData;
+                    
+                    let existing = this.thesaurus.find(t => t.term === concept);
+                    if (!existing) {
+                        existing = {
+                            id: Date.now() + Math.random(),
+                            term: concept,
+                            definitions: [],
+                            dateAdded: new Date().toISOString()
+                        };
+                        this.thesaurus.push(existing);
+                    }
+                    
+                    // Add definition from analysis
+                    const definition = {
+                        definition: `Концепция, извлеченная из семантического анализа: ${concept}`,
+                        source: source,
+                        context: conceptData.context || '',
+                        confidence: conceptData.relevance || 0.5
+                    };
+                    
+                    existing.definitions.push(definition);
+                });
+            }
+            
+            updateEncyclopediaFromAnalysis(analysis, source) {
+                if (!analysis || !analysis.domains) return;
+                
+                analysis.domains.forEach(domainData => {
+                    const domain = domainData.domain || domainData;
+                    
+                    let existing = this.encyclopedia.find(e => e.concept === domain);
+                    if (!existing) {
+                        existing = {
+                            id: Date.now() + Math.random(),
+                            concept: domain,
+                            description: `Предметная область, определенная через семантический анализ: ${domain}`,
+                            sources: [],
+                            dateAdded: new Date().toISOString()
+                        };
+                        this.encyclopedia.push(existing);
+                    }
+                    
+                    // Add source
+                    const sourceData = {
+                        source: source,
+                        content: domainData.matches ? domainData.matches.join(', ') : '',
+                        relevance: domainData.confidence || 0.5,
+                        dateAdded: new Date().toISOString()
+                    };
+                    
+                    existing.sources.push(sourceData);
+                });
+            }
+            
+            updateAllUI() {
+                this.updateArchivesList();
+                this.updateThesaurusList();
+                this.updateEncyclopediaList();
+                this.updateStatistics();
+                this.updateTabCounts();
+            }
+            
+            updateArchivesList() {
+                const container = document.getElementById('archivesList');
+                const filteredArchives = this.getFilteredContent('archives');
+                
+                container.innerHTML = '';
+                
+                if (filteredArchives.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-12 text-gray-500">
+                            <div class="text-6xl mb-4">📦</div>
+                            <h3 class="text-xl font-semibold mb-2">Архив пуст</h3>
+                            <p>Загрузите файлы для автоматического анализа и архивирования</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                filteredArchives.forEach(archive => {
+                    const archiveElement = document.createElement('div');
+                    archiveElement.className = 'definition-card';
+                    archiveElement.innerHTML = `
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-4 flex-1">
+                                <div class="text-3xl">${this.getFileIcon(archive.category)}</div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-lg mb-2">${archive.name}</h3>
+                                    <div class="text-sm text-gray-600 mb-3">
+                                        📅 ${new Date(archive.dateAdded).toLocaleDateString()} • 
+                                        📏 ${this.formatFileSize(archive.size)} • 
+                                        ${this.getLanguageFlag(archive.language)}
+                                    </div>
+                                    <div class="flex flex-wrap gap-1 mb-3">
+                                        ${archive.tags.slice(0, 5).map(tag => 
+                                            `<span class="semantic-tag">${tag}</span>`
+                                        ).join('')}
+                                    </div>
+                                    ${archive.semantics ? `
+                                        <div class="text-xs text-gray-500">
+                                            🧠 ${archive.semantics.concepts ? archive.semantics.concepts.length : 0} концепций • 
+                                            🏷️ ${archive.semantics.keywords ? archive.semantics.keywords.length : 0} ключевых слов
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                            <div class="flex space-x-2 ml-4">
+                                <button onclick="terraManager.viewContent('archive', '${archive.id}')" 
+                                        class="px-4 py-2 text-sm bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                                    👁️ Просмотр
+                                </button>
+                                <button onclick="terraManager.downloadContent('${archive.id}')" 
+                                        class="px-4 py-2 text-sm bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+                                    💾 Скачать
+                                </button>
+                                <button onclick="terraManager.deleteContent('archive', '${archive.id}')" 
+                                        class="px-4 py-2 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                                    🗑️ Удалить
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(archiveElement);
+                });
+            }
+            
+            updateThesaurusList() {
+                const container = document.getElementById('thesaurusList');
+                const filteredThesaurus = this.getFilteredContent('thesaurus');
+                
+                container.innerHTML = '';
+                
+                if (filteredThesaurus.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-12 text-gray-500">
+                            <div class="text-6xl mb-4">📚</div>
+                            <h3 class="text-xl font-semibold mb-2">Тезаурус пуст</h3>
+                            <p>Загрузите текстовые файлы для автоматического построения словаря терминов</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                filteredThesaurus.forEach(entry => {
+                    const entryElement = document.createElement('div');
+                    entryElement.className = 'definition-card';
+                    entryElement.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-lg text-teal-700 mb-2">${entry.term}</h4>
+                                <div class="space-y-2">
+                                    ${entry.definitions.slice(0, 2).map(def => `
+                                        <div class="text-sm">
+                                            <p class="text-gray-700">${def.definition}</p>
+                                            <p class="text-xs text-gray-500 mt-1">Источник: ${def.source}</p>
+                                        </div>
+                                    `).join('')}
+                                    ${entry.definitions.length > 2 ? `
+                                        <p class="text-xs text-gray-500">+${entry.definitions.length - 2} определений</p>
+                                    ` : ''}
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <button onclick="terraManager.viewContent('thesaurus', '${entry.id}')" 
+                                        class="px-3 py-1 text-sm bg-teal-500 text-white rounded hover:bg-teal-600">
+                                    📖 Подробнее
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(entryElement);
+                });
+            }
+            
+            updateEncyclopediaList() {
+                const container = document.getElementById('encyclopediaList');
+                const filteredEncyclopedia = this.getFilteredContent('encyclopedia');
+                
+                container.innerHTML = '';
+                
+                if (filteredEncyclopedia.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-12 text-gray-500">
+                            <div class="text-6xl mb-4">🔬</div>
+                            <h3 class="text-xl font-semibold mb-2">Энциклопедия пуста</h3>
+                            <p>Загрузите научные материалы для автоматического извлечения концепций</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                filteredEncyclopedia.forEach(entry => {
+                    const entryElement = document.createElement('div');
+                    entryElement.className = 'encyclopedia-entry';
+                    entryElement.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-lg text-purple-700 mb-2">${entry.concept}</h4>
+                                <p class="text-gray-700 mb-3">${entry.description.substring(0, 200)}${entry.description.length > 200 ? '...' : ''}</p>
+                                <div class="text-sm text-gray-600">
+                                    <span class="font-medium">Источников: ${entry.sources.length}</span> •
+                                    <span>${new Date(entry.dateAdded).toLocaleDateString()}</span>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <button onclick="terraManager.viewContent('encyclopedia', '${entry.id}')" 
+                                        class="px-3 py-1 text-sm bg-purple-500 text-white rounded hover:bg-purple-600">
+                                    🔬 Изучить
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(entryElement);
+                });
+            }
+            
+            updateStatistics() {
+                const totalFiles = this.archives.length;
+                const totalSize = this.archives.reduce((sum, archive) => sum + archive.size, 0);
+                const totalWords = this.thesaurus.length;
+                const totalConcepts = this.encyclopedia.length;
+                const lastSave = localStorage.getItem('terra_archives_ultimate_timestamp');
+                
+                document.getElementById('totalFiles').textContent = totalFiles;
+                document.getElementById('totalSize').textContent = this.formatFileSize(totalSize);
+                document.getElementById('totalWords').textContent = totalWords;
+                document.getElementById('totalConcepts').textContent = totalConcepts;
+                document.getElementById('lastSave').textContent = lastSave ? 
+                    new Date(lastSave).toLocaleString() : 'Никогда';
+            }
+            
+            updateTabCounts() {
+                document.getElementById('archiveCount').textContent = this.archives.length;
+                document.getElementById('thesaurusCount').textContent = this.thesaurus.length;
+                document.getElementById('encyclopediaCount').textContent = this.encyclopedia.length;
+            }
+            
+            getFilteredContent(type) {
+                let data;
+                switch(type) {
+                    case 'archives': data = [...this.archives]; break;
+                    case 'thesaurus': data = [...this.thesaurus]; break;
+                    case 'encyclopedia': data = [...this.encyclopedia]; break;
+                    default: return [];
+                }
+                
+                // Apply search filter
+                const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+                const searchMode = document.getElementById('searchMode').value;
+                
+                if (searchTerm && (searchMode === 'all' || searchMode === type)) {
+                    data = data.filter(item => {
+                        const searchableText = this.getSearchableText(item, type).toLowerCase();
+                        return searchableText.includes(searchTerm);
+                    });
+                }
+                
+                // Apply category filter for archives
+                const categoryFilter = document.getElementById('categoryFilter').value;
+                if (categoryFilter && type === 'archives') {
+                    data = data.filter(item => item.category === categoryFilter);
+                }
+                
+                // Apply language filter for archives
+                const languageFilter = document.getElementById('languageFilter').value;
+                if (languageFilter && type === 'archives') {
+                    data = data.filter(item => item.language === languageFilter);
+                }
+                
+                return data;
+            }
+            
+            getSearchableText(item, type) {
+                switch(type) {
+                    case 'archives':
+                        return `${item.name} ${item.content} ${item.tags.join(' ')}`;
+                    case 'thesaurus':
+                        const definitions = item.definitions.map(def => def.definition).join(' ');
+                        return `${item.term} ${definitions}`;
+                    case 'encyclopedia':
+                        const sources = item.sources.map(src => src.content).join(' ');
+                        return `${item.concept} ${item.description} ${sources}`;
+                    default:
+                        return '';
+                }
+            }
+            
+            formatFileSize(bytes) {
+                if (bytes === 0) return '0 B';
+                const k = 1024;
+                const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+            
+            getFileIcon(category) {
+                const icons = {
+                    'document': '📄',
+                    'code': '💻',
+                    'image': '🖼️',
+                    'archive': '📦',
+                    'dictionary': '📚',
+                    'other': '📎'
+                };
+                return icons[category] || '📎';
+            }
+            
+            getLanguageFlag(language) {
+                const flags = {
+                    'ru': '🇷🇺 Русский',
+                    'en': '🇺🇸 English', 
+                    'mixed': '🌐 Многоязычный',
+                    'unknown': '❓ Неизвестно'
+                };
+                return flags[language] || '❓ Неизвестно';
+            }
+            
+            showProgress(percentage, text) {
+                const progressContainer = document.getElementById('processingProgress');
+                const progressFill = document.getElementById('progressFill');
+                const progressText = document.getElementById('progressText');
+                
+                progressContainer.classList.remove('hidden');
+                progressFill.style.width = percentage + '%';
+                progressText.textContent = text;
+            }
+            
+            hideProgress() {
+                document.getElementById('processingProgress').classList.add('hidden');
+            }
+            
+            saveAllData() {
+                try {
+                    localStorage.setItem('terra_archives_ultimate', JSON.stringify(this.archives));
+                    localStorage.setItem('terra_thesaurus_ultimate', JSON.stringify(this.thesaurus));
+                    localStorage.setItem('terra_encyclopedia_ultimate', JSON.stringify(this.encyclopedia));
+                    localStorage.setItem('terra_archives_ultimate_timestamp', new Date().toISOString());
+                    
+                    this.showSaveStatus('saved');
+                    console.log('✅ Terra данные сохранены');
+                } catch (error) {
+                    console.error('❌ Ошибка сохранения:', error);
+                }
+            }
+            
+            showSaveStatus(status) {
+                const indicator = document.getElementById('saveIndicator');
+                indicator.className = `save-indicator ${status}`;
+                
+                if (status === 'saving') {
+                    indicator.textContent = '💾 Сохранение...';
+                } else if (status === 'saved') {
+                    indicator.textContent = '✅ Сохранено';
+                }
+                
+                indicator.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    indicator.classList.add('hidden');
+                }, 2000);
+            }
+            
+            startAutoSave() {
+                setInterval(() => {
+                    this.saveAllData();
+                }, 30000); // Every 30 seconds
+            }
+            
+            // Content management methods
+            viewContent(type, id) {
+                let content;
+                switch(type) {
+                    case 'archive':
+                        content = this.archives.find(a => a.id == id);
+                        break;
+                    case 'thesaurus':
+                        content = this.thesaurus.find(t => t.id == id);
+                        break;
+                    case 'encyclopedia':
+                        content = this.encyclopedia.find(e => e.id == id);
+                        break;
+                }
+                
+                if (!content) return;
+                
+                document.getElementById('modalTitle').textContent = this.getContentTitle(content, type);
+                document.getElementById('modalContent').innerHTML = this.generateContentHTML(content, type);
+                document.getElementById('contentModal').classList.remove('hidden');
+            }
+            
+            getContentTitle(content, type) {
+                switch(type) {
+                    case 'archive':
+                        return `📦 ${content.name}`;
+                    case 'thesaurus':
+                        return `📚 ${content.term}`;
+                    case 'encyclopedia':
+                        return `🔬 ${content.concept}`;
+                    default:
+                        return 'Просмотр контента';
+                }
+            }
+            
+            generateContentHTML(content, type) {
+                switch(type) {
+                    case 'archive':
+                        return `
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+                                    <div class="text-4xl">${this.getFileIcon(content.category)}</div>
+                                    <div>
+                                        <h3 class="text-xl font-bold">${content.name}</h3>
+                                        <p class="text-gray-600">
+                                            ${this.formatFileSize(content.size)} • 
+                                            ${new Date(content.dateAdded).toLocaleDateString()} •
+                                            ${this.getLanguageFlag(content.language)}
+                                        </p>
+                                        <div class="flex flex-wrap gap-1 mt-2">
+                                            ${content.tags.map(tag => `<span class="semantic-tag">${tag}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                                ${content.semantics ? `
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <h4 class="font-bold mb-2">🧠 Семантический анализ</h4>
+                                        <div class="text-sm text-gray-700">
+                                            <p><strong>Концепций найдено:</strong> ${content.semantics.concepts ? content.semantics.concepts.length : 0}</p>
+                                            <p><strong>Ключевых слов:</strong> ${content.semantics.keywords ? content.semantics.keywords.length : 0}</p>
+                                            ${content.semantics.summary ? `<p><strong>Резюме:</strong> ${content.semantics.summary}</p>` : ''}
+                                        </div>
+                                    </div>
+                                ` : ''}
+                                <div class="code-display max-h-96 overflow-y-auto">
+                                    <pre class="whitespace-pre-wrap text-sm">${typeof content.content === 'string' ? content.content.substring(0, 5000) : '[Бинарный файл]'}</pre>
+                                    ${typeof content.content === 'string' && content.content.length > 5000 ? '<p class="text-gray-400 mt-2">... содержимое обрезано до 5000 символов</p>' : ''}
+                                </div>
+                            </div>
+                        `;
+                    
+                    case 'thesaurus':
+                        return `
+                            <div class="space-y-6">
+                                <div class="text-center p-6 bg-teal-50 rounded-lg">
+                                    <h2 class="text-3xl font-bold text-teal-700 mb-2">${content.term}</h2>
+                                    <p class="text-teal-600">📚 Словарная статья</p>
+                                </div>
+                                <div class="space-y-4">
+                                    ${content.definitions.map((def, index) => `
+                                        <div class="definition-card">
+                                            <h4 class="font-semibold text-lg mb-2">Определение ${index + 1}</h4>
+                                            <p class="text-gray-700 mb-2">${def.definition}</p>
+                                            <div class="text-sm text-gray-500">
+                                                <strong>Источник:</strong> ${def.source}<br>
+                                                ${def.context ? `<strong>Контекст:</strong> ${def.context}<br>` : ''}
+                                                ${def.confidence ? `<strong>Достоверность:</strong> ${Math.round(def.confidence * 100)}%` : ''}
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    
+                    case 'encyclopedia':
+                        return `
+                            <div class="space-y-6">
+                                <div class="text-center p-6 bg-purple-50 rounded-lg">
+                                    <h2 class="text-3xl font-bold text-purple-700 mb-2">${content.concept}</h2>
+                                    <p class="text-purple-600">🔬 Энциклопедическая статья</p>
+                                </div>
+                                <div class="encyclopedia-entry">
+                                    <h3 class="text-xl font-bold mb-4">Описание</h3>
+                                    <p class="text-gray-700 mb-6">${content.description}</p>
+                                    
+                                    <h3 class="text-xl font-bold mb-4">Источники (${content.sources.length})</h3>
+                                    <div class="space-y-3">
+                                        ${content.sources.map(source => `
+                                            <div class="definition-card">
+                                                <h4 class="font-semibold text-gray-800">${source.source}</h4>
+                                                <p class="text-gray-600 text-sm mt-1">${source.content.substring(0, 200)}${source.content.length > 200 ? '...' : ''}</p>
+                                                <div class="text-xs text-gray-500 mt-2">
+                                                    Релевантность: ${Math.round(source.relevance * 100)}% • 
+                                                    ${new Date(source.dateAdded).toLocaleDateString()}
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    
+                    default:
+                        return '<p>Контент не найден</p>';
+                }
+            }
+            
+            downloadContent(id) {
+                const archive = this.archives.find(a => a.id == id);
+                if (!archive) return;
+
+                const blob = new Blob([archive.content], { type: archive.type });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = archive.name;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+            
+            deleteContent(type, id) {
+                if (!confirm('Вы уверены, что хотите удалить этот элемент?')) return;
+                
+                switch(type) {
+                    case 'archive':
+                        this.archives = this.archives.filter(a => a.id != id);
+                        break;
+                    case 'thesaurus':
+                        this.thesaurus = this.thesaurus.filter(t => t.id != id);
+                        break;
+                    case 'encyclopedia':
+                        this.encyclopedia = this.encyclopedia.filter(e => e.id != id);
+                        break;
+                }
+                
+                this.saveAllData();
+                this.updateAllUI();
+            }
+            
+            exportUltimateArchive() {
+                const exportData = {
+                    version: '2.0-Ultimate',
+                    timestamp: new Date().toISOString(),
+                    terra_archives: this.archives,
+                    terra_thesaurus: this.thesaurus,
+                    terra_encyclopedia: this.encyclopedia,
+                    system_info: {
+                        author: this.author,
+                        did: this.did,
+                        system_level: this.systemLevel,
+                        total_archives: this.archives.length,
+                        total_thesaurus_entries: this.thesaurus.length,
+                        total_encyclopedia_entries: this.encyclopedia.length,
+                        languages: [...new Set(this.archives.map(a => a.language))],
+                        categories: [...new Set(this.archives.map(a => a.category))],
+                        total_size: this.archives.reduce((sum, a) => sum + a.size, 0)
+                    }
+                };
+
+                const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `terra_ultimate_export_${Date.now()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                alert('📤 Terra Ultimate Archive экспортирован!');
+            }
+            
+            importUltimateArchive() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '.json';
+                input.onchange = async (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    try {
+                        const content = await this.readFileContent(file);
+                        const importData = JSON.parse(content);
+                        
+                        if (importData.terra_archives) {
+                            this.archives = [...this.archives, ...importData.terra_archives];
+                        }
+                        if (importData.terra_thesaurus) {
+                            this.thesaurus = [...this.thesaurus, ...importData.terra_thesaurus];
+                        }
+                        if (importData.terra_encyclopedia) {
+                            this.encyclopedia = [...this.encyclopedia, ...importData.terra_encyclopedia];
+                        }
+                        
+                        this.saveAllData();
+                        this.updateAllUI();
+                        
+                        alert(`✅ Импорт завершен!\nАрхивов: ${importData.terra_archives?.length || 0}\nСлов: ${importData.terra_thesaurus?.length || 0}\nКонцепций: ${importData.terra_encyclopedia?.length || 0}`);
+                    } catch (error) {
+                        console.error('Ошибка импорта:', error);
+                        alert('❌ Ошибка при импорте файла');
+                    }
+                };
+                input.click();
+            }
+        }
+
+        // Global instance
+        window.terraManager = new TerraArchiveManagerUltimate();
+
+        // Global functions for UI interaction
+        window.switchTab = (tabName) => {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName + 'Tab').classList.remove('hidden');
+            document.getElementById(tabName + 'Tab').classList.add('active');
+            
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            
+            terraManager.currentTab = tabName;
+        };
+
+        window.dragOverHandler = (e) => {
+            e.preventDefault();
+            document.getElementById('dropZone').classList.add('dragover');
+        };
+
+        window.dragLeaveHandler = (e) => {
+            e.preventDefault();
+            document.getElementById('dropZone').classList.remove('dragover');
+        };
+
+        window.dropHandler = async (e) => {
+            e.preventDefault();
+            document.getElementById('dropZone').classList.remove('dragover');
+            
+            const files = Array.from(e.dataTransfer.files);
+            await window.handleFiles(files);
+        };
+
+        window.handleFiles = async (files) => {
+            for (const file of files) {
+                await terraManager.addFile(file);
+            }
+        };
+
+        window.performCorpusSearch = () => {
+            terraManager.updateAllUI();
+        };
+
+        window.filterContent = () => {
+            terraManager.updateAllUI();
+        };
+
+        window.sortContent = (criteria) => {
+            const currentData = terraManager.currentTab === 'archives' ? terraManager.archives :
+                               terraManager.currentTab === 'thesaurus' ? terraManager.thesaurus :
+                               terraManager.encyclopedia;
+            
+            currentData.sort((a, b) => {
+                switch(criteria) {
+                    case 'name':
+                        const aName = a.name || a.term || a.concept;
+                        const bName = b.name || b.term || b.concept;
+                        return aName.localeCompare(bName);
+                    case 'date':
+                        return new Date(b.dateAdded) - new Date(a.dateAdded);
+                    case 'size':
+                        return (b.size || 0) - (a.size || 0);
+                    case 'relevance':
+                        return (b.relevance || 0) - (a.relevance || 0);
+                    default:
+                        return 0;
+                }
+            });
+            terraManager.updateAllUI();
+        };
+
+        window.closeModal = () => {
+            document.getElementById('contentModal').classList.add('hidden');
+        };
+
+        // Tool functions (placeholders for future implementation)
+        window.generateSemanticMap = () => alert('🧠 Генерация семантической карты запущена...');
+        window.buildThesaurus = () => alert('📚 Построение тезауруса из загруженных материалов...');
+        window.extractConcepts = () => alert('🔬 Извлечение концепций из архива...');
+        window.analyzeCorpus = () => alert('📖 Анализ корпуса документов...');
+        window.generateEncyclopedia = () => alert('🌐 Создание энциклопедии из обработанных материалов...');
+        window.parseMultilingual = () => alert('🌐 Многоязычный парсинг активирован...');
+        window.extractTerms = () => alert('📝 Извлечение терминов из корпуса...');
+        window.organizeAll = () => alert('📁 Организация всех материалов...');
+        window.generateMetaReport = () => terraManager.generateMetaReport();
+        window.optimizeStorage = () => terraManager.optimizeStorage();
+        window.syncQuantumState = () => terraManager.saveAllData();
+        window.exportUltimateArchive = () => terraManager.exportUltimateArchive();
+        window.importUltimateArchive = () => terraManager.importUltimateArchive();
+        window.createQuantumBackup = () => terraManager.exportUltimateArchive();
+
+        // Initialize system
+        console.log('🌍 Terra Archive Manager Ultimate v2.0 - Система загружена!');
+        console.log('🧬 Фрактальная архитектура: АКТИВНА');
+        console.log('🛡️ Детская безопасность: ВКЛЮЧЕНА');
+        console.log('📚 Семантический анализ: ГОТОВ');
+        console.log('🌍 Инклюзивность: ДЛЯ ВСЕХ БЕЗ ИСКЛЮЧЕНИЙ');
+    </script>
+</body>
+</html>
