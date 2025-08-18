@@ -308,7 +308,3 @@ Supporting materials and datasets referenced in this monograph are available upo
 ***
 
 *This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.*
-
-***
-
-*QR-метка авторства: "Этот проект является результатом совместной работы человека и искусственного интеллекта во благо будущего планеты и человечества"*

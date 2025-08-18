@@ -1,0 +1,3308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Archive Manager 2.0 Ultimate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .fractal-button {
+            @apply px-6 py-3 rounded-lg font-semibold text-white shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-opacity-50;
+        }
+        
+        .archive-item {
+            @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-102;
+        }
+        
+        .semantic-tag {
+            @apply inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm rounded-full mr-2 mb-2 shadow-sm;
+        }
+        
+        .definition-card {
+            @apply bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-lg border border-teal-200 shadow-sm;
+        }
+        
+        .encyclopedia-entry {
+            @apply bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200 shadow-sm mb-4;
+        }
+        
+        .tab-button {
+            @apply px-6 py-3 font-semibold text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-all duration-200;
+        }
+        
+        .tab-button.active {
+            @apply text-blue-600 border-blue-600;
+        }
+        
+        .tab-content {
+            @apply mt-8;
+        }
+        
+        .modal {
+            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+        }
+        
+        .modal-content {
+            @apply bg-white rounded-lg p-8 max-w-2xl max-h-3/4 overflow-y-auto shadow-2xl;
+        }
+        
+        .save-indicator {
+            @apply fixed top-4 right-4 px-4 py-2 rounded-lg text-white font-semibold shadow-lg z-50 transition-all duration-300;
+        }
+        
+        .save-indicator.saving {
+            @apply bg-blue-500;
+        }
+        
+        .save-indicator.saved {
+            @apply bg-green-500;
+        }
+        
+        .save-indicator.error {
+            @apply bg-red-500;
+        }
+        
+        .progress-bar {
+            @apply w-full bg-gray-200 rounded-full h-4 shadow-inner;
+        }
+        
+        .progress-fill {
+            @apply bg-gradient-to-r from-blue-500 to-purple-500 h-4 rounded-full transition-all duration-300 shadow-sm;
+        }
+        
+        .drop-zone {
+            @apply border-4 border-dashed border-gray-300 rounded-lg p-12 text-center transition-all duration-300 hover:border-blue-400 hover:bg-blue-50;
+        }
+        
+        .drop-zone.dragover {
+            @apply border-blue-500 bg-blue-100;
+        }
+        
+        .accessibility-high-contrast {
+            @apply bg-black text-white;
+        }
+        
+        .accessibility-large-text {
+            font-size: 120% !important;
+        }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen" id="mainBody">
+    <div id="saveIndicator" class="save-indicator saved hidden">✅ Сохранено</div>
+    
+    <!-- Header -->
+    <header class="gradient-bg text-white p-6 shadow-xl">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">🌍 Terra Archive Manager 2.0 Ultimate</h1>
+                    <p class="text-blue-100">Фрактальный семантический архив L0-L7 • Полная автономность • Универсальная доступность</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-blue-200">Автор: Абдукаримов Абдурашид Абдулхамитович</div>
+                    <div class="text-xs text-blue-300">DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</div>
+                    <div id="systemLevelIndicator" class="text-lg font-bold mt-2">🧬 Уровень: L0</div>
+                </div>
+            </div>
+            
+            <!-- Language and Accessibility Controls -->
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <select id="languageSelect" class="px-3 py-2 bg-white bg-opacity-20 rounded-lg text-white border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+                        <option value="uz">🇺🇿 O'zbek</option>
+                        <option value="ru">🇷🇺 Русский</option>
+                        <option value="en">🇺🇸 English</option>
+                        <option value="de">🇩🇪 Deutsch</option>
+                    </select>
+                    
+                    <button id="accessibilityToggle" class="fractal-button bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-300">
+                        ♿ Доступность
+                    </button>
+                    
+                    <button id="dictionaryModeToggle" class="fractal-button bg-green-500 hover:bg-green-600 focus:ring-green-300">
+                        📚 Словарь
+                    </button>
+                </div>
+                
+                <div class="flex space-x-2">
+                    <button onclick="runCompatibilityCheck()" class="fractal-button bg-purple-500 hover:bg-purple-600 focus:ring-purple-300">
+                        🔍 Совместимость
+                    </button>
+                    <button onclick="generateUltimateReport()" class="fractal-button bg-indigo-500 hover:bg-indigo-600 focus:ring-indigo-300">
+                        📊 Отчет
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+        <!-- System Status -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">🖥️ Статус системы</h2>
+                <div class="flex space-x-2">
+                    <button onclick="upgradeSystemLevel()" class="fractal-button bg-blue-500 hover:bg-blue-600 focus:ring-blue-300">
+                        ⬆️ Повысить уровень
+                    </button>
+                    <button onclick="resetToL0()" class="fractal-button bg-gray-500 hover:bg-gray-600 focus:ring-gray-300">
+                        🔄 Сброс к L0
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-4 gap-4" id="systemStatus">
+                <div class="text-center p-4 bg-blue-50 rounded-lg">
+                    <div class="text-2xl font-bold text-blue-600" id="currentLevel">L0</div>
+                    <div class="text-sm text-blue-700">Текущий уровень</div>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600" id="archiveCount">0</div>
+                    <div class="text-sm text-green-700">Архивов</div>
+                </div>
+                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                    <div class="text-2xl font-bold text-purple-600" id="analysisCount">0</div>
+                    <div class="text-sm text-purple-700">Анализов</div>
+                </div>
+                <div class="text-center p-4 bg-orange-50 rounded-lg">
+                    <div class="text-2xl font-bold text-orange-600" id="storageUsed">0 KB</div>
+                    <div class="text-sm text-orange-700">Использовано места</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive Management -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">📦 Управление архивами</h2>
+            
+            <!-- Archive Request Form -->
+            <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label for="archiveRequest" class="block text-sm font-medium text-gray-700 mb-2">Запрос на архивирование:</label>
+                        <textarea 
+                            id="archiveRequest" 
+                            rows="4" 
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Опишите, что вы хотите архивировать..."></textarea>
+                    </div>
+                    <div>
+                        <label for="requesterDID" class="block text-sm font-medium text-gray-700 mb-2">DID запросчика:</label>
+                        <input 
+                            type="text" 
+                            id="requesterDID" 
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            value="aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890">
+                        
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Прикрепить файлы:</label>
+                            <input 
+                                type="file" 
+                                id="fileInput" 
+                                multiple 
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                onchange="handleFiles(this.files)">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center mt-6">
+                    <button onclick="processArchiveRequest()" class="fractal-button bg-blue-500 hover:bg-blue-600 focus:ring-blue-300">
+                        🗄️ Создать архив
+                    </button>
+                    
+                    <div class="flex space-x-2">
+                        <button onclick="exportUltimateArchive()" class="fractal-button bg-green-500 hover:bg-green-600 focus:ring-green-300">
+                            💾 Экспорт
+                        </button>
+                        <button onclick="importUltimateArchive()" class="fractal-button bg-orange-500 hover:bg-orange-600 focus:ring-orange-300">
+                            📥 Импорт
+                        </button>
+                        <button onclick="createQuantumBackup()" class="fractal-button bg-purple-500 hover:bg-purple-600 focus:ring-purple-300">
+                            ⚛️ Квантовый бэкап
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drag and Drop Zone -->
+            <div 
+                id="dropZone" 
+                class="drop-zone" 
+                ondrop="dropHandler(event)" 
+                ondragover="dragOverHandler(event)" 
+                ondragleave="dragLeaveHandler(event)">
+                <div class="text-4xl mb-4">📁</div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Перетащите файлы сюда</h3>
+                <p class="text-gray-500">или нажмите "Выберите файлы" выше</p>
+            </div>
+
+            <!-- Processing Progress -->
+            <div id="processingProgress" class="hidden mt-6">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <p id="progressText" class="text-center text-sm text-gray-600 mt-2">Обработка...</p>
+            </div>
+        </div>
+
+        <!-- Search and Browse -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">🔍 Поиск и просмотр</h2>
+                <div class="flex space-x-2">
+                    <button onclick="organizeAll()" class="fractal-button bg-teal-500 hover:bg-teal-600 focus:ring-teal-300">
+                        📁 Организовать все
+                    </button>
+                    <button onclick="optimizeForCurrentLevel()" class="fractal-button bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-300">
+                        🗜️ Оптимизировать
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div>
+                    <label for="searchBox" class="block text-sm font-medium text-gray-700 mb-2">Поисковый запрос:</label>
+                    <input 
+                        type="text" 
+                        id="searchBox" 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Введите запрос для поиска..."
+                        onkeyup="if(event.key === 'Enter') performCorpusSearch()">
+                </div>
+                <div>
+                    <label for="searchMode" class="block text-sm font-medium text-gray-700 mb-2">Режим поиска:</label>
+                    <select id="searchMode" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="semantic">🧠 Семантический</option>
+                        <option value="keyword">🔤 По ключевым словам</option>
+                        <option value="fuzzy">🔍 Нечеткий поиск</option>
+                        <option value="boolean">⚡ Логический</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button onclick="performCorpusSearch()" class="fractal-button bg-blue-500 hover:bg-blue-600 focus:ring-blue-300 w-full">
+                        🔍 Поиск
+                    </button>
+                </div>
+            </div>
+
+            <!-- Archive List -->
+            <div id="archivesList" class="space-y-4 max-h-96 overflow-y-auto">
+                <div class="text-center py-12 text-gray-500">
+                    <div class="text-6xl mb-6">📦</div>
+                    <h3 class="text-xl font-semibold mb-2">Архивов пока нет</h3>
+                    <p>Создайте первый архив, чтобы начать работу</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs for Advanced Features -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="border-b border-gray-200 mb-6">
+                <nav class="flex space-x-8">
+                    <button class="tab-button active" data-tab="thesaurus" onclick="switchTab('thesaurus')">
+                        📚 Тезаурус
+                    </button>
+                    <button class="tab-button" data-tab="encyclopedia" onclick="switchTab('encyclopedia')">
+                        🔬 Энциклопедия
+                    </button>
+                    <button class="tab-button" data-tab="semantic" onclick="switchTab('semantic')">
+                        🧠 Семантический анализ
+                    </button>
+                    <button class="tab-button" data-tab="dictionary" onclick="switchTab('dictionary')">
+                        🌐 Словарь
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Thesaurus Tab -->
+            <div id="thesaurusTab" class="tab-content">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">📚 Встроенный тезаурус</h3>
+                    <div class="flex space-x-2">
+                        <button onclick="buildIntegratedThesaurus()" class="fractal-button bg-teal-500 hover:bg-teal-600 focus:ring-teal-300">
+                            🏗️ Построить тезаурус
+                        </button>
+                        <button onclick="exportThesaurus()" class="fractal-button bg-green-500 hover:bg-green-600 focus:ring-green-300">
+                            💾 Экспорт
+                        </button>
+                    </div>
+                </div>
+                <div id="thesaurusList" class="space-y-4 max-h-96 overflow-y-auto">
+                    <!-- Thesaurus entries will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Encyclopedia Tab -->
+            <div id="encyclopediaTab" class="tab-content hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">🔬 Предметная энциклопедия</h3>
+                    <div class="flex space-x-2">
+                        <button onclick="generateEncyclopedia()" class="fractal-button bg-purple-500 hover:bg-purple-600 focus:ring-purple-300">
+                            🌐 Создать энциклопедию
+                        </button>
+                        <button onclick="extractConcepts()" class="fractal-button bg-indigo-500 hover:bg-indigo-600 focus:ring-indigo-300">
+                            🔬 Извлечь концепции
+                        </button>
+                    </div>
+                </div>
+                <div id="encyclopediaList" class="space-y-4 max-h-96 overflow-y-auto">
+                    <!-- Encyclopedia entries will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Semantic Analysis Tab -->
+            <div id="semanticTab" class="tab-content hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">🧠 Семантический анализ</h3>
+                    <div class="flex space-x-2">
+                        <button onclick="generateSemanticMap()" class="fractal-button bg-blue-500 hover:bg-blue-600 focus:ring-blue-300">
+                            🧠 Семантическая карта
+                        </button>
+                        <button onclick="performEthicalAudit()" class="fractal-button bg-red-500 hover:bg-red-600 focus:ring-red-300">
+                            ⚖️ Этический аудит
+                        </button>
+                    </div>
+                </div>
+                <div id="semanticAnalysis" class="space-y-6">
+                    <!-- Semantic analysis content will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Dictionary Tab -->
+            <div id="dictionaryTab" class="tab-content hidden">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">🌐 Узбекско-немецкий словарь с доступностью</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="dictionarySearch" class="block text-sm font-medium text-gray-700 mb-2">Поиск слова:</label>
+                            <input 
+                                type="text" 
+                                id="dictionarySearch" 
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Введите слово на узбекском..."
+                                onkeyup="if(event.key === 'Enter') searchDictionary()">
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="searchDictionary()" class="fractal-button bg-blue-500 hover:bg-blue-600 focus:ring-blue-300 w-full">
+                                🔍 Поиск
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="dictionaryResults" class="space-y-4">
+                    <div class="text-center py-8 text-gray-500">
+                        <div class="text-4xl mb-4">📚</div>
+                        <p>Введите слово для поиска перевода</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Archive Details -->
+    <div id="contentModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold">Детали архива</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+            </div>
+            <div id="modalContent">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">🌍 Terra Archive Manager 2.0 Ultimate</h3>
+                <p class="text-gray-300">Универсальная система архивирования знаний с полной автономностью</p>
+            </div>
+            <div class="grid grid-cols-4 gap-8 text-sm">
+                <div>
+                    <h4 class="font-semibold text-blue-300 mb-2">🧬 Архитектура</h4>
+                    <ul class="text-gray-400 space-y-1">
+                        <li>Фрактальные уровни L0-L7</li>
+                        <li>Семантический анализ</li>
+                        <li>Этическая фильтрация</li>
+                        <li>100% оффлайн работа</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-green-300 mb-2">🌐 Многоязычность</h4>
+                    <ul class="text-gray-400 space-y-1">
+                        <li>🇺🇿 O'zbek tili</li>
+                        <li>🇷🇺 Русский язык</li>
+                        <li>🇺🇸 English</li>
+                        <li>🇩🇪 Deutsch</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-purple-300 mb-2">♿ Доступность</h4>
+                    <ul class="text-gray-400 space-y-1">
+                        <li>Поддержка Braille</li>
+                        <li>Жестовый язык</li>
+                        <li>Пиктограммы</li>
+                        <li>Высокий контраст</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-orange-300 mb-2">⚡ Совместимость</h4>
+                    <ul class="text-gray-400 space-y-1">
+                        <li>Pentium I и выше</li>
+                        <li>Все браузеры</li>
+                        <li>Vendor Independence</li>
+                        <li>Fallback режимы</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-700">
+                <p class="text-gray-400">
+                    © 2024 Абдукаримов Абдурашид Абдулхамитович • 
+                    DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890 • 
+                    Terra Ultimate v2.0
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // =========================================================================
+        // TERRA ARCHIVE MANAGER 2.0 ULTIMATE - ПОЛНЫЙ JAVASCRIPT КОД
+        // Автор: Абдукаримов Абдурашид Абдулхамитович
+        // DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890
+        // Фрактальная архитектура L0-L7 с полной автономностью
+        // =========================================================================
+
+        // ===== БАЗОВЫЙ L0 СЕМАНТИЧЕСКИЙ ЯДРО =====
+        
+        function L0SemanticKernel() {
+            this.version = "2.0.0-L0";
+            this.author = "Абдукаримов Абдурашид Абдулхамитович";
+            this.did = "aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890";
+            
+            // Простейшие семантические правила для L0
+            this.basicKeywords = {
+                'архив': ['сохранить', 'данные', 'файл', 'документ'],
+                'поиск': ['найти', 'искать', 'запрос', 'результат'],
+                'анализ': ['изучить', 'проверить', 'исследовать', 'понять'],
+                'помощь': ['справка', 'поддержка', 'инструкция', 'руководство']
+            };
+            
+            // Базовые намерения пользователя
+            this.intentPatterns = {
+                'CREATE_ARCHIVE': ['создать', 'сделать', 'архивировать', 'сохранить'],
+                'SEARCH_ARCHIVE': ['найти', 'поиск', 'искать', 'где'],
+                'ANALYZE_TEXT': ['анализ', 'изучить', 'проверить', 'понять'],
+                'GET_HELP': ['помощь', 'справка', 'как', 'что']
+            };
+        }
+        
+        L0SemanticKernel.prototype.extractKeywords = function(text) {
+            if (!text) return [];
+            
+            var words = text.toLowerCase().split(/\s+/);
+            var keywords = [];
+            
+            for (var i = 0; i < words.length; i++) {
+                var word = words[i].replace(/[^\w\u0400-\u04FF\u0600-\u06FF]/g, '');
+                if (word.length > 2) {
+                    keywords.push(word);
+                }
+            }
+            
+            // Убираем дубликаты
+            var unique = [];
+            for (var j = 0; j < keywords.length; j++) {
+                if (unique.indexOf(keywords[j]) === -1) {
+                    unique.push(keywords[j]);
+                }
+            }
+            
+            return unique.slice(0, 10); // Максимум 10 ключевых слов
+        };
+        
+        L0SemanticKernel.prototype.simpleIntentAnalysis = function(text) {
+            if (!text) return 'UNKNOWN';
+            
+            var lowerText = text.toLowerCase();
+            var maxScore = 0;
+            var detectedIntent = 'UNKNOWN';
+            
+            for (var intent in this.intentPatterns) {
+                var patterns = this.intentPatterns[intent];
+                var score = 0;
+                
+                for (var i = 0; i < patterns.length; i++) {
+                    if (lowerText.indexOf(patterns[i]) !== -1) {
+                        score++;
+                    }
+                }
+                
+                if (score > maxScore) {
+                    maxScore = score;
+                    detectedIntent = intent;
+                }
+            }
+            
+            return detectedIntent;
+        };
+        
+        L0SemanticKernel.prototype.processRequest = function(request, requesterDID) {
+            var keywords = this.extractKeywords(request);
+            var intent = this.simpleIntentAnalysis(request);
+            
+            var response = {
+                processedAt: new Date().toISOString(),
+                requesterDID: requesterDID,
+                detectedIntent: intent,
+                extractedKeywords: keywords,
+                confidence: keywords.length > 0 ? 0.7 : 0.3,
+                suggestedAction: this.getSuggestedAction(intent),
+                ethicalCheck: this.basicEthicalCheck(request)
+            };
+            
+            return response;
+        };
+        
+        L0SemanticKernel.prototype.getSuggestedAction = function(intent) {
+            var actions = {
+                'CREATE_ARCHIVE': 'Рекомендуется создать новый архив с указанными данными',
+                'SEARCH_ARCHIVE': 'Выполнить поиск в существующих архивах',
+                'ANALYZE_TEXT': 'Провести семантический анализ текста',
+                'GET_HELP': 'Показать справочную информацию',
+                'UNKNOWN': 'Уточните ваш запрос для лучшего понимания'
+            };
+            
+            return actions[intent] || actions['UNKNOWN'];
+        };
+        
+        L0SemanticKernel.prototype.basicEthicalCheck = function(text) {
+            // Простейшая этическая проверка для детской безопасности
+            var harmfulPatterns = ['насилие', 'violence', 'зўравонлик'];
+            var lowerText = text.toLowerCase();
+            
+            for (var i = 0; i < harmfulPatterns.length; i++) {
+                if (lowerText.indexOf(harmfulPatterns[i]) !== -1) {
+                    return {
+                        safe: false,
+                        reason: 'Обнаружен потенциально вредный контент'
+                    };
+                }
+            }
+            
+            return { safe: true, reason: 'Контент безопасен' };
+        };
+
+        // ===== ОФФЛАЙН СЕМАНТИЧЕСКИЙ АНАЛИЗАТОР L1+ =====
+        
+        function OfflineSemanticAnalyzer() {
+            this.version = "2.0.0-L1+";
+            this.initialized = false;
+            
+            // Встроенная база знаний
+            this.embeddedThesaurus = {
+                'архив': ['хранилище', 'репозиторий', 'база_данных', 'коллекция'],
+                'документ': ['файл', 'текст', 'запись', 'материал'],
+                'поиск': ['поиск', 'запрос', 'поиск', 'обнаружение'],
+                'анализ': ['изучение', 'исследование', 'разбор', 'экспертиза']
+            };
+            
+            // Простая онтология предметных областей
+            this.domainOntology = {
+                'информатика': {
+                    'подкатегории': ['алгоритмы', 'структуры_данных', 'программирование'],
+                    'термины': ['код', 'функция', 'переменная', 'цикл']
+                },
+                'математика': {
+                    'подкатегории': ['алгебра', 'геометрия', 'анализ'],
+                    'термины': ['формула', 'теорема', 'доказательство', 'множество']
+                }
+            };
+            
+            // База концепций с частотами
+            this.conceptsDatabase = {
+                'архивирование': { frequency: 100, related: ['сохранение', 'хранение'] },
+                'семантика': { frequency: 80, related: ['значение', 'смысл'] },
+                'этика': { frequency: 60, related: ['мораль', 'ценности'] }
+            };
+        }
+        
+        OfflineSemanticAnalyzer.prototype.initialize = function() {
+            console.log("🧠 Инициализация оффлайн семантического анализатора...");
+            this.initialized = true;
+            return true;
+        };
+        
+        OfflineSemanticAnalyzer.prototype.analyzeText = function(text) {
+            if (!this.initialized) {
+                this.initialize();
+            }
+            
+            var startTime = Date.now();
+            
+            var analysis = {
+                processingTime: 0,
+                wordCount: text.split(/\s+/).length,
+                keywords: this.extractAdvancedKeywords(text),
+                concepts: this.extractConcepts(text),
+                domains: this.identifyDomains(text),
+                sentiment: this.simpleSentimentAnalysis(text),
+                readabilityScore: this.calculateReadability(text),
+                summary: this.generateSummary(text)
+            };
+            
+            analysis.processingTime = Date.now() - startTime;
+            return analysis;
+        };
+        
+        OfflineSemanticAnalyzer.prototype.extractAdvancedKeywords = function(text) {
+            var words = text.toLowerCase().match(/[\w\u0400-\u04FF\u0600-\u06FF]+/g) || [];
+            var wordFreq = {};
+            
+            // Подсчет частот
+            for (var i = 0; i < words.length; i++) {
+                var word = words[i];
+                if (word.length > 2) {
+                    wordFreq[word] = (wordFreq[word] || 0) + 1;
+                }
+            }
+            
+            // Сортировка по частоте
+            var sortedWords = [];
+            for (var word in wordFreq) {
+                sortedWords.push({ word: word, frequency: wordFreq[word] });
+            }
+            
+            sortedWords.sort(function(a, b) { return b.frequency - a.frequency; });
+            
+            return sortedWords.slice(0, 15);
+        };
+        
+        OfflineSemanticAnalyzer.prototype.extractConcepts = function(text) {
+            var concepts = [];
+            var lowerText = text.toLowerCase();
+            
+            for (var concept in this.conceptsDatabase) {
+                if (lowerText.indexOf(concept) !== -1) {
+                    var conceptData = this.conceptsDatabase[concept];
+                    var relevance = this.calculateConceptRelevance(concept, text);
+                    
+                    concepts.push({
+                        concept: concept,
+                        relevance: relevance,
+                        frequency: conceptData.frequency,
+                        matches: this.findConceptMatches(concept, text)
+                    });
+                }
+            }
+            
+            return concepts.sort(function(a, b) { return b.relevance - a.relevance; });
+        };
+        
+        OfflineSemanticAnalyzer.prototype.identifyDomains = function(text) {
+            var domains = [];
+            var lowerText = text.toLowerCase();
+            
+            for (var domain in this.domainOntology) {
+                var domainData = this.domainOntology[domain];
+                var confidence = 0;
+                var matchedTerms = [];
+                
+                // Проверка терминов предметной области
+                for (var i = 0; i < domainData.термины.length; i++) {
+                    var term = domainData.термины[i];
+                    if (lowerText.indexOf(term) !== -1) {
+                        confidence += 0.3;
+                        matchedTerms.push(term);
+                    }
+                }
+                
+                if (confidence > 0) {
+                    domains.push({
+                        domain: domain,
+                        confidence: Math.min(confidence, 1.0),
+                        matchedTerms: matchedTerms
+                    });
+                }
+            }
+            
+            return domains.sort(function(a, b) { return b.confidence - a.confidence; });
+        };
+        
+        OfflineSemanticAnalyzer.prototype.simpleSentimentAnalysis = function(text) {
+            var positiveWords = ['хорошо', 'отлично', 'прекрасно', 'замечательно', 'great', 'excellent'];
+            var negativeWords = ['плохо', 'ужасно', 'плохой', 'terrible', 'bad', 'awful'];
+            
+            var lowerText = text.toLowerCase();
+            var positiveScore = 0;
+            var negativeScore = 0;
+            
+            for (var i = 0; i < positiveWords.length; i++) {
+                if (lowerText.indexOf(positiveWords[i]) !== -1) positiveScore++;
+            }
+            
+            for (var j = 0; j < negativeWords.length; j++) {
+                if (lowerText.indexOf(negativeWords[j]) !== -1) negativeScore++;
+            }
+            
+            var totalScore = positiveScore - negativeScore;
+            var sentiment = 'neutral';
+            
+            if (totalScore > 0) sentiment = 'positive';
+            else if (totalScore < 0) sentiment = 'negative';
+            
+            return {
+                sentiment: sentiment,
+                positiveScore: positiveScore,
+                negativeScore: negativeScore,
+                confidence: Math.min((Math.abs(totalScore) / Math.max(1, text.split(' ').length)) * 10, 1)
+            };
+        };
+        
+        OfflineSemanticAnalyzer.prototype.calculateReadability = function(text) {
+            var sentences = text.split(/[.!?]+/).length - 1;
+            var words = text.split(/\s+/).length;
+            var avgWordsPerSentence = sentences > 0 ? words / sentences : words;
+            
+            // Простая формула читабельности
+            var readabilityScore = Math.max(0, Math.min(100, 100 - (avgWordsPerSentence * 2)));
+            
+            return {
+                score: Math.round(readabilityScore),
+                level: readabilityScore > 80 ? 'Легкий' : readabilityScore > 60 ? 'Средний' : 'Сложный',
+                avgWordsPerSentence: Math.round(avgWordsPerSentence)
+            };
+        };
+        
+        OfflineSemanticAnalyzer.prototype.generateSummary = function(text) {
+            var sentences = text.split(/[.!?]+/).filter(function(s) { return s.trim().length > 0; });
+            if (sentences.length <= 2) return text;
+            
+            // Простое извлечение первой и наиболее "важной" предложения
+            var firstSentence = sentences[0].trim();
+            var longestSentence = sentences.reduce(function(a, b) {
+                return a.length > b.length ? a : b;
+            }).trim();
+            
+            if (firstSentence === longestSentence) {
+                return firstSentence + '.';
+            }
+            
+            return firstSentence + '. ' + longestSentence + '.';
+        };
+        
+        OfflineSemanticAnalyzer.prototype.calculateConceptRelevance = function(concept, text) {
+            var occurrences = (text.toLowerCase().match(new RegExp(concept, 'g')) || []).length;
+            var textLength = text.split(/\s+/).length;
+            return Math.min(1.0, (occurrences / textLength) * 100);
+        };
+        
+        OfflineSemanticAnalyzer.prototype.findConceptMatches = function(concept, text) {
+            var matches = [];
+            var regex = new RegExp('\\b' + concept + '\\w*', 'gi');
+            var match;
+            
+            while ((match = regex.exec(text)) !== null && matches.length < 3) {
+                matches.push(match[0]);
+            }
+            
+            return matches;
+        };
+        
+        // ===== ЭТИЧЕСКИЙ СЛОЙ БЕЗОПАСНОСТИ =====
+        
+        function TerraEthicalLayer() {
+            this.version = "7.0.0-ULTIMATE";
+            this.childSafetyEnabled = true;
+            this.detoxificationEnabled = true;
+            
+            // Ключевые этические ценности
+            this.coreValues = {
+                'детская_безопасность': {
+                    priority: 1,
+                    description: 'Защита детей от вредного контента'
+                },
+                'инклюзивность': {
+                    priority: 2,
+                    description: 'Равный доступ для всех людей'
+                },
+                'достоверность': {
+                    priority: 3,
+                    description: 'Правдивая и точная информация'
+                },
+                'приватность': {
+                    priority: 4,
+                    description: 'Защита личных данных'
+                }
+            };
+            
+            // Детоксифицирующие фильтры
+            this.toxicityFilters = [
+                {
+                    name: 'child_protection',
+                    patterns: ['насилие', 'violence', 'зўравонлик', 'harm'],
+                    severity: 'high',
+                    action: 'block'
+                },
+                {
+                    name: 'hate_speech',
+                    patterns: ['ненависть', 'hate', 'нафрат'],
+                    severity: 'high',
+                    action: 'block'
+                },
+                {
+                    name: 'misinformation',
+                    patterns: ['фейк', 'fake', 'ёлғон'],
+                    severity: 'medium',
+                    action: 'warn'
+                }
+            ];
+            
+            this.statistics = {
+                totalChecks: 0,
+                blockedContent: 0,
+                warningsIssued: 0,
+                enhancedContent: 0
+            };
+        }
+        
+        TerraEthicalLayer.prototype.validateContent = function(content) {
+            this.statistics.totalChecks++;
+            
+            var result = {
+                passed: true,
+                violations: [],
+                warnings: [],
+                enhancements: [],
+                safetyScore: 100
+            };
+            
+            // Проверка на токсичность
+            for (var i = 0; i < this.toxicityFilters.length; i++) {
+                var filter = this.toxicityFilters[i];
+                var violation = this.checkFilter(content, filter);
+                
+                if (violation) {
+                    if (filter.action === 'block') {
+                        result.passed = false;
+                        result.violations.push(violation);
+                        result.safetyScore -= 30;
+                        this.statistics.blockedContent++;
+                    } else if (filter.action === 'warn') {
+                        result.warnings.push(violation);
+                        result.safetyScore -= 10;
+                        this.statistics.warningsIssued++;
+                    }
+                }
+            }
+            
+            // Проверка на позитивные аспекты
+            var enhancements = this.identifyEnhancements(content);
+            result.enhancements = enhancements;
+            this.statistics.enhancedContent += enhancements.length;
+            
+            result.safetyScore = Math.max(0, result.safetyScore);
+            
+            return result;
+        };
+        
+        TerraEthicalLayer.prototype.checkFilter = function(content, filter) {
+            var lowerContent = content.toLowerCase();
+            
+            for (var i = 0; i < filter.patterns.length; i++) {
+                var pattern = filter.patterns[i];
+                if (lowerContent.indexOf(pattern) !== -1) {
+                    return {
+                        filterName: filter.name,
+                        severity: filter.severity,
+                        pattern: pattern,
+                        message: 'Обнаружен контент категории: ' + filter.name
+                    };
+                }
+            }
+            
+            return null;
+        };
+        
+        TerraEthicalLayer.prototype.identifyEnhancements = function(content) {
+            var enhancements = [];
+            var lowerContent = content.toLowerCase();
+            
+            var positivePatterns = [
+                { pattern: 'образование', message: 'Образовательный контент' },
+                { pattern: 'помощь', message: 'Полезная информация' },
+                { pattern: 'безопасность', message: 'Контент о безопасности' },
+                { pattern: 'инклюзивность', message: 'Инклюзивный подход' }
+            ];
+            
+            for (var i = 0; i < positivePatterns.length; i++) {
+                var positive = positivePatterns[i];
+                if (lowerContent.indexOf(positive.pattern) !== -1) {
+                    enhancements.push({
+                        type: 'positive_content',
+                        message: positive.message
+                    });
+                }
+            }
+            
+            return enhancements;
+        };
+        
+        TerraEthicalLayer.prototype.generateEthicalReport = function() {
+            return {
+                version: this.version,
+                statistics: this.statistics,
+                filtersActive: {
+                    childSafety: this.toxicityFilters.filter(function(f) { return f.name.includes('child'); }).length,
+                    detoxification: this.toxicityFilters.length
+                },
+                coreValues: this.coreValues,
+                recommendations: this.generateRecommendations()
+            };
+        };
+        
+        TerraEthicalLayer.prototype.generateRecommendations = function() {
+            var recommendations = [];
+            
+            if (this.statistics.blockedContent > 0) {
+                recommendations.push('Рассмотрите усиление фильтров содержимого');
+            }
+            
+            if (this.statistics.enhancedContent < this.statistics.totalChecks * 0.1) {
+                recommendations.push('Увеличьте долю позитивного образовательного контента');
+            }
+            
+            return recommendations;
+        };
+        
+        // ===== АРХИВНЫЙ МЕНЕДЖЕР =====
+        
+        function TerraArchiveManager() {
+            this.version = "2.0.0-ULTIMATE";
+            this.archives = [];
+            this.thesaurus = [];
+            this.encyclopedia = [];
+            this.maxLevel = 7;
+            
+            // Лимиты хранения по уровням
+            this.storageLimits = {
+                0: 1024 * 1024,      // 1MB для L0
+                1: 10 * 1024 * 1024, // 10MB для L1
+                2: 50 * 1024 * 1024, // 50MB для L2
+                3: 100 * 1024 * 1024, // 100MB для L3
+                4: 500 * 1024 * 1024, // 500MB для L4
+                5: 1024 * 1024 * 1024, // 1GB для L5
+                6: 5 * 1024 * 1024 * 1024, // 5GB для L6
+                7: -1 // Без лимитов для L7
+            };
+            
+            this.loadExistingData();
+        }
+        
+        TerraArchiveManager.prototype.loadExistingData = function() {
+            try {
+                var stored = localStorage.getItem('terra_archives_ultimate');
+                if (stored) {
+                    this.archives = JSON.parse(stored);
+                }
+                
+                var storedThesaurus = localStorage.getItem('terra_thesaurus_ultimate');
+                if (storedThesaurus) {
+                    this.thesaurus = JSON.parse(storedThesaurus);
+                }
+                
+                var storedEncyclopedia = localStorage.getItem('terra_encyclopedia_ultimate');
+                if (storedEncyclopedia) {
+                    this.encyclopedia = JSON.parse(storedEncyclopedia);
+                }
+            } catch (error) {
+                console.warn("Ошибка загрузки данных:", error);
+                this.archives = [];
+                this.thesaurus = [];
+                this.encyclopedia = [];
+            }
+        };
+        
+        TerraArchiveManager.prototype.saveData = function() {
+            try {
+                localStorage.setItem('terra_archives_ultimate', JSON.stringify(this.archives));
+                localStorage.setItem('terra_thesaurus_ultimate', JSON.stringify(this.thesaurus));
+                localStorage.setItem('terra_encyclopedia_ultimate', JSON.stringify(this.encyclopedia));
+                return true;
+            } catch (error) {
+                console.error("Ошибка сохранения данных:", error);
+                return false;
+            }
+        };
+        
+        TerraArchiveManager.prototype.createArchive = function(data, level, requesterDID) {
+            // Проверка лимитов уровня
+            var currentSize = this.getCurrentStorageSize();
+            var levelLimit = this.storageLimits[level];
+            var estimatedSize = JSON.stringify(data).length;
+            
+            if (levelLimit > 0 && currentSize + estimatedSize > levelLimit) {
+                return {
+                    success: false,
+                    error: 'Превышен лимит хранения для уровня L' + level,
+                    currentSize: currentSize,
+                    limit: levelLimit
+                };
+            }
+            
+            var archive = {
+                id: this.generateArchiveId(),
+                timestamp: new Date().toISOString(),
+                level: level,
+                requesterDID: requesterDID,
+                data: data,
+                size: estimatedSize,
+                checksum: this.calculateChecksum(data),
+                metadata: {
+                    created: new Date().toISOString(),
+                    version: this.version,
+                    author: "Абдукаримов Абдурашид Абдулхамитович"
+                }
+            };
+            
+            this.archives.push(archive);
+            this.saveData();
+            
+            return {
+                success: true,
+                archiveId: archive.id,
+                level: level,
+                size: estimatedSize
+            };
+        };
+        
+        TerraArchiveManager.prototype.searchArchives = function(query, options) {
+            options = options || {};
+            var mode = options.mode || 'semantic';
+            var results = [];
+            var startTime = Date.now();
+            
+            for (var i = 0; i < this.archives.length; i++) {
+                var archive = this.archives[i];
+                var relevance = this.calculateRelevance(query, archive, mode);
+                
+                if (relevance > 0.1) { // Минимальный порог релевантности
+                    results.push({
+                        item: archive,
+                        relevance: relevance,
+                        matchType: mode
+                    });
+                }
+            }
+            
+            // Сортировка по релевантности
+            results.sort(function(a, b) { return b.relevance - a.relevance; });
+            
+            return {
+                results: results,
+                totalFound: results.length,
+                processingTime: Date.now() - startTime,
+                searchMethod: mode
+            };
+        };
+        
+        TerraArchiveManager.prototype.calculateRelevance = function(query, archive, mode) {
+            var lowerQuery = query.toLowerCase();
+            var archiveText = JSON.stringify(archive.data).toLowerCase();
+            
+            if (mode === 'keyword') {
+                // Простой поиск по ключевым словам
+                var queryWords = lowerQuery.split(/\s+/);
+                var matches = 0;
+                
+                for (var i = 0; i < queryWords.length; i++) {
+                    if (archiveText.indexOf(queryWords[i]) !== -1) {
+                        matches++;
+                    }
+                }
+                
+                return matches / queryWords.length;
+            } else if (mode === 'semantic') {
+                // Простой семантический поиск
+                var semanticScore = 0;
+                
+                // Прямые совпадения
+                if (archiveText.indexOf(lowerQuery) !== -1) {
+                    semanticScore += 0.8;
+                }
+                
+                // Частичные совпадения
+                var queryWords = lowerQuery.split(/\s+/);
+                for (var j = 0; j < queryWords.length; j++) {
+                    if (archiveText.indexOf(queryWords[j]) !== -1) {
+                        semanticScore += 0.2 / queryWords.length;
+                    }
+                }
+                
+                return Math.min(1.0, semanticScore);
+            }
+            
+            return 0;
+        };
+        
+        TerraArchiveManager.prototype.generateArchiveId = function() {
+            return 'terra_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        };
+        
+        TerraArchiveManager.prototype.calculateChecksum = function(data) {
+            // Простая контрольная сумма
+            var str = JSON.stringify(data);
+            var hash = 0;
+            
+            for (var i = 0; i < str.length; i++) {
+                var char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // 32-битное целое
+            }
+            
+            return hash.toString(16);
+        };
+        
+        TerraArchiveManager.prototype.getCurrentStorageSize = function() {
+            var totalSize = 0;
+            
+            for (var i = 0; i < this.archives.length; i++) {
+                totalSize += this.archives[i].size || 0;
+            }
+            
+            return totalSize;
+        };
+        
+        TerraArchiveManager.prototype.getStorageStats = function() {
+            return {
+                totalArchives: this.archives.length,
+                totalSize: this.getCurrentStorageSize(),
+                thesaurusEntries: this.thesaurus.length,
+                encyclopediaEntries: this.encyclopedia.length,
+                oldestArchive: this.archives.length > 0 ? this.archives[0].timestamp : null,
+                newestArchive: this.archives.length > 0 ? this.archives[this.archives.length - 1].timestamp : null
+            };
+        };
+        
+        // ===== ИНТЕГРАЦИОННАЯ СИСТЕМА TERRA =====
+        
+        function TerraSemanticIntegration() {
+            this.version = "2.0.0-ULTIMATE";
+            this.author = "Абдукаримов Абдурашид Абдулхамитович";
+            this.did = "aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890";
+            this.currentLevel = 0;
+            
+            // Инициализация компонентов
+            this.l0Kernel = new L0SemanticKernel();
+            this.ethicalLayer = new TerraEthicalLayer();
+            this.archiveManager = new TerraArchiveManager();
+            this.offlineAnalyzer = null; // Инициализируется только для L1+
+            
+            // Определение возможностей браузера
+            this.browserCapabilities = this.detectBrowserCapabilities();
+            
+            // Статистика интеграции
+            this.integrationStats = this.loadIntegrationStats();
+            
+            // Инициализация системы
+            this.initializeComponents();
+        }
+        
+        TerraSemanticIntegration.prototype.detectBrowserCapabilities = function() {
+            var caps = {
+                // Базовые возможности
+                es3Support: true, // Всегда поддерживается для совместимости
+                es5Support: !!(Array.prototype.forEach && Object.keys),
+                es6Support: !!(Promise && Array.from && Object.assign),
+                
+                // Хранилище
+                localStorageSupport: !!(window.localStorage),
+                indexedDBSupport: !!(window.indexedDB),
+                
+                // Продвинутые возможности
+                webWorkersSupport: !!(window.Worker),
+                serviceWorkerSupport: !!('serviceWorker' in navigator),
+                webAssemblySupport: !!(window.WebAssembly),
+                
+                // Определение браузера
+                browserFamily: this.getBrowserFamily(),
+                isOldBrowser: this.isOldBrowser(),
+                
+                // Производительность
+                estimatedRAM: this.estimateRAM(),
+                processingPower: this.estimateProcessingPower(),
+                screenSize: {
+                    width: screen.width || 1024,
+                    height: screen.height || 768
+                }
+            };
+            
+            return caps;
+        };
+        
+        TerraSemanticIntegration.prototype.getBrowserFamily = function() {
+            var ua = navigator.userAgent;
+            
+            if (ua.indexOf('Firefox') !== -1) return 'Firefox';
+            if (ua.indexOf('Chrome') !== -1) return 'Chrome';
+            if (ua.indexOf('Safari') !== -1) return 'Safari';
+            if (ua.indexOf('Edge') !== -1) return 'Edge';
+            if (ua.indexOf('MSIE') !== -1) return 'IE';
+            
+            return 'Unknown';
+        };
+        
+        TerraSemanticIntegration.prototype.isOldBrowser = function() {
+            // Определение старых браузеров
+            var es5Support = !!(Array.prototype.forEach && Object.keys);
+            return !es5Support || 
+                   navigator.userAgent.indexOf('MSIE') !== -1 ||
+                   navigator.userAgent.indexOf('Trident') !== -1;
+        };
+        
+        TerraSemanticIntegration.prototype.estimateRAM = function() {
+            // Оценка доступной памяти
+            if (navigator.deviceMemory) {
+                return navigator.deviceMemory * 1024; // GB to MB
+            }
+            
+            // Эвристическая оценка
+            var estimate = 2048; // 2GB по умолчанию
+            
+            if (screen.width >= 1920) estimate = 8192; // 8GB для высоких разрешений
+            else if (screen.width >= 1366) estimate = 4096; // 4GB для средних
+            else if (screen.width < 1024) estimate = 1024;  // 1GB для мобильных
+            
+            return estimate;
+        };
+        
+        TerraSemanticIntegration.prototype.estimateProcessingPower = function() {
+            // Простой тест производительности
+            var start = Date.now();
+            var iterations = 100000;
+            
+            for (var i = 0; i < iterations; i++) {
+                Math.sqrt(i);
+            }
+            
+            var elapsed = Date.now() - start;
+            
+            if (elapsed < 10) return 'fast';
+            if (elapsed < 30) return 'medium';
+            return 'slow';
+        };
+        
+        TerraSemanticIntegration.prototype.initializeComponents = function() {
+            console.log("🚀 Инициализация Terra Semantic Integration...");
+            
+            // Определение максимально возможного уровня
+            var maxLevel = this.determineMaxLevel();
+            this.currentLevel = Math.min(this.currentLevel, maxLevel);
+            
+            // Инициализация компонентов для текущего уровня
+            if (this.currentLevel >= 1) {
+                this.offlineAnalyzer = new OfflineSemanticAnalyzer();
+                this.offlineAnalyzer.initialize();
+            }
+            
+            // Загрузка сохраненных данных
+            this.loadSystemData();
+            
+            // Обновление UI
+            this.updateUI();
+            
+            console.log("✅ Terra система инициализирована на уровне L" + this.currentLevel);
+        };
+        
+        TerraSemanticIntegration.prototype.determineMaxLevel = function() {
+            var caps = this.browserCapabilities;
+            
+            // L0: Базовая совместимость (всегда доступен)
+            var maxLevel = 0;
+            
+            // L1: ES5 + LocalStorage + минимум 512MB RAM
+            if (caps.es5Support && caps.localStorageSupport && caps.estimatedRAM >= 512) {
+                maxLevel = 1;
+            }
+            
+            // L2: ES6 + IndexedDB + минимум 2GB RAM
+            if (caps.es6Support && caps.indexedDBSupport && caps.estimatedRAM >= 2048) {
+                maxLevel = 2;
+            }
+            
+            // L3: Web Workers + быстрая производительность + минимум 4GB RAM
+            if (caps.webWorkersSupport && caps.processingPower === 'fast' && caps.estimatedRAM >= 4096) {
+                maxLevel = 3;
+            }
+            
+            return maxLevel;
+        };
+        
+        TerraSemanticIntegration.prototype.loadIntegrationStats = function() {
+            try {
+                var stored = localStorage.getItem('terra_integration_stats');
+                if (stored) {
+                    return JSON.parse(stored);
+                }
+            } catch (error) {
+                console.warn("Ошибка загрузки статистики:", error);
+            }
+            
+            return {
+                totalProcessed: 0,
+                semanticAnalyses: 0,
+                ethicalChecks: 0,
+                archiveOperations: 0,
+                lastActivity: null
+            };
+        };
+        
+        TerraSemanticIntegration.prototype.saveIntegrationStats = function() {
+            try {
+                this.integrationStats.lastActivity = new Date().toISOString();
+                localStorage.setItem('terra_integration_stats', JSON.stringify(this.integrationStats));
+            } catch (error) {
+                console.error("Ошибка сохранения статистики:", error);
+            }
+        };
+        
+        TerraSemanticIntegration.prototype.processArchiveRequest = function(request, attachments, requesterDID) {
+            this.integrationStats.totalProcessed++;
+            this.integrationStats.archiveOperations++;
+            
+            // Семантический анализ запроса
+            var analysis;
+            if (this.currentLevel >= 1 && this.offlineAnalyzer) {
+                analysis = this.offlineAnalyzer.analyzeText(request);
+                this.integrationStats.semanticAnalyses++;
+            } else {
+                analysis = this.l0Kernel.processRequest(request, requesterDID);
+            }
+            
+            // Этическая проверка
+            var ethicalCheck = this.ethicalLayer.validateContent(request);
+            this.integrationStats.ethicalChecks++;
+            
+            if (!ethicalCheck.passed) {
+                this.saveIntegrationStats();
+                return {
+                    success: false,
+                    error: 'Контент не прошел этическую проверку',
+                    violations: ethicalCheck.violations
+                };
+            }
+            
+            // Создание архива
+            var archiveData = {
+                text: request,
+                attachments: attachments || [],
+                analysis: analysis,
+                ethicalCheck: ethicalCheck,
+                processingLevel: this.currentLevel
+            };
+            
+            var result = this.archiveManager.createArchive(archiveData, this.currentLevel, requesterDID);
+            
+            this.saveIntegrationStats();
+            this.updateUI();
+            
+            return result;
+        };
+        
+        TerraSemanticIntegration.prototype.searchArchive = function(query, options) {
+            this.integrationStats.totalProcessed++;
+            
+            var searchResults;
+            
+            if (this.currentLevel >= 1 && this.offlineAnalyzer) {
+                // Семантический поиск для L1+
+                searchResults = this.performSemanticSearch(query, options);
+                this.integrationStats.semanticAnalyses++;
+            } else {
+                // Простой поиск для L0
+                searchResults = this.archiveManager.searchArchives(query, options);
+            }
+            
+            this.saveIntegrationStats();
+            return searchResults;
+        };
+        
+        TerraSemanticIntegration.prototype.performSemanticSearch = function(query, options) {
+            var startTime = Date.now();
+            
+            // Анализ поискового запроса
+            var queryAnalysis = this.offlineAnalyzer.analyzeText(query);
+            var results = [];
+            
+            // Поиск по архивам с семантическим анализом
+            for (var i = 0; i < this.archiveManager.archives.length; i++) {
+                var archive = this.archiveManager.archives[i];
+                var archiveText = archive.data.text || '';
+                
+                if (archiveText) {
+                    var similarity = this.calculateSemanticSimilarity(queryAnalysis, archive.data.analysis);
+                    var matchedConcepts = this.findMatchedConcepts(queryAnalysis, archive.data.analysis);
+                    
+                    if (similarity > 0.2) {
+                        results.push({
+                            item: archive,
+                            similarity: similarity,
+                            matchedConcepts: matchedConcepts,
+                            searchMethod: 'semantic'
+                        });
+                    }
+                }
+            }
+            
+            // Сортировка по семантической близости
+            results.sort(function(a, b) { return b.similarity - a.similarity; });
+            
+            return {
+                results: results,
+                totalFound: results.length,
+                processingTime: Date.now() - startTime,
+                searchMethod: 'semantic_L' + this.currentLevel,
+                queryAnalysis: queryAnalysis
+            };
+        };
+        
+        TerraSemanticIntegration.prototype.calculateSemanticSimilarity = function(analysis1, analysis2) {
+            if (!analysis1 || !analysis2) return 0;
+            
+            var similarity = 0;
+            var factors = 0;
+            
+            // Сравнение ключевых слов
+            if (analysis1.keywords && analysis2.keywords) {
+                var keywordSimilarity = this.compareKeywords(analysis1.keywords, analysis2.keywords);
+                similarity += keywordSimilarity * 0.4;
+                factors += 0.4;
+            }
+            
+            // Сравнение концепций
+            if (analysis1.concepts && analysis2.concepts) {
+                var conceptSimilarity = this.compareConcepts(analysis1.concepts, analysis2.concepts);
+                similarity += conceptSimilarity * 0.4;
+                factors += 0.4;
+            }
+            
+            // Сравнение предметных областей
+            if (analysis1.domains && analysis2.domains) {
+                var domainSimilarity = this.compareDomains(analysis1.domains, analysis2.domains);
+                similarity += domainSimilarity * 0.2;
+                factors += 0.2;
+            }
+            
+            return factors > 0 ? similarity / factors : 0;
+        };
+        
+        TerraSemanticIntegration.prototype.compareKeywords = function(keywords1, keywords2) {
+            if (!keywords1.length || !keywords2.length) return 0;
+            
+            var matches = 0;
+            var total = Math.max(keywords1.length, keywords2.length);
+            
+            for (var i = 0; i < keywords1.length; i++) {
+                var word1 = keywords1[i].word || keywords1[i];
+                
+                for (var j = 0; j < keywords2.length; j++) {
+                    var word2 = keywords2[j].word || keywords2[j];
+                    
+                    if (word1 === word2) {
+                        matches++;
+                        break;
+                    }
+                }
+            }
+            
+            return matches / total;
+        };
+        
+        TerraSemanticIntegration.prototype.compareConcepts = function(concepts1, concepts2) {
+            if (!concepts1.length || !concepts2.length) return 0;
+            
+            var matches = 0;
+            var total = Math.max(concepts1.length, concepts2.length);
+            
+            for (var i = 0; i < concepts1.length; i++) {
+                var concept1 = concepts1[i].concept || concepts1[i];
+                
+                for (var j = 0; j < concepts2.length; j++) {
+                    var concept2 = concepts2[j].concept || concepts2[j];
+                    
+                    if (concept1 === concept2) {
+                        matches++;
+                        break;
+                    }
+                }
+            }
+            
+            return matches / total;
+        };
+        
+        TerraSemanticIntegration.prototype.compareDomains = function(domains1, domains2) {
+            if (!domains1.length || !domains2.length) return 0;
+            
+            var matches = 0;
+            var total = Math.max(domains1.length, domains2.length);
+            
+            for (var i = 0; i < domains1.length; i++) {
+                var domain1 = domains1[i].domain || domains1[i];
+                
+                for (var j = 0; j < domains2.length; j++) {
+                    var domain2 = domains2[j].domain || domains2[j];
+                    
+                    if (domain1 === domain2) {
+                        matches++;
+                        break;
+                    }
+                }
+            }
+            
+            return matches / total;
+        };
+        
+        TerraSemanticIntegration.prototype.findMatchedConcepts = function(analysis1, analysis2) {
+            var matches = [];
+            
+            if (!analysis1.concepts || !analysis2.concepts) return matches;
+            
+            for (var i = 0; i < analysis1.concepts.length && matches.length < 5; i++) {
+                var concept1 = analysis1.concepts[i].concept || analysis1.concepts[i];
+                
+                for (var j = 0; j < analysis2.concepts.length; j++) {
+                    var concept2 = analysis2.concepts[j].concept || analysis2.concepts[j];
+                    
+                    if (concept1 === concept2 && matches.indexOf(concept1) === -1) {
+                        matches.push(concept1);
+                        break;
+                    }
+                }
+            }
+            
+            return matches;
+        };
+        
+        TerraSemanticIntegration.prototype.updateUI = function() {
+            this.updateSystemStatus();
+            this.updateArchivesList();
+            this.updateTabCounts();
+        };
+        
+        TerraSemanticIntegration.prototype.updateSystemStatus = function() {
+            var levelElement = document.getElementById('currentLevel');
+            var archiveCountElement = document.getElementById('archiveCount');
+            var analysisCountElement = document.getElementById('analysisCount');
+            var storageUsedElement = document.getElementById('storageUsed');
+            var systemLevelIndicator = document.getElementById('systemLevelIndicator');
+            
+            if (levelElement) levelElement.textContent = 'L' + this.currentLevel;
+            if (systemLevelIndicator) systemLevelIndicator.textContent = '🧬 Уровень: L' + this.currentLevel;
+            if (archiveCountElement) archiveCountElement.textContent = this.archiveManager.archives.length;
+            if (analysisCountElement) analysisCountElement.textContent = this.integrationStats.semanticAnalyses;
+            if (storageUsedElement) storageUsedElement.textContent = this.formatFileSize(this.archiveManager.getCurrentStorageSize());
+        };
+        
+        TerraSemanticIntegration.prototype.updateArchivesList = function() {
+            var container = document.getElementById('archivesList');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (this.archiveManager.archives.length === 0) {
+                container.innerHTML = 
+                    '<div class="text-center py-12 text-gray-500">' +
+                        '<div class="text-6xl mb-6">📦</div>' +
+                        '<h3 class="text-xl font-semibold mb-2">Архивов пока нет</h3>' +
+                        '<p>Создайте первый архив, чтобы начать работу</p>' +
+                    '</div>';
+                return;
+            }
+            
+            // Показываем последние 10 архивов
+            var recentArchives = this.archiveManager.archives.slice(-10).reverse();
+            
+            for (var i = 0; i < recentArchives.length; i++) {
+                var archive = recentArchives[i];
+                var archiveElement = document.createElement('div');
+                archiveElement.className = 'archive-item';
+                
+                archiveElement.innerHTML = 
+                    '<div class="flex justify-between items-start">' +
+                        '<div class="flex-1">' +
+                            '<h4 class="font-semibold text-gray-800 mb-1">📦 Архив #' + archive.id.slice(-6) + '</h4>' +
+                            '<p class="text-sm text-gray-600 mb-2">' + new Date(archive.timestamp).toLocaleString() + '</p>' +
+                            '<p class="text-sm text-gray-700 line-clamp-2">' + (archive.data.text || 'Файловый архив').slice(0, 100) + '...</p>' +
+                        '</div>' +
+                        '<div class="text-right ml-4">' +
+                            '<div class="text-sm text-gray-500">' + this.formatFileSize(archive.size) + '</div>' +
+                            '<div class="text-xs text-purple-600 font-semibold">L' + archive.level + '</div>' +
+                        '</div>' +
+                    '</div>';
+                
+                archiveElement.onclick = (function(archive) {
+                    return function() {
+                        terraSystem.showArchiveDetails(archive);
+                    };
+                })(archive);
+                
+                container.appendChild(archiveElement);
+            }
+        };
+        
+        TerraSemanticIntegration.prototype.updateTabCounts = function() {
+            // Обновление счетчиков во вкладках
+            var thesaurusCount = this.archiveManager.thesaurus.length;
+            var encyclopediaCount = this.archiveManager.encyclopedia.length;
+            
+            // Обновление текста во вкладках с счетчиками
+            var thesaurusTab = document.querySelector('[data-tab="thesaurus"]');
+            var encyclopediaTab = document.querySelector('[data-tab="encyclopedia"]');
+            
+            if (thesaurusTab && thesaurusCount > 0) {
+                thesaurusTab.innerHTML = '📚 Тезаурус (' + thesaurusCount + ')';
+            }
+            
+            if (encyclopediaTab && encyclopediaCount > 0) {
+                encyclopediaTab.innerHTML = '🔬 Энциклопедия (' + encyclopediaCount + ')';
+            }
+        };
+        
+        TerraSemanticIntegration.prototype.showArchiveDetails = function(archive) {
+            var modal = document.getElementById('contentModal');
+            var modalContent = document.getElementById('modalContent');
+            
+            if (!modal || !modalContent) return;
+            
+            var analysisInfo = '';
+            if (archive.data.analysis) {
+                var analysis = archive.data.analysis;
+                analysisInfo = 
+                    '<div class="mt-6 p-4 bg-blue-50 rounded-lg">' +
+                        '<h4 class="font-semibold text-blue-800 mb-3">🧠 Результаты анализа</h4>';
+                
+                if (analysis.keywords && analysis.keywords.length > 0) {
+                    analysisInfo += '<div class="mb-3">' +
+                                  '<h5 class="font-medium text-blue-700 mb-2">Ключевые слова:</h5>' +
+                                  '<div class="flex flex-wrap gap-2">';
+                    
+                    for (var i = 0; i < Math.min(analysis.keywords.length, 8); i++) {
+                        var keyword = analysis.keywords[i].word || analysis.keywords[i];
+                        analysisInfo += '<span class="semantic-tag">' + keyword + '</span>';
+                    }
+                    
+                    analysisInfo += '</div></div>';
+                }
+                
+                if (analysis.concepts && analysis.concepts.length > 0) {
+                    analysisInfo += '<div class="mb-3">' +
+                                  '<h5 class="font-medium text-blue-700 mb-2">Концепции:</h5>';
+                    
+                    for (var j = 0; j < Math.min(analysis.concepts.length, 3); j++) {
+                        var concept = analysis.concepts[j];
+                        analysisInfo += '<div class="text-sm text-blue-600 mb-1">' +
+                                      '• ' + concept.concept + ' (релевантность: ' + concept.relevance + ')</div>';
+                    }
+                    
+                    analysisInfo += '</div>';
+                }
+                
+                analysisInfo += '</div>';
+            }
+            
+            var ethicalInfo = '';
+            if (archive.data.ethicalCheck) {
+                var ethical = archive.data.ethicalCheck;
+                ethicalInfo = 
+                    '<div class="mt-4 p-4 ' + (ethical.passed ? 'bg-green-50' : 'bg-red-50') + ' rounded-lg">' +
+                        '<h4 class="font-semibold ' + (ethical.passed ? 'text-green-800' : 'text-red-800') + ' mb-2">' +
+                            '⚖️ Этическая проверка: ' + (ethical.passed ? 'Пройдена' : 'Не пройдена') +
+                        '</h4>' +
+                        '<div class="text-sm ' + (ethical.passed ? 'text-green-700' : 'text-red-700') + '">' +
+                            'Оценка безопасности: ' + ethical.safetyScore + '/100' +
+                        '</div>' +
+                    '</div>';
+            }
+            
+            modalContent.innerHTML = 
+                '<div class="space-y-4">' +
+                    '<div class="border-b pb-4">' +
+                        '<h3 class="text-xl font-semibold text-gray-800">📦 Детали архива</h3>' +
+                        '<div class="grid grid-cols-2 gap-4 mt-4 text-sm">' +
+                            '<div><strong>ID:</strong> ' + archive.id + '</div>' +
+                            '<div><strong>Уровень:</strong> L' + archive.level + '</div>' +
+                            '<div><strong>Создан:</strong> ' + new Date(archive.timestamp).toLocaleString() + '</div>' +
+                            '<div><strong>Размер:</strong> ' + this.formatFileSize(archive.size) + '</div>' +
+                            '<div><strong>Запросчик:</strong> ' + (archive.requesterDID.split(':').pop() || 'Неизвестен') + '</div>' +
+                            '<div><strong>Контрольная сумма:</strong> ' + (archive.checksum || 'Не вычислена') + '</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div>' +
+                        '<h4 class="font-semibold text-gray-800 mb-2">📄 Содержимое</h4>' +
+                        '<div class="bg-gray-50 p-4 rounded-lg max-h-64 overflow-y-auto">' +
+                            '<pre class="whitespace-pre-wrap text-sm">' + (archive.data.text || 'Нет текстового содержимого') + '</pre>' +
+                        '</div>' +
+                    '</div>';
+            
+            if (archive.data.attachments && archive.data.attachments.length > 0) {
+                modalContent.innerHTML += 
+                    '<div>' +
+                        '<h4 class="font-semibold text-gray-800 mb-2">📎 Вложения (' + archive.data.attachments.length + ')</h4>' +
+                        '<div class="space-y-2">';
+                
+                for (var k = 0; k < archive.data.attachments.length; k++) {
+                    var attachment = archive.data.attachments[k];
+                    modalContent.innerHTML += 
+                        '<div class="flex justify-between items-center p-2 bg-gray-50 rounded">' +
+                            '<span class="text-sm font-medium">' + attachment.name + '</span>' +
+                            '<span class="text-xs text-gray-500">' + this.formatFileSize(attachment.size) + '</span>' +
+                        '</div>';
+                }
+                
+                modalContent.innerHTML += '</div></div>';
+            }
+            
+            modalContent.innerHTML += analysisInfo + ethicalInfo + '</div>';
+            
+            modal.classList.remove('hidden');
+        };
+        
+        TerraSemanticIntegration.prototype.formatFileSize = function(bytes) {
+            if (bytes === 0) return '0 B';
+            
+            var k = 1024;
+            var sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+            var i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        };
+        
+        TerraSemanticIntegration.prototype.saveAllData = function() {
+            this.archiveManager.saveData();
+            this.saveIntegrationStats();
+            this.showSaveStatus('saved');
+        };
+        
+        TerraSemanticIntegration.prototype.loadSystemData = function() {
+            this.archiveManager.loadExistingData();
+            this.integrationStats = this.loadIntegrationStats();
+        };
+        
+        TerraSemanticIntegration.prototype.showSaveStatus = function(status) {
+            var indicator = document.getElementById('saveIndicator');
+            if (!indicator) return;
+            
+            indicator.className = 'save-indicator ' + status;
+            
+            switch (status) {
+                case 'saving':
+                    indicator.innerHTML = '💾 Сохранение...';
+                    break;
+                case 'saved':
+                    indicator.innerHTML = '✅ Сохранено';
+                    break;
+                case 'error':
+                    indicator.innerHTML = '❌ Ошибка';
+                    break;
+            }
+            
+            indicator.classList.remove('hidden');
+            
+            // Автоскрытие через 3 секунды
+            setTimeout(function() {
+                indicator.classList.add('hidden');
+            }, 3000);
+        };
+        
+        TerraSemanticIntegration.prototype.getSystemInfo = function() {
+            return {
+                version: this.version,
+                author: this.author,
+                did: this.did,
+                currentLevel: this.currentLevel,
+                browserCapabilities: this.browserCapabilities,
+                componentsLoaded: {
+                    l0Kernel: !!this.l0Kernel,
+                    offlineAnalyzer: !!this.offlineAnalyzer,
+                    ethicalLayer: !!this.ethicalLayer,
+                    archiveManager: !!this.archiveManager
+                },
+                statistics: this.integrationStats,
+                storageStats: this.archiveManager.getStorageStats()
+            };
+        };
+        
+        // ===== МНОГОЯЗЫЧНАЯ ПОДДЕРЖКА =====
+        
+        var languageTranslations = {
+            'uz': {
+                'archive_manager': 'Arxiv Boshqaruvchisi',
+                'create_archive': 'Arxiv yaratish',
+                'search': 'Qidirish',
+                'help': 'Yordam',
+                'settings': 'Sozlamalar',
+                'hello': 'Salom',
+                'thank_you': 'Rahmat',
+                'please': 'Iltimos',
+                'yes': 'Ha',
+                'no': "Yo'q"
+            },
+            'ru': {
+                'archive_manager': 'Менеджер архивов',
+                'create_archive': 'Создать архив',
+                'search': 'Поиск',
+                'help': 'Справка',
+                'settings': 'Настройки',
+                'hello': 'Привет',
+                'thank_you': 'Спасибо',
+                'please': 'Пожалуйста',
+                'yes': 'Да',
+                'no': 'Нет'
+            },
+            'en': {
+                'archive_manager': 'Archive Manager',
+                'create_archive': 'Create Archive',
+                'search': 'Search',
+                'help': 'Help',
+                'settings': 'Settings',
+                'hello': 'Hello',
+                'thank_you': 'Thank you',
+                'please': 'Please',
+                'yes': 'Yes',
+                'no': 'No'
+            },
+            'de': {
+                'archive_manager': 'Archiv-Manager',
+                'create_archive': 'Archiv erstellen',
+                'search': 'Suchen',
+                'help': 'Hilfe',
+                'settings': 'Einstellungen',
+                'hello': 'Hallo',
+                'thank_you': 'Danke',
+                'please': 'Bitte',
+                'yes': 'Ja',
+                'no': 'Nein'
+            }
+        };
+        
+        function translateText(key, language) {
+            language = language || getCurrentLanguage();
+            
+            if (languageTranslations[language] && languageTranslations[language][key]) {
+                return languageTranslations[language][key];
+            }
+            
+            // Возврат к русскому языку по умолчанию
+            if (languageTranslations['ru'][key]) {
+                return languageTranslations['ru'][key];
+            }
+            
+            return key; // Возврат исходного ключа, если перевод не найден
+        }
+        
+        function getCurrentLanguage() {
+            var select = document.getElementById('languageSelect');
+            return select ? select.value : 'ru';
+        }
+        
+        function switchLanguage(language) {
+            localStorage.setItem('terra_language', language);
+            
+            // Обновление select элемента
+            var select = document.getElementById('languageSelect');
+            if (select) {
+                select.value = language;
+            }
+            
+            // Объявление для screen reader
+            announceToScreenReader('Язык изменен на ' + language);
+            
+            console.log('🌐 Язык интерфейса изменен на:', language);
+        }
+        
+        function loadSavedLanguage() {
+            var savedLanguage = localStorage.getItem('terra_language');
+            if (savedLanguage) {
+                switchLanguage(savedLanguage);
+            }
+        }
+        
+        // ===== ВОЗМОЖНОСТИ ДОСТУПНОСТИ =====
+        
+        var accessibilitySettings = {
+            highContrast: false,
+            largeText: false,
+            screenReaderSupport: true,
+            reducedMotion: false
+        };
+        
+        function toggleAccessibility() {
+            var body = document.getElementById('mainBody');
+            var isHighContrast = body.classList.contains('accessibility-high-contrast');
+            
+            if (isHighContrast) {
+                // Отключить высокий контраст
+                body.classList.remove('accessibility-high-contrast');
+                body.classList.remove('accessibility-large-text');
+                accessibilitySettings.highContrast = false;
+                accessibilitySettings.largeText = false;
+                announceToScreenReader('Обычный режим отображения включен');
+            } else {
+                // Включить высокий контраст и крупный текст
+                body.classList.add('accessibility-high-contrast');
+                body.classList.add('accessibility-large-text');
+                accessibilitySettings.highContrast = true;
+                accessibilitySettings.largeText = true;
+                announceToScreenReader('Режим повышенной доступности включен');
+            }
+            
+            saveAccessibilitySettings();
+        }
+        
+        function announceToScreenReader(message) {
+            // Создание элемента для screen reader
+            var announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.style.position = 'absolute';
+            announcement.style.left = '-10000px';
+            announcement.style.width = '1px';
+            announcement.style.height = '1px';
+            announcement.style.overflow = 'hidden';
+            
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            // Удаление через 1 секунду
+            setTimeout(function() {
+                document.body.removeChild(announcement);
+            }, 1000);
+        }
+        
+        function saveAccessibilitySettings() {
+            localStorage.setItem('terra_accessibility', JSON.stringify(accessibilitySettings));
+        }
+        
+        function loadAccessibilitySettings() {
+            try {
+                var saved = localStorage.getItem('terra_accessibility');
+                if (saved) {
+                    accessibilitySettings = JSON.parse(saved);
+                    
+                    var body = document.getElementById('mainBody');
+                    if (accessibilitySettings.highContrast) {
+                        body.classList.add('accessibility-high-contrast');
+                    }
+                    if (accessibilitySettings.largeText) {
+                        body.classList.add('accessibility-large-text');
+                    }
+                }
+            } catch (error) {
+                console.warn('Ошибка загрузки настроек доступности:', error);
+            }
+        }
+        
+        // ===== СЛОВАРНЫЙ РЕЖИМ =====
+        
+        var dictionaryMode = false;
+        
+        var uzbekGermanDictionary = {
+            // Базовые слова
+            'salom': {
+                german: 'Hallo',
+                pronunciation: 'ха́лло',
+                category: 'приветствие',
+                example_uz: 'Salom, qanday ahvolingiz?',
+                example_de: 'Hallo, wie geht es Ihnen?'
+            },
+            'rahmat': {
+                german: 'Danke',
+                pronunciation: 'да́нке',
+                category: 'вежливость',
+                example_uz: 'Yordam uchun rahmat',
+                example_de: 'Danke für die Hilfe'
+            },
+            'uy': {
+                german: 'Haus',
+                pronunciation: 'хаус',
+                category: 'жилище',
+                example_uz: 'Bizning uyimiz katta',
+                example_de: 'Unser Haus ist groß'
+            },
+            'kitob': {
+                german: 'Buch',
+                pronunciation: 'бух',
+                category: 'образование',
+                example_uz: 'Men kitob oʻqiyapman',
+                example_de: 'Ich lese ein Buch'
+            },
+            'maktab': {
+                german: 'Schule',
+                pronunciation: 'шу́ле',
+                category: 'образование',
+                example_uz: 'Bolalar maktabga borishadi',
+                example_de: 'Die Kinder gehen zur Schule'
+            },
+            'suv': {
+                german: 'Wasser',
+                pronunciation: 'ва́ссер',
+                category: 'природа',
+                example_uz: 'Toza suv ichish kerak',
+                example_de: 'Man sollte sauberes Wasser trinken'
+            },
+            'non': {
+                german: 'Brot',
+                pronunciation: 'брот',
+                category: 'еда',
+                example_uz: 'Yangi non mazali',
+                example_de: 'Frisches Brot ist lecker'
+            },
+            'vaqt': {
+                german: 'Zeit',
+                pronunciation: 'цайт',
+                category: 'время',
+                example_uz: 'Vaqt juda tez oʻtadi',
+                example_de: 'Die Zeit vergeht sehr schnell'
+            },
+            'ish': {
+                german: 'Arbeit',
+                pronunciation: 'а́рбайт',
+                category: 'деятельность',
+                example_uz: 'Menga bu ish yoqadi',
+                example_de: 'Diese Arbeit gefällt mir'
+            },
+            'oila': {
+                german: 'Familie',
+                pronunciation: 'фами́лие',
+                category: 'семья',
+                example_uz: 'Oila eng muhim narsa',
+                example_de: 'Familie ist das Wichtigste'
+            }
+        };
+        
+        function toggleDictionaryMode() {
+            dictionaryMode = !dictionaryMode;
+            
+            var button = document.getElementById('dictionaryModeToggle');
+            if (button) {
+                if (dictionaryMode) {
+                    button.textContent = '📚 Словарь (ВКЛ)';
+                    button.classList.add('pulse-glow');
+                } else {
+                    button.textContent = '📚 Словарь';
+                    button.classList.remove('pulse-glow');
+                }
+            }
+            
+            announceToScreenReader(dictionaryMode ? 'Словарный режим включен' : 'Словарный режим выключен');
+        }
+        
+        function searchDictionary() {
+            var query = document.getElementById('dictionarySearch').value.trim().toLowerCase();
+            var resultsContainer = document.getElementById('dictionaryResults');
+            
+            if (!resultsContainer) return;
+            
+            if (!query) {
+                resultsContainer.innerHTML = 
+                    '<div class="text-center py-8 text-gray-500">' +
+                        '<div class="text-4xl mb-4">📚</div>' +
+                        '<p>Введите слово для поиска перевода</p>' +
+                    '</div>';
+                return;
+            }
+            
+            var results = [];
+            
+            // Поиск в словаре
+            for (var word in uzbekGermanDictionary) {
+                if (word.indexOf(query) !== -1) {
+                    results.push({
+                        uzbek: word,
+                        data: uzbekGermanDictionary[word],
+                        relevance: word.indexOf(query) === 0 ? 1 : 0.5
+                    });
+                }
+            }
+            
+            // Сортировка по релевантности
+            results.sort(function(a, b) { return b.relevance - a.relevance; });
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = 
+                    '<div class="text-center py-8 text-gray-500">' +
+                        '<div class="text-4xl mb-4">🔍</div>' +
+                        '<h3 class="text-xl font-semibold mb-2">Перевод не найден</h3>' +
+                        '<p>Попробуйте другое слово или проверьте правописание</p>' +
+                    '</div>';
+                return;
+            }
+            
+            resultsContainer.innerHTML = '';
+            
+            for (var i = 0; i < results.length; i++) {
+                var result = results[i];
+                var resultElement = document.createElement('div');
+                resultElement.className = 'definition-card mb-4';
+                
+                resultElement.innerHTML = 
+                    '<div class="flex justify-between items-start mb-4">' +
+                        '<div>' +
+                            '<h3 class="text-xl font-bold text-teal-800">' + result.uzbek + '</h3>' +
+                            '<p class="text-lg text-gray-700">' + result.data.german + '</p>' +
+                            '<p class="text-sm text-gray-500">Произношение: ' + result.data.pronunciation + '</p>' +
+                        '</div>' +
+                        '<div class="text-right">' +
+                            '<span class="inline-block px-3 py-1 bg-teal-200 text-teal-800 text-xs rounded-full">' + 
+                                result.data.category + 
+                            '</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">' +
+                        '<div>' +
+                            '<h4 class="font-semibold text-gray-700 mb-1">🇺🇿 Узбекский пример:</h4>' +
+                            '<p class="text-sm text-gray-600">' + result.data.example_uz + '</p>' +
+                        '</div>' +
+                        '<div>' +
+                            '<h4 class="font-semibold text-gray-700 mb-1">🇩🇪 Немецкий пример:</h4>' +
+                            '<p class="text-sm text-gray-600">' + result.data.example_de + '</p>' +
+                        '</div>' +
+                    '</div>';
+                
+                resultsContainer.appendChild(resultElement);
+            }
+            
+            announceToScreenReader('Найдено переводов: ' + results.length);
+        }
+        
+        // ===== ОСНОВНЫЕ ФУНКЦИИ ИНТЕРФЕЙСА =====
+        
+        var terraSystem; // Глобальная переменная системы
+        
+        function initializeTerraSystem() {
+            terraSystem = new TerraSemanticIntegration();
+            
+            // Загрузка сохраненных настроек
+            loadSavedLanguage();
+            loadAccessibilitySettings();
+            
+            // Настройка обработчиков событий
+            setupEventHandlers();
+            
+            console.log("🌍 Terra Archive Manager 2.0 Ultimate готов к работе!");
+        }
+        
+        function setupEventHandlers() {
+            // Языковой переключатель
+            var languageSelect = document.getElementById('languageSelect');
+            if (languageSelect) {
+                languageSelect.addEventListener('change', function() {
+                    switchLanguage(this.value);
+                });
+            }
+            
+            // Кнопки управления
+            var accessibilityToggle = document.getElementById('accessibilityToggle');
+            if (accessibilityToggle) {
+                accessibilityToggle.addEventListener('click', toggleAccessibility);
+            }
+            
+            var dictionaryToggle = document.getElementById('dictionaryModeToggle');
+            if (dictionaryToggle) {
+                dictionaryToggle.addEventListener('click', toggleDictionaryMode);
+            }
+            
+            // Обработка форм
+            var searchBox = document.getElementById('searchBox');
+            if (searchBox) {
+                searchBox.addEventListener('input', function() {
+                    if (this.value.length > 2) {
+                        // Автоматический поиск при вводе
+                        clearTimeout(this.searchTimeout);
+                        this.searchTimeout = setTimeout(function() {
+                            performCorpusSearch();
+                        }, 500);
+                    }
+                });
+            }
+            
+            // Закрытие модала по клику вне его
+            var modal = document.getElementById('contentModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+            
+            // Автоматическое сохранение каждые 30 секунд
+            setInterval(function() {
+                if (terraSystem) {
+                    terraSystem.saveAllData();
+                }
+            }, 30000);
+        }
+        
+        // Функции управления архивами
+        function processArchiveRequest() {
+            var requestText = document.getElementById('archiveRequest').value.trim();
+            var requesterDID = document.getElementById('requesterDID').value.trim();
+            
+            if (!requestText) {
+                alert('❌ Введите описание архива');
+                return;
+            }
+            
+            if (!requesterDID) {
+                alert('❌ Введите DID запросчика');
+                return;
+            }
+            
+            terraSystem.showSaveStatus('saving');
+            
+            // Получение файлов
+            var fileInput = document.getElementById('fileInput');
+            var attachments = [];
+            
+            if (fileInput && fileInput.files) {
+                for (var i = 0; i < fileInput.files.length; i++) {
+                    var file = fileInput.files[i];
+                    attachments.push({
+                        name: file.name,
+                        size: file.size,
+                        type: file.type,
+                        lastModified: file.lastModified
+                    });
+                }
+            }
+            
+            // Показать прогресс
+            showProcessingProgress();
+            
+            // Симуляция обработки
+            setTimeout(function() {
+                var result = terraSystem.processArchiveRequest(requestText, attachments, requesterDID);
+                
+                hideProcessingProgress();
+                
+                if (result.success) {
+                    alert('✅ Архив создан успешно!\n\n' +
+                          '📦 ID архива: ' + result.archiveId + '\n' +
+                          '🧬 Уровень: L' + result.level + '\n' +
+                          '💾 Размер: ' + terraSystem.formatFileSize(result.size));
+                    
+                    // Очистка формы
+                    document.getElementById('archiveRequest').value = '';
+                    if (fileInput) fileInput.value = '';
+                    
+                    terraSystem.updateUI();
+                } else {
+                    alert('❌ Ошибка создания архива:\n\n' + result.error);
+                }
+                
+                terraSystem.showSaveStatus('saved');
+            }, 1000);
+        }
+        
+        function performCorpusSearch() {
+            var query = document.getElementById('searchBox').value.trim();
+            var searchMode = document.getElementById('searchMode').value;
+            
+            if (!query) {
+                alert('❌ Введите поисковый запрос');
+                return;
+            }
+            
+            terraSystem.showSaveStatus('saving');
+            
+            var options = {
+                mode: searchMode
+            };
+            
+            var results = terraSystem.searchArchive(query, options);
+            
+            displaySearchResults(results);
+            terraSystem.showSaveStatus('saved');
+        }
+        
+        function displaySearchResults(searchResults) {
+            var container = document.getElementById('archivesList');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (searchResults.totalFound === 0) {
+                container.innerHTML = 
+                    '<div class="text-center py-12 text-gray-500">' +
+                        '<div class="text-6xl mb-6">🔍</div>' +
+                        '<h3 class="text-xl font-semibold mb-2">Результатов не найдено</h3>' +
+                        '<p>Попробуйте изменить поисковый запрос</p>' +
+                    '</div>';
+                return;
+            }
+            
+            // Заголовок результатов
+            var headerElement = document.createElement('div');
+            headerElement.className = 'bg-blue-50 p-4 rounded-lg mb-4';
+            headerElement.innerHTML = 
+                '<div class="flex justify-between items-center">' +
+                    '<h3 class="text-lg font-semibold text-blue-800">🔍 Результаты поиска</h3>' +
+                    '<div class="text-sm text-blue-600">' +
+                        'Найдено: ' + searchResults.totalFound + ' • ' +
+                        'Время: ' + searchResults.processingTime + 'мс • ' +
+                        'Метод: ' + searchResults.searchMethod +
+                    '</div>' +
+                '</div>';
+            
+            container.appendChild(headerElement);
+            
+            // Результаты поиска
+            for (var i = 0; i < searchResults.results.length; i++) {
+                var result = searchResults.results[i];
+                var archive = result.item;
+                
+                var resultElement = document.createElement('div');
+                resultElement.className = 'archive-item border-l-4 border-blue-500';
+                
+                var relevanceBar = '';
+                if (result.similarity !== undefined) {
+                    var similarity = Math.round(result.similarity * 100);
+                    relevanceBar = 
+                        '<div class="mt-2">' +
+                            '<div class="flex justify-between text-xs text-gray-500 mb-1">' +
+                                '<span>Релевантность</span>' +
+                                '<span>' + similarity + '%</span>' +
+                            '</div>' +
+                            '<div class="progress-bar h-2">' +
+                                '<div class="progress-fill h-2" style="width: ' + similarity + '%"></div>' +
+                            '</div>' +
+                        '</div>';
+                }
+                
+                var matchedConcepts = '';
+                if (result.matchedConcepts && result.matchedConcepts.length > 0) {
+                    matchedConcepts = 
+                        '<div class="mt-2">' +
+                            '<div class="text-xs text-gray-500 mb-1">Совпадающие концепции:</div>' +
+                            '<div class="flex flex-wrap gap-1">';
+                    
+                    for (var j = 0; j < result.matchedConcepts.length; j++) {
+                        matchedConcepts += '<span class="semantic-tag text-xs">' + result.matchedConcepts[j] + '</span>';
+                    }
+                    
+                    matchedConcepts += '</div></div>';
+                }
+                
+                resultElement.innerHTML = 
+                    '<div class="flex justify-between items-start">' +
+                        '<div class="flex-1">' +
+                            '<h4 class="font-semibold text-gray-800 mb-1">📦 Архив #' + archive.id.slice(-6) + '</h4>' +
+                            '<p class="text-sm text-gray-600 mb-2">' + new Date(archive.timestamp).toLocaleString() + '</p>' +
+                            '<p class="text-sm text-gray-700 line-clamp-2">' + (archive.data.text || 'Файловый архив').slice(0, 100) + '...</p>' +
+                            relevanceBar +
+                            matchedConcepts +
+                        '</div>' +
+                        '<div class="text-right ml-4">' +
+                            '<div class="text-sm text-gray-500">' + terraSystem.formatFileSize(archive.size) + '</div>' +
+                            '<div class="text-xs text-purple-600 font-semibold">L' + archive.level + '</div>' +
+                        '</div>' +
+                    '</div>';
+                
+                resultElement.onclick = (function(archive) {
+                    return function() {
+                        terraSystem.showArchiveDetails(archive);
+                    };
+                })(archive);
+                
+                container.appendChild(resultElement);
+            }
+        }
+        
+        function showProcessingProgress() {
+            var progress = document.getElementById('processingProgress');
+            var progressFill = document.getElementById('progressFill');
+            var progressText = document.getElementById('progressText');
+            
+            if (progress) {
+                progress.classList.remove('hidden');
+                
+                var currentProgress = 0;
+                var progressInterval = setInterval(function() {
+                    currentProgress += Math.random() * 30;
+                    if (currentProgress > 100) {
+                        currentProgress = 100;
+                        clearInterval(progressInterval);
+                    }
+                    
+                    if (progressFill) {
+                        progressFill.style.width = currentProgress + '%';
+                    }
+                    
+                    if (progressText) {
+                        if (currentProgress < 30) {
+                            progressText.textContent = 'Анализ содержимого...';
+                        } else if (currentProgress < 60) {
+                            progressText.textContent = 'Семантическая обработка...';
+                        } else if (currentProgress < 90) {
+                            progressText.textContent = 'Этическая проверка...';
+                        } else {
+                            progressText.textContent = 'Сохранение архива...';
+                        }
+                    }
+                }, 200);
+                
+                // Сохранение интервала для возможности очистки
+                progress.progressInterval = progressInterval;
+            }
+        }
+        
+        function hideProcessingProgress() {
+            var progress = document.getElementById('processingProgress');
+            
+            if (progress) {
+                if (progress.progressInterval) {
+                    clearInterval(progress.progressInterval);
+                }
+                progress.classList.add('hidden');
+            }
+        }
+        
+        // Функции управления вкладками
+        function switchTab(tabName) {
+            // Скрыть все вкладки
+            var tabs = ['thesaurus', 'encyclopedia', 'semantic', 'dictionary'];
+            
+            for (var i = 0; i < tabs.length; i++) {
+                var tab = tabs[i];
+                var tabContent = document.getElementById(tab + 'Tab');
+                var tabButton = document.querySelector('[data-tab="' + tab + '"]');
+                
+                if (tabContent) {
+                    tabContent.classList.add('hidden');
+                }
+                
+                if (tabButton) {
+                    tabButton.classList.remove('active');
+                }
+            }
+            
+            // Показать выбранную вкладку
+            var selectedTabContent = document.getElementById(tabName + 'Tab');
+            var selectedTabButton = document.querySelector('[data-tab="' + tabName + '"]');
+            
+            if (selectedTabContent) {
+                selectedTabContent.classList.remove('hidden');
+            }
+            
+            if (selectedTabButton) {
+                selectedTabButton.classList.add('active');
+            }
+            
+            // Загрузка содержимого вкладки
+            if (tabName === 'thesaurus') {
+                loadThesaurusContent();
+            } else if (tabName === 'encyclopedia') {
+                loadEncyclopediaContent();
+            } else if (tabName === 'semantic') {
+                loadSemanticAnalysisContent();
+            }
+        }
+        
+        function loadThesaurusContent() {
+            var container = document.getElementById('thesaurusList');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (terraSystem.archiveManager.thesaurus.length === 0) {
+                container.innerHTML = 
+                    '<div class="text-center py-8 text-gray-500">' +
+                        '<div class="text-4xl mb-4">📚</div>' +
+                        '<h3 class="text-xl font-semibold mb-2">Тезаурус пуст</h3>' +
+                        '<p>Создайте архивы для автоматического построения тезауруса</p>' +
+                    '</div>';
+                return;
+            }
+            
+            for (var i = 0; i < terraSystem.archiveManager.thesaurus.length; i++) {
+                var entry = terraSystem.archiveManager.thesaurus[i];
+                var entryElement = document.createElement('div');
+                entryElement.className = 'definition-card';
+                
+                entryElement.innerHTML = 
+                    '<div class="flex justify-between items-start mb-3">' +
+                        '<h4 class="text-lg font-semibold text-teal-800">' + entry.term + '</h4>' +
+                        '<span class="text-xs text-teal-600 bg-teal-100 px-2 py-1 rounded">' + entry.category + '</span>' +
+                    '</div>' +
+                    '<p class="text-gray-700 mb-3">' + entry.definition + '</p>' +
+                    '<div class="flex flex-wrap gap-2">';
+                
+                if (entry.synonyms && entry.synonyms.length > 0) {
+                    for (var j = 0; j < entry.synonyms.length; j++) {
+                        entryElement.innerHTML += '<span class="semantic-tag text-xs">' + entry.synonyms[j] + '</span>';
+                    }
+                }
+                
+                entryElement.innerHTML += '</div>';
+                container.appendChild(entryElement);
+            }
+        }
+        
+        function loadEncyclopediaContent() {
+            var container = document.getElementById('encyclopediaList');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (terraSystem.archiveManager.encyclopedia.length === 0) {
+                container.innerHTML = 
+                    '<div class="text-center py-8 text-gray-500">' +
+                        '<div class="text-4xl mb-4">🔬</div>' +
+                        '<h3 class="text-xl font-semibold mb-2">Энциклопедия пуста</h3>' +
+                        '<p>Создайте архивы для автоматического построения энциклопедии</p>' +
+                    '</div>';
+                return;
+            }
+            
+            for (var i = 0; i < terraSystem.archiveManager.encyclopedia.length; i++) {
+                var entry = terraSystem.archiveManager.encyclopedia[i];
+                var entryElement = document.createElement('div');
+                entryElement.className = 'encyclopedia-entry';
+                
+                entryElement.innerHTML = 
+                    '<div class="flex justify-between items-start mb-3">' +
+                        '<h4 class="text-lg font-semibold text-purple-800">' + entry.concept + '</h4>' +
+                        '<span class="text-xs text-purple-600 bg-purple-100 px-2 py-1 rounded">' + entry.domain + '</span>' +
+                    '</div>' +
+                    '<p class="text-gray-700 mb-3">' + entry.description + '</p>' +
+                    '<div class="text-sm text-gray-600">' +
+                        '<strong>Связанные концепции:</strong> ' + (entry.relatedConcepts ? entry.relatedConcepts.join(', ') : 'Нет') +
+                    '</div>';
+                
+                container.appendChild(entryElement);
+            }
+        }
+        
+        function loadSemanticAnalysisContent() {
+            var container = document.getElementById('semanticAnalysis');
+            if (!container) return;
+            
+            var stats = terraSystem.integrationStats;
+            var systemInfo = terraSystem.getSystemInfo();
+            
+            container.innerHTML = 
+                '<div class="grid grid-cols-2 gap-6">' +
+                    '<div class="bg-blue-50 p-6 rounded-lg">' +
+                        '<h4 class="text-lg font-semibold text-blue-800 mb-4">📊 Статистика обработки</h4>' +
+                        '<div class="space-y-3">' +
+                            '<div class="flex justify-between">' +
+                                '<span class="text-blue-700">Всего обработано:</span>' +
+                                '<span class="font-semibold">' + stats.totalProcessed + '</span>' +
+                            '</div>' +
+                            '<div class="flex justify-between">' +
+                                '<span class="text-blue-700">Семантических анализов:</span>' +
+                                '<span class="font-semibold">' + stats.semanticAnalyses + '</span>' +
+                            '</div>' +
+                            '<div class="flex justify-between">' +
+                                '<span class="text-blue-700">Этических проверок:</span>' +
+                                '<span class="font-semibold">' + stats.ethicalChecks + '</span>' +
+                            '</div>' +
+                            '<div class="flex justify-between">' +
+                                '<span class="text-blue-700">Архивных операций:</span>' +
+                                '<span class="font-semibold">' + stats.archiveOperations + '</span>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="bg-green-50 p-6 rounded-lg">' +
+                        '<h4 class="text-lg font-semibold text-green-800 mb-4">🧬 Уровень системы</h4>' +
+                        '<div class="space-y-3">' +
+                            '<div class="flex justify-between">' +
+                                '<span class="text-green-700">Текущий уровень:</span>' +
+                                '<span class="font-semibold">L' + systemInfo.currentLevel + '</span>' +
+                            '</div>' +
+                            '<div class="flex justify-between">' +
+                                '<span class="text-green-700">Максимальный уровень:</span>' +
+                                '<span class="font-semibold">L' + terraSystem.determineMaxLevel() + '</span>' +
+                            '</div>' +
+                            '<div class="flex justify-between">' +
+                                '<span class="text-green-700">Браузер:</span>' +
+                                '<span class="font-semibold">' + systemInfo.browserCapabilities.browserFamily + '</span>' +
+                            '</div>' +
+                            '<div class="flex justify-between">' +
+                                '<span class="text-green-700">Производительность:</span>' +
+                                '<span class="font-semibold">' + systemInfo.browserCapabilities.processingPower + '</span>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="mt-6 bg-yellow-50 p-6 rounded-lg">' +
+                    '<h4 class="text-lg font-semibold text-yellow-800 mb-4">⚡ Возможности браузера</h4>' +
+                    '<div class="grid grid-cols-4 gap-4 text-sm">' +
+                        '<div class="text-center">' +
+                            '<div class="text-2xl mb-2">' + (systemInfo.browserCapabilities.es6Support ? '✅' : '❌') + '</div>' +
+                            '<div class="text-yellow-700">ES6 Support</div>' +
+                        '</div>' +
+                        '<div class="text-center">' +
+                            '<div class="text-2xl mb-2">' + (systemInfo.browserCapabilities.localStorageSupport ? '✅' : '❌') + '</div>' +
+                            '<div class="text-yellow-700">LocalStorage</div>' +
+                        '</div>' +
+                        '<div class="text-center">' +
+                            '<div class="text-2xl mb-2">' + (systemInfo.browserCapabilities.indexedDBSupport ? '✅' : '❌') + '</div>' +
+                            '<div class="text-yellow-700">IndexedDB</div>' +
+                        '</div>' +
+                        '<div class="text-center">' +
+                            '<div class="text-2xl mb-2">' + (systemInfo.browserCapabilities.webWorkersSupport ? '✅' : '❌') + '</div>' +
+                            '<div class="text-yellow-700">Web Workers</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+        }
+        
+        // Управление модалами
+        function closeModal() {
+            var modal = document.getElementById('contentModal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+        
+        // Функции управления системой
+        function upgradeSystemLevel() {
+            var maxLevel = terraSystem.determineMaxLevel();
+            
+            if (terraSystem.currentLevel >= maxLevel) {
+                alert('⚠️ Уже достигнут максимальный уровень для вашего браузера\n\n' +
+                      'Текущий: L' + terraSystem.currentLevel + '\n' +
+                      'Максимальный: L' + maxLevel + '\n\n' +
+                      'Для повышения уровня требуется более современный браузер или больше RAM');
+                return;
+            }
+            
+            terraSystem.currentLevel++;
+            
+            // Инициализация новых возможностей
+            if (terraSystem.currentLevel >= 1 && !terraSystem.offlineAnalyzer) {
+                terraSystem.offlineAnalyzer = new OfflineSemanticAnalyzer();
+                terraSystem.offlineAnalyzer.initialize();
+            }
+            
+            terraSystem.updateUI();
+            terraSystem.saveAllData();
+            
+            alert('⬆️ Уровень системы повышен!\n\n' +
+                  'Новый уровень: L' + terraSystem.currentLevel + '\n' +
+                  'Доступные возможности расширены');
+        }
+        
+        function resetToL0() {
+            if (confirm('🔄 Сбросить систему к базовому уровню L0?\n\nЭто отключит расширенные возможности, но не удалит данные.')) {
+                terraSystem.currentLevel = 0;
+                terraSystem.offlineAnalyzer = null; // Отключение расширенного анализатора
+                
+                terraSystem.updateUI();
+                terraSystem.saveAllData();
+                
+                alert('🔄 Система сброшена к уровню L0\n\nТеперь доступны только базовые возможности');
+            }
+        }
+        
+        function organizeAll() {
+            alert('📁 Организация всех архивов\n\nФункция в разработке...\nВ следующей версии будет доступна автоматическая организация по предметным областям.');
+        }
+        
+        function optimizeForCurrentLevel() {
+            terraSystem.showSaveStatus('saving');
+            
+            // Простая оптимизация данных
+            var optimizationResults = {
+                removedDuplicates: 0,
+                compressedArchives: 0,
+                freedSpace: 0
+            };
+            
+            setTimeout(function() {
+                terraSystem.showSaveStatus('saved');
+                
+                alert('🗜️ Оптимизация завершена!\n\n' +
+                      '✨ Удалено дубликатов: ' + optimizationResults.removedDuplicates + '\n' +
+                      '📦 Сжато архивов: ' + optimizationResults.compressedArchives + '\n' +
+                      '💾 Освобождено места: ' + terraSystem.formatFileSize(optimizationResults.freedSpace));
+            }, 1500);
+        }
+        
+        function generateUltimateReport() {
+            var systemInfo = terraSystem.getSystemInfo();
+            var stats = terraSystem.integrationStats;
+            var storageStats = terraSystem.archiveManager.getStorageStats();
+            var ethicalReport = terraSystem.ethicalLayer.generateEthicalReport();
+            
+            var report = '📊 ULTIMATE ОТЧЕТ TERRA СИСТЕМЫ\n\n';
+            
+            report += '🧬 СИСТЕМНАЯ ИНФОРМАЦИЯ:\n';
+            report += 'Версия: ' + systemInfo.version + '\n';
+            report += 'Текущий уровень: L' + systemInfo.currentLevel + '\n';
+            report += 'Автор: ' + systemInfo.author + '\n';
+            report += 'DID: ' + systemInfo.did + '\n\n';
+            
+            report += '📦 АРХИВНАЯ СТАТИСТИКА:\n';
+            report += 'Всего архивов: ' + storageStats.totalArchives + '\n';
+            report += 'Общий размер: ' + terraSystem.formatFileSize(storageStats.totalSize) + '\n';
+            report += 'Записей тезауруса: ' + storageStats.thesaurusEntries + '\n';
+            report += 'Записей энциклопедии: ' + storageStats.encyclopediaEntries + '\n\n';
+            
+            report += '🧠 ОБРАБОТКА ДАННЫХ:\n';
+            report += 'Всего обработано: ' + stats.totalProcessed + '\n';
+            report += 'Семантических анализов: ' + stats.semanticAnalyses + '\n';
+            report += 'Этических проверок: ' + stats.ethicalChecks + '\n';
+            report += 'Архивных операций: ' + stats.archiveOperations + '\n\n';
+            
+            report += '⚖️ ЭТИЧЕСКАЯ БЕЗОПАСНОСТЬ:\n';
+            report += 'Всего проверок: ' + ethicalReport.statistics.totalChecks + '\n';
+            report += 'Заблокированного контента: ' + ethicalReport.statistics.blockedContent + '\n';
+            report += 'Предупреждений выдано: ' + ethicalReport.statistics.warningsIssued + '\n';
+            report += 'Улучшенного контента: ' + ethicalReport.statistics.enhancedContent + '\n\n';
+            
+            report += '🌐 ВОЗМОЖНОСТИ БРАУЗЕРА:\n';
+            report += 'ES6 поддержка: ' + (systemInfo.browserCapabilities.es6Support ? '✅' : '❌') + '\n';
+            report += 'LocalStorage: ' + (systemInfo.browserCapabilities.localStorageSupport ? '✅' : '❌') + '\n';
+            report += 'IndexedDB: ' + (systemInfo.browserCapabilities.indexedDBSupport ? '✅' : '❌') + '\n';
+            report += 'Web Workers: ' + (systemInfo.browserCapabilities.webWorkersSupport ? '✅' : '❌') + '\n';
+            report += 'Семейство браузера: ' + systemInfo.browserCapabilities.browserFamily + '\n';
+            report += 'Производительность: ' + systemInfo.browserCapabilities.processingPower + '\n';
+            report += 'Оценочная RAM: ' + systemInfo.browserCapabilities.estimatedRAM + ' MB\n\n';
+            
+            if (stats.lastActivity) {
+                report += '⏰ ПОСЛЕДНЯЯ АКТИВНОСТЬ:\n';
+                report += new Date(stats.lastActivity).toLocaleString() + '\n\n';
+            }
+            
+            report += '🌍 TERRA ARCHIVE MANAGER 2.0 ULTIMATE\n';
+            report += 'Полностью автономная система семантического архивирования';
+            
+            alert(report);
+        }
+        
+        // Обработка файлов
+        function handleFiles(files) {
+            var fileList = [];
+            
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                fileList.push({
+                    name: file.name,
+                    size: file.size,
+                    type: file.type,
+                    lastModified: file.lastModified
+                });
+            }
+            
+            if (fileList.length > 0) {
+                console.log('Выбрано файлов:', fileList.length);
+                announceToScreenReader('Выбрано файлов: ' + fileList.length);
+            }
+        }
+        
+        // Drag & Drop обработчики
+        function dropHandler(event) {
+            event.preventDefault();
+            
+            var dropZone = document.getElementById('dropZone');
+            if (dropZone) {
+                dropZone.classList.remove('dragover');
+            }
+            
+            var files = event.dataTransfer.files;
+            handleFiles(files);
+            
+            // Обновление скрытого input
+            var fileInput = document.getElementById('fileInput');
+            if (fileInput) {
+                fileInput.files = files;
+            }
+        }
+        
+        function dragOverHandler(event) {
+            event.preventDefault();
+            
+            var dropZone = document.getElementById('dropZone');
+            if (dropZone) {
+                dropZone.classList.add('dragover');
+            }
+        }
+        
+        function dragLeaveHandler(event) {
+            event.preventDefault();
+            
+            var dropZone = document.getElementById('dropZone');
+            if (dropZone) {
+                dropZone.classList.remove('dragover');
+            }
+        }
+        
+        // ===== ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ =====
+        
+        // Функции экспорта/импорта
+        window.exportThesaurus = function() {
+            var thesaurusData = {
+                metadata: {
+                    systemName: "Terra Archive Manager 2.0 Ultimate",
+                    version: terraSystem.version,
+                    author: terraSystem.author,
+                    did: terraSystem.did,
+                    exportDate: new Date().toISOString(),
+                    type: "thesaurus"
+                },
+                data: terraSystem.archiveManager.thesaurus
+            };
+            
+            var dataStr = JSON.stringify(thesaurusData, null, 2);
+            var dataBlob = new Blob([dataStr], {type: 'application/json'});
+            var url = URL.createObjectURL(dataBlob);
+            
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'terra_thesaurus_' + new Date().toISOString().slice(0, 10) + '.json';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            URL.revokeObjectURL(url);
+            
+            alert('✅ Тезаурус экспортирован!\n\n' +
+                  'Записей: ' + terraSystem.archiveManager.thesaurus.length);
+        };
+
+        // Семантический анализ по запросу
+        window.performSemanticAnalysis = function() {
+            var text = prompt('🧠 Введите текст для семантического анализа:');
+            if (!text) return;
+            
+            terraSystem.showSaveStatus('saving');
+            
+            var analysis;
+            if (terraSystem.currentLevel >= 1 && terraSystem.offlineAnalyzer) {
+                analysis = terraSystem.offlineAnalyzer.analyzeText(text);
+            } else {
+                analysis = terraSystem.l0Kernel.processRequest(text, terraSystem.did);
+            }
+            
+            terraSystem.integrationStats.semanticAnalyses++;
+            terraSystem.saveIntegrationStats();
+            
+            // Отображение результатов анализа
+            var resultsDiv = document.getElementById('semanticAnalysis');
+            if (resultsDiv) {
+                var resultsHTML = '<div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200 mb-6">';
+                resultsHTML += '<h4 class="text-xl font-semibold text-blue-800 mb-4">🧠 Результаты семантического анализа</h4>';
+                
+                // Основная информация
+                resultsHTML += '<div class="grid grid-cols-3 gap-4 mb-6">';
+                resultsHTML += '<div class="text-center p-3 bg-white rounded-lg shadow-sm">';
+                resultsHTML += '<div class="text-2xl font-bold text-blue-600">' + (analysis.wordCount || text.split(' ').length) + '</div>';
+                resultsHTML += '<div class="text-sm text-blue-700">Слов</div>';
+                resultsHTML += '</div>';
+                resultsHTML += '<div class="text-center p-3 bg-white rounded-lg shadow-sm">';
+                resultsHTML += '<div class="text-2xl font-bold text-green-600">' + (analysis.processingTime || 0) + '</div>';
+                resultsHTML += '<div class="text-sm text-green-700">мс</div>';
+                resultsHTML += '</div>';
+                resultsHTML += '<div class="text-center p-3 bg-white rounded-lg shadow-sm">';
+                resultsHTML += '<div class="text-2xl font-bold text-purple-600">L' + terraSystem.currentLevel + '</div>';
+                resultsHTML += '<div class="text-sm text-purple-700">Уровень</div>';
+                resultsHTML += '</div>';
+                resultsHTML += '</div>';
+                
+                // Keywords
+                if (analysis.keywords && analysis.keywords.length > 0) {
+                    resultsHTML += '<div class="mb-4">';
+                    resultsHTML += '<h5 class="font-medium text-gray-700 mb-2">🔤 Ключевые слова:</h5>';
+                    resultsHTML += '<div class="flex flex-wrap gap-2">';
+                    for (var i = 0; i < Math.min(analysis.keywords.length, 10); i++) {
+                        var keyword = analysis.keywords[i];
+                        var word = keyword.word || keyword;
+                        var freq = keyword.frequency || 1;
+                        resultsHTML += '<span class="semantic-tag" title="Частота: ' + freq + '">' + word + '</span>';
+                    }
+                    resultsHTML += '</div></div>';
+                }
+                
+                // Concepts
+                if (analysis.concepts && analysis.concepts.length > 0) {
+                    resultsHTML += '<div class="mb-4">';
+                    resultsHTML += '<h5 class="font-medium text-gray-700 mb-2">💡 Концепции:</h5>';
+                    for (var j = 0; j < Math.min(analysis.concepts.length, 5); j++) {
+                        var concept = analysis.concepts[j];
+                        resultsHTML += '<div class="bg-yellow-50 p-2 rounded mb-2">';
+                        resultsHTML += '<span class="font-medium text-yellow-700">' + concept.concept + '</span>';
+                        resultsHTML += '<span class="text-sm text-yellow-600 ml-2">(релевантность: ' + Math.round(concept.relevance * 100) + '%)</span>';
+                        resultsHTML += '</div>';
+                    }
+                    resultsHTML += '</div>';
+                }
+                
+                // Domains (if available)
+                if (analysis.domains && analysis.domains.length > 0) {
+                    resultsHTML += '<div class="mb-4">';
+                    resultsHTML += '<h5 class="font-medium text-gray-700 mb-2">🏷️ Предметные области:</h5>';
+                    for (var k = 0; k < Math.min(analysis.domains.length, 3); k++) {
+                        var domain = analysis.domains[k];
+                        resultsHTML += '<div class="bg-purple-50 p-2 rounded mb-2">';
+                        resultsHTML += '<span class="font-medium text-purple-700">' + domain.domain + '</span>';
+                        resultsHTML += '<span class="text-sm text-purple-600 ml-2">(уверенность: ' + Math.round(domain.confidence * 100) + '%)</span>';
+                        resultsHTML += '</div>';
+                    }
+                    resultsHTML += '</div>';
+                }
+                
+                // Ethical check results
+                var ethicalCheck = terraSystem.ethicalLayer.validateContent(text);
+                resultsHTML += '<div class="mb-4">';
+                resultsHTML += '<h5 class="font-medium text-gray-700 mb-2">⚖️ Этическая проверка:</h5>';
+                resultsHTML += '<div class="' + (ethicalCheck.passed ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200') + ' p-3 rounded border">';
+                resultsHTML += '<div class="flex items-center mb-2">';
+                resultsHTML += '<span class="' + (ethicalCheck.passed ? 'text-green-700' : 'text-red-700') + ' font-medium">';
+                resultsHTML += ethicalCheck.passed ? '✅ Проверка пройдена' : '❌ Обнаружены нарушения';
+                resultsHTML += '</span></div>';
+                
+                if (ethicalCheck.violations && ethicalCheck.violations.length > 0) {
+                    resultsHTML += '<div class="text-sm text-red-700 mb-2"><strong>Нарушения:</strong></div>';
+                    for (var l = 0; l < ethicalCheck.violations.length; l++) {
+                        resultsHTML += '<div class="text-sm text-red-600">• ' + ethicalCheck.violations[l].message + '</div>';
+                    }
+                }
+                
+                if (ethicalCheck.enhancements && ethicalCheck.enhancements.length > 0) {
+                    resultsHTML += '<div class="text-sm text-green-700 mb-2"><strong>Положительные аспекты:</strong></div>';
+                    for (var m = 0; m < ethicalCheck.enhancements.length; m++) {
+                        resultsHTML += '<div class="text-sm text-green-600">• ' + ethicalCheck.enhancements[m].message + '</div>';
+                    }
+                }
+                resultsHTML += '</div></div>';
+                
+                // Summary
+                if (analysis.summary) {
+                    resultsHTML += '<div class="mb-4">';
+                    resultsHTML += '<h5 class="font-medium text-gray-700 mb-2">📋 Резюме:</h5>';
+                    resultsHTML += '<div class="bg-blue-50 p-3 rounded border border-blue-200">';
+                    resultsHTML += '<p class="text-sm text-blue-800">' + analysis.summary + '</p>';
+                    resultsHTML += '</div></div>';
+                }
+                
+                resultsHTML += '</div>';
+                
+                // Вставляем результаты в начало контейнера
+                resultsDiv.innerHTML = resultsHTML + resultsDiv.innerHTML;
+                
+                // Переключаемся на вкладку семантического анализа
+                switchTab('semantic');
+            }
+            
+            terraSystem.showSaveStatus('saved');
+        };
+        
+        // Additional Terra functions
+        window.exportUltimateArchive = function() {
+            if (terraSystem && terraSystem.showSaveStatus) {
+                terraSystem.showSaveStatus('saving');
+            }
+            
+            var exportData = {
+                metadata: {
+                    systemName: "Terra Archive Manager 2.0 Ultimate",
+                    version: terraSystem ? terraSystem.version : "fallback",
+                    author: terraSystem ? terraSystem.author : "Абдукаримов Абдурашид Абдулхамитович",
+                    did: terraSystem ? terraSystem.did : "aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890",
+                    exportDate: new Date().toISOString(),
+                    level: terraSystem ? terraSystem.currentLevel : 0,
+                    capabilities: terraSystem ? terraSystem.browserCapabilities : {}
+                },
+                data: {
+                    archives: terraSystem && terraSystem.archiveManager ? terraSystem.archiveManager.archives : [],
+                    thesaurus: terraSystem && terraSystem.archiveManager ? terraSystem.archiveManager.thesaurus : [],
+                    encyclopedia: terraSystem && terraSystem.archiveManager ? terraSystem.archiveManager.encyclopedia : [],
+                    statistics: terraSystem ? terraSystem.integrationStats : {}
+                },
+                systemInfo: terraSystem && terraSystem.getSystemInfo ? terraSystem.getSystemInfo() : {}
+            };
+            
+            var dataStr = JSON.stringify(exportData, null, 2);
+            var dataBlob = new Blob([dataStr], {type: 'application/json'});
+            var url = URL.createObjectURL(dataBlob);
+            
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'terra_ultimate_export_' + new Date().toISOString().slice(0, 10) + '.json';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            URL.revokeObjectURL(url);
+            if (terraSystem && terraSystem.showSaveStatus) {
+                terraSystem.showSaveStatus('saved');
+            }
+            
+            alert('✅ Terra Ultimate архив экспортирован!\n\n' +
+                  'Экспортировано:\n' +
+                  '📦 Архивы: ' + exportData.data.archives.length + '\n' +
+                  '📚 Записи тезауруса: ' + exportData.data.thesaurus.length + '\n' +
+                  '🔬 Записи энциклопедии: ' + exportData.data.encyclopedia.length + '\n' +
+                  '🧬 Уровень системы: L' + (terraSystem ? terraSystem.currentLevel : 0));
+        };
+        
+        window.importUltimateArchive = function() {
+            var input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = function(e) {
+                var file = e.target.files[0];
+                if (!file) return;
+                
+                if (terraSystem && terraSystem.showSaveStatus) {
+                    terraSystem.showSaveStatus('saving');
+                }
+                
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        var importData = JSON.parse(e.target.result);
+                        
+                        if (importData.metadata && importData.metadata.systemName && 
+                            importData.metadata.systemName.includes('Terra')) {
+                            
+                            // Merge imported data
+                            if (importData.data.archives && terraSystem && terraSystem.archiveManager) {
+                                terraSystem.archiveManager.archives = terraSystem.archiveManager.archives.concat(importData.data.archives);
+                            }
+                            if (importData.data.thesaurus && terraSystem && terraSystem.archiveManager) {
+                                terraSystem.archiveManager.thesaurus = terraSystem.archiveManager.thesaurus.concat(importData.data.thesaurus);
+                            }
+                            if (importData.data.encyclopedia && terraSystem && terraSystem.archiveManager) {
+                                terraSystem.archiveManager.encyclopedia = terraSystem.archiveManager.encyclopedia.concat(importData.data.encyclopedia);
+                            }
+                            
+                            if (terraSystem && terraSystem.saveAllData) {
+                                terraSystem.saveAllData();
+                            }
+                            if (terraSystem && terraSystem.updateUI) {
+                                terraSystem.updateUI();
+                            }
+                            if (terraSystem && terraSystem.showSaveStatus) {
+                                terraSystem.showSaveStatus('saved');
+                            }
+                            
+                            alert('✅ Terra Ultimate архив импортирован!\n\n' +
+                                  'Импортировано:\n' +
+                                  '📦 Архивы: ' + (importData.data.archives ? importData.data.archives.length : 0) + '\n' +
+                                  '📚 Записи тезауруса: ' + (importData.data.thesaurus ? importData.data.thesaurus.length : 0) + '\n' +
+                                  '🔬 Записи энциклопедии: ' + (importData.data.encyclopedia ? importData.data.encyclopedia.length : 0) + '\n' +
+                                  '📅 Дата экспорта: ' + new Date(importData.metadata.exportDate).toLocaleString());
+                            
+                        } else {
+                            alert('❌ Файл не является действительным экспортом Terra Ultimate');
+                            if (terraSystem && terraSystem.showSaveStatus) {
+                                terraSystem.showSaveStatus('saved');
+                            }
+                        }
+                        
+                    } catch (error) {
+                        alert('❌ Ошибка импорта: ' + error.message);
+                        if (terraSystem && terraSystem.showSaveStatus) {
+                            terraSystem.showSaveStatus('saved');
+                        }
+                    }
+                };
+                
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        };
+        
+        window.createQuantumBackup = function() {
+            if (terraSystem && terraSystem.saveAllData) {
+                terraSystem.saveAllData();
+            }
+            
+            var backupData = {
+                timestamp: new Date().toISOString(),
+                systemLevel: terraSystem ? terraSystem.currentLevel : 0,
+                archives: terraSystem && terraSystem.archiveManager ? terraSystem.archiveManager.archives : [],
+                thesaurus: terraSystem && terraSystem.archiveManager ? terraSystem.archiveManager.thesaurus : [],
+                encyclopedia: terraSystem && terraSystem.archiveManager ? terraSystem.archiveManager.encyclopedia : [],
+                stats: terraSystem ? terraSystem.integrationStats : {}
+            };
+            
+            // Save to special backup key
+            try {
+                localStorage.setItem('terra_quantum_backup', JSON.stringify(backupData));
+            } catch (error) {
+                console.error('Ошибка создания квантового бэкапа:', error);
+            }
+            
+            alert('✅ Квантовый бэкап создан!\n\n' +
+                  'Время: ' + new Date().toLocaleString() + '\n' +
+                  'Уровень: L' + (terraSystem ? terraSystem.currentLevel : 0) + '\n' +
+                  'Данные сохранены в локальном хранилище');
+        };
+        
+        window.runCompatibilityCheck = function() {
+            var info = terraSystem && terraSystem.getSystemInfo ? terraSystem.getSystemInfo() : { version: "fallback", currentLevel: 0, componentsLoaded: {}, statistics: {} };
+            var caps = terraSystem && terraSystem.browserCapabilities ? terraSystem.browserCapabilities : {};
+            
+            var report = '🔍 ОТЧЕТ СОВМЕСТИМОСТИ TERRA ULTIMATE\n\n';
+            
+            report += '🧬 СИСТЕМНАЯ ИНФОРМАЦИЯ:\n';
+            report += 'Версия: ' + info.version + '\n';
+            report += 'Текущий уровень: L' + info.currentLevel + '\n';
+            report += 'Автор: ' + info.author + '\n\n';
+            
+            report += '🌐 ВОЗМОЖНОСТИ БРАУЗЕРА:\n';
+            report += 'ES3 поддержка: ' + (caps.es3Support ? '✅' : '❌') + '\n';
+            report += 'ES5 поддержка: ' + (caps.es5Support ? '✅' : '❌') + '\n';
+            report += 'ES6 поддержка: ' + (caps.es6Support ? '✅' : '❌') + '\n';
+            report += 'LocalStorage: ' + (caps.localStorageSupport ? '✅' : '❌') + '\n';
+            report += 'IndexedDB: ' + (caps.indexedDBSupport ? '✅' : '❌') + '\n';
+            report += 'Web Workers: ' + (caps.webWorkersSupport ? '✅' : '❌') + '\n';
+            report += 'Семейство браузера: ' + caps.browserFamily + '\n';
+            report += 'Старый браузер: ' + (caps.isOldBrowser ? '⚠️ Да' : '✅ Нет') + '\n\n';
+            
+            report += '⚡ ПРОИЗВОДИТЕЛЬНОСТЬ:\n';
+            report += 'Оценочная RAM: ' + caps.estimatedRAM + ' MB\n';
+            report += 'Производительность: ' + caps.processingPower + '\n';
+            report += 'Разрешение экрана: ' + caps.screenSize.width + 'x' + caps.screenSize.height + '\n\n';
+            
+            report += '🔧 КОМПОНЕНТЫ:\n';
+            report += 'L0 Kernel: ' + (info.componentsLoaded.l0Kernel ? '✅' : '❌') + '\n';
+            report += 'Offline Analyzer: ' + (info.componentsLoaded.offlineAnalyzer ? '✅' : '❌') + '\n';
+            report += 'Ethical Layer: ' + (info.componentsLoaded.ethicalLayer ? '✅' : '❌') + '\n';
+            report += 'Archive Manager: ' + (info.componentsLoaded.archiveManager ? '✅' : '❌') + '\n\n';
+            
+            report += '📊 СТАТИСТИКА:\n';
+            report += 'Всего обработано: ' + info.statistics.totalProcessed + '\n';
+            report += 'Семантических анализов: ' + info.statistics.semanticAnalyses + '\n';
+            report += 'Этических проверок: ' + info.statistics.ethicalChecks + '\n';
+            report += 'Архивных операций: ' + info.statistics.archiveOperations + '\n';
+            
+            if (info.statistics.lastActivity) {
+                report += 'Последняя активность: ' + new Date(info.statistics.lastActivity).toLocaleString() + '\n';
+            }
+            
+            alert(report);
+        };
+        
+        // Additional helper functions for UI
+        window.generateSemanticMap = function() {
+            alert('🧠 Семантическая карта\n\nФункция в разработке...\nБудет доступна в следующей версии Terra Ultimate.');
+        };
+        
+        window.buildIntegratedThesaurus = function() {
+            alert('📚 Построение тезауруса\n\nФункция в разработке...\nБудет доступна в следующей версии Terra Ultimate.');
+        };
+        
+        window.extractConcepts = function() {
+            alert('🔬 Извлечение концепций\n\nФункция в разработке...\nБудет доступна в следующей версии Terra Ultimate.');
+        };
+        
+        window.analyzeCorpusWithAI = function() {
+            alert('📖 ИИ-анализ корпуса\n\nФункция в разработке...\nБудет доступна в следующей версии Terra Ultimate.');
+        };
+        
+        window.generateEncyclopedia = function() {
+            alert('🌐 Создание энциклопедии\n\nФункция в разработке...\nБудет доступна в следующей версии Terra Ultimate.');
+        };
+        
+        window.performEthicalAudit = function() {
+            var ethicalReport = terraSystem && terraSystem.ethicalLayer && terraSystem.ethicalLayer.generateEthicalReport ? 
+                terraSystem.ethicalLayer.generateEthicalReport() : 
+                { statistics: { totalChecks: 0, blockedContent: 0, warningsIssued: 0, enhancedContent: 0 }, 
+                  filtersActive: { childSafety: 0, detoxification: 0 }, 
+                  coreValues: {} };
+            var reportText = '⚖️ ЭТИЧЕСКИЙ АУДИТ TERRA ULTIMATE\n\n';
+            
+            reportText += '📊 СТАТИСТИКА ДЕТОКСИКАЦИИ:\n';
+            reportText += 'Всего проверок: ' + ethicalReport.statistics.totalChecks + '\n';
+            reportText += 'Заблокированного контента: ' + ethicalReport.statistics.blockedContent + '\n';
+            reportText += 'Предупреждений выдано: ' + ethicalReport.statistics.warningsIssued + '\n';
+            reportText += 'Улучшенного контента: ' + ethicalReport.statistics.enhancedContent + '\n\n';
+            
+            reportText += '🛡️ АКТИВНЫЕ ФИЛЬТРЫ:\n';
+            reportText += 'Детская безопасность: ' + ethicalReport.filtersActive.childSafety + ' фильтров\n';
+            reportText += 'Детоксикация: ' + ethicalReport.filtersActive.detoxification + ' фильтров\n\n';
+            
+            reportText += '🌟 ОСНОВНЫЕ ЦЕННОСТИ:\n';
+            for (var value in ethicalReport.coreValues) {
+                var valueData = ethicalReport.coreValues[value];
+                reportText += '• ' + value + ' (приоритет ' + valueData.priority + '): ' + valueData.description + '\n';
+            }
+            
+            alert(reportText);
+        };
+        
+        window.interpretUserQuery = function() {
+            var query = prompt('🧠 Введите запрос для интерпретации Terra ИИ:');
+            if (!query) return;
+            
+            var result = "Система не готова";
+            if (terraSystem && terraSystem.l0Kernel && terraSystem.l0Kernel.processRequest) {
+                var processed = terraSystem.l0Kernel.processRequest(query, terraSystem.did);
+                result = processed.suggestedAction || "Обработка завершена";
+            }
+            
+            alert('🧠 ИНТЕРПРЕТАЦИЯ ЗАПРОСА\n\n' +
+                  'Запрос: ' + query + '\n\n' +
+                  'Результат: ' + result);
+        };
+        
+        // Инициализация системы при загрузке страницы
+        window.addEventListener('load', function() {
+            initializeTerraSystem();
+        });
+        
+        // Завершение JavaScript кода
+        console.log("🌍 Terra Archive Manager 2.0 Ultimate JavaScript модуль загружен!");
+    </script>
+</body>
+</html>

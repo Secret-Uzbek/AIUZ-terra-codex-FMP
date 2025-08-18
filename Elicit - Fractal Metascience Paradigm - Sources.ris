@@ -1,0 +1,547 @@
+﻿TY  - JOUR
+AB  - A recent meeting focused on accelerated materials design and discovery
+examined user requirements for a general, collaborative, integrative,
+and on-demand materials research platform. A recent meeting focused on
+accelerated materials design and discovery examined user requirements
+for a general, collaborative, integrative, and on-demand materials
+research platform. What common elements are necessary to create a
+general framework for materials innovation? Here, we provide a
+retrospective analysis of high-level themes that emerged from a
+focused discussion on the requirements for a future materials research
+platform. These discussions occurred during the annual Toyota Research
+Institute—Accelerated Materials Design and Discovery meeting (May 29,
+2019, in Boston, MA) with more than 40 field experts from
+universities, US national laboratories, Toyota Research Institute in
+the United States, and Toyota Motor Corporation in Japan. These
+researchers contributed ideas toward what capabilities such a platform
+should have to accelerate the design and discovery of materials. To
+maximize the information captured from these field experts' ideas, we
+followed a strategy comprised of exploitation and exploration inspired
+by knowledge acquisition strategies in machine learning. In a first
+session, we matched researchers with themes that we expect them to be
+knowledgeable about (hence exploitation). In a follow-up session, we
+did a quasi-random assignment of researchers to themes (hence
+exploration), with the goal of capturing unique ideas that might elude
+experts embedded deep in their work. Sixteen pre-selected themes
+relevant for a materials research platform were discussed twice in two
+unique groups, one formed as an exploitation and the other formed as
+an exploration team. The selected themes were: Adaptive
+systems—active-learning and beyond; Automation of experiments;
+Automation of simulations; Collaboration; Data ingestion and sharing;
+Integration; Knowledge discovery; Machine learning for experiments;
+Machine learning for simulations; Multi-fidelity and uncertainty
+quantification; Reproducibility and provenance; Scale bridging;
+Simulation tools; Software infrastructure; Text mining and natural
+language processing; and Visualization. We digitally recorded the
+ideas in the form of "user stories" from agile software development
+practices. The meeting captured many stories that would be considered
+obvious, but several unexpected ideas emerged. An initial parsing
+revealed three interrelated themes for the design of a useful
+platform: (i) data and knowledge assets, (ii) automation of science,
+and (iii) integrative approaches, as outlined in Figure 1. The ideas
+related to data and knowledge assets rely on the FAIR
+principles1Wilkinson M.D. Dumontier M. Aalbersberg I.J. Appleton G.
+Axton M. Baak A. et al.The FAIR Guiding Principles for scientific data
+management and stewardship.Sci. Data. 2016; 3:
+160018https://doi.org/10.1038/sdata.2016.18Crossref PubMed Scopus
+(5366) Google Scholar but with added distinguishing capabilities
+relevant for a materials research platform. For example, the platform
+should enable sharing and collaboration—not just around data, but also
+knowledge assets such as machine-learning models or scientific
+workflows. Baselines to gauge new findings are critical but often
+overlooked. Artificial intelligence (AI)-assisted search and
+visualization could amplify the scientific abilities of human
+researchers. As part of automation of science, experimental workflows
+are envisioned to be run "on-demand", where tasks are picked up by
+relevant laboratories with fully or partially automated experimental
+capabilities, forming collaborative networks via the platform. Given
+the state-of-the-art for automation in modeling and simulation, a
+similar but more "productized" automated capability with web-based
+user interfaces is envisioned to assist researchers to run on-demand
+simulations complementary to experiments, or train or use on-demand
+machine-learning models without deep knowledge in any particular
+method. Automation of scale bridging, which would entail at a minimum
+designing workflows for codes beyond density functional theory (DFT)
+and multi-scale application programing interfaces (APIs) for linking
+the codes, emerged as a game-changing capability to bridge the gap
+between the computer-design or laboratory and device level properties.
+The design of integrative approaches on the platform that leverage
+diverse datasets, physical, empirical, computational, or statistical
+models and experiments would require a modularized software framework,
+cost estimation functions, uncertainty quantification and fidelity
+assessments of new data points, and subsequently, discovery "engines"
+like optimal experiment design (OED), active-learning, or optimization
+can be built for diverse material-device domains. Materials science of
+the future is expected to be interwoven with data, automation, machine
+learning, and other emerging information technologies. Many aspects of
+these paradigms are being actively reviewed, debated, and discussed by
+the materials community.2Alberi K. Nardelli M.B. Zakutayev A. Mitas L.
+Curtarolo S. Jain A. et al.The 2019 Materials by Design Roadmap.J.
+Phys. D Appl. Phys. 2019; 52:
+13001https://doi.org/10.1088/1361-6463/aad926Crossref Scopus (198)
+Google Scholar, 3Tabor D.P. Roch L.M. Saikin S.K. Kreisbeck C.
+Sheberla D. Montoya J.H. et al.Accelerating the discovery of materials
+for clean energy in the era of smart automation.Nat. Rev. Mater. 2018;
+3: 5https://doi.org/10.1038/s41578-018-0005-zCrossref Scopus (361)
+Google Scholar, 4Balachandran P.V. Xue D. Theiler J. Hogden J. Lookman
+T. Adaptive Strategies for Materials Design using Uncertainties.Sci.
+Rep. 2016; 6: 19660https://doi.org/10.1038/srep19660Crossref PubMed
+Scopus (141) Google Scholar In this article, we focus on the
+requirements for a useful, general, next-generation materials research
+platform that would combine and expand on these data-driven paradigms
+to enable discovery and innovation. A number of academic and industry
+teams are actively engaged in efforts relevant for this vision (see
+Web Resources).2Alberi K. Nardelli M.B. Zakutayev A. Mitas L.
+Curtarolo S. Jain A. et al.The 2019 Materials by Design Roadmap.J.
+Phys. D Appl. Phys. 2019; 52:
+13001https://doi.org/10.1088/1361-6463/aad926Crossref Scopus (198)
+Google Scholar,5Blaiszik B. Chard K. Pruyne J. Ananthakrishnan R.
+Tuecke S. Foster I. The Materials Data Facility: Data Services to
+Advance Materials Science Research.JOM. 2016; 68:
+2045-2052https://doi.org/10.1007/s11837-016-2001-3Crossref Scopus
+(175) Google Scholar, 6Green M.L. Choi C.L. Hattrick-Simpers J.R.
+Joshi A.M. Takeuchi I. Barron S.C. et al.Fulfilling the promise of the
+materials genome initiative with high-throughput experimental
+methodologies.Appl. Phys. Rev. 2017; 4:
+11105https://doi.org/10.1063/1.4977487Crossref Scopus (197) Google
+Scholar, 7Lin L. Materials Databases Infrastructure Constructed by
+First Principles Calculations: A Review.Mater. Perform. Charact. 2015;
+4: 148https://doi.org/10.1520/MPC20150014Crossref Scopus (13) Google
+Scholar, 8Kim C. Chandrasekaran A. Huan T.D. Das D. Ramprasad R.
+Polymer genome: a data-powered polymer informatics platform for
+property predictions.J. Phys. Chem. C. 2018; 122:
+17575https://doi.org/10.1021/acs.jpcc.8b02913Crossref Scopus (184)
+Google Scholar We expect that the entire materials community will
+benefit from the distilled summary of ideas about the requirements of
+the envisioned future system that we present in this article. The
+following sections expand the concepts underlying the platform related
+themes of data and knowledge assets, automation of science, and
+integrative approaches for materials research. A research platform
+inherits, generates, stores, and serves data and knowledge as part of
+its mission. Such a platform's utility for the scientist, therefore,
+is tied with how these key bits of information are assimilated and
+managed; how their quality, reliability, and integrity are judged; how
+their exchange and dissemination are enabled; and ultimately, whether
+the informatics aspect of the platform is meeting the needs of the
+scientist and helping them innovate. The requirements regarding data
+management are a subset of the now well-accepted FAIR principles:
+findable, accessible, interoperable, reusable.1Wilkinson M.D.
+Dumontier M. Aalbersberg I.J. Appleton G. Axton M. Baak A. et al.The
+FAIR Guiding Principles for scientific data management and
+stewardship.Sci. Data. 2016; 3:
+160018https://doi.org/10.1038/sdata.2016.18Crossref PubMed Scopus
+(5366) Google Scholar As a basic requirement, the platform should
+contain standardized datasets. Standardization of all data imported
+to, created on, and disseminated by the platform would entail adoption
+of established ingestion procedures, data formats, capturing of
+metadata (e.g., experimental conditions), provenance and instrument
+logs, for instance to differentiate human versus machine generated
+data. In addition, the platform should deliver not only well-known
+computational databases, but also diverse, large, high-quality
+experimental datasets, where inclusion of "dark data" (i.e., data that
+is considered a "negative" result and not publishable) is essential.
+Inclusion of all data is key to removing human bias from datasets.
+Interaction with the data system needs to be easy and intuitive,
+programmatically or via a web-based user interface (UI) that allows
+easy or automated upload, instant visualization, search, and sharing
+and is connected to the other components of the platform. Importance
+of a simple yet powerful UI for all components of the platform
+constantly came up throughout the discussions: we will not repeat that
+requirement, and it should be assumed by default to be a core
+component for every module hereafter. Data sharing is a core component
+of today's data-driven research. The storage and sharing of analytical
+tools, ma
+AU  - Aykol, Muratahan
+AU  - Hummelshøj, Jens S.
+AU  - Anapolsky, Abraham
+AU  - Aoyagi, Koutarou
+AU  - Bazant, Martin Z.
+AU  - Bligaard, Thomas
+AU  - Braatz, Richard D.
+AU  - Broderick, Scott
+AU  - Cogswell, Daniel
+AU  - Dagdelen, John
+AU  - Drisdell, Walter
+AU  - Garcia, Edwin
+AU  - Garikipati, Krishna
+AU  - Gavini, Vikram
+AU  - Gent, William E.
+AU  - Giordano, Livia
+AU  - Gomes, Carla P.
+AU  - Gomez-Bombarelli, Rafael
+AU  - Balaji Gopal, Chirranjeevi
+AU  - Gregoire, John M.
+AU  - Grossman, Jeffrey C.
+AU  - Herring, Patrick
+AU  - Hung, Linda
+AU  - Jaramillo, Thomas F.
+AU  - King, Laurie
+AU  - Kwon, Ha-Kyung
+AU  - Maekawa, Ryosuke
+AU  - Minor, Andrew M.
+AU  - Montoya, Joseph H.
+AU  - Mueller, Tim
+AU  - Ophus, Colin
+AU  - Rajan, Krishna
+AU  - Ramprasad, Rampi
+AU  - Rohr, Brian
+AU  - Schweigert, Daniel
+AU  - Shao-Horn, Yang
+AU  - Suga, Yoshinori
+AU  - Suram, Santosh K.
+AU  - Viswanathan, Venkatasubramanian
+AU  - Whitacre, Jay F.
+AU  - Willard, Adam P.
+AU  - Wodo, Olga
+AU  - Wolverton, Chris
+AU  - Storey, Brian D.
+DA  - 2019/12//
+PY  - 2019
+DB  - Crossref
+DO  - 10.1016/j.matt.2019.10.024
+ID  - temp_id_384585841854
+IS  - 6
+J2  - Matter
+LA  - en
+SN  - 2590-2385
+SP  - 1433-1438
+T2  - Matter
+TI  - The Materials Research Platform: Defining the Requirements from User
+Stories
+UR  - http://dx.doi.org/10.1016/j.matt.2019.10.024
+VL  - 1
+ER  - 
+TY  - JOUR
+AB  - If I had an hour to solve a problem and my life depended on the
+solution, I would spend the first 55 minutes determining the proper
+question to ask, for once I know the proper question, I could solve
+the problem in less than five minutes.—attributed to Albert Einstein
+Despite remarkable advances in surgical care, unintentional harm and
+suboptimal outcomes persist in the health care environment [1Brennan
+T.A. Leape L.L. Laird N.M. et al.Incidence of adverse events and
+negligence in hospitalized patients. Results of the Harvard Medical
+Practice Study I.N Engl J Med. 1991; 324: 370-376Crossref PubMed
+Scopus (3523) Google Scholar, 2Leape L.L. Brennan T.A. Laird N. et
+al.The nature of adverse events in hospitalized patients.N Engl J Med.
+1991; 324: 377-384Crossref PubMed Scopus (2924) Google Scholar,
+3Gawande A.A. Thomas E.J. Zinner M.J. et al.The incidence and nature
+of surgical adverse events in Colorado and Utah in 1992.Surgery. 1999;
+12: 66-75Abstract Full Text Full Text PDF Scopus (717) Google Scholar,
+4Wilson R.M. Runciman W.B. Gibberd R.W. et al.The Quality in
+Australian Health Care Study.Med J Aust. 1995; 163: 458-471Crossref
+PubMed Scopus (1895) Google Scholar, 5Kohn L.T. Corrigan J.M.
+Donaldson M.S. To Err is Human: Building a Safer Health System.
+Committee on Health Care in America, Institute of Medicine. National
+Academy Press, Washington, DC1999Google Scholar, 6Donaldson L. An
+organisation with a memory.Clin Med (Lond). 2002; 2: 452-457Crossref
+PubMed Scopus (66) Google Scholar, 7Sanchez J.A. Ferdinand F.D. Fann
+J.I. Patient safety science in cardiothoracic surgery: an overview.Ann
+Thorac Surg. 2016; 101: 426-433Abstract Full Text Full Text PDF PubMed
+Scopus (14) Google Scholar]. Many serious events are not attributable
+to the natural course of the patient’s underlying condition or illness
+but, rather, to system and process failures, many of which share
+common characteristics. Organizational learning and continuous
+improvements resulting from the thoughtful and systematic analysis of
+such events are of vital importance in preventing their recurrence and
+keeping in patients safe. Organizations and their cardiothoracic
+surgical teams must determine the causes of errors and develop
+solutions that address the inherent systems problems that lie at the
+root of these events. When they occur, however, the causes are not
+readily apparent to frontline staff because of the affective and
+cognitive distortions these failures engender as well as the
+complexity of the environment. Several analytic tools and methods are
+available for this purpose that have been widely used in other
+industries to learn from mistakes and mitigate identifiable hazards
+[8Wu A.W. Lipshutz A.K. Pronovost P.J. Effectiveness and efficiency of
+root cause analysis in medicine.JAMA. 2008; 299: 685-687Crossref
+PubMed Scopus (252) Google Scholar]. Many health care systems and
+regulatory agencies have embraced these methods to complement other
+strategies aimed at reducing events that can be “reasonably prevented”
+[9Chung K.C. Kotsis S.V. Complications in surgery: root cause analysis
+and preventive measures.Plast Reconstr Surg. 2012; 129:
+1421-1427Crossref PubMed Scopus (24) Google Scholar]. The Joint
+Commission (TJC), for example, maintains that meaningful improvements
+in patient safety are dependent on each organization’s ability to
+identify errors and analyze their contributing factors to prevent
+similar errors from occurring again at the same institution [10The
+Joint Commission Root Cause Analysis in Health Care: Tools and
+Techniques.5th ed. Joint Commission Resources, Oak Brook, IL2015Google
+Scholar]. Furthermore, the information learned about error frequency,
+type, and root causes support continuous improvement efforts as
+organizations redesign systems of care to improve outcomes and enhance
+patient safety. The purpose of this paper is to highlight the utility
+of event investigation and analysis to identify the causes and prevent
+the occurrence of adverse events. The conceptual model for evaluating
+the quality of medical care, proposed by Donabedian in 1966, contains
+three components of medical care from which to derive information
+regarding quality: structure, process, and outcomes [11Ayanian J.Z.
+Markel H. Donabedian's lasting framework for health care quality.N
+Engl J Med. 2016; 375: 205-207Crossref PubMed Scopus (156) Google
+Scholar]. The structure of care involves the settings and context of
+medical care delivery. Individual processes of care—the actions and
+activities of delivering medical care—can be examined and compared
+with best known standards of practice. The processes that can readily
+be examined, however, are not always those that have the most direct
+impact on outcomes. For example, the timing of preoperative antibiotic
+administration can more easily be measured than the performance of a
+surgeon. Although many other factors (antecedent conditions), such as
+a patient’s comorbidities, influence the result of health care, it is
+ultimately the outcomes that are the most important indicators of
+quality [9Chung K.C. Kotsis S.V. Complications in surgery: root cause
+analysis and preventive measures.Plast Reconstr Surg. 2012; 129:
+1421-1427Crossref PubMed Scopus (24) Google Scholar]. In this
+framework, undesirable outcomes are a consequence of defects in either
+the structure (ie, system design) or the incorrect application of
+processes. The root causes of poor quality can be found by exploring
+the gap between optimal and suboptimal results. This gap is the object
+of root cause analysis (RCA) methods. Individual behavior is
+influenced by an organization’s structure, set of processes, and
+values [12Woods D.D. Cook R.I. Perspectives on human error: hindsight
+biases and local rationality.in: Durso F.T. Nickerson R.S.
+Schvaneveldt J.D. Handbook of Applied Cognition. John Wiley & Sons,
+New York1999: 141-171Google Scholar]. Understanding human performance
+is critical to identifying causal factors. Error-prone conditions are
+usually predictable and preventable. Errors, accidents, and adverse
+events can only be avoided by understanding the reasons they occur and
+by applying lessons learned from similar past events. Unfortunately
+and too often, human error is the conclusion of a poorly performed
+accident investigation. Errors are usually a symptom of deeper
+(systemic or “latent”) conditions. To understand the basic, root
+causes of events, human error must be the starting point rather than
+the end of an investigation to truly understand causation, systemic
+hazards, and gaps in organizational performance. Organizational
+learning in health care is a necessary characteristic for teams to
+improve [13Carroll J.S. Edmondson A.C. Leading organizational learning
+in health care.Qual Saf Health Care. 2002; 11: 51-56Crossref PubMed
+Scopus (182) Google Scholar]. An organization must be skilled at
+extracting “learning,” not only from major errors, but from all
+available growth opportunities such as minor events, real or perceived
+safety risks, near misses, and precursor events. For learning to
+occur, however, organizations must also be able to systematically
+aggregate and widely disseminate the results of all its
+problem-solving activities. Because most adverse events rarely have a
+single cause, the ability to identify a number of contributing
+conditions can yield a number of possible solutions for correcting
+system flaws and process failures. Identifying causal factors should
+follow certain rules (Table 1) so that investigations do not fall
+short of reaching true causal factors.Table 1The Five Rules of
+CausationRule 1. Clearly show the “cause and effect” relationship to
+each contributing factor.Rule 2. Use specific and accurate descriptors
+for each action rather than vague, negative words. Avoid descriptors
+such as poor, inadequate, wrong, bad, failed, careless.Rule 3. Human
+errors must have a preceding cause.Rule 4. Violations of procedure are
+not root causes but must have a preceding cause.Rule 5. Failure to act
+is only causal when there is a preexisting duty to act.When these
+rules are used, causal statements resulting from a properly conducted
+root cause analysis focus on correcting actual system issues and will
+increase the likelihood that those corrective actions will be
+supported and sustained. (Modified from National Patient Safety
+Foundation 21National Patient Safety Foundation. RCA2: improving root
+cause analyses and actions to prevent harm. Version 2. January 2016.
+Available at http://www.npsf.org/?page=rca2&hhsearchterms=%22rca2%22.
+Accessed April 11, 2017.Google Scholar.) Open table in a new tab When
+these rules are used, causal statements resulting from a properly
+conducted root cause analysis focus on correcting actual system issues
+and will increase the likelihood that those corrective actions will be
+supported and sustained. (Modified from National Patient Safety
+Foundation 21National Patient Safety Foundation. RCA2: improving root
+cause analyses and actions to prevent harm. Version 2. January 2016.
+Available at http://www.npsf.org/?page=rca2&hhsearchterms=%22rca2%22.
+Accessed April 11, 2017.Google Scholar.) The ideal safety-conscious
+clinical environment has systems in place to monitor for potential
+problems so that, when they occur, a prompt response can be mounted,
+data collected, and hazards neutralized. Protocols and procedures
+should be implemented to immediately respond to critical events.
+Crisis management algorithms and simulation exercises with frequent
+training are important components of risk management for a
+safety-focused clinical team. When accidents happen, however, this
+heightened predisposition to action may not lead to capturing critical
+information. The use of incident reporting systems, although widely
+available in hospitals and ambulatory settings, have had a poor track
+record of capturing safety events due to several factors such as a
+poor reporting culture, poorly designed reporting tools, inadequate
+feedback to those
+AU  - Sanchez, Juan A.
+AU  - Lobdell, Kevin W.
+AU  - Moffatt-Bruce, Susan D.
+AU  - Fann, James I.
+DA  - 2017/6//
+PY  - 2017
+DB  - Crossref
+DO  - 10.1016/j.athoracsur.2017.04.001
+ID  - temp_id_633486559217
+IS  - 6
+J2  - The Annals of Thoracic Surgery
+LA  - en
+SN  - 0003-4975
+SP  - 1693-1699
+T2  - The Annals of Thoracic Surgery
+TI  - Investigating the Causes of Adverse Events
+UR  - http://dx.doi.org/10.1016/j.athoracsur.2017.04.001
+VL  - 103
+ER  - 
+TY  - THES
+AB  - Introductory chaptersIn this book two lines of argumentation are
+developed in relation to what agro-informaticians often describe as
+'the limited adoption of Management Supporting Systems in primary
+agricultural production'. Although -conceptually speaking- the
+distinction is somewhat problematic, I will speak of a 'theoretical'
+and a 'practical' line. Figure 1.1 in chapter I shows how these lines
+of argumentation are interwoven throughout the book.Chapter I is a
+general introduction to the nature and scope of this book, and
+provides also some guidance to readers from different audiences.
+Moreover, and anticipating my later theoretical argument, it makes
+clear that I distance myself from both realist positions at the
+ontological level, and from positivism at the epistemological level.
+Instead, I adopt a constructivist stance, which posits that our
+understanding of the world is inherently socially constructed.
+Naturally, this holds for my own understanding of the world as well.
+Hence, preceding more detailed accounts in relation to specific
+case-studies, chapter 1 also touches on some broader social dimensions
+of this research that clarify in the context of which 'negotiation
+processes' this study was shaped, and which interests, projects,
+feelings, etc. of the researcher were of importance.In chapter 2, 1
+attempt to 'set the scene' by problematizing currently proposed
+solutions to the limited adoption of Management Supporting Systems
+(from now on MSS) by farmers and horticulturists. Drawing upon recent
+theoretical and empirical insights, I conclude that current problem
+definitions and solutions rest on inadequate unilinear models of, on
+the one hand, farm development and, on the other, knowledge
+generation, exchange and utilization.In my practical line of
+argumentation, my elaborations lead me to identify five practical
+contributions that extension science and rural development sociology
+may provide to practitioners in the field of agro-informatics. Hence,
+I commit myself to providing such contributions in relation to: (1)
+the generation of relevant classifications of farmers and
+horticulturists; (2) the development of criteria for the design of MSS
+that facilitate integration of scientific and other types of
+knowledge; (3) the assessment of potential contributions of extension
+workers to the use and development of MSS; (4) the provision of
+inductive methodologies for identifying relevant information needs;
+and (5) an appraisal of the types of user-research and user-influence
+that can be suitably incorporated into methods for MSS-development.In
+relation to the theoretical line of argumentation, I conclude that a
+theoretical framework for understanding the use and development of MSS
+will have to meet two important criteria. First, it needs to allow us
+to understand interactions in which MSS play a role in the
+(historical) context of a complex social setting in which a variety
+social actors are actively engaged. Second, it should help us to
+conceptualize the social dimensions of knowledge, information,
+communication and rationality, Furthermore, I propose that management
+supporting systems or information technologies are best conceptualized
+as computer-based communication technologies (CT).Part I: Theoretical
+explorationsChapters 3, 4, 5 and 6 constitute Part I of the book. In
+search of a theoretical framework that meets the above formulated
+criteria, various disciplines and fields of study are explored in
+chapters 3, 4 and 5.In chapter 3, it is argued that the dominant
+conceptualizations; in computer science fail to meet the two criteria.
+The same holds for the field of information systems research. Despite
+important differences, neither the first, second or third wave
+approaches of management and organization theory, nor hard, soft,
+critical or autopoietic systems thinkers, provide fully satisfactory
+conceptualizations. In one way or another, most approaches appear to
+include elements of determinism, and fail to conceptualize actors as
+active and historicallysituated agents. Similarly, even if many
+approaches transcend overtly simplistic 'mechanical'
+conceptualizations of information, they tend to emphasize the
+subjective rather than the social dimensions of knowledge and
+information. That is, due to a focus on the individual, many
+approaches fail to capture the political, normative and ideological
+dimensions of knowledge and information. Nevertheless, critical and
+autopoietic systems thinkers especially, provide some inspiring
+theoretical concepts and ideas that must somehow be incorporated into
+a conceptualization of CT-use and development (these include ideas
+concerning validity claims and the social nature of rationality, the
+historical and recursive nature of structure, and the concepts of
+thrownness, blindness and discontinuity).In chapter 4, 1 discuss
+several frequently used approaches in communication science and
+extension science. In essence, my elaborations lead me to draw similar
+conclusions with respect to the two criteria formulated as those
+arrived at in chapter 3. Even if extension scientists are increasingly
+aware that extension processes need to be studied in a 'multi- actor'
+context, this assessment has apparently not yet resulted in the
+development of conceptualizations that are in line with it. That is,
+the social dimensions of knowledge, information, communication and
+rationality are insufficiently explicated, and extension scientists
+often remain to have a rather passive conceptualization of human
+action. In relation to this, I argue that although extension
+scientists provide an interesting framework for describing different
+types of anticipation problems that occur in relation to CT-use and
+development, the 'diagnostic value' of such descriptions is limited as
+long as an understanding of why and how such problems emerge is
+lacking. Thus, I propose that there is a need to enrich both
+communication science and extension science with sociological
+conceptualizations of human action, communication, knowledge,
+information and rationality. Hence, I reject claims made by authors
+who -on the basis of a sharp distinction between 'knowledge for
+action' and 'knowledge for understanding'- argue that studies aimed at
+generating 'knowledge for understanding' are almost inherently of
+little use to practitioners.Although it appears in chapter 5 that an
+actor-oriented sociology of rural development provides promising
+conceptualizations of the social actor, human action, knowledge and
+ignorance, I argue that there are weaknesses as well. The approach
+generates a number of important analytical concepts, but it is often
+unclear how they are to be theoretically connected. Moreover, the
+conceptualization of social structure leans towards 'actor
+voluntarism'. Another issue is that actor-oriented sociologists have
+so far insufficiently reflected on their own role in the production of
+social change, so that in its present form the approach has little to
+offer practitioners.In a search for more comprehensive frameworks, I
+follow suggestions made by some authors in previous chapters, and
+continue chapter 5 with an evaluation of the prospects of Habermas'
+theory of communicative action, and Giddens' theory of structuration.
+Even if Habermas' framework is becoming increasingly popular among
+extension scientists, I conclude that it fails to meet the two
+criteria formulated, and thus that it is unsuitable for both improving
+our understanding of the use and development of CT in agriculture, and
+more generally- for helping extension scientists to deal with
+'multi-actor' intervention contexts. In contrast, a constructivist
+interpretation of Giddens' theory seems to meet the criteria much
+better. Giddens proposes that all social interaction has a
+communicative dimension and that the production of meaning (and
+therefore the production of knowledge and information) is inherently
+connected with the operation of power and normative sanctions.
+Furthermore, Giddens' theory demonstrates how actors are actively
+involved in (re)producing social structure. Also, it allows me to
+identify mutual knowledge (as inherently connected with mutual
+ignorance) as the key modality of structure, and therefore as
+underlying the existence of structural properties and the operation of
+power in society. In all, I conclude that Giddens' theory offers a
+much more promising and/or systematic insight into the interrelations
+between action, structure, knowledge, communication and rationality
+than the other sociological approaches discussed.In chapter 6, I
+attempt to clear the ground for more empirical forms of investigation.
+Building on the insights arrived at in the theoretical explorations, I
+formulate a set of interrelated preliminary theoretical propositions
+with respect to how the use and development of CT should be
+understood. Most importantly, it is proposed that CT-mediated
+communications must be looked at as politically and normatively laden
+negotiation processes, which are inherently connected with the
+(re)production of structural properties in society. The social 'codes'
+incorporated into such technologies are both constraining and enabling
+and can be renegotiated and creatively dealt with so that largely
+unintended consequences can easily emerge. Moreover, such technologies
+are best understood as playing a -never fully neutralrole in actors'
+reflexive monitoring of action, rather than in processes of 'rational
+decision making'.Building upon the theoretical explorations, I present
+the overall 'theoretical' problem statement as:To what extent do
+anticipation problems originate from: (a) the social nature of
+CT-development processes, and (b) insufficient recognition of the
+social dimensions of knowledge, information, communication and
+rationality.At the 'practical' level we must add the question of how
+an understanding of such social dimensions can help to improve the
+anticipatory nature of communication technologies. Inspired by the
+theoretic
+AU  - Leeuwis, C.
+DA  - 1993///
+PY  - 1993
+DB  - Crossref
+DO  - 10.18174/210407
+ID  - temp_id_939008377599
+M3  - Doctoral dissertation
+PB  - Wageningen University and Research
+TI  - Of computers, myths and modelling : the social construction of
+diversity, knowledge, information, and communication technologies in
+Dutch horticulture and agricultural extension
+UR  - http://dx.doi.org/10.18174/210407
+ER  - 

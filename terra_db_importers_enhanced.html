@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Database Importers v2.0 - Enhanced</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .importer-card {
+            @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-102 border-l-4;
+        }
+        
+        .mysql-card { @apply border-orange-500; }
+        .postgres-card { @apply border-blue-500; }
+        .sqlite-card { @apply border-green-500; }
+        .mongodb-card { @apply border-purple-500; }
+        .oracle-card { @apply border-red-500; }
+        .mssql-card { @apply border-indigo-500; }
+        .api-card { @apply border-pink-500; }
+        
+        .status-indicator {
+            @apply inline-block w-3 h-3 rounded-full mr-2;
+        }
+        
+        .status-ready { @apply bg-green-500; }
+        .status-progress { @apply bg-yellow-500; }
+        .status-error { @apply bg-red-500; }
+        
+        .progress-bar {
+            @apply w-full bg-gray-200 rounded-full h-2 shadow-inner;
+        }
+        
+        .progress-fill {
+            @apply bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300;
+        }
+        
+        .modal {
+            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+        }
+        
+        .modal-content {
+            @apply bg-white rounded-lg p-8 max-w-6xl max-h-4/5 overflow-y-auto shadow-2xl;
+        }
+        
+        .config-field {
+            @apply mb-4;
+        }
+        
+        .config-field label {
+            @apply block text-sm font-medium text-gray-700 mb-1;
+        }
+        
+        .config-field input, .config-field select, .config-field textarea {
+            @apply w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+        }
+        
+        .terra-button {
+            @apply px-6 py-3 rounded-lg font-semibold text-white shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-opacity-50;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .code-block {
+            @apply bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+
+        .api-category-grid {
+            @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-h-96 overflow-y-auto;
+        }
+
+        .api-category-item {
+            @apply p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 text-sm;
+        }
+
+        .api-category-item.selected {
+            @apply bg-blue-100 border-blue-500;
+        }
+
+        .api-list {
+            @apply max-h-64 overflow-y-auto border border-gray-200 rounded-lg p-2;
+        }
+
+        .api-item {
+            @apply p-2 border-b border-gray-100 cursor-pointer hover:bg-gray-50 text-sm;
+        }
+
+        .api-item:last-child {
+            @apply border-b-0;
+        }
+
+        .api-item.selected {
+            @apply bg-blue-50 border-blue-200;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    
+    <!-- Header -->
+    <header class="gradient-bg text-white p-6 shadow-xl">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">🔄 Terra Database Importers v2.0</h1>
+                    <p class="text-blue-100">Расширенная система импорта: СУБД + 1000+ публичных API</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-blue-200">Автор: Абдукаримов Абдурашид Абдулхамитович</div>
+                    <div class="text-xs text-blue-300">DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</div>
+                    <div class="text-xs text-blue-300 mt-1">🆕 NEW: Public APIs Integration</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+        
+        <!-- System Status -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">📊 Статус системы импорта</h2>
+                <div class="flex space-x-2">
+                    <button onclick="runCompatibilityCheck()" class="terra-button bg-purple-500 hover:bg-purple-600 focus:ring-purple-300">
+                        🔍 Проверить совместимость
+                    </button>
+                    <button onclick="showImportHistory()" class="terra-button bg-green-500 hover:bg-green-600 focus:ring-green-300">
+                        📋 История импорта
+                    </button>
+                    <button onclick="showApiExplorer()" class="terra-button bg-pink-500 hover:bg-pink-600 focus:ring-pink-300">
+                        🌐 API Explorer
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-5 gap-4" id="systemStatus">
+                <div class="text-center p-4 bg-blue-50 rounded-lg">
+                    <div class="text-2xl font-bold text-blue-600" id="activeImporters">0</div>
+                    <div class="text-sm text-blue-700">Активных импортеров</div>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600" id="completedImports">0</div>
+                    <div class="text-sm text-green-700">Завершено импортов</div>
+                </div>
+                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                    <div class="text-2xl font-bold text-purple-600" id="totalRecords">0</div>
+                    <div class="text-sm text-purple-700">Импортировано записей</div>
+                </div>
+                <div class="text-center p-4 bg-orange-50 rounded-lg">
+                    <div class="text-2xl font-bold text-orange-600" id="totalSize">0 MB</div>
+                    <div class="text-sm text-orange-700">Объем данных</div>
+                </div>
+                <div class="text-center p-4 bg-pink-50 rounded-lg">
+                    <div class="text-2xl font-bold text-pink-600" id="apiConnections">0</div>
+                    <div class="text-sm text-pink-700">API подключений</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Database and API Importers Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            
+            <!-- Traditional Database Importers -->
+            <div class="importer-card mysql-card" onclick="openImporter('mysql')">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                            🐬 MySQL/MariaDB
+                            <span class="status-indicator status-ready ml-2"></span>
+                        </h3>
+                        <p class="text-sm text-gray-600">Импорт из MySQL и MariaDB баз данных</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-orange-600 bg-orange-100 px-2 py-1 rounded">L1+ Ready</div>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    ✅ Структурный анализ<br>
+                    ✅ Семантическое индексирование<br>
+                    ✅ Этическая проверка
+                </div>
+            </div>
+            
+            <div class="importer-card postgres-card" onclick="openImporter('postgres')">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                            🐘 PostgreSQL
+                            <span class="status-indicator status-ready ml-2"></span>
+                        </h3>
+                        <p class="text-sm text-gray-600">Импорт из PostgreSQL баз данных</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-blue-600 bg-blue-100 px-2 py-1 rounded">L2+ Ready</div>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    ✅ Расширенные типы данных<br>
+                    ✅ Полнотекстовый поиск<br>
+                    ✅ Пространственные данные
+                </div>
+            </div>
+            
+            <div class="importer-card sqlite-card" onclick="openImporter('sqlite')">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                            📱 SQLite
+                            <span class="status-indicator status-ready ml-2"></span>
+                        </h3>
+                        <p class="text-sm text-gray-600">Импорт из SQLite файлов</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">L0+ Ready</div>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    ✅ Прямое чтение файлов<br>
+                    ✅ Автоматическое распознавание схемы<br>
+                    ✅ Локальная обработка
+                </div>
+            </div>
+
+            <!-- NEW: Public API Importers -->
+            <div class="importer-card api-card" onclick="openImporter('public-apis')">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                            🌐 Public APIs
+                            <span class="status-indicator status-ready ml-2"></span>
+                        </h3>
+                        <p class="text-sm text-gray-600">Импорт из 1000+ публичных API</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-pink-600 bg-pink-100 px-2 py-1 rounded">🆕 NEW</div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="text-sm text-gray-700 mb-2">Популярные категории:</div>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-gray-200 px-2 py-1 rounded">Weather</span>
+                        <span class="text-xs bg-gray-200 px-2 py-1 rounded">Finance</span>
+                        <span class="text-xs bg-gray-200 px-2 py-1 rounded">News</span>
+                        <span class="text-xs bg-gray-200 px-2 py-1 rounded">Social</span>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    ⚡ Реального времени<br>
+                    🔑 Авто-аутентификация<br>
+                    📊 Структурирование данных
+                </div>
+            </div>
+
+            <div class="importer-card mongodb-card" onclick="openImporter('mongodb')">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                            🍃 MongoDB
+                            <span class="status-indicator status-progress ml-2"></span>
+                        </h3>
+                        <p class="text-sm text-gray-600">Импорт из MongoDB коллекций</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-purple-600 bg-purple-100 px-2 py-1 rounded">L2+ Beta</div>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    🔄 Документо-ориентированная структура<br>
+                    🔄 Схемная гибкость<br>
+                    🔄 Вложенные объекты
+                </div>
+            </div>
+
+            <!-- API Batch Importer -->
+            <div class="importer-card api-card" onclick="openImporter('api-batch')">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                            🚀 API Batch
+                            <span class="status-indicator status-ready ml-2"></span>
+                        </h3>
+                        <p class="text-sm text-gray-600">Массовый импорт из нескольких API</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-pink-600 bg-pink-100 px-2 py-1 rounded">Pro</div>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    ⚡ Параллельная обработка<br>
+                    🔄 Автоматическая синхронизация<br>
+                    📈 Аналитика производительности
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Import Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">⚡ Быстрый импорт</h2>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div>
+                    <label for="quickImportType" class="block text-sm font-medium text-gray-700 mb-2">Тип источника данных:</label>
+                    <select id="quickImportType" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" onchange="handleQuickImportTypeChange()">
+                        <option value="">Выберите тип...</option>
+                        <optgroup label="Файлы">
+                            <option value="csv">📄 CSV файл</option>
+                            <option value="json">📋 JSON файл</option>
+                            <option value="xml">🏷️ XML файл</option>
+                            <option value="sql">💾 SQL дамп</option>
+                            <option value="sqlite">📱 SQLite файл</option>
+                        </optgroup>
+                        <optgroup label="🌐 Public APIs">
+                            <option value="api-weather">🌤️ Weather APIs</option>
+                            <option value="api-news">📰 News APIs</option>
+                            <option value="api-finance">💰 Finance APIs</option>
+                            <option value="api-social">👥 Social APIs</option>
+                            <option value="api-custom">🔧 Custom API</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <div id="fileImportSection">
+                    <label for="quickImportFile" class="block text-sm font-medium text-gray-700 mb-2">Файл для импорта:</label>
+                    <input type="file" id="quickImportFile" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" onchange="handleQuickImportFile(this.files)">
+                </div>
+
+                <div id="apiImportSection" class="hidden">
+                    <label for="quickApiUrl" class="block text-sm font-medium text-gray-700 mb-2">API URL:</label>
+                    <input type="url" id="quickApiUrl" placeholder="https://api.example.com/data" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div id="apiKeySection" class="hidden">
+                    <label for="quickApiKey" class="block text-sm font-medium text-gray-700 mb-2">API Key (опционально):</label>
+                    <input type="password" id="quickApiKey" placeholder="Введите API ключ" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            
+            <div class="flex justify-between items-center mt-6">
+                <button onclick="startQuickImport()" class="terra-button bg-blue-500 hover:bg-blue-600 focus:ring-blue-300">
+                    ⚡ Быстрый импорт
+                </button>
+                
+                <div class="flex space-x-2">
+                    <button onclick="previewImportData()" class="terra-button bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-300">
+                        👁️ Предпросмотр
+                    </button>
+                    <button onclick="validateImportData()" class="terra-button bg-green-500 hover:bg-green-600 focus:ring-green-300">
+                        ✅ Валидация
+                    </button>
+                    <button onclick="showImportSettings()" class="terra-button bg-purple-500 hover:bg-purple-600 focus:ring-purple-300">
+                        ⚙️ Настройки
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Import Progress -->
+            <div id="importProgress" class="hidden mt-6">
+                <div class="progress-bar">
+                    <div id="importProgressFill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <p id="importProgressText" class="text-center text-sm text-gray-600 mt-2">Подготовка к импорту...</p>
+            </div>
+        </div>
+
+        <!-- Import History -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">📋 История импорта</h2>
+                <div class="flex space-x-2">
+                    <button onclick="clearImportHistory()" class="terra-button bg-red-500 hover:bg-red-600 focus:ring-red-300">
+                        🗑️ Очистить
+                    </button>
+                    <button onclick="exportImportHistory()" class="terra-button bg-green-500 hover:bg-green-600 focus:ring-green-300">
+                        💾 Экспорт
+                    </button>
+                </div>
+            </div>
+            
+            <div id="importHistoryList" class="space-y-4 max-h-96 overflow-y-auto">
+                <div class="text-center py-12 text-gray-500">
+                    <div class="text-6xl mb-6">📋</div>
+                    <h3 class="text-xl font-semibold mb-2">История импорта пуста</h3>
+                    <p>Импортируйте данные, чтобы увидеть историю операций</p>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- Import Configuration Modal -->
+    <div id="importModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-semibold" id="modalTitle">Настройка импорта</h3>
+                <button onclick="closeImportModal()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+            </div>
+            
+            <div id="modalContent">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- API Explorer Modal -->
+    <div id="apiExplorerModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-semibold">🌐 API Explorer - Public APIs</h3>
+                <button onclick="closeApiExplorer()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Categories -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-3">Категории API</h4>
+                    <div id="apiCategories" class="api-category-grid">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- APIs List -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-3">API в категории</h4>
+                    <div id="apiList" class="api-list">
+                        <div class="text-center text-gray-500 p-4">
+                            Выберите категорию для просмотра API
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- API Details -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-3">Детали API</h4>
+                    <div id="apiDetails" class="border border-gray-200 rounded-lg p-4 h-64">
+                        <div class="text-center text-gray-500 p-4">
+                            Выберите API для просмотра деталей
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 flex space-x-2">
+                        <button onclick="testSelectedApi()" class="terra-button bg-blue-500 hover:bg-blue-600 focus:ring-blue-300 flex-1">
+                            🧪 Тест API
+                        </button>
+                        <button onclick="importFromSelectedApi()" class="terra-button bg-green-500 hover:bg-green-600 focus:ring-green-300 flex-1">
+                            📥 Импорт
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">🔄 Terra Database Importers v2.0</h3>
+                <p class="text-gray-300">Расширенная система импорта: СУБД + 1000+ публичных API</p>
+            </div>
+            
+            <div class="grid grid-cols-4 gap-8 text-sm">
+                <div>
+                    <h4 class="font-semibold text-blue-300 mb-2">🗄️ Поддерживаемые СУБД</h4>
+                    <ul class="text-gray-400 space-y-1">
+                        <li>MySQL/MariaDB</li>
+                        <li>PostgreSQL</li>
+                        <li>SQLite</li>
+                        <li>MongoDB</li>
+                        <li>Oracle Database</li>
+                        <li>SQL Server</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-pink-300 mb-2">🌐 Public APIs</h4>
+                    <ul class="text-gray-400 space-y-1">
+                        <li>Weather APIs</li>
+                        <li>Finance APIs</li>
+                        <li>News APIs</li>
+                        <li>Social APIs</li>
+                        <li>Government APIs</li>
+                        <li>+1000 других</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-green-300 mb-2">🔄 Форматы импорта</h4>
+                    <ul class="text-gray-400 space-y-1">
+                        <li>SQL дампы</li>
+                        <li>CSV экспорты</li>
+                        <li>JSON файлы</li>
+                        <li>XML документы</li>
+                        <li>REST API</li>
+                        <li>GraphQL</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-purple-300 mb-2">⚡ Возможности</h4>
+                    <ul class="text-gray-400 space-y-1">
+                        <li>Семантический анализ</li>
+                        <li>Этическая проверка</li>
+                        <li>Автоматическое индексирование</li>
+                        <li>API тестирование</li>
+                        <li>Batch импорт</li>
+                        <li>Полная автономность</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-700">
+                <p class="text-gray-400">
+                    © 2024 Абдукаримов Абдурашид Абдулхамитович • 
+                    DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890 • 
+                    Terra Database Importers v2.0 - Enhanced with Public APIs
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // =========================================================================
+        // TERRA DATABASE IMPORTERS v2.0 - ENHANCED WITH PUBLIC APIs
+        // Автор: Абдукаримов Абдурашид Абдулхамитович
+        // DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890
+        // Интеграция с Public APIs + Фрактальная архитектура импорта
+        // =========================================================================
+        
+        // ===== PUBLIC APIs DATABASE =====
+        var publicApisDatabase = {
+            "Animals": [
+                {name: "Cat Facts", url: "https://catfact.ninja/fact", auth: "none", description: "Daily cat facts"},
+                {name: "Dog API", url: "https://dog.ceo/api/breeds/image/random", auth

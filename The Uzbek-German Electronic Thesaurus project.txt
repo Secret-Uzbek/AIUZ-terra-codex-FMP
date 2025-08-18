@@ -1,0 +1,9 @@
+The Uzbek-German Electronic Thesaurus project is an ambitious undertaking aimed at creating a cutting-edge multilingual thesaurus that leverages artificial intelligence, corpus linguistics, and advanced digital technologies to bridge the gap between Uzbek and German languages. The project's relevance stems from the growing need for robust language resources to support education, migration, terminological precision, and cross-lingual communication.
+
+The thesaurus is structured around key elements such as lemma, part-of-speech, definition, translation, domain, frequency, and register. It employs JSON format for data representation and incorporates extended lexical sets that include definitions, translations, domain classifications, subtypes, examples, related terms, and multilingual equivalents in Uzbek, German, and English.
+
+The project's development is divided into several stages, including source preparation, extraction and annotation, and corpus processing and semantics. It utilizes a range of tools such as pdfplumber, spaCy, stanza, regex, and OCR to extract and annotate data from various sources, including dictionaries, phrasebooks, and online resources. The output is formatted in JSON, TEI/XML, and CSV.
+
+The project focuses on thematic areas such as tourism, logistics, education, migration, and transportation. It also incorporates AR/AI/EdTech modules, such as AR-lexica, to enhance the user experience and facilitate language learning.
+
+The project is supported by a strong scientific and legal framework, including dissertations, journals, author's declarations, and archival protection mechanisms. The creation of this multilingual thesaurus represents a significant contribution to digital lexicography, intercultural communication, and language preservation. Its multidisciplinary approach, integrating AI, AR, EdTech, linguistics, and applied disciplines, makes it a valuable resource for a wide range of users.
