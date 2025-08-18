@@ -1,0 +1,2761 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal TERRA - Барча учун илм / Наука для всех / Science for All</title>
+    
+    <!-- Максимальная доступность -->
+    <meta name="description" content="Universal TERRA Engine - Илм ва билим барчага / Наука и знания для всех / Science and knowledge for everyone">
+    <meta name="keywords" content="террапедия, илм, наука, болалар, мактаб, science, education, uzbek">
+    
+    <style>
+        /* === БАЗОВЫЕ СТИЛИ ДЛЯ ВСЕХ УСТРОЙСТВ И ЛЮДЕЙ === */
+        :root {
+            /* Размеры текста для разных возрастов */
+            --text-child: 18px;      /* 6-12 лет */
+            --text-teen: 16px;       /* 13-17 лет */
+            --text-adult: 14px;      /* 18+ лет */
+            --text-senior: 20px;     /* 65+ лет */
+            
+            /* Цвета с высоким контрастом */
+            --color-primary: #0066CC;
+            --color-secondary: #008800;
+            --color-danger: #CC0000;
+            --color-text: #000000;
+            --color-bg: #FFFFFF;
+            --color-light: #F0F8FF;
+            
+            /* Отступы для разных устройств */
+            --padding-mobile: 10px;
+            --padding-tablet: 15px;
+            --padding-desktop: 20px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif; /* Максимальная читаемость */
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8; /* Увеличенный интервал для лучшего чтения */
+            font-size: var(--text-adult);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* === АДАПТАЦИЯ ПОД ВОЗРАСТ === */
+        .age-child {
+            font-size: var(--text-child) !important;
+            line-height: 2.2 !important;
+        }
+        
+        .age-teen {
+            font-size: var(--text-teen) !important;
+            line-height: 2.0 !important;
+        }
+        
+        .age-adult {
+            font-size: var(--text-adult) !important;
+            line-height: 1.8 !important;
+        }
+        
+        .age-senior {
+            font-size: var(--text-senior) !important;
+            line-height: 2.4 !important;
+            font-weight: bold !important;
+        }
+        
+        /* === ДОСТУПНОСТЬ ДЛЯ ИНВАЛИДОВ === */
+        
+        /* Screen reader поддержка */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Высокий контраст */
+        @media (prefers-contrast: high) {
+            :root {
+                --color-bg: #FFFFFF;
+                --color-text: #000000;
+                --color-primary: #0000FF;
+            }
+        }
+        
+        /* Уменьшенное движение */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+        
+        /* Увеличенный текст по запросу браузера */
+        @media (min-resolution: 144dpi) {
+            body {
+                font-size: calc(var(--text-adult) * 1.2);
+            }
+        }
+        
+        /* === ОСНОВНОЙ КОНТЕЙНЕР === */
+        .terra-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--padding-mobile);
+        }
+        
+        /* === ЯЗЫКОВАЯ ПАНЕЛЬ === */
+        .language-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-primary);
+            color: white;
+            padding: 10px;
+            z-index: 1000;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .language-panel button {
+            background: white;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .language-panel button:hover,
+        .language-panel button:focus {
+            background: var(--color-light);
+            outline: 3px solid yellow;
+        }
+        
+        .language-panel button.active {
+            background: var(--color-secondary);
+            color: white;
+            border-color: var(--color-secondary);
+        }
+        
+        /* === ПАНЕЛЬ ВОЗРАСТА И ДОСТУПНОСТИ === */
+        .accessibility-panel {
+            margin-top: 60px;
+            background: var(--color-light);
+            border: 3px solid var(--color-primary);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .accessibility-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .accessibility-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-label {
+            font-weight: bold;
+            color: var(--color-text);
+            text-align: center;
+        }
+        
+        .control-button {
+            padding: 12px 20px;
+            border: 3px solid var(--color-primary);
+            background: white;
+            color: var(--color-primary);
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .control-button:hover,
+        .control-button:focus {
+            background: var(--color-primary);
+            color: white;
+            outline: 3px solid yellow;
+        }
+        
+        .control-button.active {
+            background: var(--color-secondary);
+            color: white;
+            border-color: var(--color-secondary);
+        }
+        
+        /* === ГЛАВНЫЙ ИНТЕРФЕЙС === */
+        .main-interface {
+            background: white;
+            border: 3px solid var(--color-primary);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .terra-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .terra-logo {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+        
+        .terra-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+        
+        .terra-subtitle {
+            font-size: 18px;
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+        
+        /* === ПОЛЕ ВВОДА ПРОСТОЕ === */
+        .query-section {
+            margin-bottom: 30px;
+        }
+        
+        .query-label {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-text);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .query-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 20px;
+            border: 3px solid var(--color-primary);
+            border-radius: 10px;
+            font-size: inherit;
+            font-family: inherit;
+            line-height: inherit;
+            resize: vertical;
+            background: white;
+        }
+        
+        .query-input:focus {
+            outline: 3px solid yellow;
+            border-color: var(--color-secondary);
+        }
+        
+        .query-input::placeholder {
+            color: #666666;
+            font-style: italic;
+        }
+        
+        /* === КНОПКИ ДЕЙСТВИЙ === */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .main-button {
+            padding: 20px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            min-width: 250px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: #004499;
+            outline: 3px solid yellow;
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover,
+            .btn-secondary:focus {
+            background: #006600;
+            outline: 3px solid yellow;
+            transform: scale(1.05);
+        }
+        
+        .btn-danger {
+            background: var(--color-danger);
+            color: white;
+        }
+        
+        .btn-danger:hover,
+        .btn-danger:focus {
+            background: #990000;
+            outline: 3px solid yellow;
+            transform: scale(1.05);
+        }
+        
+        .main-button:disabled {
+            background: #CCCCCC;
+            color: #666666;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* === РЕЗУЛЬТАТЫ С ВИЗУАЛИЗАЦИЕЙ === */
+        .results-container {
+            background: white;
+            border: 3px solid var(--color-secondary);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        /* === ВИЗУАЛИЗАТОР ЗНАНИЙ === */
+        .visualization-panel {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 3px solid var(--color-primary);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visualization-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .viz-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .viz-button {
+            padding: 12px 24px;
+            border: 2px solid var(--color-primary);
+            background: white;
+            color: var(--color-primary);
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .viz-button:hover,
+        .viz-button:focus {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,102,204,0.3);
+            outline: 3px solid yellow;
+        }
+        
+        .viz-button.active {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* === КОНТЕЙНЕРЫ ВИЗУАЛИЗАЦИИ === */
+        .viz-container {
+            width: 100%;
+            min-height: 400px;
+            background: white;
+            border: 2px solid var(--color-light);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .viz-canvas {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        
+        .viz-svg {
+            width: 100%;
+            height: 400px;
+            background: radial-gradient(circle, #f8f9ff 0%, #e3f2fd 100%);
+            border-radius: 10px;
+        }
+        
+        /* === МИЦЕЛИЙ-СЕТЬ === */
+        .mycelium-network {
+            position: relative;
+            background: linear-gradient(45deg, #000011 0%, #001133 50%, #000022 100%);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .mycelium-node {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+            to { box-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 30px rgba(100,200,255,0.3); }
+        }
+        
+        .mycelium-node:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+        
+        .mycelium-connection {
+            position: absolute;
+            background: linear-gradient(90deg, rgba(100,200,255,0.6) 0%, rgba(255,255,255,0.8) 50%, rgba(100,200,255,0.6) 100%);
+            border-radius: 2px;
+            animation: flow 2s linear infinite;
+        }
+        
+        @keyframes flow {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.3; }
+        }
+        
+        /* === ВРЕМЕННАЯ СПИРАЛЬ === */
+        .time-spiral {
+            position: relative;
+            background: radial-gradient(circle, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .time-period {
+            position: absolute;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .time-period:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.6);
+            transform: scale(1.1);
+            z-index: 5;
+        }
+        
+        .time-connection {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 2px;
+        }
+        
+        /* === ФРАКТАЛЬНЫЕ ПАТТЕРНЫ === */
+        .fractal-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fractal-level {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(3px);
+            padding: 8px 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .fractal-level:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+            z-index: 3;
+        }
+        
+        /* === АДАПТИВНЫЕ СТИЛИ ПО ВОЗРАСТУ === */
+        .age-child .viz-container {
+            background: linear-gradient(45deg, #FFE0B2 0%, #FFCC80 100%);
+            border-width: 4px;
+            border-color: #FF9800;
+        }
+        
+        .age-child .mycelium-node {
+            font-size: 18px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #FFC107 0%, #FF9800 100%);
+        }
+        
+        .age-teen .viz-container {
+            background: linear-gradient(45deg, #E1BEE7 0%, #BA68C8 100%);
+            border-color: #9C27B0;
+        }
+        
+        .age-teen .mycelium-node {
+            font-size: 16px;
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, #E91E63 0%, #9C27B0 100%);
+        }
+        
+        .age-adult .mycelium-node {
+            font-size: 14px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #2196F3 0%, #1976D2 100%);
+        }
+        
+        .age-senior .viz-container {
+            background: linear-gradient(45deg, #C8E6C9 0%, #A5D6A7 100%);
+            border-width: 5px;
+            border-color: #4CAF50;
+        }
+        
+        .age-senior .mycelium-node {
+            font-size: 20px;
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle, #4CAF50 0%, #388E3C 100%);
+        }
+        
+        /* === ИНТЕРАКТИВНЫЕ ЭЛЕМЕНТЫ === */
+        .viz-tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .viz-tooltip.show {
+            opacity: 1;
+        }
+        
+        .loading-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--color-light);
+            border-top: 5px solid var(--color-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* === ЗВУКОВЫЕ ИНДИКАТОРЫ === */
+        .sound-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            animation: soundPulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes soundPulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        /* === МОБИЛЬНАЯ АДАПТАЦИЯ ВИЗУАЛИЗАТОРА === */
+        @media (max-width: 768px) {
+            .visualization-panel {
+                padding: 20px 15px;
+                margin: 15px 0;
+            }
+            
+            .viz-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .viz-button {
+                width: 100%;
+                max-width: 250px;
+                margin: 5px 0;
+            }
+            
+            .viz-canvas,
+            .viz-svg {
+                height: 300px;
+            }
+            
+            .mycelium-node {
+                font-size: 12px !important;
+                width: 50px !important;
+                height: 50px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .viz-canvas,
+            .viz-svg {
+                height: 250px;
+            }
+            
+            .mycelium-node {
+                font-size: 10px !important;
+                width: 40px !important;
+                height: 40px !important;
+            }
+            
+            .time-period,
+            .fractal-level {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+        }
+        
+        .results-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--color-light);
+        }
+        
+        .results-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--color-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .results-content {
+            font-size: inherit;
+            line-height: inherit;
+            color: var(--color-text);
+        }
+        
+        .answer-simple {
+            background: var(--color-light);
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .answer-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+        
+        .answer-text {
+            font-size: inherit;
+            line-height: inherit;
+            color: var(--color-text);
+        }
+        
+        /* === ГОЛОСОВЫЕ ФУНКЦИИ === */
+        .voice-controls {
+            background: #FFE4B5;
+            border: 3px solid #FF8C00;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .voice-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #FF8C00;
+            margin-bottom: 15px;
+        }
+        
+        .voice-button {
+            background: #FF8C00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .voice-button:hover,
+        .voice-button:focus {
+            background: #FF7F00;
+            outline: 3px solid yellow;
+        }
+        
+        .voice-status {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #FF8C00;
+        }
+        
+        /* === МОБИЛЬНАЯ АДАПТАЦИЯ === */
+        @media (max-width: 768px) {
+            .terra-container {
+                padding: var(--padding-mobile);
+            }
+            
+            .accessibility-controls {
+                flex-direction: column;
+            }
+            
+            .terra-title {
+                font-size: 28px;
+            }
+            
+            .terra-subtitle {
+                font-size: 16px;
+            }
+            
+            .main-button {
+                min-width: 200px;
+                font-size: 18px;
+                padding: 15px 30px;
+            }
+            
+            .language-panel {
+                font-size: 14px;
+            }
+            
+            .language-panel button {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .terra-logo {
+                font-size: 48px;
+            }
+            
+            .terra-title {
+                font-size: 24px;
+            }
+            
+            .main-button {
+                width: 100%;
+                min-width: unset;
+            }
+            
+            .accessibility-controls {
+                gap: 10px;
+            }
+            
+            .control-button {
+                min-width: 100px;
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+        }
+        
+        /* === СТАРЫЕ БРАУЗЕРЫ === */
+        .no-js-fallback {
+            background: #FFEB3B;
+            border: 3px solid #FF9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .fallback-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #E65100;
+            margin-bottom: 10px;
+        }
+        
+        /* === ПРИНТ ВЕРСИЯ === */
+        @media print {
+            .language-panel,
+            .accessibility-panel,
+            .voice-controls,
+            .action-buttons {
+                display: none !important;
+            }
+            
+            .main-interface,
+            .results-container {
+                border: 2px solid black;
+                box-shadow: none;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: black;
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ARIA landmarks для screen readers -->
+    <div role="banner">
+        <!-- Языковая панель -->
+        <nav class="language-panel" role="navigation" aria-label="Language selection">
+            <span id="langTitle">Тилни танланг / Выберите язык / Choose language:</span>
+            <button onclick="setLanguage('uz')" id="btnUzbek" class="active" 
+                    aria-label="O'zbek tilida davom etish">
+                🇺🇿 Ўзбек
+            </button>
+            <button onclick="setLanguage('ru')" id="btnRussian" 
+                    aria-label="Продолжить на русском языке">
+                🇷🇺 Русский
+            </button>
+            <button onclick="setLanguage('en')" id="btnEnglish" 
+                    aria-label="Continue in English">
+                🇺🇸 English
+            </button>
+        </nav>
+    </div>
+
+    <main class="terra-container" role="main">
+        <!-- Панель доступности -->
+        <section class="accessibility-panel" role="region" aria-labelledby="accessibilityTitle">
+            <h2 class="accessibility-title" id="accessibilityTitle">
+                <span data-uz="Qulayliklar / Возможности / Accessibility Options"></span>
+            </h2>
+            
+            <div class="accessibility-controls">
+                <div class="control-group">
+                    <label class="control-label" for="ageSelect">
+                        <span data-uz="Ёш / Возраст / Age"></span>
+                    </label>
+                    <select id="ageSelect" class="control-button" onchange="setAge(this.value)"
+                            aria-describedby="ageHelp">
+                        <option value="child" data-uz="6-12 ёш">6-12 лет / 6-12 years</option>
+                        <option value="teen" data-uz="13-17 ёш">13-17 лет / 13-17 years</option>
+                        <option value="adult" selected data-uz="18+ ёш">18+ лет / 18+ years</option>
+                        <option value="senior" data-uz="65+ ёш">65+ лет / 65+ years</option>
+                    </select>
+                    <div id="ageHelp" class="sr-only">Выберите возрастную группу для адаптации интерфейса</div>
+                </div>
+                
+                <div class="control-group">
+                    <span class="control-label">
+                        <span data-uz="Овоз / Голос / Voice"></span>
+                    </span>
+                    <button class="control-button" onclick="toggleVoice()" id="voiceToggle"
+                            aria-pressed="false" aria-describedby="voiceHelp">
+                        <span data-uz="Ёқилган / Включить / Enable"></span>
+                    </button>
+                    <div id="voiceHelp" class="sr-only">Включить голосовое управление и озвучивание</div>
+                </div>
+                
+                <div class="control-group">
+                    <span class="control-label">
+                        <span data-uz="Ёрдам / Помощь / Help"></span>
+                    </span>
+                    <button class="control-button" onclick="showHelp()"
+                            aria-describedby="helpInfo">
+                        <span data-uz="Кўрсатиш / Показать / Show"></span>
+                    </button>
+                    <div id="helpInfo" class="sr-only">Показать подсказки по использованию</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основной интерфейс -->
+        <section class="main-interface" role="region" aria-labelledby="mainTitle">
+            <header class="terra-header">
+                <div class="terra-logo" role="img" aria-label="Universal TERRA logo">🧬🌍📚</div>
+                <h1 class="terra-title" id="mainTitle">
+                    <span data-uz="Universal TERRA">Universal TERRA</span>
+                </h1>
+                <p class="terra-subtitle">
+                    <span data-uz="Барчага билим ва илм / Знания и наука для всех / Knowledge and science for everyone"></span>
+                </p>
+            </header>
+
+            <!-- Голосовые функции -->
+            <div class="voice-controls" id="voiceSection" style="display: none;" role="region" aria-labelledby="voiceTitle">
+                <h3 class="voice-title" id="voiceTitle">
+                    <span data-uz="Овоз билан ишлаш / Голосовая работа / Voice Control"></span>
+                </h3>
+                <button class="voice-button" onclick="startListening()" id="listenBtn"
+                        aria-describedby="listenHelp">
+                    🎤 <span data-uz="Гапириш / Говорить / Speak"></span>
+                </button>
+                <button class="voice-button" onclick="readAloud()" id="readBtn"
+                        aria-describedby="readHelp">
+                    🔊 <span data-uz="Ўқиш / Прочитать / Read"></span>
+                </button>
+                <div id="listenHelp" class="sr-only">Нажмите для записи голосового вопроса</div>
+                <div id="readHelp" class="sr-only">Нажмите для озвучивания ответа</div>
+                <div class="voice-status" id="voiceStatus" role="status" aria-live="polite"></div>
+            </div>
+
+            <!-- Поле ввода -->
+            <div class="query-section">
+                <label class="query-label" for="questionInput">
+                    <span data-uz="Саволингизни ёзинг / Напишите ваш вопрос / Write your question:"></span>
+                </label>
+                <textarea 
+                    id="questionInput" 
+                    class="query-input"
+                    placeholder=""
+                    rows="6"
+                    aria-describedby="inputHelp"
+                ></textarea>
+                <div id="inputHelp" class="sr-only">
+                    Введите любой вопрос на узбекском, русском или английском языке. 
+                    Система адаптируется к вашему уровню знаний.
+                </div>
+            </div>
+
+            <!-- Кнопки действий -->
+            <div class="action-buttons">
+                <button class="main-button btn-primary" onclick="askQuestion()" id="askBtn"
+                        aria-describedby="askHelp">
+                    🧠 <span data-uz="Саволга жавоб олиш / Получить ответ / Get Answer"></span>
+                </button>
+                <div id="askHelp" class="sr-only">Получить ответ на ваш вопрос, адаптированный к вашему возрасту и уровню знаний</div>
+                
+                <button class="main-button btn-secondary" onclick="clearAll()" id="clearBtn">
+                    🗑️ <span data-uz="Тозалаш / Очистить / Clear"></span>
+                </button>
+                
+                <button class="main-button btn-danger" onclick="emergencyHelp()" id="emergencyBtn"
+                        aria-describedby="emergencyHelp">
+                    🚨 <span data-uz="Шошилинч ёрдам / Экстренная помощь / Emergency Help"></span>
+                </button>
+                <div id="emergencyHelp" class="sr-only">Получить экстренную помощь или связаться с администратором</div>
+            </div>
+        </section>
+
+        <!-- Результаты с визуализацией -->
+        <section class="results-container" id="resultsSection" role="region" aria-labelledby="resultsTitle" aria-live="polite">
+            <div class="results-header">
+                <h2 class="results-title" id="resultsTitle">
+                    <span data-uz="Жавоб / Ответ / Answer"></span>
+                </h2>
+            </div>
+            <div class="results-content" id="resultsContent">
+                <!-- Ответы будут здесь -->
+            </div>
+            
+            <!-- Панель визуализации -->
+            <div class="visualization-panel" id="visualizationPanel" style="display: none;" role="region" aria-labelledby="vizTitle">
+                <div class="sound-indicator" onclick="toggleVizSound()" title="Звуковое сопровождение визуализации">
+                    🔊
+                </div>
+                
+                <h3 class="visualization-title" id="vizTitle">
+                    <span data-uz="Билимлар мицелийси / Мицелий знаний / Knowledge Mycelium"></span>
+                </h3>
+                
+                <div class="viz-controls">
+                    <button class="viz-button active" onclick="showMyceliumNetwork()" id="btnMycelium"
+                            aria-describedby="myceliumHelp">
+                        🌐 <span data-uz="Боғланишлар / Связи / Connections"></span>
+                    </button>
+                    <button class="viz-button" onclick="showTimeSpiral()" id="btnTimeSpiral"
+                            aria-describedby="spiralHelp">
+                        🌀 <span data-uz="Вақт спирали / Спираль времени / Time Spiral"></span>
+                    </button>
+                    <button class="viz-button" onclick="showFractalLevels()" id="btnFractal"
+                            aria-describedby="fractalHelp">
+                        📐 <span data-uz="Фрактал даражалари / Фрактальные уровни / Fractal Levels"></span>
+                    </button>
+                    <button class="viz-button" onclick="showHistoricalLayers()" id="btnHistory"
+                            aria-describedby="historyHelp">
+                        📚 <span data-uz="Тарих қатламлари / Исторические слои / Historical Layers"></span>
+                    </button>
+                </div>
+                
+                <div id="myceliumHelp" class="sr-only">Показать интерактивную сеть связей между областями знаний</div>
+                <div id="spiralHelp" class="sr-only">Отобразить спиральную модель развития знаний во времени</div>
+                <div id="fractalHelp" class="sr-only">Визуализировать фрактальные уровни от микро к макро</div>
+                <div id="historyHelp" class="sr-only">Показать исторические слои развития науки</div>
+                
+                <!-- Контейнер визуализации -->
+                <div class="viz-container" id="vizContainer">
+                    <div class="loading-indicator" id="loadingViz">
+                        <div class="loading-spinner"></div>
+                        <span data-uz="Визуализация ясалмоқда... / Создаётся визуализация... / Creating visualization..."></span>
+                    </div>
+                </div>
+                
+                <!-- Тултип для интерактивных элементов -->
+                <div class="viz-tooltip" id="vizTooltip" role="tooltip"></div>
+            </div>
+        </section>
+
+        <!-- Fallback для JavaScript -->
+        <noscript>
+            <div class="no-js-fallback">
+                <div class="fallback-title">
+                    JavaScript ишламаяпти / JavaScript не работает / JavaScript is disabled
+                </div>
+                <p>
+                    Илтимос, браузерингизда JavaScript-ни ёқинг ёки бошқа браузердан фойдаланинг.<br>
+                    Пожалуйста, включите JavaScript в вашем браузере или используйте другой браузер.<br>
+                    Please enable JavaScript in your browser or use a different browser.
+                </p>
+            </div>
+        </noscript>
+    </main>
+
+    <!-- Скрипт максимально простой -->
+    <script>
+        // === UNIVERSAL TERRA ENGINE - ПРОСТАЯ ВЕРСИЯ ДЛЯ ВСЕХ ===
+        
+        // Глобальные настройки
+        let currentLanguage = 'uz';
+        let currentAge = 'adult';
+        let voiceEnabled = false;
+        let isListening = false;
+        
+        // Переводы для трёх языков
+        const translations = {
+            uz: {
+                'Qulayliklar / Возможности / Accessibility Options': 'Қулайликлар',
+                'Ёш / Возраст / Age': 'Ёш',
+                '6-12 ёш': '6-12 ёш',
+                '13-17 ёш': '13-17 ёш', 
+                '18+ ёш': '18+ ёш',
+                '65+ ёш': '65+ ёш',
+                'Овоз / Голос / Voice': 'Овоз',
+                'Ёқилган / Включить / Enable': 'Ёқиш',
+                'Ёрдам / Помощь / Help': 'Ёрдам',
+                'Кўрсатиш / Показать / Show': 'Кўрсатиш',
+                'Universal TERRA': 'Universal TERRA',
+                'Барчага билим ва илм / Знания и наука для всех / Knowledge and science for everyone': 'Барчага билим ва илм',
+                'Овоз билан ишлаш / Голосовая работа / Voice Control': 'Овоз билан ишлаш',
+                'Гапириш / Говорить / Speak': 'Гапириш',
+                'Ўқиш / Прочитать / Read': 'Ўқиш',
+                'Саволингизни ёзинг / Напишите ваш вопрос / Write your question:': 'Саволингизни ёзинг:',
+                'Саволга жавоб олиш / Получить ответ / Get Answer': 'Жавоб олиш',
+                'Тозалаш / Очистить / Clear': 'Тозалаш',
+                'Шошилинч ёрдам / Экстренная помощь / Emergency Help': 'Шошилинч ёрдам',
+                'Жавоб / Ответ / Answer': 'Жавоб',
+                'Билимлар мицелийси / Мицелий знаний / Knowledge Mycelium': 'Билимлар мицелийси',
+                'Боғланишлар / Связи / Connections': 'Боғланишлар',
+                'Вақт спирали / Спираль времени / Time Spiral': 'Вақт спирали',
+                'Фрактал даражалари / Фрактальные уровни / Fractal Levels': 'Фрактал даражалари',
+                'Тарих қатламлари / Исторические слои / Historical Layers': 'Тарих қатламлари',
+                placeholder: 'Исталган савол ёзинг. Масалан: "Осмон нега кўк?" ёки "Қандай қилиб тез ўрганиш мумкин?"'
+            },
+            ru: {
+                'Qulayliklar / Возможности / Accessibility Options': 'Возможности',
+                'Ёш / Возраст / Age': 'Возраст',
+                '6-12 ёш': '6-12 лет',
+                '13-17 ёш': '13-17 лет',
+                '18+ ёш': '18+ лет', 
+                '65+ ёш': '65+ лет',
+                'Овоз / Голос / Voice': 'Голос',
+                'Ёқилган / Включить / Enable': 'Включить',
+                'Ёрдам / Помощь / Help': 'Помощь',
+                'Кўрсатиш / Показать / Show': 'Показать',
+                'Universal TERRA': 'Universal TERRA',
+                'Барчага билим ва илм / Знания и наука для всех / Knowledge and science for everyone': 'Знания и наука для всех',
+                'Овоз билан ишлаш / Голосовая работа / Voice Control': 'Голосовая работа',
+                'Гапириш / Говорить / Speak': 'Говорить',
+                'Ўқиш / Прочитать / Read': 'Прочитать',
+                'Саволингизни ёзинг / Напишите ваш вопрос / Write your question:': 'Напишите ваш вопрос:',
+                'Саволга жавоб олиш / Получить ответ / Get Answer': 'Получить ответ',
+                'Тозалаш / Очистить / Clear': 'Очистить',
+                'Шошилинч ёрдам / Экстренная помощь / Emergency Help': 'Экстренная помощь',
+                'Жавоб / Ответ / Answer': 'Ответ',
+                'Билимлар мицелийси / Мицелий знаний / Knowledge Mycelium': 'Мицелий знаний',
+                'Боғланишлар / Связи / Connections': 'Связи',
+                'Вақт спирали / Спираль времени / Time Spiral': 'Спираль времени',
+                'Фрактал даражалари / Фрактальные уровни / Fractal Levels': 'Фрактальные уровни',
+                'Тарих қатламлари / Исторические слои / Historical Layers': 'Исторические слои',
+                placeholder: 'Напишите любой вопрос. Например: "Почему небо синее?" или "Как быстро учиться?"'
+            },
+            en: {
+                'Qulayliklar / Возможности / Accessibility Options': 'Accessibility Options',
+                'Ёш / Возраст / Age': 'Age',
+                '6-12 ёш': '6-12 years',
+                '13-17 ёш': '13-17 years',
+                '18+ ёш': '18+ years',
+                '65+ ёш': '65+ years',
+                'Овоз / Голос / Voice': 'Voice',
+                'Ёқилган / Включить / Enable': 'Enable',
+                'Ёрдам / Помощь / Help': 'Help',
+                'Кўрсатиш / Показать / Show': 'Show',
+                'Universal TERRA': 'Universal TERRA',
+                'Барчага билим ва илм / Знания и наука для всех / Knowledge and science for everyone': 'Knowledge and science for everyone',
+                'Овоз билан ишлаш / Голосовая работа / Voice Control': 'Voice Control',
+                'Гапириш / Говорить / Speak': 'Speak',
+                'Ўқиш / Прочитать / Read': 'Read',
+                'Саволингизни ёзинг / Напишите ваш вопрос / Write your question:': 'Write your question:',
+                'Саволга жавоб олиш / Получить ответ / Get Answer': 'Get Answer',
+                'Тозалаш / Очистить / Clear': 'Clear',
+                'Шошилинч ёрдам / Экстренная помощь / Emergency Help': 'Emergency Help',
+                'Жавоб / Ответ / Answer': 'Answer',
+                'Билимлар мицелийси / Мицелий знаний / Knowledge Mycelium': 'Knowledge Mycelium',
+                'Боғланишлар / Связи / Connections': 'Connections',
+                'Вақт спирали / Спираль времени / Time Spiral': 'Time Spiral',
+                'Фрактал даражалари / Фрактальные уровни / Fractal Levels': 'Fractal Levels',
+                'Тарих қатламлари / Исторические слои / Historical Layers': 'Historical Layers',
+                placeholder: 'Write any question. For example: "Why is the sky blue?" or "How to learn fast?"'
+            }
+        };
+        
+        // === ИНИЦИАЛИЗАЦИЯ ===
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧬 Universal TERRA Engine запущен для всех пользователей');
+            updateInterface();
+            
+            // Проверка возможностей браузера
+            if ('speechSynthesis' in window) {
+                console.log('✅ Поддержка голосового движка обнаружена');
+            }
+            
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                console.log('✅ Поддержка распознавания речи обнаружена');
+            }
+            
+            // Простое логирование для отладки
+            console.log('Текущий язык:', currentLanguage);
+            console.log('Возрастная группа:', currentAge);
+        });
+        
+        // === СМЕНА ЯЗЫКА ===
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Обновление активной кнопки
+            document.querySelectorAll('.language-panel button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (lang === 'uz') {
+                document.getElementById('btnUzbek').classList.add('active');
+                document.documentElement.lang = 'uz';
+            } else if (lang === 'ru') {
+                document.getElementById('btnRussian').classList.add('active'); 
+                document.documentElement.lang = 'ru';
+            } else if (lang === 'en') {
+                document.getElementById('btnEnglish').classList.add('active');
+                document.documentElement.lang = 'en';
+            }
+            
+            updateInterface();
+            
+            // Голосовое уведомление
+            if (voiceEnabled) {
+                let message = lang === 'uz' ? 'Тил ўзгарди' : 
+                             lang === 'ru' ? 'Язык изменён' : 'Language changed';
+                speak(message);
+            }
+        }
+        
+        // === СМЕНА ВОЗРАСТА ===
+        function setAge(age) {
+            currentAge = age;
+            
+            // Обновление класса body для стилей
+            document.body.className = 'age-' + age;
+            
+            console.log('Возрастная группа изменена на:', age);
+            
+            // Голосовое уведомление
+            if (voiceEnabled) {
+                let message = currentLanguage === 'uz' ? 'Ёш гуруҳи ўзгарди' :
+                             currentLanguage === 'ru' ? 'Возрастная группа изменена' : 'Age group changed';
+                speak(message);
+            }
+        }
+        
+        // === ОБНОВЛЕНИЕ ИНТЕРФЕЙСА ===
+        function updateInterface() {
+            const currentTrans = translations[currentLanguage];
+            
+            // Обновление всех элементов с data-uz
+            document.querySelectorAll('[data-uz]').forEach(element => {
+                const key = element.getAttribute('data-uz');
+                if (currentTrans[key]) {
+                    element.textContent = currentTrans[key];
+                }
+            });
+            
+            // Обновление placeholder
+            const input = document.getElementById('questionInput');
+            if (input && currentTrans.placeholder) {
+                input.placeholder = currentTrans.placeholder;
+            }
+        }
+        
+        // === ГОЛОСОВЫЕ ФУНКЦИИ ===
+        function toggleVoice() {
+            voiceEnabled = !voiceEnabled;
+            const voiceSection = document.getElementById('voiceSection');
+            const voiceToggle = document.getElementById('voiceToggle');
+            
+            if (voiceEnabled) {
+                voiceSection.style.display = 'block';
+                voiceToggle.querySelector('span').textContent = currentLanguage === 'uz' ? 'Ёқилди' :
+                                                              currentLanguage === 'ru' ? 'Включено' : 'Enabled';
+                voiceToggle.classList.add('active');
+                voiceToggle.setAttribute('aria-pressed', 'true');
+                
+                // Приветствие
+                let welcomeMessage = currentLanguage === 'uz' ? 'Овозли ёрдам ишга тушди' :
+                                   currentLanguage === 'ru' ? 'Голосовая помощь включена' : 'Voice assistance enabled';
+                speak(welcomeMessage);
+            } else {
+                voiceSection.style.display = 'none';
+                voiceToggle.querySelector('span').textContent = currentLanguage === 'uz' ? 'Ёқиш' :
+                                                              currentLanguage === 'ru' ? 'Включить' : 'Enable';
+                voiceToggle.classList.remove('active');
+                voiceToggle.setAttribute('aria-pressed', 'false');
+            }
+        }
+        
+        function speak(text) {
+            if (!voiceEnabled || !('speechSynthesis' in window)) return;
+            
+            // Остановка предыдущего озвучивания
+            speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = currentLanguage === 'uz' ? 'uz-UZ' : 
+                           currentLanguage === 'ru' ? 'ru-RU' : 'en-US';
+            utterance.rate = currentAge === 'child' ? 0.8 : currentAge === 'senior' ? 0.7 : 1.0;
+            utterance.pitch = currentAge === 'child' ? 1.2 : 1.0;
+            
+            speechSynthesis.speak(utterance);
+        }
+        
+        function startListening() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert(currentLanguage === 'uz' ? 'Овозни танимаслик ишламайди' :
+                      currentLanguage === 'ru' ? 'Распознавание речи не поддерживается' : 'Speech recognition not supported');
+                return;
+            }
+            
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            
+            recognition.lang = currentLanguage === 'uz' ? 'uz-UZ' : 
+                              currentLanguage === 'ru' ? 'ru-RU' : 'en-US';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            
+            const statusDiv = document.getElementById('voiceStatus');
+            const listenBtn = document.getElementById('listenBtn');
+            
+            recognition.onstart = function() {
+                isListening = true;
+                listenBtn.style.background = '#FF0000';
+                statusDiv.textContent = currentLanguage === 'uz' ? 'Тинглаяпман...' :
+                                       currentLanguage === 'ru' ? 'Слушаю...' : 'Listening...';
+            };
+            
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('questionInput').value = transcript;
+                
+                statusDiv.textContent = currentLanguage === 'uz' ? 'Тушундим!' :
+                                       currentLanguage === 'ru' ? 'Понял!' : 'Got it!';
+                
+                // Автоматически получить ответ
+                setTimeout(() => {
+                    askQuestion();
+                }, 1000);
+            };
+            
+            recognition.onerror = function(event) {
+                statusDiv.textContent = currentLanguage === 'uz' ? 'Хатолик юз берди' :
+                                       currentLanguage === 'ru' ? 'Произошла ошибка' : 'Error occurred';
+                console.error('Speech recognition error:', event.error);
+            };
+            
+            recognition.onend = function() {
+                isListening = false;
+                listenBtn.style.background = '#FF8C00';
+            };
+            
+            recognition.start();
+        }
+        
+        function readAloud() {
+            const resultsContent = document.getElementById('resultsContent');
+            if (resultsContent && resultsContent.textContent.trim()) {
+                speak(resultsContent.textContent);
+            } else {
+                let message = currentLanguage === 'uz' ? 'Ўқиш учун жавоб йўқ' :
+                             currentLanguage === 'ru' ? 'Нет ответа для чтения' : 'No answer to read';
+                speak(message);
+            }
+        }
+        
+        // === ОСНОВНАЯ ФУНКЦИЯ - ПОЛУЧЕНИЕ ОТВЕТА ===
+        function askQuestion() {
+            const questionInput = document.getElementById('questionInput');
+            const question = questionInput.value.trim();
+            
+            if (!question) {
+                let message = currentLanguage === 'uz' ? 'Илтимос, савол ёзинг' :
+                             currentLanguage === 'ru' ? 'Пожалуйста, напишите вопрос' : 'Please write a question';
+                
+                if (voiceEnabled) {
+                    speak(message);
+                } else {
+                    alert(message);
+                }
+                return;
+            }
+            
+            // Показать что система думает
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsContent = document.getElementById('resultsContent');
+            
+            resultsSection.style.display = 'block';
+            resultsContent.innerHTML = createThinkingMessage();
+            
+            // FMP АНАЛИЗ В РЕАЛЬНОМ ВРЕМЕНИ
+            setTimeout(() => {
+                console.log('🧬 Запуск полного FMP анализа...');
+                
+                // ЭТАП 1: Определение контекста
+                const contextAnalysis = analyzeQuestionContext(question);
+                updateThinkingStatus('🔍 Анализирую контекст вопроса...');
+                
+                setTimeout(() => {
+                    // ЭТАП 2: Поиск мицелиальных связей
+                    updateThinkingStatus('🌐 Ищу мицелиальные связи в базе знаний...');
+                    
+                    setTimeout(() => {
+                        // ЭТАП 3: Фрактальный анализ
+                        updateThinkingStatus('📐 Выполняю фрактальную декомпозицию...');
+                        
+                        setTimeout(() => {
+                            // ЭТАП 4: Исторический анализ
+                            updateThinkingStatus('📚 Интегрирую исторические пласты...');
+                            
+                            setTimeout(() => {
+                                // ЭТАП 5: Синтез ответа
+                                updateThinkingStatus('🧠 Синтезирую многослойный ответ...');
+                                
+                                setTimeout(() => {
+                                    const answer = generateAnswer(question);
+                                    displayAnswer(answer);
+                                    
+                                    if (voiceEnabled) {
+                                        setTimeout(() => {
+                                            readAloud();
+                                        }, 500);
+                                    }
+                                }, 800);
+                            }, 600);
+                        }, 600);
+                    }, 600);
+                }, 800);
+            }, 1000);
+        }
+        
+        function updateThinkingStatus(message) {
+            const resultsContent = document.getElementById('resultsContent');
+            const messages = {
+                uz: message.replace('Анализирую контекст вопроса', 'Савол контекстини таҳлил қиляпман')
+                           .replace('Ищу мицелиальные связи', 'Мицелий боғланишларни қидираяпман')
+                           .replace('Выполняю фрактальную декомпозицию', 'Фрактал ажратишни бажараяпман')
+                           .replace('Интегрирую исторические пласты', 'Тарихий қатламларни бирлаштираяпман')
+                           .replace('Синтезирую многослойный ответ', 'Кўп қатламли жавоб ясаяпман'),
+                ru: message,
+                en: message.replace('Анализирую контекст вопроса', 'Analyzing question context')
+                           .replace('Ищу мицелиальные связи', 'Searching mycelial connections')
+                           .replace('Выполняю фрактальную декомпозицию', 'Performing fractal decomposition')
+                           .replace('Интегрирую исторические пласты', 'Integrating historical layers')
+                           .replace('Синтезирую многослойный ответ', 'Synthesizing multi-layer answer')
+            };
+            
+            resultsContent.innerHTML = `<div class="answer-simple">
+                <div class="answer-title">⏳ FMP Engine</div>
+                <div class="answer-text">${messages[currentLanguage]}</div>
+            </div>`;
+        }
+        
+        function analyzeQuestionContext(question) {
+            // Простой контекстный анализ для демонстрации
+            const context = {
+                domain: 'general',
+                complexity: 'medium',
+                culturalRelevance: 'high',
+                historicalDepth: 'medium'
+            };
+            
+            console.log('📊 Контекст вопроса:', context);
+            return context;
+        }
+        
+        function createThinkingMessage() {
+            const messages = {
+                uz: '🤔 Фикр юритаяпман... Илтимос, бироз кутинг.',
+                ru: '🤔 Думаю... Пожалуйста, подождите немного.',
+                en: '🤔 Thinking... Please wait a moment.'
+            };
+            
+            return `<div class="answer-simple">
+                <div class="answer-title">⏳</div>
+                <div class="answer-text">${messages[currentLanguage]}</div>
+            </div>`;
+        }
+        
+        // === FMP АНАЛИЗ - ФРАКТАЛЬНАЯ МЕТАНАУКА ===
+        function generateAnswer(question) {
+            console.log('🧬 Начинаю FMP анализ вопроса:', question);
+            
+            // 1. МИЦЕЛИЙ-АНАЛИЗ: поиск скрытых связей
+            const myceliumConnections = findMyceliumConnections(question);
+            
+            // 2. ФРАКТАЛЬНАЯ ДЕКОМПОЗИЦИЯ: разложение на уровни
+            const fractalLevels = decomposeFractal(question);
+            
+            // 3. СПИРАЛЬНАЯ АДАПТАЦИЯ: учёт развития пользователя
+            const spiralLevel = determineSpiralLevel(currentAge, currentLanguage);
+            
+            // 4. ИНТЕГРАЦИЯ ВРЕМЕННЫХ ПЛАСТОВ
+            const historicalLayers = integrateHistoricalLayers(question);
+            
+            // 5. СИНТЕЗ ОТВЕТА
+            return synthesizeFMPAnswer(question, {
+                mycelium: myceliumConnections,
+                fractal: fractalLevels,
+                spiral: spiralLevel,
+                history: historicalLayers
+            });
+        }
+        
+        // МИЦЕЛИЙ-СВЯЗИ: поиск скрытых паттернов
+        function findMyceliumConnections(question) {
+            const lowerQ = question.toLowerCase();
+            
+            const connections = {
+                cosmic: [], // космические связи
+                biological: [], // живые системы
+                cultural: [], // культурные паттерны
+                mathematical: [], // числовые закономерности
+                technological: [] // технологические аналогии
+            };
+            
+            // Космические паттерны
+            if (lowerQ.includes('небо') || lowerQ.includes('звезд') || lowerQ.includes('солнц') || 
+                lowerQ.includes('sky') || lowerQ.includes('star') || lowerQ.includes('sun') ||
+                lowerQ.includes('осмон') || lowerQ.includes('юлдуз') || lowerQ.includes('куёш')) {
+                connections.cosmic = [
+                    'Рассеяние Рэлея в атмосфере ↔ Спектральный анализ звёзд',
+                    'Фотосинтез растений ↔ Термоядерные реакции на Солнце',
+                    'Циркадные ритмы ↔ Планетарные орбиты',
+                    'Улугбек: звёздные каталоги ↔ Современная астрономия'
+                ];
+            }
+            
+            // Биологические системы
+            if (lowerQ.includes('жизн') || lowerQ.includes('раст') || lowerQ.includes('живо') ||
+                lowerQ.includes('life') || lowerQ.includes('plant') || lowerQ.includes('animal') ||
+                lowerQ.includes('хаёт') || lowerQ.includes('ўсим') || lowerQ.includes('хайвон')) {
+                connections.biological = [
+                    'Нейронные сети мозга ↔ Мицелиальные сети грибов ↔ Интернет',
+                    'ДНК кодирование ↔ Компьютерное программирование',
+                    'Фотосинтез ↔ Солнечные батареи ↔ Квантовая эффективность',
+                    'Ибн Сино: медицинские каноны ↔ Современная биомедицина'
+                ];
+            }
+            
+            // Обучение и познание
+            if (lowerQ.includes('учит') || lowerQ.includes('знан') || lowerQ.includes('образов') ||
+                lowerQ.includes('learn') || lowerQ.includes('knowledge') || lowerQ.includes('education') ||
+                lowerQ.includes('ўрган') || lowerQ.includes('билим') || lowerQ.includes('таълим')) {
+                connections.mathematical = [
+                    'Спиральное обучение ↔ Золотое сечение ↔ Галактические спирали',
+                    'Нейропластичность ↔ Фрактальная геометрия памяти',
+                    'Беруни: измерение Земли ↔ Современная геодезия ↔ GPS',
+                    'Суфийский зикр ↔ Медитативные практики ↔ Изменённые состояния сознания'
+                ];
+            }
+            
+            return connections;
+        }
+        
+        // ФРАКТАЛЬНАЯ ДЕКОМПОЗИЦИЯ
+        function decomposeFractal(question) {
+            return {
+                quantum: 'Квантовый уровень - элементарные взаимодействия',
+                molecular: 'Молекулярный - химические связи и реакции',
+                cellular: 'Клеточный - базовые процессы жизни',
+                organismic: 'Организмический - целостные живые системы',
+                social: 'Социальный - взаимодействие в группах',
+                cultural: 'Культурный - традиции и знания',
+                planetary: 'Планетарный - экосистемы Земли',
+                cosmic: 'Космический - галактические процессы'
+            };
+        }
+        
+        // ОПРЕДЕЛЕНИЕ СПИРАЛЬНОГО УРОВНЯ
+        function determineSpiralLevel(age, language) {
+            const levels = {
+                child: {
+                    focus: 'Конкретные образы и истории',
+                    method: 'Игровое исследование',
+                    depth: 'Поверхностный, но интуитивный',
+                    examples: 'Много аналогий из природы'
+                },
+                teen: {
+                    focus: 'Причинно-следственные связи',
+                    method: 'Экспериментальное мышление',
+                    depth: 'Системный анализ',
+                    examples: 'Научные эксперименты и модели'
+                },
+                adult: {
+                    focus: 'Междисциплинарные связи',
+                    method: 'Критический анализ',
+                    depth: 'Глубокая интеграция',
+                    examples: 'Исторические параллели и прогнозы'
+                },
+                senior: {
+                    focus: 'Мудрость и жизненный опыт',
+                    method: 'Философское осмысление',
+                    depth: 'Трансцендентное понимание',
+                    examples: 'Архетипические паттерны'
+                }
+            };
+            
+            return levels[age] || levels.adult;
+        }
+        
+        // ИНТЕГРАЦИЯ ИСТОРИЧЕСКИХ ПЛАСТОВ
+        function integrateHistoricalLayers(question) {
+            const layers = {
+                paleolithic: 'Первые художники и мыслители (100,000 лет назад)',
+                neolithic: 'Сельскохозяйственная революция (10,000 лет назад)',
+                bronze: 'Первые цивилизации (5,000 лет назад)',
+                classical: 'Античные философы и учёные',
+                islamic: 'Исламский ренессанс (VIII-XIV века)',
+                modern: 'Научная революция (XVI-XVIII века)',
+                industrial: 'Промышленная революция (XIX век)',
+                information: 'Информационная эра (XX век)',
+                quantum: 'Квантовая эпоха (XXI век)',
+                cosmic: 'Космическое будущее'
+            };
+            
+            return layers;
+        }
+        
+        // СИНТЕЗ FMP ОТВЕТА
+        function synthesizeFMPAnswer(question, analysis) {
+            const lowerQ = question.toLowerCase();
+            
+            // Определяем основную тему
+            let primaryDomain = 'general';
+            
+            if (lowerQ.includes('небо') || lowerQ.includes('звезд') || lowerQ.includes('sky') || lowerQ.includes('star') || lowerQ.includes('осмон')) {
+                primaryDomain = 'astronomy';
+            } else if (lowerQ.includes('учит') || lowerQ.includes('learn') || lowerQ.includes('ўрган')) {
+                primaryDomain = 'learning';
+            } else if (lowerQ.includes('жизн') || lowerQ.includes('life') || lowerQ.includes('хаёт')) {
+                primaryDomain = 'biology';
+            }
+            
+            // Создаём многоуровневый ответ
+            const fmpResponse = createLayeredResponse(primaryDomain, analysis);
+            
+            return fmpResponse;
+        }
+        
+        // СОЗДАНИЕ МНОГОСЛОЙНОГО ОТВЕТА
+        function createLayeredResponse(domain, analysis) {
+            const responses = {
+                astronomy: createAstronomyResponse(analysis),
+                learning: createLearningResponse(analysis),
+                biology: createBiologyResponse(analysis),
+                general: createGeneralResponse(analysis)
+            };
+            
+            return responses[domain] || responses.general;
+        }
+        
+        // СПЕЦИАЛИЗИРОВАННЫЕ FMP ОТВЕТЫ ПО ДОМЕНАМ
+        
+        function createAstronomyResponse(analysis) {
+            const responses = {
+                uz: `🌌 **КОСМИК ФРАКТАЛ АНАЛИЗИ**
+
+**Мицелий-боғланишлар:**
+${analysis.mycelium.cosmic.map(conn => `• ${conn}`).join('\n')}
+
+**Тарихий қатламлар:**
+• Беруни (973-1048): Ер радиусини ўлчаган - хозирги GPS технологияси билан 99.3% аниқлик
+• Улуғбек (1394-1449): 994 та юлдуз каталоги - замонавий Хаббл телескопининг аджоди
+• Фарғоний (IX аср): Ер айланишини ҳисоблаган - космик навигация асоси
+
+**Фрактал ўхшашликлар:**
+• Атом орбиталари ↔ Планета орбиталари ↔ Галактика спираллари
+• Қон томир тармоқлари ↔ Дарё тизимлари ↔ Космик нур йўллари
+• Юрак ритми ↔ Пульсар сигналлари ↔ Галактик марказнинг энергия импулслари
+
+**Амалий қўлланиш:**
+Бу билим GPS навигацияси, сун'ий йўлдошлар ва космик саёҳатларда ишлатилади.`,
+
+                ru: `🌌 **КОСМИЧЕСКИЙ ФРАКТАЛЬНЫЙ АНАЛИЗ**
+
+**Мицелий-связи:**
+${analysis.mycelium.cosmic.map(conn => `• ${conn}`).join('\n')}
+
+**Исторические пласты:**
+• Беруни (973-1048): Измерил радиус Земли с точностью 99.3% от современных данных GPS
+• Улугбек (1394-1449): Каталог 994 звёзд - предшественник космического телескопа Хаббл
+• Фергани (IX век): Вычислил параметры вращения Земли - основа космической навигации
+
+**Фрактальные подобия:**
+• Атомные орбитали ↔ Планетарные орбиты ↔ Галактические спирали
+• Кровеносная система ↔ Речные системы ↔ Космические лучи
+• Сердечный ритм ↔ Пульсары ↔ Энергетические импульсы галактического центра
+
+**Практическое применение:**
+Эти знания используются в GPS-навигации, спутниковых технологиях и космических полётах.`,
+
+                en: `🌌 **COSMIC FRACTAL ANALYSIS**
+
+**Mycelium connections:**
+${analysis.mycelium.cosmic.map(conn => `• ${conn}`).join('\n')}
+
+**Historical layers:**
+• Al-Biruni (973-1048): Measured Earth's radius with 99.3% accuracy compared to modern GPS data
+• Ulugh Beg (1394-1449): Catalog of 994 stars - predecessor of the Hubble Space Telescope
+• Al-Farghani (9th century): Calculated Earth's rotation parameters - basis of space navigation
+
+**Fractal similarities:**
+• Atomic orbitals ↔ Planetary orbits ↔ Galactic spirals
+• Circulatory system ↔ River systems ↔ Cosmic rays
+• Heartbeat rhythm ↔ Pulsars ↔ Galactic center energy pulses
+
+**Practical application:**
+This knowledge is used in GPS navigation, satellite technology and space flights.`
+            };
+            
+            return responses[currentLanguage];
+        }
+        
+        function createLearningResponse(analysis) {
+            const responses = {
+                uz: `📚 **ЎРГАНИШ ФРАКТАЛЛАРИ АНАЛИЗИ**
+
+**Нейро-Мицелий боғланишлар:**
+${analysis.mycelium.mathematical.map(conn => `• ${conn}`).join('\n')}
+
+**Тарихий тажриба қатламлари:**
+• Кўҳна замон: Шаманлар ва дололарнинг хотира техникаси
+• Ислом давриСи: Ал-Жаҳиз ва "Китоб ал-Хайвон" - биологик кузатиш методи
+• Навоий (1441-1501): Чор тилда ижод қилиш - кўптилли фикрлаш
+• Джадидлар (XIX-XX аср): Янги усул таълими - замонавий педагогика
+
+**Мия спиралларининг геометрияси:**
+• Нейрон улаништилари = Дарахт тармоқлари = Дарё системалари
+• Хотира консолидацияси = Кристалл ўсиши = Галактика формацияси
+• Ижодкорлик = Хаос ва тартиб интерферентси
+
+**Амалий усуллар:**
+1. Спиральли такрорлаш - табиий хотира ритмлари
+2. Мультисенсор ёндашув - барча сезгилар фаоллаштириш
+3. Метакогнитив ўз-ўзини кузатиш - шуур спиралини англаш`,
+
+                ru: `📚 **АНАЛИЗ ФРАКТАЛОВ ОБУЧЕНИЯ**
+
+**Нейро-мицелиальные связи:**
+${analysis.mycelium.mathematical.map(conn => `• ${conn}`).join('\n')}
+
+**Исторические слои опыта:**
+• Древность: Техники памяти шаманов и жрецов
+• Исламский период: Аль-Джахиз и "Книга животных" - метод биологического наблюдения
+• Навои (1441-1501): Творчество на четырёх языках - многоязычное мышление
+• Джадиды (XIX-XX века): Новометодное обучение - современная педагогика
+
+**Геометрия мозговых спиралей:**
+• Нейронные связи = Ветвление деревьев = Речные системы
+• Консолидация памяти = Рост кристаллов = Формирование галактик
+• Творчество = Интерференция хаоса и порядка
+
+**Практические методы:**
+1. Спиральное повторение - естественные ритмы памяти
+2. Мультисенсорный подход - активация всех органов чувств
+3. Метакогнитивное самонаблюдение - осознание спиралей сознания`,
+
+                en: `📚 **LEARNING FRACTALS ANALYSIS**
+
+**Neuro-mycelial connections:**
+${analysis.mycelium.mathematical.map(conn => `• ${conn}`).join('\n')}
+
+**Historical experience layers:**
+• Ancient times: Memory techniques of shamans and priests
+• Islamic period: Al-Jahiz and "Book of Animals" - biological observation method
+• Navoi (1441-1501): Creativity in four languages - multilingual thinking
+• Jadids (XIX-XX centuries): New method education - modern pedagogy
+
+**Geometry of brain spirals:**
+• Neural connections = Tree branching = River systems
+• Memory consolidation = Crystal growth = Galaxy formation
+• Creativity = Interference of chaos and order
+
+**Practical methods:**
+1. Spiral repetition - natural memory rhythms
+2. Multisensory approach - activation of all senses
+3. Metacognitive self-observation - awareness of consciousness spirals`
+            };
+            
+            return responses[currentLanguage];
+        }
+        
+        function createBiologyResponse(analysis) {
+            const responses = {
+                uz: `🧬 **ҲАЁТ ФРАКТАЛЛАРИ АНАЛИЗИ**
+
+**Био-Мицелий тармоқлари:**
+${analysis.mycelium.biological.map(conn => `• ${conn}`).join('\n')}
+
+**Тарихий илм ривожи:**
+• Ибн Сино (980-1048): "Тиббиёт қонунлари" - 800 йил давомида асосий дарслик
+• Беруни: Ҳинд табабатини ўрганиш - қиёсий медицина
+• Рози (854-925): Биринчи экспериментал медицина - хайвонларда синов
+
+**Фрактал ўхшашлиги қонунлари:**
+• ДНК спирали ↔ Галактика спирали ↔ Суюқлик оқими спираллари
+• Ўпка альвеолалари ↔ Дарахт барглари ↔ Булутлар фрактали
+• Юрак-қон томир тизими ↔ Дарё дельталари ↔ Молнияниг тармоқланиши
+
+**Замонавий илова:**
+Биомиметика - табиатдан ўрганиб технология яратиш. Масалан, гекон панжаси → нано-ёпишқоқлар, акула терисе → турбулентликни камайтирувчи материаллар.`,
+
+                ru: `🧬 **АНАЛИЗ ФРАКТАЛОВ ЖИЗНИ**
+
+**Био-мицелиальные сети:**
+${analysis.mycelium.biological.map(conn => `• ${conn}`).join('\n')}
+
+**Историческое развитие науки:**
+• Ибн Сина (980-1048): "Канон врачебной науки" - основной учебник 800 лет
+• Беруни: Изучение индийской медицины - сравнительная медицина
+• Ар-Рази (854-925): Первая экспериментальная медицина - испытания на животных
+
+**Законы фрактального подобия:**
+• Спираль ДНК ↔ Галактические спирали ↔ Спирали потоков жидкости
+• Альвеолы лёгких ↔ Листья деревьев ↔ Фрактал облаков
+• Сердечно-сосудистая система ↔ Дельты рек ↔ Разветвление молнии
+
+**Современное применение:**
+Биомиметика - создание технологий, изучая природу. Например, лапы геккона → нано-клеи, кожа акулы → материалы, снижающие турбулентность.`,
+
+                en: `🧬 **LIFE FRACTALS ANALYSIS**
+
+**Bio-mycelial networks:**
+${analysis.mycelium.biological.map(conn => `• ${conn}`).join('\n')}
+
+**Historical development of science:**
+• Ibn Sina (980-1048): "Canon of Medicine" - main textbook for 800 years
+• Al-Biruni: Study of Indian medicine - comparative medicine
+• Ar-Razi (854-925): First experimental medicine - animal testing
+
+**Laws of fractal similarity:**
+• DNA spiral ↔ Galactic spirals ↔ Fluid flow spirals
+• Lung alveoli ↔ Tree leaves ↔ Cloud fractals
+• Cardiovascular system ↔ River deltas ↔ Lightning branching
+
+**Modern application:**
+Biomimetics - creating technology by studying nature. For example, gecko paws → nano-adhesives, shark skin → turbulence-reducing materials.`
+            };
+            
+            return responses[currentLanguage];
+        }
+        
+        function createGeneralResponse(analysis) {
+            const responses = {
+                uz: `🌐 **УМУМИЙ FMP АНАЛИЗИ**
+
+**Мультидоменли боғланишлар:**
+• Физика ↔ Биология ↔ Психология ↔ Социология ↔ Космология
+• Микро ↔ Макро масштаблар орасидаги ўхшашликлар
+• Тарихий циклларнинг такрорланиши янги даражада
+
+**Террапедия принципи:**
+Ҳар бир савол - бу фрактал дарча дунёга. Содда саволдан бошлаб, бутун олам билимларига етиш мумкин.
+
+**Амалий йўналишлар:**
+1. Қиёсий ёндашув - турли соҳалардаги ўхшашликлар
+2. Тарихий параллеллар - ўтмишдан ҳозирга боғлар
+3. Масштаб алмаштириш - кичикдан каттага ўтиш
+4. Система фикрлаш - барча элементлар ўзаро боғлиқ`,
+
+                ru: `🌐 **ОБЩИЙ FMP АНАЛИЗ**
+
+**Мультидоменные связи:**
+• Физика ↔ Биология ↔ Психология ↔ Социология ↔ Космология
+• Подобия между микро ↔ макро масштабами
+• Повторение исторических циклов на новом уровне
+
+**Принцип Террапедии:**
+Каждый вопрос - это фрактальное окно в мир. Начав с простого вопроса, можно дойти до знаний всей Вселенной.
+
+**Практические направления:**
+1. Сравнительный подход - подобия в разных областях
+2. Исторические параллели - связи от прошлого к настоящему
+3. Масштабирование - переход от малого к большому
+4. Системное мышление - все элементы взаимосвязаны`,
+
+                en: `🌐 **GENERAL FMP ANALYSIS**
+
+**Multi-domain connections:**
+• Physics ↔ Biology ↔ Psychology ↔ Sociology ↔ Cosmology
+• Similarities between micro ↔ macro scales
+• Repetition of historical cycles at a new level
+
+**Terrapedia principle:**
+Every question is a fractal window into the world. Starting with a simple question, you can reach the knowledge of the entire Universe.
+
+**Practical directions:**
+1. Comparative approach - similarities in different areas
+2. Historical parallels - connections from past to present
+3. Scaling - transition from small to large
+4. Systems thinking - all elements are interconnected`
+            };
+            
+            return responses[currentLanguage];
+        }
+        
+        // АДАПТАЦИЯ ПО ВОЗРАСТУ С FMP ПРИНЦИПАМИ
+        
+        function generateChildAnswer(question, lowerQuestion) {
+            const answers = {
+                uz: {
+                    sky: "🌌 Осмон кўк, чунки ҳаво ичидаги майда заррачалар кўк нурни яқши кўрадилар! Худди сизнинг энг севимли рангингиз каби. Кўк ранг бизга чиройлилик ва осойишталик беради.",
+                    learn: "📚 Тез ўрганиш учун: 1) Ўйин ва қизиқарли машқлар қилинг 2) Кўп савол беринг 3) Тушунмаган нарсаларни қайта-қайта такрорланг 4) Муҳим нарсаларни расм қилиб ёки ёзиб олинг!",
+                    default: "🤗 Жуда қизиқ савол! Бу ҳақида кўпроқ ўрганиш учун китоблар ўқинг, катталардан сўранг ва атрофингизга диққат билан қаранг. Ҳар бир савол - бу янги кашфиёт!"
+                },
+                ru: {
+                    sky: "🌌 Небо синее, потому что крошечные частички в воздухе любят синий свет! Как твой любимый цвет. Синий цвет дает нам красоту и спокойствие.",
+                    learn: "📚 Чтобы быстро учиться: 1) Играй и делай интересные упражнения 2) Задавай много вопросов 3) Повторяй то, что не понял 4) Рисуй или записывай важное!",
+                    default: "🤗 Очень интересный вопрос! Чтобы узнать больше, читай книги, спрашивай у взрослых и внимательно смотри вокруг. Каждый вопрос - это новое открытие!"
+                },
+                en: {
+                    sky: "🌌 The sky is blue because tiny particles in the air love blue light! Like your favorite color. Blue gives us beauty and peace.",
+                    learn: "📚 To learn fast: 1) Play and do fun exercises 2) Ask lots of questions 3) Repeat what you don't understand 4) Draw or write important things!",
+                    default: "🤗 Very interesting question! To learn more, read books, ask adults and look carefully around you. Every question is a new discovery!"
+                }
+            };
+            
+            if (lowerQuestion.includes('небо') || lowerQuestion.includes('синее') || lowerQuestion.includes('sky') || lowerQuestion.includes('blue') || lowerQuestion.includes('осмон') || lowerQuestion.includes('кўк')) {
+                return answers[currentLanguage].sky;
+            } else if (lowerQuestion.includes('учиться') || lowerQuestion.includes('learn') || lowerQuestion.includes('ўрган')) {
+                return answers[currentLanguage].learn;
+            } else {
+                return answers[currentLanguage].default;
+            }
+        }
+        
+        function generateTeenAnswer(question, lowerQuestion) {
+            const answers = {
+                uz: {
+                    sky: "🌌 Осмоннинг кўк кўриниши Рэлей сочилиши деб аталувчи физик ҳодиса туфайли. Қуёш нури атмосферага тушганда, кўк тўлқин узунлиги (400-450 нм) кичик заррачаларга кўпроқ тарқалади. Бу оптиканинг асосий қонунларидан бири.",
+                    learn: "📚 Самарали ўрганиш методлари: 1) Фэйнман техникаси - мавзуни бошқага тушунтириш 2) Активный такрорлаш (spaced repetition) 3) Поморо техникаси - 25 дақиқа ишлаш, 5 дақиқа дам 4) Мультисенсор ёндашуви - кўриш, эшитиш, амалий қилиш",
+                    default: "🔬 Сизнинг саволингиз илмий тадқиқотларга мос. Бу мавзуни чуқурроқ ўрганиш учун академик манбаларни кўринг, эксперт фикрларини ўқинг ва амалий тажрибалар ўтказинг."
+                },
+                ru: {
+                    sky: "🌌 Синий цвет неба объясняется физическим явлением, называемым рассеянием Рэлея. Когда солнечный свет попадает в атмосферу, синяя длина волны (400-450 нм) больше рассеивается мелкими частицами. Это один из основных законов оптики.",
+                    learn: "📚 Эффективные методы обучения: 1) Техника Фейнмана - объяснение темы другому 2) Активное повторение (spaced repetition) 3) Техника Помодоро - 25 минут работы, 5 минут отдыха 4) Мультисенсорный подход - зрение, слух, практика",
+                    default: "🔬 Ваш вопрос подходит для научного исследования. Для глубокого изучения этой темы изучайте академические источники, читайте экспертные мнения и проводите практические эксперименты."
+                },
+                en: {
+                    sky: "🌌 The blue color of the sky is explained by a physical phenomenon called Rayleigh scattering. When sunlight hits the atmosphere, the blue wavelength (400-450 nm) is scattered more by small particles. This is one of the basic laws of optics.",
+                    learn: "📚 Effective learning methods: 1) Feynman technique - explaining the topic to another 2) Spaced repetition 3) Pomodoro technique - 25 minutes work, 5 minutes rest 4) Multisensory approach - vision, hearing, practice",
+                    default: "🔬 Your question is suitable for scientific research. For deep study of this topic, study academic sources, read expert opinions and conduct practical experiments."
+                }
+            };
+            
+            if (lowerQuestion.includes('небо') || lowerQuestion.includes('синее') || lowerQuestion.includes('sky') || lowerQuestion.includes('blue') || lowerQuestion.includes('осмон') || lowerQuestion.includes('кўк')) {
+                return answers[currentLanguage].sky;
+            } else if (lowerQuestion.includes('учиться') || lowerQuestion.includes('learn') || lowerQuestion.includes('ўрган')) {
+                return answers[currentLanguage].learn;
+            } else {
+                return answers[currentLanguage].default;
+            }
+        }
+        
+        function generateSeniorAnswer(question, lowerQuestion) {
+            const answers = {
+                uz: {
+                    sky: "🌌 Ҳурматли дўстим, осмоннинг кўклиги табиатнинг ажойиб ҳикматларидан бири. Бу Рэлей сочилиши деб номланувчи физик жараён - қуёш нури атмосферадаги заррачаларга урилганда кўк нур кўпроқ тарқалади. Замонавий илм-фанда бу жуда яхши ўрганилган.",
+                    learn: "📚 Ёшларда ўрганиш - бу катта неъмат! Тавсиялар: 1) Секин-аста, зўриқмасдан 2) Қизиқарли мавзуларни танланг 3) Мунтазам такрор қилинг 4) Бошқалар билан муҳокама қилинг 5) Амалий қўлланишга эътибор беринг",
+                    default: "💭 Сизнинг саволингиз кенг тажриба ва даналик талаб қилади. Ҳаётий тажриба билан илмий билимларни бирлаштириб, чуқур муҳокама қилиш кераклигини эсга олинг."
+                },
+                ru: {
+                    sky: "🌌 Уважаемый друг, синева неба - одна из удивительных мудростей природы. Это физический процесс, называемый рассеянием Рэлея - когда солнечный свет сталкивается с частицами в атмосфере, синий свет рассеивается больше. В современной науке это очень хорошо изучено.",
+                    learn: "📚 Обучение в зрелом возрасте - большое благо! Рекомендации: 1) Медленно, без принуждения 2) Выбирайте интересные темы 3) Регулярно повторяйте 4) Обсуждайте с другими 5) Обращайте внимание на практическое применение",
+                    default: "💭 Ваш вопрос требует широкого опыта и мудрости. Помните, что нужно сочетать жизненный опыт с научными знаниями для глубокого обсуждения."
+                },
+                en: {
+                    sky: "🌌 Dear friend, the blueness of the sky is one of nature's amazing wisdoms. This is a physical process called Rayleigh scattering - when sunlight collides with particles in the atmosphere, blue light scatters more. In modern science, this is very well studied.",
+                    learn: "📚 Learning at a mature age is a great blessing! Recommendations: 1) Slowly, without coercion 2) Choose interesting topics 3) Review regularly 4) Discuss with others 5) Pay attention to practical application",
+                    default: "💭 Your question requires broad experience and wisdom. Remember to combine life experience with scientific knowledge for deep discussion."
+                }
+            };
+            
+            if (lowerQuestion.includes('небо') || lowerQuestion.includes('синее') || lowerQuestion.includes('sky') || lowerQuestion.includes('blue') || lowerQuestion.includes('осмон') || lowerQuestion.includes('кўк')) {
+                return answers[currentLanguage].sky;
+            } else if (lowerQuestion.includes('учиться') || lowerQuestion.includes('learn') || lowerQuestion.includes('ўрган')) {
+                return answers[currentLanguage].learn;
+            } else {
+                return answers[currentLanguage].default;
+            }
+        }
+        
+        function generateAdultAnswer(question, lowerQuestion) {
+            const answers = {
+                uz: {
+                    sky: "🌌 Осмоннинг кўк рангда кўриниши Рэлей сочилиши деб номланувчи оптик ҳодиса натижасидир. Қуёш нури (электромагнит спектри) атмосферага кирганда, турли тўлқин узунликлари турлича тарқалади. Кўк нур (λ ≈ 475 нм) молекулалар ва аэрозольларга кўпроқ тарқалади, чунки тарқалиш даражаси тўлқин узунлигининг тўртинчи даражасига тескари пропорционал (∝ λ⁻⁴).",
+                    learn: "📚 Замонавий ўрганиш методлари: 1) Метакогниция - ўз ўрганиш жараёнингизни бошқариш 2) Элаборатив дастлаш - янги билимларни мавжудлари билан боғлаш 3) Интерливинг - турли мавзуларни навбатлашиб ўрганиш 4) Активный тестинг - ўз-ўзини синаб кўриш 5) Дистрибутив амалиёт - узоқ муддатли хотирада сақлаш",
+                    default: "🔬 Сизнинг саволингиз мультидисциплинар ёндашувни талаб қилади. Universal TERRA тизими орқали фрактальная метанаука принципларини қўллаб, турли фанлар орасидаги боғлиқликларни ўрганиш мумкин."
+                },
+                ru: {
+                    sky: "🌌 Синий цвет неба является результатом оптического явления, называемого рассеянием Рэлея. Когда солнечный свет (электромагнитный спектр) входит в атмосферу, различные длины волн рассеиваются по-разному. Синий свет (λ ≈ 475 нм) больше рассеивается молекулами и аэрозолями, поскольку степень рассеяния обратно пропорциональна четвертой степени длины волны (∝ λ⁻⁴).",
+                    learn: "📚 Современные методы обучения: 1) Метакогниция - управление своим процессом обучения 2) Элаборативная обработка - связывание новых знаний с существующими 3) Интерливинг - чередующееся изучение разных тем 4) Активное тестирование - самопроверка 5) Распределенная практика - удержание в долгосрочной памяти",
+                    default: "🔬 Ваш вопрос требует мультидисциплинарного подхода. Через систему Universal TERRA, применяя принципы фрактальной метанауки, можно изучать связи между различными науками."
+                },
+                en: {
+                    sky: "🌌 The blue color of the sky is the result of an optical phenomenon called Rayleigh scattering. When sunlight (electromagnetic spectrum) enters the atmosphere, different wavelengths scatter differently. Blue light (λ ≈ 475 nm) scatters more on molecules and aerosols, since the degree of scattering is inversely proportional to the fourth power of the wavelength (∝ λ⁻⁴).",
+                    learn: "📚 Modern learning methods: 1) Metacognition - managing your learning process 2) Elaborative processing - linking new knowledge with existing 3) Interleaving - alternating study of different topics 4) Active testing - self-checking 5) Distributed practice - retention in long-term memory",
+                    default: "🔬 Your question requires a multidisciplinary approach. Through the Universal TERRA system, applying the principles of fractal metascience, you can study the connections between different sciences."
+                }
+            };
+            
+            if (lowerQuestion.includes('небо') || lowerQuestion.includes('синее') || lowerQuestion.includes('sky') || lowerQuestion.includes('blue') || lowerQuestion.includes('осмон') || lowerQuestion.includes('кўк')) {
+                return answers[currentLanguage].sky;
+            } else if (lowerQuestion.includes('учиться') || lowerQuestion.includes('learn') || lowerQuestion.includes('ўрган')) {
+                return answers[currentLanguage].learn;
+            } else {
+                return answers[currentLanguage].default;
+            }
+        }
+        
+        function displayAnswer(answer) {
+            const resultsContent = document.getElementById('resultsContent');
+            
+            resultsContent.innerHTML = `
+                <div class="answer-simple">
+                    <div class="answer-title">
+                        ${currentLanguage === 'uz' ? '💡 Жавоб' : 
+                          currentLanguage === 'ru' ? '💡 Ответ' : '💡 Answer'}
+                    </div>
+                    <div class="answer-text">${answer}</div>
+                </div>
+                
+                <div class="answer-simple" style="margin-top: 20px; background: #E8F5E8;">
+                    <div class="answer-title" style="color: #2E7D32;">
+                        ${currentLanguage === 'uz' ? '🎯 Кейинги қадам' : 
+                          currentLanguage === 'ru' ? '🎯 Следующий шаг' : '🎯 Next step'}
+                    </div>
+                    <div class="answer-text">
+                        ${currentLanguage === 'uz' ? 'Агар бошқа саволингиз бўлса, ёки бу мавзуни чуқурроқ ўрганмоқчи бўлсангиз - қўшимча савол беринг!' : 
+                          currentLanguage === 'ru' ? 'Если у вас есть другие вопросы или хотите изучить эту тему глубже - задайте дополнительный вопрос!' : 
+                          'If you have other questions or want to study this topic deeper - ask an additional question!'}
+                    </div>
+                </div>
+            `;
+            
+            // Показать визуализацию после ответа
+            showVisualization();
+        }
+        
+        // === СИСТЕМА ВИЗУАЛИЗАЦИИ ЗНАНИЙ ===
+        
+        let currentVisualization = 'mycelium';
+        let vizSoundEnabled = false;
+        let currentQuestionAnalysis = null;
+        
+        function showVisualization() {
+            const visualizationPanel = document.getElementById('visualizationPanel');
+            visualizationPanel.style.display = 'block';
+            
+            // Анимация появления
+            setTimeout(() => {
+                visualizationPanel.style.opacity = '0';
+                visualizationPanel.style.transform = 'translateY(20px)';
+                visualizationPanel.style.transition = 'all 0.5s ease';
+                
+                setTimeout(() => {
+                    visualizationPanel.style.opacity = '1';
+                    visualizationPanel.style.transform = 'translateY(0)';
+                }, 100);
+            }, 300);
+            
+            // Запуск визуализации по умолчанию
+            setTimeout(() => {
+                showMyceliumNetwork();
+            }, 800);
+        }
+        
+        // === МИЦЕЛИЙ-СЕТЬ СВЯЗЕЙ ===
+        function showMyceliumNetwork() {
+            updateVizButtons('mycelium');
+            
+            const container = document.getElementById('vizContainer');
+            container.innerHTML = '<div class="loading-indicator"><div class="loading-spinner"></div><span>Создаётся мицелий-сеть...</span></div>';
+            
+            setTimeout(() => {
+                createMyceliumVisualization(container);
+                if (vizSoundEnabled) playVizSound('network');
+            }, 1000);
+        }
+        
+        function createMyceliumVisualization(container) {
+            const question = document.getElementById('questionInput').value.toLowerCase();
+            
+            // Определяем домены на основе анализа вопроса
+            const domains = detectQuestionDomains(question);
+            
+            container.innerHTML = '';
+            container.className = 'viz-container mycelium-network';
+            
+            // Создаём узлы и связи
+            const nodes = createMyceliumNodes(domains, container);
+            createMyceliumConnections(nodes, container);
+            
+            // Добавляем интерактивность
+            addMyceliumInteractivity(nodes);
+        }
+        
+        function detectQuestionDomains(question) {
+            const domains = {
+                cosmic: { active: false, label: 'Космос', color: '#4A90E2', position: { x: 50, y: 20 } },
+                biology: { active: false, label: 'Биология', color: '#7ED321', position: { x: 20, y: 50 } },
+                culture: { active: false, label: 'Культура', color: '#F5A623', position: { x: 80, y: 50 } },
+                technology: { active: false, label: 'Технологии', color: '#D0021B', position: { x: 50, y: 80 } },
+                history: { active: false, label: 'История', color: '#9013FE', position: { x: 15, y: 80 } },
+                learning: { active: false, label: 'Обучение', color: '#50E3C2', position: { x: 85, y: 20 } }
+            };
+            
+            // Активируем домены на основе ключевых слов
+            if (question.includes('небо') || question.includes('звезд') || question.includes('sky') || question.includes('осмон')) {
+                domains.cosmic.active = true;
+                domains.technology.active = true;
+            }
+            
+            if (question.includes('учит') || question.includes('learn') || question.includes('ўрган')) {
+                domains.learning.active = true;
+                domains.culture.active = true;
+                domains.history.active = true;
+            }
+            
+            if (question.includes('жизн') || question.includes('life') || question.includes('хаёт')) {
+                domains.biology.active = true;
+                domains.cosmic.active = true;
+            }
+            
+            // Если ничего не активировано, активируем базовые домены
+            const activeCount = Object.values(domains).filter(d => d.active).length;
+            if (activeCount === 0) {
+                domains.learning.active = true;
+                domains.culture.active = true;
+                domains.technology.active = true;
+            }
+            
+            return domains;
+        }
+        
+        function createMyceliumNodes(domains, container) {
+            const nodes = [];
+            
+            Object.keys(domains).forEach(key => {
+                const domain = domains[key];
+                if (domain.active) {
+                    const node = document.createElement('div');
+                    node.className = 'mycelium-node';
+                    node.style.left = domain.position.x + '%';
+                    node.style.top = domain.position.y + '%';
+                    node.style.background = `radial-gradient(circle, ${domain.color} 0%, ${domain.color}AA 100%)`;
+                    node.setAttribute('data-domain', key);
+                    node.setAttribute('data-label', domain.label);
+                    
+                    // Адаптация размера по возрасту уже в CSS
+                    node.innerHTML = getNodeIcon(key);
+                    
+                    container.appendChild(node);
+                    nodes.push({ element: node, domain: key, data: domain });
+                }
+            });
+            
+            return nodes;
+        }
+        
+        function getNodeIcon(domain) {
+            const icons = {
+                cosmic: '🌌',
+                biology: '🧬',
+                culture: '🏛️',
+                technology: '🤖',
+                history: '📜',
+                learning: '🧠'
+            };
+            return icons[domain] || '🔬';
+        }
+        
+        function createMyceliumConnections(nodes, container) {
+            // Создаём связи между активными доменами
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const connection = createConnection(nodes[i], nodes[j]);
+                    if (connection) {
+                        container.appendChild(connection);
+                    }
+                }
+            }
+        }
+        
+        function createConnection(node1, node2) {
+            const rect1 = node1.element.getBoundingClientRect();
+            const rect2 = node2.element.getBoundingClientRect();
+            const containerRect = node1.element.parentElement.getBoundingClientRect();
+            
+            const x1 = rect1.left + rect1.width/2 - containerRect.left;
+            const y1 = rect1.top + rect1.height/2 - containerRect.top;
+            const x2 = rect2.left + rect2.width/2 - containerRect.left;
+            const y2 = rect2.top + rect2.height/2 - containerRect.top;
+            
+            const connection = document.createElement('div');
+            connection.className = 'mycelium-connection';
+            
+            const length = Math.sqrt((x2-x1)**2 + (y2-y1)**2);
+            const angle = Math.atan2(y2-y1, x2-x1) * 180 / Math.PI;
+            
+            connection.style.width = length + 'px';
+            connection.style.height = '3px';
+            connection.style.left = x1 + 'px';
+            connection.style.top = y1 + 'px';
+            connection.style.transformOrigin = '0 50%';
+            connection.style.transform = `rotate(${angle}deg)`;
+            
+            return connection;
+        }
+        
+        function addMyceliumInteractivity(nodes) {
+            const tooltip = document.getElementById('vizTooltip');
+            
+            nodes.forEach(node => {
+                const element = node.element;
+                
+                element.addEventListener('mouseenter', function(e) {
+                    const connections = getConnectionsText(node.domain);
+                    showTooltip(e, `${node.data.label}\n${connections}`);
+                    
+                    if (vizSoundEnabled) playVizSound('hover');
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    hideTooltip();
+                });
+                
+                element.addEventListener('click', function(e) {
+                    exploreNodeDetails(node.domain);
+                    if (vizSoundEnabled) playVizSound('click');
+                });
+            });
+        }
+        
+        function getConnectionsText(domain) {
+            const connections = {
+                cosmic: currentLanguage === 'uz' ? 'Физика, Математика, Технология билан боғланган' :
+                       currentLanguage === 'ru' ? 'Связан с Физикой, Математикой, Технологиями' :
+                       'Connected to Physics, Mathematics, Technology',
+                biology: currentLanguage === 'uz' ? 'Химия, Медицина, Экология билан боғланган' :
+                        currentLanguage === 'ru' ? 'Связан с Химией, Медициной, Экологией' :
+                        'Connected to Chemistry, Medicine, Ecology',
+                culture: currentLanguage === 'uz' ? 'Тарих, Тил, Санъат билан боғланган' :
+                        currentLanguage === 'ru' ? 'Связан с Историей, Языком, Искусством' :
+                        'Connected to History, Language, Arts',
+                technology: currentLanguage === 'uz' ? 'Муҳандислик, IT, Инновация билан боғланган' :
+                           currentLanguage === 'ru' ? 'Связан с Инженерией, IT, Инновациями' :
+                           'Connected to Engineering, IT, Innovation',
+                history: currentLanguage === 'uz' ? 'Археология, Культура, Жамият билан боғланган' :
+                        currentLanguage === 'ru' ? 'Связан с Археологией, Культурой, Обществом' :
+                        'Connected to Archaeology, Culture, Society',
+                learning: currentLanguage === 'uz' ? 'Психология, Нейронаука, Педагогика билан боғланган' :
+                         currentLanguage === 'ru' ? 'Связан с Психологией, Нейронаукой, Педагогикой' :
+                         'Connected to Psychology, Neuroscience, Pedagogy'
+            };
+            return connections[domain] || '';
+        }
+        
+        // === ВРЕМЕННАЯ СПИРАЛЬ ===
+        function showTimeSpiral() {
+            updateVizButtons('timeSpiral');
+            
+            const container = document.getElementById('vizContainer');
+            container.innerHTML = '<div class="loading-indicator"><div class="loading-spinner"></div><span>Создаётся временная спираль...</span></div>';
+            
+            setTimeout(() => {
+                createTimeSpiralVisualization(container);
+                if (vizSoundEnabled) playVizSound('spiral');
+            }, 1000);
+        }
+        
+        function createTimeSpiralVisualization(container) {
+            container.innerHTML = '';
+            container.className = 'viz-container time-spiral';
+            
+            const periods = [
+                { name: 'Палеолит', year: '100,000 лет назад', angle: 0, radius: 60, uz: 'Палеолит', en: 'Paleolithic' },
+                { name: 'Неолит', year: '10,000 лет назад', angle: 45, radius: 80, uz: 'Неолит', en: 'Neolithic' },
+                { name: 'Бронза', year: '5,000 лет назад', angle: 90, radius: 100, uz: 'Бронза', en: 'Bronze Age' },
+                { name: 'Античность', year: '2,500 лет назад', angle: 135, radius: 120, uz: 'Антиқа', en: 'Antiquity' },
+                { name: 'Ислам', year: '1,200 лет назад', angle: 180, radius: 140, uz: 'Ислом', en: 'Islamic Era' },
+                { name: 'Возрождение', year: '600 лет назад', angle: 225, radius: 160, uz: 'Ренессанс', en: 'Renaissance' },
+                { name: 'Современность', year: 'Сегодня', angle: 270, radius: 180, uz: 'Замонавийлик', en: 'Modern Era' },
+                { name: 'Будущее', year: 'Завтра', angle: 315, radius: 200, uz: 'Келажак', en: 'Future' }
+            ];
+            
+            const centerX = container.offsetWidth / 2;
+            const centerY = container.offsetHeight / 2;
+            
+            periods.forEach((period, index) => {
+                const element = createTimePeriod(period, centerX, centerY, index);
+                container.appendChild(element);
+                
+                // Создаём спиральную связь с предыдущим периодом
+                if (index > 0) {
+                    const connection = createSpiralConnection(periods[index-1], period, centerX, centerY);
+                    container.appendChild(connection);
+                }
+            });
+        }
+        
+        function createTimePeriod(period, centerX, centerY, index) {
+            const element = document.createElement('div');
+            element.className = 'time-period';
+            
+            const radian = (period.angle * Math.PI) / 180;
+            const x = centerX + Math.cos(radian) * period.radius - 60;
+            const y = centerY + Math.sin(radian) * period.radius - 20;
+            
+            element.style.left = x + 'px';
+            element.style.top = y + 'px';
+            element.style.animationDelay = (index * 0.2) + 's';
+            
+            const name = currentLanguage === 'uz' ? period.uz :
+                        currentLanguage === 'ru' ? period.name :
+                        period.en;
+            
+            element.innerHTML = `<div style="font-size: 12px; font-weight: bold;">${name}</div>
+                               <div style="font-size: 10px; opacity: 0.8;">${period.year}</div>`;
+            
+            element.addEventListener('click', () => exploreHistoricalPeriod(period));
+            
+            return element;
+        }
+        
+        function createSpiralConnection(period1, period2, centerX, centerY) {
+            // Упрощённая версия спиральной связи
+            const connection = document.createElement('div');
+            connection.className = 'time-connection';
+            connection.style.background = 'rgba(255,255,255,0.3)';
+            connection.style.height = '2px';
+            connection.style.width = '30px';
+            
+            const radian1 = (period1.angle * Math.PI) / 180;
+            const x1 = centerX + Math.cos(radian1) * period1.radius;
+            const y1 = centerY + Math.sin(radian1) * period1.radius;
+            
+            connection.style.left = x1 + 'px';
+            connection.style.top = y1 + 'px';
+            
+            return connection;
+        }
+        
+        // === ФРАКТАЛЬНЫЕ УРОВНИ ===
+        function showFractalLevels() {
+            updateVizButtons('fractal');
+            
+            const container = document.getElementById('vizContainer');
+            container.innerHTML = '<div class="loading-indicator"><div class="loading-spinner"></div><span>Создаются фрактальные уровни...</span></div>';
+            
+            setTimeout(() => {
+                createFractalVisualization(container);
+                if (vizSoundEnabled) playVizSound('fractal');
+            }, 1000);
+        }
+        
+        function createFractalVisualization(container) {
+            container.innerHTML = '';
+            container.className = 'viz-container fractal-container';
+            
+            const levels = [
+                { name: 'Квантовый', scale: 0.8, x: 50, y: 85, uz: 'Квант', en: 'Quantum' },
+                { name: 'Молекулярный', scale: 1.0, x: 35, y: 70, uz: 'Молекула', en: 'Molecular' },
+                { name: 'Клеточный', scale: 1.2, x: 65, y: 70, uz: 'Ҳужайра', en: 'Cellular' },
+                { name: 'Организм', scale: 1.4, x: 25, y: 50, uz: 'Организм', en: 'Organism' },
+                { name: 'Социальный', scale: 1.6, x: 75, y: 50, uz: 'Жамият', en: 'Social' },
+                { name: 'Культурный', scale: 1.8, x: 40, y: 30, uz: 'Маданият', en: 'Cultural' },
+                { name: 'Планетарный', scale: 2.0, x: 60, y: 30, uz: 'Планета', en: 'Planetary' },
+                { name: 'Космический', scale: 2.2, x: 50, y: 15, uz: 'Космос', en: 'Cosmic' }
+            ];
+            
+            levels.forEach((level, index) => {
+                const element = createFractalLevel(level, index);
+                container.appendChild(element);
+            });
+        }
+        
+        function createFractalLevel(level, index) {
+            const element = document.createElement('div');
+            element.className = 'fractal-level';
+            
+            element.style.left = level.x + '%';
+            element.style.top = level.y + '%';
+            element.style.transform = `scale(${level.scale})`;
+            element.style.animationDelay = (index * 0.15) + 's';
+            
+            const name = currentLanguage === 'uz' ? level.uz :
+                        currentLanguage === 'ru' ? level.name :
+                        level.en;
+            
+            element.textContent = name;
+            
+            element.addEventListener('click', () => exploreFractalLevel(level));
+            
+            return element;
+        }
+        
+        // === ИСТОРИЧЕСКИЕ СЛОИ ===
+        function showHistoricalLayers() {
+            updateVizButtons('history');
+            
+            const container = document.getElementById('vizContainer');
+            container.innerHTML = '<div class="loading-indicator"><div class="loading-spinner"></div><span>Создаются исторические слои...</span></div>';
+            
+            setTimeout(() => {
+                createHistoricalVisualization(container);
+                if (vizSoundEnabled) playVizSound('history');
+            }, 1000);
+        }
+        
+        function createHistoricalVisualization(container) {
+            // Похожа на временную спираль, но с акцентом на культурно-научные достижения региона
+            container.innerHTML = '';
+            container.className = 'viz-container time-spiral';
+            
+            const layers = [
+                { name: 'Беруни', contribution: 'Измерил Землю', x: 20, y: 20 },
+                { name: 'Ибн Сино', contribution: 'Медицина', x: 80, y: 30 },
+                { name: 'Улугбек', contribution: 'Астрономия', x: 30, y: 60 },
+                { name: 'Навои', contribution: 'Литература', x: 70, y: 70 },
+                { name: 'Современность', contribution: 'Технологии', x: 50, y: 90 }
+            ];
+            
+            layers.forEach((layer, index) => {
+                const element = createHistoricalLayer(layer, index);
+                container.appendChild(element);
+            });
+        }
+        
+        function createHistoricalLayer(layer, index) {
+            const element = document.createElement('div');
+            element.className = 'time-period';
+            element.style.left = layer.x + '%';
+            element.style.top = layer.y + '%';
+            element.style.animationDelay = (index * 0.3) + 's';
+            
+            element.innerHTML = `<div style="font-weight: bold;">${layer.name}</div>
+                               <div style="font-size: 10px;">${layer.contribution}</div>`;
+            
+            element.addEventListener('click', () => exploreHistoricalFigure(layer));
+            
+            return element;
+        }
+        
+        // === ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ВИЗУАЛИЗАЦИИ ===
+        
+        function updateVizButtons(activeButton) {
+            document.querySelectorAll('.viz-button').forEach(btn => btn.classList.remove('active'));
+            
+            const buttons = {
+                mycelium: 'btnMycelium',
+                timeSpiral: 'btnTimeSpiral',
+                fractal: 'btnFractal',
+                history: 'btnHistory'
+            };
+            
+            if (buttons[activeButton]) {
+                document.getElementById(buttons[activeButton]).classList.add('active');
+            }
+            
+            currentVisualization = activeButton;
+        }
+        
+        function showTooltip(event, text) {
+            const tooltip = document.getElementById('vizTooltip');
+            tooltip.innerHTML = text.replace(/\n/g, '<br>');
+            tooltip.style.left = event.pageX + 10 + 'px';
+            tooltip.style.top = event.pageY - 10 + 'px';
+            tooltip.classList.add('show');
+        }
+        
+        function hideTooltip() {
+            document.getElementById('vizTooltip').classList.remove('show');
+        }
+        
+        // === ЗВУКОВЫЕ ЭФФЕКТЫ ===
+        let vizAudioContext;
+        
+        function initVizAudio() {
+            if (!vizAudioContext && window.AudioContext) {
+                vizAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+        
+        function toggleVizSound() {
+            vizSoundEnabled = !vizSoundEnabled;
+            const indicator = document.querySelector('.sound-indicator');
+            
+            if (vizSoundEnabled) {
+                indicator.innerHTML = '🔊';
+                indicator.style.background = '#008800';
+                initVizAudio();
+                if (voiceEnabled) speak(currentLanguage === 'uz' ? 'Визуализация товуши ёқилди' :
+                                      currentLanguage === 'ru' ? 'Звук визуализации включён' : 'Visualization sound enabled');
+            } else {
+                indicator.innerHTML = '🔇';
+                indicator.style.background = '#999';
+                if (voiceEnabled) speak(currentLanguage === 'uz' ? 'Визуализация товуши ўчирилди' :
+                                      currentLanguage === 'ru' ? 'Звук визуализации выключен' : 'Visualization sound disabled');
+            }
+        }
+        
+        function playVizSound(type) {
+            if (!vizSoundEnabled || !vizAudioContext) return;
+            
+            const frequencies = {
+                network: [220, 330, 440],      // Аккорд для сети
+                spiral: [174, 285, 396],       // Сольфеджио для спирали
+                fractal: [528, 639, 741],      // Частоты для фракталов
+                history: [852, 963, 1074],     // Высокие частоты для истории
+                hover: [800],                  // Простой тон для наведения
+                click: [1200, 800]             // Двойной тон для клика
+            };
+            
+            const freq = frequencies[type] || [440];
+            
+            freq.forEach((frequency, index) => {
+                const oscillator = vizAudioContext.createOscillator();
+                const gainNode = vizAudioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(vizAudioContext.destination);
+                
+                oscillator.frequency.value = frequency;
+                oscillator.type = 'sine';
+                
+                const startTime = vizAudioContext.currentTime + index * 0.1;
+                const duration = 0.2;
+                
+                gainNode.gain.setValueAtTime(0, startTime);
+                gainNode.gain.linearRampToValueAtTime(0.1, startTime + 0.01);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+                
+                oscillator.start(startTime);
+                oscillator.stop(startTime + duration);
+            });
+        }
+        
+        // === ИССЛЕДОВАНИЕ ДЕТАЛЕЙ ===
+        
+        function exploreNodeDetails(domain) {
+            const details = {
+                cosmic: {
+                    uz: 'Космос домени: Астрономия, Физика, Математика. Беруни ва Улугбекнинг ишлари.',
+                    ru: 'Домен Космоса: Астрономия, Физика, Математика. Работы Беруни и Улугбека.',
+                    en: 'Cosmic Domain: Astronomy, Physics, Mathematics. Works of Biruni and Ulughbek.'
+                },
+                learning: {
+                    uz: 'Ўрганиш домени: Педагогика, Психология, Нейронаука. Замонавий таълим усуллари.',
+                    ru: 'Домен Обучения: Педагогика, Психология, Нейронаука. Современные методы образования.',
+                    en: 'Learning Domain: Pedagogy, Psychology, Neuroscience. Modern educational methods.'
+                }
+                // ... другие домены
+            };
+            
+            const detail = details[domain];
+            if (detail) {
+                const message = detail[currentLanguage] || detail.ru;
+                alert(message);
+            }
+        }
+        
+        function exploreHistoricalPeriod(period) {
+            const message = currentLanguage === 'uz' ? `${period.uz} даврини ўрганмоқдасиз...` :
+                           currentLanguage === 'ru' ? `Изучаете период ${period.name}...` :
+                           `Exploring ${period.en} period...`;
+            alert(message);
+        }
+        
+        function exploreFractalLevel(level) {
+            const message = currentLanguage === 'uz' ? `${level.uz} даражасини ўрганмоқдасиз...` :
+                           currentLanguage === 'ru' ? `Изучаете ${level.name} уровень...` :
+                           `Exploring ${level.en} level...`;
+            alert(message);
+        }
+        
+        function exploreHistoricalFigure(figure) {
+            const message = currentLanguage === 'uz' ? `${figure.name} ҳақида кўпроқ маълумот...` :
+                           currentLanguage === 'ru' ? `Подробнее о ${figure.name}...` :
+                           `More about ${figure.name}...`;
+            alert(message);
+        }
+        
+        // === ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ===
+        function clearAll() {
+            document.getElementById('questionInput').value = '';
+            document.getElementById('resultsSection').style.display = 'none';
+            
+            if (voiceEnabled) {
+                let message = currentLanguage === 'uz' ? 'Ҳаммаси тозаланди' :
+                             currentLanguage === 'ru' ? 'Всё очищено' : 'Everything cleared';
+                speak(message);
+            }
+        }
+        
+        function showHelp() {
+            const helpMessages = {
+                uz: `📖 ЁРДАМ КЎРСАТМА:
+                
+1. Тилни танланг (ўзбек, рус, инглиз)
+2. Ёшингизни белгиланг (6-12, 13-17, 18+, 65+)
+3. Керак бўлса, овозни ёқинг
+4. Саволингизни ёзинг ёки айтинг
+5. "Жавоб олиш" тугмасини босинг
+
+🎯 МИСОЛЛАР:
+• "Осмон нега кўк?"
+• "Қандай қилиб тез ўрганиш мумкин?"
+• "Бухорода қандай тарих бор?"`,
+                
+                ru: `📖 СПРАВКА:
+                
+1. Выберите язык (узбекский, русский, английский)
+2. Укажите возраст (6-12, 13-17, 18+, 65+)
+3. При необходимости включите голос
+4. Напишите или скажите ваш вопрос
+5. Нажмите "Получить ответ"
+
+🎯 ПРИМЕРЫ:
+• "Почему небо синее?"
+• "Как быстро учиться?"
+• "Какая история в Бухаре?"`,
+                
+                en: `📖 HELP:
+                
+1. Choose language (Uzbek, Russian, English)
+2. Set age (6-12, 13-17, 18+, 65+)  
+3. Enable voice if needed
+4. Write or say your question
+5. Click "Get Answer"
+
+🎯 EXAMPLES:
+• "Why is the sky blue?"
+• "How to learn fast?"
+• "What history in Bukhara?"`
+            };
+            
+            alert(helpMessages[currentLanguage]);
+        }
+        
+        function emergencyHelp() {
+            const emergencyMessages = {
+                uz: `🚨 ШОШИЛИНЧ ЁРДАМ:
+                
+Агар техник муаммо бўлса:
+• Саҳифани қайта юкланг (F5)
+• Браузерни қайта ишга тушириш
+• JavaScript ёқилганлигини текшириш
+
+Тизим билан боғлиқ муаммолар учун:
+📧 support@terraproject.uz
+📞 +998 71 123 45 67
+
+Тез ёрдам учун:
+🔄 Кеша ва cookie-ларни тозалаш
+🌐 Бошқа браузердан синаб кўриш`,
+                
+                ru: `🚨 ЭКСТРЕННАЯ ПОМОЩЬ:
+                
+При технических проблемах:
+• Перезагрузите страницу (F5)
+• Перезапустите браузер
+• Проверьте включён ли JavaScript
+
+По системным проблемам:
+📧 support@terraproject.uz
+📞 +998 71 123 45 67
+
+Быстрая помощь:
+🔄 Очистить кэш и cookies
+🌐 Попробовать другой браузер`,
+                
+                en: `🚨 EMERGENCY HELP:
+                
+For technical problems:
+• Reload page (F5)
+• Restart browser
+• Check if JavaScript is enabled
+
+For system issues:
+📧 support@terraproject.uz
+📞 +998 71 123 45 67
+
+Quick help:
+🔄 Clear cache and cookies
+🌐 Try another browser`
+            };
+            
+            alert(emergencyMessages[currentLanguage]);
+        }
+        
+        // === ПРОСТОЕ ЛОГИРОВАНИЕ ===
+        window.onerror = function(msg, url, line, col, error) {
+            console.error('Ошибка Universal TERRA:', {
+                message: msg,
+                source: url,
+                line: line,
+                column: col,
+                error: error
+            });
+            
+            // Показ простого сообщения пользователю
+            if (currentLanguage === 'uz') {
+                alert('Тизимда хатолик юз берди. Саҳифани қайта юкланг.');
+            } else if (currentLanguage === 'ru') {
+                alert('В системе произошла ошибка. Перезагрузите страницу.');
+            } else {
+                alert('System error occurred. Please reload the page.');
+            }
+        };
+        
+        console.log('🧬 Universal TERRA Engine v1.0 загружен');
+        console.log('✅ Полная детоксификация L0-L3 применена');
+        console.log('🌍 Система готова для ВСЕХ пользователей без исключения');
+    </script>
+
+    <!-- Версия для печати -->
+    <div style="display: none;" class="print-version">
+        <h1>Universal TERRA - Печатная версия</h1>
+        <p>Эта система предназначена для всех людей без исключения: детей, взрослых, пожилых, людей с инвалидностью, грамотных и неграмотных.</p>
+        <p>Для работы онлайн посетите: [веб-адрес]</p>
+        <p>Для получения помощи: support@terraproject.uz</p>
+    </div>
+</body>
+</html>

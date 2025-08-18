@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧬 TERRA - Умный помощник</title>
+    
+    <!-- Совместимость с iPhone 1 и старыми Android -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <style>
+        /* Базовые стили для старых браузеров */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .main-area {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .input-area {
+            margin-bottom: 20px;
+        }
+        
+        .input-area label {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+        
+        .big-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .big-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .big-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(79, 172, 254, 0.3);
+        }
+        
+        .big-button:active {
+            transform: translateY(0);
+        }
+        
+        .result-area {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            min-height: 150px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .result-area h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .language-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #4facfe;
+            background: white;
+            color: #4facfe;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .lang-btn.active {
+            background: #4facfe;
+            color: white;
+        }
+        
+        .simple-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .simple-btn {
+            padding: 12px;
+            background: #48bb78;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .simple-btn:hover {
+            background: #38a169;
+        }
+        
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        /* Адаптация для маленьких экранов */
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .big-input, .big-button {
+                font-size: 16px;
+            }
+            
+            .language-buttons {
+                justify-content: center;
+            }
+            
+            .simple-buttons {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        /* Анимации для интереса */
+        .container {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .thinking {
+            display: none;
+            text-align: center;
+            color: #4facfe;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        
+        .thinking.show {
+            display: block;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Простой и понятный заголовок -->
+        <div class="header">
+            <h1>🧬 TERRA - Твой умный помощник</h1>
+            <p>Задай любой вопрос или попроси помочь - я всё понимаю!</p>
+        </div>
+        
+        <div class="main-area">
+            <!-- Выбор языка простыми кнопками -->
+            <div class="language-buttons">
+                <button class="lang-btn active" onclick="setLanguage('ru')">🇷🇺 Русский</button>
+                <button class="lang-btn" onclick="setLanguage('uz')">🇺🇿 O'zbekcha</button>
+                <button class="lang-btn" onclick="setLanguage('en')">🇺🇸 English</button>
+            </div>
+            
+            <!-- Простые кнопки для популярных вопросов -->
+            <div class="simple-buttons">
+                <button class="simple-btn" onclick="quickQuestion('Что такое дружба?')">💕 О дружбе</button>
+                <button class="simple-btn" onclick="quickQuestion('Почему небо синее?')">🌌 Почему небо синее?</button>
+                <button class="simple-btn" onclick="quickQuestion('Как растут цветы?')">🌸 Как растут цветы?</button>
+                <button class="simple-btn" onclick="quickQuestion('Расскажи сказку')">📚 Расскажи сказку</button>
+                <button class="simple-btn" onclick="quickQuestion('Помоги с математикой')">🔢 Математика</button>
+                <button class="simple-btn" onclick="quickQuestion('Что такое Узбекистан?')">🏛️ Об Узбекистане</button>
+            </div>
+            
+            <!-- Область для ввода вопроса -->
+            <div class="input-area">
+                <label for="question">Напиши свой вопрос или что тебя интересует:</label>
+                <textarea 
+                    id="question" 
+                    class="big-input" 
+                    placeholder="Например: Как устроена радуга? или Помоги мне понять, почему люди разного цвета кожи?"
+                    onkeypress="handleEnter(event)"
+                ></textarea>
+            </div>
+            
+            <!-- Большая кнопка для отправки -->
+            <button class="big-button" onclick="askQuestion()">
+                🚀 Спросить TERRA
+            </button>
+            
+            <!-- Индикатор обработки -->
+            <div class="thinking" id="thinking">
+                🤔 Думаю над твоим вопросом...
+            </div>
+            
+            <!-- Область для ответа -->
+            <div class="result-area" id="result">
+                <h3>👋 Привет!</h3>
+                <p>Я TERRA - твой умный помощник. Я знаю очень много интересного и готов ответить на любые твои вопросы.</p>
+                <p><strong>Попробуй спросить:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Как работает что-то интересное?</li>
+                    <li>Почему происходят разные явления?</li>
+                    <li>Расскажи о странах и культурах</li>
+                    <li>Помоги с домашним заданием</li>
+                    <li>Просто поговори со мной</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🌟 TERRA работает для всех - от iPhone 1 до современных компьютеров</p>
+            <p>Создано с любовью для детей и взрослых всего мира 🌍</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Текущий язык интерфейса
+        var currentLanguage = 'ru';
+        
+        // Переводы для разных языков
+        var translations = {
+            ru: {
+                title: '🧬 TERRA - Твой умный помощник',
+                subtitle: 'Задай любой вопрос или попроси помочь - я всё понимаю!',
+                inputLabel: 'Напиши свой вопрос или что тебя интересует:',
+                placeholder: 'Например: Как устроена радуга? или Помоги мне понять, почему люди разного цвета кожи?',
+                askButton: '🚀 Спросить TERRA',
+                thinking: '🤔 Думаю над твоим вопросом...',
+                greeting: '👋 Привет!',
+                intro: 'Я TERRA - твой умный помощник. Я знаю очень много интересного и готов ответить на любые твои вопросы.',
+                examples: 'Попробуй спросить:',
+                quickButtons: {
+                    friendship: '💕 О дружбе',
+                    sky: '🌌 Почему небо синее?',
+                    flowers: '🌸 Как растут цветы?',
+                    story: '📚 Расскажи сказку',
+                    math: '🔢 Математика',
+                    uzbekistan: '🏛️ Об Узбекистане'
+                }
+            },
+            uz: {
+                title: '🧬 TERRA - Sizning aqlli yordamchingiz',
+                subtitle: 'Har qanday savol bering yoki yordam soʻrang - men hammasini tushunaman!',
+                inputLabel: 'Savolingizni yoki qiziqayotgan narsangizni yozing:',
+                placeholder: 'Masalan: Kamalak qanday hosil bo\'ladi? yoki Nima uchun odamlar turli rangda?',
+                askButton: '🚀 TERRA dan so\'rash',
+                thinking: '🤔 Savolingiz ustida o\'ylayapman...',
+                greeting: '👋 Salom!',
+                intro: 'Men TERRA - sizning aqlli yordamchingizman. Men juda ko\'p qiziqarli narsalarni bilaman va har qanday savolingizga javob berishga tayyorman.',
+                examples: 'Bularni so\'rab ko\'ring:',
+                quickButtons: {
+                    friendship: '💕 Do\'stlik haqida',
+                    sky: '🌌 Nima uchun osmon ko\'k?',
+                    flowers: '🌸 Gullar qanday o\'sadi?',
+                    story: '📚 Ertak ayting',
+                    math: '🔢 Matematika',
+                    uzbekistan: '🏛️ O\'zbekiston haqida'
+                }
+            },
+            en: {
+                title: '🧬 TERRA - Your Smart Helper',
+                subtitle: 'Ask any question or ask for help - I understand everything!',
+                inputLabel: 'Write your question or what interests you:',
+                placeholder: 'For example: How does a rainbow work? or Help me understand why people have different skin colors?',
+                askButton: '🚀 Ask TERRA',
+                thinking: '🤔 Thinking about your question...',
+                greeting: '👋 Hello!',
+                intro: 'I am TERRA - your smart helper. I know a lot of interesting things and am ready to answer any of your questions.',
+                examples: 'Try asking:',
+                quickButtons: {
+                    friendship: '💕 About friendship',
+                    sky: '🌌 Why is the sky blue?',
+                    flowers: '🌸 How do flowers grow?',
+                    story: '📚 Tell me a story',
+                    math: '🔢 Mathematics',
+                    uzbekistan: '🏛️ About Uzbekistan'
+                }
+            }
+        };
+        
+        // Простые ответы на популярные вопросы (симуляция ИИ)
+        var simpleAnswers = {
+            ru: {
+                'что такое дружба?': '💕 Дружба - это когда люди заботятся друг о друге, играют вместе и помогают в трудные моменты. Настоящий друг никогда не обидит тебя специально и всегда поддержит. Дружба делает нас счастливее!',
+                'почему небо синее?': '🌌 Небо синее потому, что солнечный свет состоит из разных цветов (как радуга). Когда этот свет проходит через воздух, синий цвет рассеивается больше других. Поэтому мы видим небо синим!',
+                'как растут цветы?': '🌸 Цветы растут из семечек! Сначала семечко попадает в землю, потом из него вырастает маленький росток. Росток пьет воду, получает свет от солнца и постепенно превращается в красивый цветок.',
+                'расскажи сказку': '📚 Жила-была маленькая звездочка, которая очень хотела подружиться с детьми на Земле. Каждую ночь она светила особенно ярко и загадывала: "Пусть все дети будут счастливы!" И знаешь что? Её желание сбылось!',
+                'помоги с математикой': '🔢 Математика - это как игра с числами! Если у тебя есть 2 яблока и мама дала ещё 3, то всего у тебя стало 2+3=5 яблок. Математика помогает нам считать всё вокруг!',
+                'что такое узбекистан?': '🏛️ Узбекистан - это красивая страна в Центральной Азии, где живут добрые и гостеприимные люди. Там много древних городов, вкусный плов и красивые мечети. Это страна с богатой историей и культурой!'
+            },
+            uz: {
+                'do\'stlik nima?': '💕 Do\'stlik - bu odamlar bir-birlariga g\'amxo\'rlik qilish, birga o\'ynash va qiyin paytlarda yordam berishdir. Haqiqiy do\'st sizni hech qachon ataylab xafa qilmaydi va doimo qo\'llab-quvvatlaydi.',
+                'nima uchun osmon ko\'k?': '🌌 Osmon ko\'k chunki quyosh nuri turli ranglardan iborat. Bu nur havo orqali o\'tganda, ko\'k rang boshqalardan ko\'ra ko\'proq tarqaladi. Shuning uchun biz osmonni ko\'k ko\'ramiz!',
+                'gullar qanday o\'sadi?': '🌸 Gullar urug\'dan o\'sadi! Avval urug\' tuproqqa tushadi, keyin undan kichik niholcha o\'sadi. Nihol suv ichadi, quyosh nurini oladi va asta-sekin chiroyli gulga aylanadi.',
+                'ertak ayting': '📚 Bir paytlar kichkina yulduzcha bor edi, u Yerdagi bolalar bilan do\'stlashni juda xohlardi. Har kecha u ayniqsa yorqin porladi va orzu qildi: "Barcha bolalar baxtli bo\'lsin!" Va bilasizmi? Uning orzusi amalga oshdi!',
+                'matematika yordam': '🔢 Matematika - bu raqamlar bilan o\'yin! Agar sizda 2 ta olma bo\'lsa va ona yana 3 ta bersa, jami 2+3=5 ta olma bo\'ladi. Matematika bizga atrofimizni sanashga yordam beradi!',
+                'o\'zbekiston nima?': '🏛️ O\'zbekiston - bu Markaziy Osiyodagi go\'zal mamlakat, u yerda mehribon va mehmondo\'st odamlar yashaydi. U yerda ko\'plab qadimiy shaharlar, mazali osh va chiroyli masjidlar bor!'
+            },
+            en: {
+                'what is friendship?': '💕 Friendship is when people care for each other, play together and help in difficult times. A true friend will never hurt you on purpose and will always support you. Friendship makes us happier!',
+                'why is the sky blue?': '🌌 The sky is blue because sunlight is made of different colors (like a rainbow). When this light passes through the air, blue color scatters more than others. That\'s why we see the sky as blue!',
+                'how do flowers grow?': '🌸 Flowers grow from seeds! First a seed falls into the ground, then a small sprout grows from it. The sprout drinks water, gets light from the sun and gradually turns into a beautiful flower.',
+                'tell me a story': '📚 Once upon a time there was a little star who really wanted to be friends with children on Earth. Every night she shone especially bright and wished: "May all children be happy!" And you know what? Her wish came true!',
+                'help with math': '🔢 Math is like playing with numbers! If you have 2 apples and mom gave you 3 more, then you have 2+3=5 apples in total. Math helps us count everything around us!',
+                'what is uzbekistan?': '🏛️ Uzbekistan is a beautiful country in Central Asia where kind and hospitable people live. There are many ancient cities, delicious pilaf and beautiful mosques. It\'s a country with rich history and culture!'
+            }
+        };
+        
+        // Функция для смены языка
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            updateInterface();
+            
+            // Обновляем активную кнопку языка
+            var buttons = document.querySelectorAll('.lang-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            event.target.classList.add('active');
+        }
+        
+        // Обновление интерфейса под выбранный язык
+        function updateInterface() {
+            var t = translations[currentLanguage];
+            
+            document.querySelector('.header h1').textContent = t.title;
+            document.querySelector('.header p').textContent = t.subtitle;
+            document.querySelector('.input-area label').textContent = t.inputLabel;
+            document.querySelector('.big-input').placeholder = t.placeholder;
+            document.querySelector('.big-button').innerHTML = t.askButton;
+            document.querySelector('#thinking').innerHTML = t.thinking;
+            
+            // Обновляем быстрые кнопки
+            var quickBtns = document.querySelectorAll('.simple-btn');
+            var btnTexts = Object.values(t.quickButtons);
+            for (var i = 0; i < quickBtns.length && i < btnTexts.length; i++) {
+                quickBtns[i].textContent = btnTexts[i];
+            }
+        }
+        
+        // Функция для быстрых вопросов
+        function quickQuestion(question) {
+            document.getElementById('question').value = question;
+            askQuestion();
+        }
+        
+        // Главная функция обработки вопроса
+        function askQuestion() {
+            var question = document.getElementById('question').value.trim();
+            if (!question) {
+                alert(currentLanguage === 'ru' ? 'Пожалуйста, напиши вопрос!' : 
+                      currentLanguage === 'uz' ? 'Iltimos, savol yozing!' : 
+                      'Please write a question!');
+                return;
+            }
+            
+            // Показываем индикатор думания
+            var thinking = document.getElementById('thinking');
+            thinking.classList.add('show');
+            
+            // Имитируем обработку (в реальности здесь будет FMP движок)
+            setTimeout(function() {
+                thinking.classList.remove('show');
+                processQuestion(question);
+            }, 2000);
+        }
+        
+        // Обработка вопроса с простой логикой
+        function processQuestion(question) {
+            var answer = getSimpleAnswer(question);
+            displayAnswer(answer);
+        }
+        
+        // Получение простого ответа
+        function getSimpleAnswer(question) {
+            var lowerQuestion = question.toLowerCase();
+            var answers = simpleAnswers[currentLanguage] || simpleAnswers['ru'];
+            
+            // Поиск готового ответа
+            for (var key in answers) {
+                if (lowerQuestion.includes(key) || key.includes(lowerQuestion)) {
+                    return answers[key];
+                }
+            }
+            
+            // Если готового ответа нет, даём общий ответ
+            return generateGeneralAnswer(question);
+        }
+        
+        // Генерация общего ответа
+        function generateGeneralAnswer(question) {
+            var generalAnswers = {
+                ru: [
+                    '🤔 Это очень интересный вопрос! ' + question + ' - тема, которую изучают многие учёные. Давай разберём её вместе!',
+                    '💡 Отличный вопрос! По поводу "' + question + '" могу сказать, что это связано с тем, как устроен наш мир.',
+                    '🌟 Ты спрашиваешь про очень важную тему! ' + question + ' - это то, что помогает нам лучше понимать жизнь.',
+                    '🔍 Хороший вопрос! Чтобы ответить на "' + question + '", нужно подумать о многих интересных вещах.'
+                ],
+                uz: [
+                    '🤔 Bu juda qiziq savol! ' + question + ' - ko\'plab olimlar o\'rganadigan mavzu. Keling, uni birga ko\'rib chiqaylik!',
+                    '💡 Ajoyib savol! "' + question + '" haqida shuni aytishim mumkinki, bu bizning dunyomiz qanday tuzilgani bilan bog\'liq.',
+                    '🌟 Siz juda muhim mavzu haqida so\'rayapsiz! ' + question + ' - bu hayotni yaxshiroq tushunishga yordam beradigan narsa.'
+                ],
+                en: [
+                    '🤔 That\'s a very interesting question! ' + question + ' - is a topic that many scientists study. Let\'s explore it together!',
+                    '💡 Great question! About "' + question + '" I can say that it\'s related to how our world works.',
+                    '🌟 You\'re asking about a very important topic! ' + question + ' - is something that helps us better understand life.'
+                ]
+            };
+            
+            var answers = generalAnswers[currentLanguage] || generalAnswers['ru'];
+            return answers[Math.floor(Math.random() * answers.length)];
+        }
+        
+        // Показ ответа
+        function displayAnswer(answer) {
+            var resultDiv = document.getElementById('result');
+            
+            // Добавляем анимацию появления
+            resultDiv.style.opacity = '0';
+            resultDiv.innerHTML = '<h3>💭 Ответ TERRA:</h3><p>' + answer + '</p>';
+            
+            // Плавное появление
+            setTimeout(function() {
+                resultDiv.style.opacity = '1';
+                resultDiv.style.transition = 'opacity 0.5s';
+            }, 100);
+        }
+        
+        // Обработка Enter в текстовом поле
+        function handleEnter(event) {
+            if (event.keyCode === 13 && !event.shiftKey) {
+                event.preventDefault();
+                askQuestion();
+            }
+        }
+        
+        // Инициализация при загрузке
+        window.onload = function() {
+            updateInterface();
+            
+            // Проверяем совместимость браузера
+            var isOldBrowser = !document.querySelector || !window.JSON;
+            if (isOldBrowser) {
+                alert('TERRA работает даже на старых устройствах! Некоторые функции могут работать проще.');
+            }
+            
+            console.log('🧬 TERRA LLM Engine загружен и готов к работе!');
+            console.log('📱 Совместимость: iPhone 1+ / Android 2.2+ / IE8+');
+            console.log('🌍 Поддерживаемые языки: Русский, O\'zbekcha, English');
+        };
+    </script>
+</body>
+</html>

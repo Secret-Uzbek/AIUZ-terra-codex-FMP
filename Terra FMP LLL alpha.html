@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Terra FMP LLM — Live</title>
+<style>
+body { background:#F5F5F5;color:#2C3E50;font-family:'Inter',sans-serif;margin:0;padding:0;}
+#main { max-width:1200px;margin:auto;padding:20px;}
+h1 { font-family:'Montserrat',sans-serif;font-size:30px;color:#7B66DC;}
+h2 { font-family:'Montserrat',sans-serif;font-size:22px;color:#4A90E2;margin-top:20px;}
+.card { background:#FFF;padding:16px;margin-bottom:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+button{background:#2E8B57;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-weight:600;cursor:pointer;}
+button:hover{background:#27AE60;}
+input,textarea{width:100%;padding:8px;margin-top:4px;margin-bottom:12px;border:1px solid #ccc;border-radius:8px;}
+.result{background:#E8F4FD;padding:12px;border-radius:8px;font-family:'Fira Code',monospace;white-space:pre-wrap;}
+.success{color:#27AE60;} .danger{color:#E74C3C;}
+.semantic-tag{display:inline-block;padding:2px 6px;border-radius:8px;background:#4A90E2;color:#fff;font-size:12px;}
+</style>
+</head>
+<body>
+<div id="main">
+<h1>🌍 Terra FMP LLM — Live</h1>
+<div class="card">
+<h2>📂 Импорт файла</h2>
+<input type="file" id="fileImport" multiple>
+<button onclick="importFiles()">Импортировать</button>
+<div id="importLog" class="result"></div>
+</div>
+<div class="card">
+<h2>🔍 Поиск в тезаурусе</h2>
+<input id="searchTerm" placeholder="Введите лемму, перевод или домен">
+<button onclick="searchLemma()">Искать</button>
+<div id="searchResult" class="result"></div>
+</div>
+<div class="card">
+<h2>🌱 Добавить лемму</h2>
+<label>Лемма</label><input id="lemma">
+<label>POS</label><input id="pos">
+<label>Определение</label><textarea id="definition"></textarea>
+<label>Переводы</label>
+<input id="t_uz" placeholder="узбекский">
+<input id="t_de" placeholder="немецкий">
+<input id="t_ru" placeholder="русский">
+<input id="t_en" placeholder="английский">
+<label>Медиа (URL)</label>
+<input id="image" placeholder="Ссылка на изображение">
+<input id="audio" placeholder="Ссылка на аудио">
+<button onclick="addLemma()">Добавить</button>
+<span id="addMsg" class="success"></span>
+</div>
+<div class="card">
+<h2>🧠 FMP Reasoning</h2>
+<textarea id="fmp_query" rows="2" placeholder="Опишите текст, термин или задачу"></textarea>
+<button onclick="runFMP()">Анализ</button>
+<div id="fmpResult" class="result"></div>
+</div>
+</div>
+<script>
+let kb = JSON.parse(localStorage.getItem('terra_kb')||'[]');
+function detox(text){ 
+  const banned=['финал','ультимейт','лучший','революционный','уникальный'];
+  let clean=text;
+  banned.forEach(b=>{ clean = clean.replace(new RegExp(b,'gi'),'');});
+  return clean.trim();
+}
+function importFiles(){
+  const files=document.getElementById('fileImport').files;
+  if(!files.length)return;
+  let log="";
+  Array.from(files).forEach(f=>{
+    log += `Импортирован: ${f.name}\n`;
+  });
+  document.getElementById('importLog').textContent=log;
+  saveKB();
+}
+function searchLemma(){
+  const term=detox(document.getElementById('searchTerm').value.toLowerCase());
+  let found=kb.filter(x=>
+    x.lemma?.toLowerCase().includes(term) ||
+    Object.values(x.translations||{}).some(v=>(v||'').toLowerCase().includes(term)) ||
+    (x.definition||'').toLowerCase().includes(term)
+  );
+  document.getElementById('searchResult').textContent=found.length
+    ? found.map(x=>`Лемма: ${x.lemma}\nPOS: ${x.pos}\nОпределение: ${x.definition}\nПереводы: UZ=${x.translations?.uz}, DE=${x.translations?.de}, RU=${x.translations?.ru}, EN=${x.translations?.en}\nPostlingua: ${x.postlingua_trace}`).join("\n\n")
+    : "❌ Не найдено.";
+}
+function addLemma(){
+  kb.push({
+    lemma: detox(document.getElementById('lemma').value),
+    pos: detox(document.getElementById('pos').value),
+    definition: detox(document.getElementById('definition').value),
+    translations:{
+      uz:detox(document.getElementById('t_uz').value),
+      de:detox(document.getElementById('t_de').value),
+      ru:detox(document.getElementById('t_ru').value),
+      en:detox(document.getElementById('t_en').value)
+    },
+    media:{
+      image:document.getElementById('image').value,
+      audio:document.getElementById('audio').value
+    },
+    postlingua_trace:genPostlingua()
+  });
+  document.getElementById('addMsg').textContent="Лемма добавлена!";
+  saveKB();
+}
+function genPostlingua(){
+  const symbols=["⊘","ᚘ","∴","⇌","𓂀","ヱ","ʘ̤̈","☉̵","᚛","⟁","҂","⋇"];
+  return Array(5).fill(0).map(()=>symbols[Math.floor(Math.random()*symbols.length)]).join(" ");
+}
+function runFMP(){
+  let q=detox(document.getElementById('fmp_query').value);
+  if(!q)return;
+  let s1=`🟣 Внутренний аналитик: анализирует «${q}» на основе тезауруса и корпуса.`;
+  let s2=`🔵 Внешний наблюдатель: соотносит «${q}» с внешними корпусами/стандартами.`;
+  let s3=`🟢 Метаархивариус: фиксирует «${q}» в хронике, связывает с Postlingua Trace, валидирует по стандартам Terra.`;
+  document.getElementById('fmpResult').textContent=`${s1}\n\n${s2}\n\n${s3}`;
+}
+function saveKB(){ localStorage.setItem('terra_kb',JSON.stringify(kb)); }
+</script>
+</body>
+</html>

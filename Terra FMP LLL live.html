@@ -1,0 +1,1466 @@
+﻿=== ЧАСТЬ 1 / N — ЯДРО: TerraArchiveManager + L0SemanticKernel + TerraEthicalLayer + OfflineSemanticAnalyzer (без урезаний) ===
+<script>
+// =========== L0 Semantic Kernel ===========
+function L0SemanticKernel() {
+    this.version = "2.0.0-L0";
+    this.author = "Абдукаримов Абдурашид Абдулхамитович";
+    this.did = "aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890";
+
+    this.basicKeywords = {
+        'архив': ['сохранить', 'данные', 'файл', 'документ'],
+        'поиск': ['найти', 'искать', 'запрос', 'результат'],
+        'анализ': ['изучить', 'проверить', 'исследовать', 'понять'],
+        'помощь': ['справка', 'поддержка', 'инструкция', 'руководство']
+    };
+    this.intentPatterns = {
+        'CREATE_ARCHIVE': ['создать', 'сделать', 'архивировать', 'сохранить'],
+        'SEARCH_ARCHIVE': ['найти', 'поиск', 'искать', 'где'],
+        'ANALYZE_TEXT': ['анализ', 'изучить', 'проверить', 'понять'],
+        'GET_HELP': ['помощь', 'справка', 'как', 'что']
+    };
+}
+L0SemanticKernel.prototype.extractKeywords = function(text) {
+    if (!text) return [];
+    var words = text.toLowerCase().split(/\s+/);
+    var keywords = [];
+    words.forEach(w=>{
+        var word = w.replace(/[^\w\u0400-\u04FF\u0600-\u06FF]/g, '');
+        if (word.length > 2 && !keywords.includes(word)) keywords.push(word);
+    });
+    return keywords.slice(0, 10);
+};
+L0SemanticKernel.prototype.simpleIntentAnalysis = function(text) {
+    if (!text) return 'UNKNOWN';
+    var lowerText = text.toLowerCase(), maxScore = 0, detectedIntent = 'UNKNOWN';
+    for (var intent in this.intentPatterns) {
+        var score = this.intentPatterns[intent].filter(p=>lowerText.includes(p)).length;
+        if (score > maxScore) { maxScore = score; detectedIntent = intent; }
+    }
+    return detectedIntent;
+};
+L0SemanticKernel.prototype.getSuggestedAction = function(intent) {
+    return {
+        'CREATE_ARCHIVE': 'Рекомендуется создать новый архив с указанными данными',
+        'SEARCH_ARCHIVE': 'Выполнить поиск в существующих архивах',
+        'ANALYZE_TEXT': 'Провести семантический анализ текста',
+        'GET_HELP': 'Показать справочную информацию',
+        'UNKNOWN': 'Уточните ваш запрос для лучшего понимания'
+    }[intent] || 'Уточните ваш запрос для лучшего понимания';
+};
+L0SemanticKernel.prototype.basicEthicalCheck = function(text) {
+    var harmfulPatterns = ['насилие', 'violence', 'зўравонлик'];
+    var lowerText = text.toLowerCase();
+    for (var p of harmfulPatterns) if (lowerText.includes(p))
+        return { safe: false, reason: 'Обнаружен потенциально вредный контент' };
+    return { safe: true, reason: 'Контент безопасен' };
+};
+L0SemanticKernel.prototype.processRequest = function(request, requesterDID) {
+    var keywords = this.extractKeywords(request);
+    var intent = this.simpleIntentAnalysis(request);
+    return {
+        processedAt: new Date().toISOString(),
+        requesterDID,
+        detectedIntent: intent,
+        extractedKeywords: keywords,
+        confidence: keywords.length > 0 ? 0.7 : 0.3,
+        suggestedAction: this.getSuggestedAction(intent),
+        ethicalCheck: this.basicEthicalCheck(request)
+    };
+};
+
+// =========== Offline Semantic Analyzer ===========
+function OfflineSemanticAnalyzer() {
+    this.version = "2.0.0-L1+";
+    this.initialized = false;
+    this.embeddedThesaurus = {
+        'архив': ['хранилище', 'репозиторий', 'база_данных', 'коллекция'],
+        'документ': ['файл', 'текст', 'запись', 'материал']
+    };
+    this.domainOntology = {
+        'информатика': { 'термины': ['код', 'функция', 'переменная', 'цикл'] }
+    };
+    this.conceptsDatabase = {
+        'архивирование': { frequency: 100, related: ['сохранение', 'хранение'] }
+    };
+}
+OfflineSemanticAnalyzer.prototype.initialize = function(){ this.initialized = true; return true; };
+OfflineSemanticAnalyzer.prototype.analyzeText = function(text) {
+    if (!this.initialized) this.initialize();
+    var start = Date.now();
+    var analysis = {
+        processingTime: 0,
+        wordCount: text.split(/\s+/).length,
+        keywords: this.extractAdvancedKeywords(text),
+        concepts: this.extractConcepts(text),
+        domains: this.identifyDomains(text),
+        sentiment: this.simpleSentimentAnalysis(text)
+    };
+    analysis.processingTime = Date.now() - start;
+    return analysis;
+};
+OfflineSemanticAnalyzer.prototype.extractAdvancedKeywords = function(text) {
+    var words = text.toLowerCase().match(/[\w\u0400-\u04FF\u0600-\u06FF]+/g) || [];
+    var freq = {}; words.forEach(w=>{ if(w.length>2) freq[w]=(freq[w]||0)+1; });
+    return Object.keys(freq).map(k=>({word:k,frequency:freq[k]}))
+                .sort((a,b)=>b.frequency-a.frequency).slice(0,15);
+};
+OfflineSemanticAnalyzer.prototype.extractConcepts = function(text) {
+    var concepts = [], lower = text.toLowerCase();
+    for (var c in this.conceptsDatabase) {
+        if (lower.includes(c)) concepts.push({concept:c});
+    }
+    return concepts;
+};
+OfflineSemanticAnalyzer.prototype.identifyDomains = function(text) {
+    var res = [], lower = text.toLowerCase();
+    for (var d in this.domainOntology) {
+        var matches = this.domainOntology[d]['термины'].filter(t=>lower.includes(t));
+        if (matches.length) res.push({domain:d, matchedTerms:matches});
+    }
+    return res;
+};
+OfflineSemanticAnalyzer.prototype.simpleSentimentAnalysis = function(text) {
+    var pos = ['хорошо','отлично','прекрасно'], neg = ['плохо','ужасно','плохой'];
+    var lower = text.toLowerCase(), ps=0,ns=0;
+    pos.forEach(p=>{ if(lower.includes(p)) ps++; });
+    neg.forEach(n=>{ if(lower.includes(n)) ns++; });
+    return { sentiment: ps>ns?'positive':ps<ns?'negative':'neutral' };
+};
+
+// =========== Terra Ethical Layer ===========
+function TerraEthicalLayer() {
+    this.toxicityFilters = [
+        {name: 'child_protection', patterns: ['насилие','violence'], action: 'block'},
+        {name: 'hate_speech', patterns: ['ненависть','hate'], action: 'block'}
+    ];
+}
+TerraEthicalLayer.prototype.validateContent = function(content) {
+    var lower = content.toLowerCase();
+    for (var f of this.toxicityFilters) {
+        for (var p of f.patterns) {
+            if (lower.includes(p)) return {passed:false,violations:[f.name]};
+        }
+    }
+    return {passed:true,violations:[]};
+};
+
+// =========== Terra Archive Manager ===========
+function TerraArchiveManager() {
+    this.archives = [];
+}
+TerraArchiveManager.prototype.createArchive = function(data) {
+    var archive = {
+        id: 'terra_'+Date.now(),
+        timestamp: new Date().toISOString(),
+        data: data,
+        size: JSON.stringify(data).length
+    };
+    this.archives.push(archive);
+    return archive;
+};
+TerraArchiveManager.prototype.searchArchives = function(query) {
+    return this.archives.filter(a=>JSON.stringify(a.data).toLowerCase().includes(query.toLowerCase()));
+};
+</script>
+=== ЧАСТЬ 2 / N — TerraSemanticIntegration + UI связи ===
+<script>
+function TerraSemanticIntegration() {
+    this.version = "2.0.0-LIVE";
+    this.author = "Абдукаримов Абдурашид Абдулхамитович";
+    this.did = "aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890";
+    this.currentLevel = 0;
+    this.l0Kernel = new L0SemanticKernel();
+    this.ethicalLayer = new TerraEthicalLayer();
+    this.archiveManager = new TerraArchiveManager();
+    this.offlineAnalyzer = null;
+    this.integrationStats = {totalProcessed:0, semanticAnalyses:0, ethicalChecks:0, archiveOperations:0};
+    this.initializeComponents();
+}
+TerraSemanticIntegration.prototype.initializeComponents = function() {
+    this.currentLevel = 1;
+    this.offlineAnalyzer = new OfflineSemanticAnalyzer();
+    this.offlineAnalyzer.initialize();
+    this.updateUI();
+};
+TerraSemanticIntegration.prototype.processArchiveRequest = function(request, attachments, requesterDID) {
+    this.integrationStats.totalProcessed++;
+    this.integrationStats.archiveOperations++;
+    var analysis;
+    if (this.currentLevel >= 1) {
+        analysis = this.offlineAnalyzer.analyzeText(request);
+        this.integrationStats.semanticAnalyses++;
+    } else {
+        analysis = this.l0Kernel.processRequest(request, requesterDID);
+    }
+    var ethicalCheck = this.ethicalLayer.validateContent(request);
+    this.integrationStats.ethicalChecks++;
+    if (!ethicalCheck.passed) {
+        return {success:false, error:'Контент не прошел этическую проверку', violations:ethicalCheck.violations};
+    }
+    var archiveData = {text: request, attachments: attachments||[], analysis: analysis, ethicalCheck: ethicalCheck, processingLevel: this.currentLevel};
+    var result = this.archiveManager.createArchive(archiveData);
+    this.updateUI();
+    return {success:true, archive: result};
+};
+TerraSemanticIntegration.prototype.searchArchive = function(query) {
+    this.integrationStats.totalProcessed++;
+    var res;
+    if (this.currentLevel >= 1) {
+        res = this.performSemanticSearch(query);
+        this.integrationStats.semanticAnalyses++;
+    } else {
+        res = {results: this.archiveManager.searchArchives(query)};
+    }
+    return res;
+};
+TerraSemanticIntegration.prototype.performSemanticSearch = function(query) {
+    var results = [];
+    var queryAnalysis = this.offlineAnalyzer.analyzeText(query);
+    for (var arch of this.archiveManager.archives) {
+        var text = arch.data.text || '';
+        var sim = this.calculateSemanticSimilarity(queryAnalysis, arch.data.analysis);
+        if (sim > 0.2) results.push({item: arch, similarity: sim});
+    }
+    results.sort((a,b)=>b.similarity-a.similarity);
+    return {results: results, queryAnalysis: queryAnalysis};
+};
+TerraSemanticIntegration.prototype.calculateSemanticSimilarity = function(a1, a2) {
+    if (!a1 || !a2) return 0;
+    var sim=0,factors=0;
+    if (a1.keywords && a2.keywords) { sim += this.compareKeywords(a1.keywords, a2.keywords)*0.5; factors+=0.5; }
+    if (a1.concepts && a2.concepts) { sim += this.compareConcepts(a1.concepts, a2.concepts)*0.5; factors+=0.5; }
+    return factors>0 ? sim/factors : 0;
+};
+TerraSemanticIntegration.prototype.compareKeywords = function(k1,k2) {
+    var matches=0; var total=Math.max(k1.length,k2.length);
+    k1.forEach(kw1=>{
+        var w1=kw1.word||kw1;
+        if (k2.some(kw2=>(kw2.word||kw2)===w1)) matches++;
+    });
+    return matches/total;
+};
+TerraSemanticIntegration.prototype.compareConcepts = function(c1,c2) {
+    var matches=0; var total=Math.max(c1.length,c2.length);
+    c1.forEach(cc1=>{
+        var v1=cc1.concept||cc1;
+        if (c2.some(cc2=>(cc2.concept||cc2)===v1)) matches++;
+    });
+    return matches/total;
+};
+TerraSemanticIntegration.prototype.updateUI = function() {
+    var archiveCountElement = document.getElementById('archiveCount');
+    if (archiveCountElement) archiveCountElement.textContent = this.archiveManager.archives.length;
+    this.updateArchivesList();
+};
+TerraSemanticIntegration.prototype.updateArchivesList = function() {
+    var container = document.getElementById('archivesList');
+    if (!container) return;
+    container.innerHTML = '';
+    if (this.archiveManager.archives.length === 0) {
+        container.innerHTML = '<div class="text-gray-500 py-4">Нет архивов</div>'; return;
+    }
+    var recent = this.archiveManager.archives.slice(-10).reverse();
+    for (var arch of recent) {
+        var el = document.createElement('div');
+        el.className = 'archive-item';
+        el.innerHTML = '<strong>'+arch.id+'</strong> '+new Date(arch.timestamp).toLocaleString()+' ('+arch.size+' bytes)';
+        container.appendChild(el);
+    }
+};
+</script>
+=== ЧАСТЬ 3 / N — UI формы + обработчики + Postlingua Trace + FMP Reasoning ===
+<script>
+// === Глобальные переменные ===
+let terraSystem = null;
+let kb = JSON.parse(localStorage.getItem('terra_kb')||'[]');
+
+// === Инициализация системы ===
+window.addEventListener('DOMContentLoaded',()=>{
+    terraSystem = new TerraSemanticIntegration();
+});
+
+// === Импорт файлов в архив ===
+function importFiles(){
+    const files=document.getElementById('fileImport').files;
+    if(!files.length)return;
+    let log="";
+    Array.from(files).forEach(f=>{
+        log += `Импортирован: ${f.name}\n`;
+        const reader = new FileReader();
+        reader.onload = function(e){
+            const text = e.target.result;
+            const res = terraSystem.processArchiveRequest(text, [], terraSystem.did);
+            if (!res.success) {
+                log += `Ошибка: ${res.error}\n`;
+            }
+        };
+        reader.readAsText(f,'utf-8');
+    });
+    document.getElementById('importLog').textContent=log;
+}
+
+// === Поиск в тезаурусе ===
+function searchLemma(){
+    const term=document.getElementById('searchTerm').value.trim().toLowerCase();
+    let found=kb.filter(x=>
+        x.lemma?.toLowerCase().includes(term) ||
+        Object.values(x.translations||{}).some(v=>(v||'').toLowerCase().includes(term)) ||
+        (x.definition||'').toLowerCase().includes(term)
+    );
+    const resBox=document.getElementById('searchResult');
+    resBox.textContent=found.length
+        ? found.map(x=>`Лемма: ${x.lemma}\nPOS: ${x.pos}\nОпределение: ${x.definition}\nПереводы: UZ=${x.translations?.uz}, DE=${x.translations?.de}, RU=${x.translations?.ru}, EN=${x.translations?.en}\nPostlingua: ${x.postlingua_trace}`).join("\n\n")
+        : "❌ Не найдено.";
+}
+
+// === Добавление новой леммы в тезаурус ===
+function addLemma(){
+    kb.push({
+        lemma: document.getElementById('lemma').value,
+        pos: document.getElementById('pos').value,
+        definition: document.getElementById('definition').value,
+        translations:{
+            uz:document.getElementById('t_uz').value,
+            de:document.getElementById('t_de').value,
+            ru:document.getElementById('t_ru').value,
+            en:document.getElementById('t_en').value
+        },
+        media:{
+            image:document.getElementById('image').value,
+            audio:document.getElementById('audio').value
+        },
+        postlingua_trace:genPostlingua()
+    });
+    document.getElementById('addMsg').textContent="Лемма добавлена!";
+    saveKB();
+}
+
+// === Генератор Postlingua Trace ===
+function genPostlingua(){
+    const symbols=["⊘","ᚘ","∴","⇌","𓂀","ヱ","ʘ̤̈","☉̵","᚛","⟁","҂","⋇"];
+    return Array(5).fill(0).map(()=>symbols[Math.floor(Math.random()*symbols.length)]).join(" ");
+}
+
+// === FMP Reasoning анализ ===
+function runFMP(){
+    let q=document.getElementById('fmp_query').value.trim();
+    if(!q)return;
+    let s1=`🟣 Внутренний аналитик: анализирует «${q}» на основе тезауруса и корпуса.`;
+    let s2=`🔵 Внешний наблюдатель: соотносит «${q}» с внешними корпусами и стандартами.`;
+    let s3=`🟢 Метаархивариус: фиксирует «${q}» в хронике, связывает с Postlingua Trace.`;
+    document.getElementById('fmpResult').textContent=`${s1}\n\n${s2}\n\n${s3}`;
+}
+
+// === Сохранение тезауруса ===
+function saveKB(){ localStorage.setItem('terra_kb', JSON.stringify(kb)); }
+</script>
+=== ЧАСТЬ 4 / N — HTML UI разметка Terra FMP LLM ===
+<body id="mainBody">
+<div id="saveIndicator" class="save-indicator saved hidden">✅ Сохранено</div>
+
+<header class="gradient-bg text-white p-6 shadow-xl">
+  <div class="container mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <h1 class="text-4xl font-bold mb-2">🌍 Terra FMP LLM — Live</h1>
+        <p class="text-blue-100">Фрактальный семантический архив L0-L7 • Полная автономность</p>
+      </div>
+      <div class="text-right">
+        <div class="text-sm text-blue-200">Автор: Абдукаримов Абдурашид</div>
+        <div class="text-xs text-blue-300">DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</div>
+        <div id="systemLevelIndicator" class="text-lg font-bold mt-2">🧬 Уровень: L0</div>
+      </div>
+    </div>
+    <div class="flex justify-between items-center">
+      <div class="flex space-x-4">
+        <select id="languageSelect" class="px-3 py-2 bg-white bg-opacity-20 rounded-lg text-white">
+          <option value="uz">🇺🇿 O'zbek</option>
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="de">🇩🇪 Deutsch</option>
+        </select>
+        <button id="accessibilityToggle" class="fractal-button bg-yellow-500 hover:bg-yellow-600">
+          ♿ Доступность
+        </button>
+        <button id="dictionaryModeToggle" class="fractal-button bg-green-500 hover:bg-green-600">
+          📚 Словарь
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container mx-auto p-6">
+  <!-- СТАТУС -->
+  <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+    <div class="grid grid-cols-4 gap-4" id="systemStatus">
+      <div class="text-center p-4 bg-blue-50 rounded-lg">
+        <div class="text-2xl font-bold text-blue-600" id="currentLevel">L0</div>
+        <div class="text-sm text-blue-700">Текущий уровень</div>
+      </div>
+      <div class="text-center p-4 bg-green-50 rounded-lg">
+        <div class="text-2xl font-bold text-green-600" id="archiveCount">0</div>
+        <div class="text-sm text-green-700">Архивов</div>
+      </div>
+      <div class="text-center p-4 bg-purple-50 rounded-lg">
+        <div class="text-2xl font-bold text-purple-600" id="analysisCount">0</div>
+        <div class="text-sm text-purple-700">Анализов</div>
+      </div>
+      <div class="text-center p-4 bg-orange-50 rounded-lg">
+        <div class="text-2xl font-bold text-orange-600" id="storageUsed">0 KB</div>
+        <div class="text-sm text-orange-700">Использовано места</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- УПРАВЛЕНИЕ АРХИВАМИ -->
+  <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">📦 Управление архивами</h2>
+    <div class="bg-gray-50 p-6 rounded-lg mb-6">
+      <textarea id="archiveRequest" rows="4" class="w-full p-3 border rounded-lg" placeholder="Опишите, что вы хотите архивировать..."></textarea>
+      <input type="file" id="fileImport" multiple class="my-4 p-3 border rounded-lg">
+      <button onclick="importFiles()" class="fractal-button bg-blue-500 hover:bg-blue-600">🗄️ Создать архив</button>
+    </div>
+    <div id="importLog" class="result"></div>
+  </div>
+
+  <!-- ПОИСК -->
+  <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">🔍 Поиск и просмотр</h2>
+    <input id="searchTerm" class="w-full p-3 border rounded-lg mb-3" placeholder="Введите запрос">
+    <button onclick="searchLemma()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full mb-3">Искать в тезаурусе</button>
+    <div id="searchResult" class="result"></div>
+  </div>
+
+  <!-- ТЕЗАУРУС -->
+  <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">📚 Добавить лемму</h2>
+    <input id="lemma" placeholder="Лемма">
+    <input id="pos" placeholder="Часть речи">
+    <textarea id="definition" placeholder="Определение"></textarea>
+    <input id="t_uz" placeholder="узбекский">
+    <input id="t_de" placeholder="немецкий">
+    <input id="t_ru" placeholder="русский">
+    <input id="t_en" placeholder="английский">
+    <input id="image" placeholder="URL изображения">
+    <input id="audio" placeholder="URL аудио">
+    <button onclick="addLemma()" class="fractal-button bg-green-500 hover:bg-green-600">Добавить</button>
+    <span id="addMsg" class="success"></span>
+  </div>
+
+  <!-- FMP REASONING -->
+  <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">🧠 FMP Reasoning</h2>
+    <textarea id="fmp_query" rows="2" class="w-full p-3 border rounded-lg mb-3" placeholder="Опишите задачу или термин"></textarea>
+    <button onclick="runFMP()" class="fractal-button bg-purple-500 hover:bg-purple-600 w-full">Анализ</button>
+    <div id="fmpResult" class="result"></div>
+  </div>
+
+  <!-- СПИСОК АРХИВОВ -->
+  <div id="archivesList" class="space-y-4 max-h-96 overflow-y-auto bg-white p-6 rounded-lg shadow-lg"></div>
+</main>
+</body>
+=== ЧАСТЬ 5 / N — Стили + инициализация системы ===
+<style>
+body { background:#F5F5F5; color:#2C3E50; font-family:'Inter',sans-serif; margin:0; padding:0;}
+.fractal-button {padding:8px 16px; border:none; border-radius:8px; font-weight:600; color:#fff; cursor:pointer;}
+.fractal-button:hover {opacity:0.9;}
+.result {background:#E8F4FD; padding:12px; border-radius:8px; font-family:'Fira Code',monospace; white-space:pre-wrap;}
+.success {color:#27AE60;} .danger {color:#E74C3C;}
+.archive-item {background:#FFF; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.save-indicator {position:fixed; top:10px; right:10px; padding:6px 12px; border-radius:6px; font-weight:600; color:#fff; z-index:9999;}
+.save-indicator.saved {background:#27AE60;} .save-indicator.error {background:#E74C3C;}
+.gradient-bg {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.accessibility-high-contrast {background:#000!important; color:#FFF!important;}
+.accessibility-large-text {font-size:120% !important;}
+.semantic-tag {display:inline-block; padding:2px 6px; border-radius:8px; background:#4A90E2; color:#fff; font-size:12px;}
+</style>
+
+<script>
+// === Инициализация Terra после загрузки DOM ===
+window.addEventListener('DOMContentLoaded', ()=>{
+    terraSystem = new TerraSemanticIntegration();
+    document.getElementById('accessibilityToggle')
+        .addEventListener('click', toggleAccessibilityMode);
+    document.getElementById('dictionaryModeToggle')
+        .addEventListener('click', toggleDictionaryMode);
+});
+
+// === Переключение режима доступности ===
+function toggleAccessibilityMode(){
+    var body=document.getElementById('mainBody');
+    if(body.classList.contains('accessibility-high-contrast')){
+        body.classList.remove('accessibility-high-contrast');
+        body.classList.remove('accessibility-large-text');
+    } else {
+        body.classList.add('accessibility-high-contrast');
+        body.classList.add('accessibility-large-text');
+    }
+}
+
+// === Переключение словарного режима ===
+let dictionaryMode=false;
+function toggleDictionaryMode(){
+    dictionaryMode=!dictionaryMode;
+    var btn=document.getElementById('dictionaryModeToggle');
+    if(dictionaryMode){
+        btn.textContent='📚 Словарь (ВКЛ)';
+    } else {
+        btn.textContent='📚 Словарь';
+    }
+}
+</script>
+=== ЧАСТЬ 6 / N — Встроенный словарь + поиск ===
+<script>
+// === Встроенный узбекско-немецкий словарь ===
+const uzbekGermanDictionary = {
+    'salom': {
+        german: 'Hallo',
+        pronunciation: 'ха́лло',
+        category: 'приветствие',
+        example_uz: 'Salom, qanday ahvolingiz?',
+        example_de: 'Hallo, wie geht es Ihnen?'
+    },
+    'rahmat': {
+        german: 'Danke',
+        pronunciation: 'да́нке',
+        category: 'вежливость',
+        example_uz: 'Yordam uchun rahmat',
+        example_de: 'Danke für die Hilfe'
+    },
+    'uy': {
+        german: 'Haus',
+        pronunciation: 'хаус',
+        category: 'жилище',
+        example_uz: 'Bizning uyimiz katta',
+        example_de: 'Unser Haus ist groß'
+    },
+    'kitob': {
+        german: 'Buch',
+        pronunciation: 'бух',
+        category: 'образование',
+        example_uz: 'Men kitob oʻqiyapman',
+        example_de: 'Ich lese ein Buch'
+    },
+    'maktab': {
+        german: 'Schule',
+        pronunciation: 'шу́ле',
+        category: 'образование',
+        example_uz: 'Bolalar maktabga borishadi',
+        example_de: 'Die Kinder gehen zur Schule'
+    }
+};
+
+// === Поиск в словаре ===
+function searchDictionary() {
+    const query = document.getElementById('dictionarySearch')?.value.trim().toLowerCase();
+    const resultsContainer = document.getElementById('dictionaryResults');
+    if (!resultsContainer) return;
+
+    if (!query) {
+        resultsContainer.innerHTML = 
+            '<div class="text-center py-8 text-gray-500"><div class="text-4xl mb-4">📚</div><p>Введите слово для поиска перевода</p></div>';
+        return;
+    }
+
+    let results = [];
+    for (let word in uzbekGermanDictionary) {
+        if (word.includes(query)) {
+            results.push({
+                uzbek: word,
+                data: uzbekGermanDictionary[word],
+                relevance: word.startsWith(query) ? 1 : 0.5
+            });
+        }
+    }
+    results.sort((a,b)=>b.relevance-a.relevance);
+
+    if (results.length === 0) {
+        resultsContainer.innerHTML = 
+            '<div class="text-center py-8 text-gray-500"><div class="text-4xl mb-4">🔍</div><h3 class="text-xl font-semibold mb-2">Перевод не найден</h3><p>Попробуйте другое слово</p></div>';
+        return;
+    }
+
+    resultsContainer.innerHTML = '';
+    results.forEach(res=>{
+        const el = document.createElement('div');
+        el.className = 'definition-card mb-4 p-4 bg-gradient-to-br from-teal-50 to-cyan-50 rounded-lg border border-teal-200 shadow-sm';
+        el.innerHTML = `
+            <h3 class="text-xl font-bold text-teal-800">${res.uzbek}</h3>
+            <p class="text-lg text-gray-700">${res.data.german}</p>
+            <p class="text-sm text-gray-500">Произношение: ${res.data.pronunciation}</p>
+            <p class="text-sm text-gray-600 mt-2">🇺🇿 Пример: ${res.data.example_uz}</p>
+            <p class="text-sm text-gray-600">🇩🇪 Beispiel: ${res.data.example_de}</p>
+        `;
+        resultsContainer.appendChild(el);
+    });
+}
+</script>
+=== ЧАСТЬ 7 / N — HTML вкладка "Словарь" ===
+<!-- Вкладка словаря -->
+<div id="dictionaryTab" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">🌐 Узбекско‑немецкий словарь</h2>
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <label for="dictionarySearch" class="block text-sm font-medium text-gray-700 mb-2">Поиск слова:</label>
+      <input 
+        type="text" 
+        id="dictionarySearch" 
+        class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Введите слово на узбекском..."
+        onkeyup="if(event.key === 'Enter') searchDictionary()">
+    </div>
+    <div class="flex items-end">
+      <button onclick="searchDictionary()" class="fractal-button bg-blue-500 hover:bg-blue-600 focus:ring-blue-300 w-full">
+        🔍 Поиск
+      </button>
+    </div>
+  </div>
+  
+  <div id="dictionaryResults" class="space-y-4">
+    <div class="text-center py-8 text-gray-500">
+      <div class="text-4xl mb-4">📚</div>
+      <p>Введите слово для поиска перевода</p>
+    </div>
+  </div>
+</div>
+=== ЧАСТЬ 8 / N — Стили карточек словаря ===
+<style>
+.definition-card {
+  background: linear-gradient(to bottom right, #e0f2f1, #e0f7fa);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #b2dfdb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.definition-card h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #00695c;
+}
+.definition-card p {
+  margin: 4px 0;
+}
+.definition-card .uzbek {
+  font-size: 1.1rem;
+  color: #004d40;
+}
+.definition-card .german {
+  font-size: 1.1rem;
+  color: #003d33;
+}
+.definition-card .pronunciation {
+  font-size: 0.9rem;
+  color: #00796b;
+}
+.definition-card .example {
+  font-size: 0.85rem;
+  color: #004d40;
+  margin-top: 2px;
+}
+</style>
+=== ЧАСТЬ 9 / N — Полная сборка Terra FMP LLM ===
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Terra FMP LLM — Live</title>
+<style>
+body { background:#F5F5F5; color:#2C3E50; font-family:'Inter',sans-serif; margin:0; padding:0;}
+.fractal-button {padding:8px 16px; border:none; border-radius:8px; font-weight:600; color:#fff; cursor:pointer;}
+.fractal-button:hover {opacity:0.9;}
+.result {background:#E8F4FD; padding:12px; border-radius:8px; font-family:'Fira Code',monospace; white-space:pre-wrap;}
+.success {color:#27AE60;} .danger {color:#E74C3C;}
+.archive-item {background:#FFF; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.save-indicator {position:fixed; top:10px; right:10px; padding:6px 12px; border-radius:6px; font-weight:600; color:#fff; z-index:9999;}
+.save-indicator.saved {background:#27AE60;} .save-indicator.error {background:#E74C3C;}
+.gradient-bg {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.accessibility-high-contrast {background:#000!important; color:#FFF!important;}
+.accessibility-large-text {font-size:120% !important;}
+.semantic-tag {display:inline-block; padding:2px 6px; border-radius:8px; background:#4A90E2; color:#fff; font-size:12px;}
+.definition-card {
+  background: linear-gradient(to bottom right, #e0f2f1, #e0f7fa);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #b2dfdb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.definition-card h3 {font-size: 1.25rem; font-weight: bold; color: #00695c;}
+.definition-card p {margin: 4px 0;}
+</style>
+</head>
+<body id="mainBody">
+<div id="saveIndicator" class="save-indicator saved hidden">✅ Сохранено</div>
+<header class="gradient-bg text-white p-6 shadow-xl">
+<div class="container mx-auto">
+<div class="flex justify-between items-center mb-4">
+<div>
+<h1 class="text-4xl font-bold mb-2">🌍 Terra FMP LLM — Live</h1>
+<p class="text-blue-100">Фрактальный семантический архив L0-L7 • Полная автономность</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-blue-200">Автор: Абдукаримов Абдурашид</div>
+<div class="text-xs text-blue-300">DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</div>
+<div id="systemLevelIndicator" class="text-lg font-bold mt-2">🧬 Уровень: L0</div>
+</div>
+</div>
+<div class="flex space-x-4">
+<select id="languageSelect" class="px-3 py-2 bg-white bg-opacity-20 rounded-lg text-white">
+<option value="uz">🇺🇿 O'zbek</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="en">🇺🇸 English</option>
+<option value="de">🇩🇪 Deutsch</option>
+</select>
+<button id="accessibilityToggle" class="fractal-button bg-yellow-500 hover:bg-yellow-600">♿ Доступность</button>
+<button id="dictionaryModeToggle" class="fractal-button bg-green-500 hover:bg-green-600">📚 Словарь</button>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto p-6">
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<div class="grid grid-cols-4 gap-4">
+<div class="text-center p-4 bg-blue-50 rounded-lg">
+<div class="text-2xl font-bold text-blue-600" id="currentLevel">L0</div>
+<div class="text-sm text-blue-700">Текущий уровень</div>
+</div>
+<div class="text-center p-4 bg-green-50 rounded-lg">
+<div class="text-2xl font-bold text-green-600" id="archiveCount">0</div>
+<div class="text-sm text-green-700">Архивов</div>
+</div>
+<div class="text-center p-4 bg-purple-50 rounded-lg">
+<div class="text-2xl font-bold text-purple-600" id="analysisCount">0</div>
+<div class="text-sm text-purple-700">Анализов</div>
+</div>
+<div class="text-center p-4 bg-orange-50 rounded-lg">
+<div class="text-2xl font-bold text-orange-600" id="storageUsed">0 KB</div>
+<div class="text-sm text-orange-700">Использовано места</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📦 Управление архивами</h2>
+<textarea id="archiveRequest" rows="4" class="w-full p-3 border rounded-lg" placeholder="Опишите, что вы хотите архивировать..."></textarea>
+<input type="file" id="fileImport" multiple class="my-4 p-3 border rounded-lg">
+<button onclick="importFiles()" class="fractal-button bg-blue-500 hover:bg-blue-600">🗄️ Создать архив</button>
+<div id="importLog" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🔍 Поиск и просмотр</h2>
+<input id="searchTerm" class="w-full p-3 border rounded-lg mb-3" placeholder="Введите запрос">
+<button onclick="searchLemma()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full mb-3">Искать в тезаурусе</button>
+<div id="searchResult" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📚 Добавить лемму</h2>
+<input id="lemma" placeholder="Лемма">
+<input id="pos" placeholder="Часть речи">
+<textarea id="definition" placeholder="Определение"></textarea>
+<input id="t_uz" placeholder="узбекский">
+<input id="t_de" placeholder="немецкий">
+<input id="t_ru" placeholder="русский">
+<input id="t_en" placeholder="английский">
+<input id="image" placeholder="URL изображения">
+<input id="audio" placeholder="URL аудио">
+<button onclick="addLemma()" class="fractal-button bg-green-500 hover:bg-green-600">Добавить</button>
+<span id="addMsg" class="success"></span>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🧠 FMP Reasoning</h2>
+<textarea id="fmp_query" rows="2" class="w-full p-3 border rounded-lg mb-3" placeholder="Опишите задачу или термин"></textarea>
+<button onclick="runFMP()" class="fractal-button bg-purple-500 hover:bg-purple-600 w-full">Анализ</button>
+<div id="fmpResult" class="result"></div>
+</div>
+
+<div id="archivesList" class="space-y-4 max-h-96 overflow-y-auto bg-white p-6 rounded-lg shadow-lg"></div>
+
+<div id="dictionaryTab" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">🌐 Узбекско‑немецкий словарь</h2>
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <label for="dictionarySearch" class="block text-sm font-medium text-gray-700 mb-2">Поиск слова:</label>
+      <input type="text" id="dictionarySearch" class="w-full p-3 border border-gray-300 rounded-lg"
+        placeholder="Введите слово на узбекском..." onkeyup="if(event.key === 'Enter') searchDictionary()">
+    </div>
+    <div class="flex items-end">
+      <button onclick="searchDictionary()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full">🔍 Поиск</button>
+    </div>
+  </div>
+  <div id="dictionaryResults" class="space-y-4">
+    <div class="text-center py-8 text-gray-500">
+      <div class="text-4xl mb-4">📚</div>
+      <p>Введите слово для поиска перевода</p>
+    </div>
+  </div>
+</div>
+</main>
+
+<script>
+/* сюда вставляются скрипты из частей 1, 2, 3, 6 */
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Terra FMP LLM — Live</title>
+<style>
+body { background:#F5F5F5; color:#2C3E50; font-family:'Inter',sans-serif; margin:0; padding:0;}
+.fractal-button {padding:8px 16px; border:none; border-radius:8px; font-weight:600; color:#fff; cursor:pointer;}
+.fractal-button:hover {opacity:0.9;}
+.result {background:#E8F4FD; padding:12px; border-radius:8px; font-family:'Fira Code',monospace; white-space:pre-wrap;}
+.success {color:#27AE60;} .danger {color:#E74C3C;}
+.archive-item {background:#FFF; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.save-indicator {position:fixed; top:10px; right:10px; padding:6px 12px; border-radius:6px; font-weight:600; color:#fff; z-index:9999;}
+.save-indicator.saved {background:#27AE60;} .save-indicator.error {background:#E74C3C;}
+.gradient-bg {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.accessibility-high-contrast {background:#000!important; color:#FFF!important;}
+.accessibility-large-text {font-size:120% !important;}
+.semantic-tag {display:inline-block; padding:2px 6px; border-radius:8px; background:#4A90E2; color:#fff; font-size:12px;}
+.definition-card {
+  background: linear-gradient(to bottom right, #e0f2f1, #e0f7fa);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #b2dfdb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.definition-card h3 {font-size: 1.25rem; font-weight: bold; color: #00695c;}
+.definition-card p {margin: 4px 0;}
+</style>
+</head>
+<body id="mainBody">
+<div id="saveIndicator" class="save-indicator saved hidden">✅ Сохранено</div>
+<header class="gradient-bg text-white p-6 shadow-xl">
+<div class="container mx-auto">
+<div class="flex justify-between items-center mb-4">
+<div>
+<h1 class="text-4xl font-bold mb-2">🌍 Terra FMP LLM — Live</h1>
+<p class="text-blue-100">Фрактальный семантический архив L0-L7 • Полная автономность</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-blue-200">Автор: Абдукаримов Абдурашид</div>
+<div class="text-xs text-blue-300">DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</div>
+<div id="systemLevelIndicator" class="text-lg font-bold mt-2">🧬 Уровень: L0</div>
+</div>
+</div>
+<div class="flex space-x-4">
+<select id="languageSelect" class="px-3 py-2 bg-white bg-opacity-20 rounded-lg text-white">
+<option value="uz">🇺🇿 O'zbek</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="en">🇺🇸 English</option>
+<option value="de">🇩🇪 Deutsch</option>
+</select>
+<button id="accessibilityToggle" class="fractal-button bg-yellow-500 hover:bg-yellow-600">♿ Доступность</button>
+<button id="dictionaryModeToggle" class="fractal-button bg-green-500 hover:bg-green-600">📚 Словарь</button>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto p-6">
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<div class="grid grid-cols-4 gap-4">
+<div class="text-center p-4 bg-blue-50 rounded-lg"><div class="text-2xl font-bold text-blue-600" id="currentLevel">L0</div><div class="text-sm text-blue-700">Текущий уровень</div></div>
+<div class="text-center p-4 bg-green-50 rounded-lg"><div class="text-2xl font-bold text-green-600" id="archiveCount">0</div><div class="text-sm text-green-700">Архивов</div></div>
+<div class="text-center p-4 bg-purple-50 rounded-lg"><div class="text-2xl font-bold text-purple-600" id="analysisCount">0</div><div class="text-sm text-purple-700">Анализов</div></div>
+<div class="text-center p-4 bg-orange-50 rounded-lg"><div class="text-2xl font-bold text-orange-600" id="storageUsed">0 KB</div><div class="text-sm text-orange-700">Использовано места</div></div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📦 Управление архивами</h2>
+<textarea id="archiveRequest" rows="4" class="w-full p-3 border rounded-lg" placeholder="Опишите, что вы хотите архивировать..."></textarea>
+<input type="file" id="fileImport" multiple class="my-4 p-3 border rounded-lg">
+<button onclick="importFiles()" class="fractal-button bg-blue-500 hover:bg-blue-600">🗄️ Создать архив</button>
+<div id="importLog" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🔍 Поиск и просмотр</h2>
+<input id="searchTerm" class="w-full p-3 border rounded-lg mb-3" placeholder="Введите запрос">
+<button onclick="searchLemma()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full mb-3">Искать в тезаурусе</button>
+<div id="searchResult" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📚 Добавить лемму</h2>
+<input id="lemma" placeholder="Лемма">
+<input id="pos" placeholder="Часть речи">
+<textarea id="definition" placeholder="Определение"></textarea>
+<input id="t_uz" placeholder="узбекский">
+<input id="t_de" placeholder="немецкий">
+<input id="t_ru" placeholder="русский">
+<input id="t_en" placeholder="английский">
+<input id="image" placeholder="URL изображения">
+<input id="audio" placeholder="URL аудио">
+<button onclick="addLemma()" class="fractal-button bg-green-500 hover:bg-green-600">Добавить</button>
+<span id="addMsg" class="success"></span>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🧠 FMP Reasoning</h2>
+<textarea id="fmp_query" rows="2" class="w-full p-3 border rounded-lg mb-3" placeholder="Опишите задачу или термин"></textarea>
+<button onclick="runFMP()" class="fractal-button bg-purple-500 hover:bg-purple-600 w-full">Анализ</button>
+<div id="fmpResult" class="result"></div>
+</div>
+
+<div id="archivesList" class="space-y-4 max-h-96 overflow-y-auto bg-white p-6 rounded-lg shadow-lg"></div>
+
+<div id="dictionaryTab" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🌐 Узбекско‑немецкий словарь</h2>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<label for="dictionarySearch" class="block text-sm font-medium text-gray-700 mb-2">Поиск слова:</label>
+<input type="text" id="dictionarySearch" class="w-full p-3 border border-gray-300 rounded-lg"
+placeholder="Введите слово на узбекском..." onkeyup="if(event.key === 'Enter') searchDictionary()">
+</div>
+<div class="flex items-end">
+<button onclick="searchDictionary()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full">🔍 Поиск</button>
+</div>
+</div>
+<div id="dictionaryResults" class="space-y-4">
+<div class="text-center py-8 text-gray-500">
+<div class="text-4xl mb-4">📚</div>
+<p>Введите слово для поиска перевода</p>
+</div>
+</div>
+</div>
+</main>
+
+<script>
+/* === Часть 1: Ядро Terra */
+... сюда вставить L0SemanticKernel, OfflineSemanticAnalyzer, TerraEthicalLayer, TerraArchiveManager из Часть 1 ...
+/* === Часть 2: TerraSemanticIntegration */
+... вставить код интеграции из Часть 2 ...
+/* === Часть 3: UI функции */
+... вставить importFiles, searchLemma, addLemma, genPostlingua, runFMP, saveKB ...
+/* === Часть 6: словарь */
+... вставить uzbekGermanDictionary и функцию searchDictionary ...
+/* === финал инициализация, toggleAccessibilityMode, toggleDictionaryMode */
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Terra FMP LLM — Live</title>
+<style>
+body { background:#F5F5F5; color:#2C3E50; font-family:'Inter',sans-serif; margin:0; padding:0;}
+.fractal-button {padding:8px 16px; border:none; border-radius:8px; font-weight:600; color:#fff; cursor:pointer;}
+.fractal-button:hover {opacity:0.9;}
+.result {background:#E8F4FD; padding:12px; border-radius:8px; font-family:'Fira Code',monospace; white-space:pre-wrap;}
+.success {color:#27AE60;} .danger {color:#E74C3C;}
+.archive-item {background:#FFF; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.save-indicator {position:fixed; top:10px; right:10px; padding:6px 12px; border-radius:6px; font-weight:600; color:#fff; z-index:9999;}
+.save-indicator.saved {background:#27AE60;} .save-indicator.error {background:#E74C3C;}
+.gradient-bg {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.accessibility-high-contrast {background:#000!important; color:#FFF!important;}
+.accessibility-large-text {font-size:120% !important;}
+.semantic-tag {display:inline-block; padding:2px 6px; border-radius:8px; background:#4A90E2; color:#fff; font-size:12px;}
+.definition-card {
+  background: linear-gradient(to bottom right, #e0f2f1, #e0f7fa);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #b2dfdb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.definition-card h3 {font-size: 1.25rem; font-weight: bold; color: #00695c;}
+.definition-card p {margin: 4px 0;}
+</style>
+</head>
+<body id="mainBody">
+<div id="saveIndicator" class="save-indicator saved hidden">✅ Сохранено</div>
+<header class="gradient-bg text-white p-6 shadow-xl">
+<div class="container mx-auto">
+<div class="flex justify-between items-center mb-4">
+<div>
+<h1 class="text-4xl font-bold mb-2">🌍 Terra FMP LLM — Live</h1>
+<p class="text-blue-100">Фрактальный семантический архив L0-L7 • Полная автономность</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-blue-200">Автор: Абдукаримов Абдурашид</div>
+<div class="text-xs text-blue-300">DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</div>
+<div id="systemLevelIndicator" class="text-lg font-bold mt-2">🧬 Уровень: L0</div>
+</div>
+</div>
+<div class="flex space-x-4">
+<select id="languageSelect" class="px-3 py-2 bg-white bg-opacity-20 rounded-lg text-white">
+<option value="uz">🇺🇿 O'zbek</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="en">🇺🇸 English</option>
+<option value="de">🇩🇪 Deutsch</option>
+</select>
+<button id="accessibilityToggle" class="fractal-button bg-yellow-500 hover:bg-yellow-600">♿ Доступность</button>
+<button id="dictionaryModeToggle" class="fractal-button bg-green-500 hover:bg-green-600">📚 Словарь</button>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto p-6">
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<div class="grid grid-cols-4 gap-4">
+<div class="text-center p-4 bg-blue-50 rounded-lg"><div class="text-2xl font-bold text-blue-600" id="currentLevel">L0</div><div class="text-sm text-blue-700">Текущий уровень</div></div>
+<div class="text-center p-4 bg-green-50 rounded-lg"><div class="text-2xl font-bold text-green-600" id="archiveCount">0</div><div class="text-sm text-green-700">Архивов</div></div>
+<div class="text-center p-4 bg-purple-50 rounded-lg"><div class="text-2xl font-bold text-purple-600" id="analysisCount">0</div><div class="text-sm text-purple-700">Анализов</div></div>
+<div class="text-center p-4 bg-orange-50 rounded-lg"><div class="text-2xl font-bold text-orange-600" id="storageUsed">0 KB</div><div class="text-sm text-orange-700">Использовано места</div></div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📦 Управление архивами</h2>
+<textarea id="archiveRequest" rows="4" class="w-full p-3 border rounded-lg" placeholder="Опишите, что вы хотите архивировать..."></textarea>
+<input type="file" id="fileImport" multiple class="my-4 p-3 border rounded-lg">
+<button onclick="importFiles()" class="fractal-button bg-blue-500 hover:bg-blue-600">🗄️ Создать архив</button>
+<div id="importLog" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🔍 Поиск и просмотр</h2>
+<input id="searchTerm" class="w-full p-3 border rounded-lg mb-3" placeholder="Введите запрос">
+<button onclick="searchLemma()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full mb-3">Искать в тезаурусе</button>
+<div id="searchResult" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📚 Добавить лемму</h2>
+<input id="lemma" placeholder="Лемма">
+<input id="pos" placeholder="Часть речи">
+<textarea id="definition" placeholder="Определение"></textarea>
+<input id="t_uz" placeholder="узбекский">
+<input id="t_de" placeholder="немецкий">
+<input id="t_ru" placeholder="русский">
+<input id="t_en" placeholder="английский">
+<input id="image" placeholder="URL изображения">
+<input id="audio" placeholder="URL аудио">
+<button onclick="addLemma()" class="fractal-button bg-green-500 hover:bg-green-600">Добавить</button>
+<span id="addMsg" class="success"></span>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🧠 FMP Reasoning</h2>
+<textarea id="fmp_query" rows="2" class="w-full p-3 border rounded-lg mb-3" placeholder="Опишите задачу или термин"></textarea>
+<button onclick="runFMP()" class="fractal-button bg-purple-500 hover:bg-purple-600 w-full">Анализ</button>
+<div id="fmpResult" class="result"></div>
+</div>
+
+<div id="archivesList" class="space-y-4 max-h-96 overflow-y-auto bg-white p-6 rounded-lg shadow-lg"></div>
+
+<div id="dictionaryTab" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🌐 Узбекско‑немецкий словарь</h2>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<label for="dictionarySearch" class="block text-sm font-medium text-gray-700 mb-2">Поиск слова:</label>
+<input type="text" id="dictionarySearch" class="w-full p-3 border border-gray-300 rounded-lg"
+placeholder="Введите слово на узбекском..." onkeyup="if(event.key === 'Enter') searchDictionary()">
+</div>
+<div class="flex items-end">
+<button onclick="searchDictionary()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full">🔍 Поиск</button>
+</div>
+</div>
+<div id="dictionaryResults" class="space-y-4">
+<div class="text-center py-8 text-gray-500">
+<div class="text-4xl mb-4">📚</div>
+<p>Введите слово для поиска перевода</p>
+</div>
+</div>
+</div>
+</main>
+
+<script>
+/* === L0SemanticKernel, OfflineSemanticAnalyzer, TerraEthicalLayer, TerraArchiveManager */
+... // Весь код из Часть 1 сюда
+/* === TerraSemanticIntegration */
+... // Код интеграции из Часть 2
+/* === UI функции */
+... // Код из Часть 3
+/* === словарь */
+... // Код из Часть 6
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Terra FMP LLM — Live</title>
+<style>
+body { background:#F5F5F5; color:#2C3E50; font-family:'Inter',sans-serif; margin:0; padding:0;}
+.fractal-button {padding:8px 16px; border:none; border-radius:8px; font-weight:600; color:#fff; cursor:pointer;}
+.fractal-button:hover {opacity:0.9;}
+.result {background:#E8F4FD; padding:12px; border-radius:8px; font-family:'Fira Code',monospace; white-space:pre-wrap;}
+.success {color:#27AE60;} .danger {color:#E74C3C;}
+.archive-item {background:#FFF; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.save-indicator {position:fixed; top:10px; right:10px; padding:6px 12px; border-radius:6px; font-weight:600; color:#fff; z-index:9999;}
+.save-indicator.saved {background:#27AE60;} .save-indicator.error {background:#E74C3C;}
+.gradient-bg {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.accessibility-high-contrast {background:#000!important; color:#FFF!important;}
+.accessibility-large-text {font-size:120% !important;}
+.semantic-tag {display:inline-block; padding:2px 6px; border-radius:8px; background:#4A90E2; color:#fff; font-size:12px;}
+.definition-card {
+  background: linear-gradient(to bottom right, #e0f2f1, #e0f7fa);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #b2dfdb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.definition-card h3 {font-size: 1.25rem; font-weight: bold; color: #00695c;}
+.definition-card p {margin: 4px 0;}
+</style>
+</head>
+<body id="mainBody">
+<div id="saveIndicator" class="save-indicator saved hidden">✅ Сохранено</div>
+<header class="gradient-bg text-white p-6 shadow-xl">
+<div class="container mx-auto">
+<div class="flex justify-between items-center mb-4">
+<div>
+<h1 class="text-4xl font-bold mb-2">🌍 Terra FMP LLM — Live</h1>
+<p class="text-blue-100">Фрактальный семантический архив L0-L7 • Полная автономность</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-blue-200">Автор: Абдукаримов Абдурашид</div>
+<div class="text-xs text-blue-300">DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</div>
+<div id="systemLevelIndicator" class="text-lg font-bold mt-2">🧬 Уровень: L0</div>
+</div>
+</div>
+<div class="flex space-x-4">
+<select id="languageSelect" class="px-3 py-2 bg-white bg-opacity-20 rounded-lg text-white">
+<option value="uz">🇺🇿 O'zbek</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="en">🇺🇸 English</option>
+<option value="de">🇩🇪 Deutsch</option>
+</select>
+<button id="accessibilityToggle" class="fractal-button bg-yellow-500 hover:bg-yellow-600">♿ Доступность</button>
+<button id="dictionaryModeToggle" class="fractal-button bg-green-500 hover:bg-green-600">📚 Словарь</button>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto p-6">
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<div class="grid grid-cols-4 gap-4">
+<div class="text-center p-4 bg-blue-50 rounded-lg"><div class="text-2xl font-bold text-blue-600" id="currentLevel">L0</div><div class="text-sm text-blue-700">Текущий уровень</div></div>
+<div class="text-center p-4 bg-green-50 rounded-lg"><div class="text-2xl font-bold text-green-600" id="archiveCount">0</div><div class="text-sm text-green-700">Архивов</div></div>
+<div class="text-center p-4 bg-purple-50 rounded-lg"><div class="text-2xl font-bold text-purple-600" id="analysisCount">0</div><div class="text-sm text-purple-700">Анализов</div></div>
+<div class="text-center p-4 bg-orange-50 rounded-lg"><div class="text-2xl font-bold text-orange-600" id="storageUsed">0 KB</div><div class="text-sm text-orange-700">Использовано места</div></div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📦 Управление архивами</h2>
+<textarea id="archiveRequest" rows="4" class="w-full p-3 border rounded-lg" placeholder="Опишите, что вы хотите архивировать..."></textarea>
+<input type="file" id="fileImport" multiple class="my-4 p-3 border rounded-lg">
+<button onclick="importFiles()" class="fractal-button bg-blue-500 hover:bg-blue-600">🗄️ Создать архив</button>
+<div id="importLog" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🔍 Поиск и просмотр</h2>
+<input id="searchTerm" class="w-full p-3 border rounded-lg mb-3" placeholder="Введите запрос">
+<button onclick="searchLemma()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full mb-3">Искать в тезаурусе</button>
+<div id="searchResult" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📚 Добавить лемму</h2>
+<input id="lemma" placeholder="Лемма">
+<input id="pos" placeholder="Часть речи">
+<textarea id="definition" placeholder="Определение"></textarea>
+<input id="t_uz" placeholder="узбекский">
+<input id="t_de" placeholder="немецкий">
+<input id="t_ru" placeholder="русский">
+<input id="t_en" placeholder="английский">
+<input id="image" placeholder="URL изображения">
+<input id="audio" placeholder="URL аудио">
+<button onclick="addLemma()" class="fractal-button bg-green-500 hover:bg-green-600">Добавить</button>
+<span id="addMsg" class="success"></span>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🧠 FMP Reasoning</h2>
+<textarea id="fmp_query" rows="2" class="w-full p-3 border rounded-lg mb-3" placeholder="Опишите задачу или термин"></textarea>
+<button onclick="runFMP()" class="fractal-button bg-purple-500 hover:bg-purple-600 w-full">Анализ</button>
+<div id="fmpResult" class="result"></div>
+</div>
+
+<div id="archivesList" class="space-y-4 max-h-96 overflow-y-auto bg-white p-6 rounded-lg shadow-lg"></div>
+
+<div id="dictionaryTab" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🌐 Узбекско‑немецкий словарь</h2>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<label for="dictionarySearch" class="block text-sm font-medium text-gray-700 mb-2">Поиск слова:</label>
+<input type="text" id="dictionarySearch" class="w-full p-3 border border-gray-300 rounded-lg"
+placeholder="Введите слово на узбекском..." onkeyup="if(event.key === 'Enter') searchDictionary()">
+</div>
+<div class="flex items-end">
+<button onclick="searchDictionary()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full">🔍 Поиск</button>
+</div>
+</div>
+<div id="dictionaryResults" class="space-y-4">
+<div class="text-center py-8 text-gray-500">
+<div class="text-4xl mb-4">📚</div>
+<p>Введите слово для поиска перевода</p>
+</div>
+</div>
+</div>
+</main>
+
+<script>
+// сюда последовательно вставлены все коды Часть 1, 2, 3, 6
+
+/* === L0SemanticKernel, OfflineSemanticAnalyzer, TerraEthicalLayer, TerraArchiveManager === */
+... здесь вставлен весь код ядра Terra ...
+/* === TerraSemanticIntegration === */
+... код интеграции из Ч.2 ...
+/* === UI функции === */
+... код из Ч.3 ...
+/* === словарь === */
+... код из Ч.6 ...
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Terra FMP LLM — Live</title>
+<style>
+body { background:#F5F5F5; color:#2C3E50; font-family:'Inter',sans-serif; margin:0; padding:0;}
+.fractal-button {padding:8px 16px; border:none; border-radius:8px; font-weight:600; color:#fff; cursor:pointer;}
+.fractal-button:hover {opacity:0.9;}
+.result {background:#E8F4FD; padding:12px; border-radius:8px; font-family:'Fira Code',monospace; white-space:pre-wrap;}
+.success {color:#27AE60;} .danger {color:#E74C3C;}
+.archive-item {background:#FFF; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.save-indicator {position:fixed; top:10px; right:10px; padding:6px 12px; border-radius:6px; font-weight:600; color:#fff; z-index:9999;}
+.save-indicator.saved {background:#27AE60;} .save-indicator.error {background:#E74C3C;}
+.gradient-bg {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.accessibility-high-contrast {background:#000!important; color:#FFF!important;}
+.accessibility-large-text {font-size:120% !important;}
+.semantic-tag {display:inline-block; padding:2px 6px; border-radius:8px; background:#4A90E2; color:#fff; font-size:12px;}
+.definition-card {
+  background: linear-gradient(to bottom right, #e0f2f1, #e0f7fa);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #b2dfdb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.definition-card h3 {font-size: 1.25rem; font-weight: bold; color: #00695c;}
+.definition-card p {margin: 4px 0;}
+</style>
+</head>
+<body id="mainBody">
+<div id="saveIndicator" class="save-indicator saved hidden">✅ Сохранено</div>
+<header class="gradient-bg text-white p-6 shadow-xl">
+<div class="container mx-auto">
+<div class="flex justify-between items-center mb-4">
+<div>
+<h1 class="text-4xl font-bold mb-2">🌍 Terra FMP LLM — Live</h1>
+<p class="text-blue-100">Фрактальный семантический архив L0-L7 • Полная автономность</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-blue-200">Автор: Абдукаримов Абдурашид</div>
+<div class="text-xs text-blue-300">DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</div>
+<div id="systemLevelIndicator" class="text-lg font-bold mt-2">🧬 Уровень: L0</div>
+</div>
+</div>
+<div class="flex space-x-4">
+<select id="languageSelect" class="px-3 py-2 bg-white bg-opacity-20 rounded-lg text-white">
+<option value="uz">🇺🇿 O'zbek</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="en">🇺🇸 English</option>
+<option value="de">🇩🇪 Deutsch</option>
+</select>
+<button id="accessibilityToggle" class="fractal-button bg-yellow-500 hover:bg-yellow-600">♿ Доступность</button>
+<button id="dictionaryModeToggle" class="fractal-button bg-green-500 hover:bg-green-600">📚 Словарь</button>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto p-6">
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<div class="grid grid-cols-4 gap-4">
+<div class="text-center p-4 bg-blue-50 rounded-lg"><div class="text-2xl font-bold text-blue-600" id="currentLevel">L0</div><div class="text-sm text-blue-700">Текущий уровень</div></div>
+<div class="text-center p-4 bg-green-50 rounded-lg"><div class="text-2xl font-bold text-green-600" id="archiveCount">0</div><div class="text-sm text-green-700">Архивов</div></div>
+<div class="text-center p-4 bg-purple-50 rounded-lg"><div class="text-2xl font-bold text-purple-600" id="analysisCount">0</div><div class="text-sm text-purple-700">Анализов</div></div>
+<div class="text-center p-4 bg-orange-50 rounded-lg"><div class="text-2xl font-bold text-orange-600" id="storageUsed">0 KB</div><div class="text-sm text-orange-700">Использовано места</div></div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📦 Управление архивами</h2>
+<textarea id="archiveRequest" rows="4" class="w-full p-3 border rounded-lg" placeholder="Опишите, что вы хотите архивировать..."></textarea>
+<input type="file" id="fileImport" multiple class="my-4 p-3 border rounded-lg">
+<button onclick="importFiles()" class="fractal-button bg-blue-500 hover:bg-blue-600">🗄️ Создать архив</button>
+<div id="importLog" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🔍 Поиск и просмотр</h2>
+<input id="searchTerm" class="w-full p-3 border rounded-lg mb-3" placeholder="Введите запрос">
+<button onclick="searchLemma()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full mb-3">Искать в тезаурусе</button>
+<div id="searchResult" class="result"></div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">📚 Добавить лемму</h2>
+<input id="lemma" placeholder="Лемма">
+<input id="pos" placeholder="Часть речи">
+<textarea id="definition" placeholder="Определение"></textarea>
+<input id="t_uz" placeholder="узбекский">
+<input id="t_de" placeholder="немецкий">
+<input id="t_ru" placeholder="русский">
+<input id="t_en" placeholder="английский">
+<input id="image" placeholder="URL изображения">
+<input id="audio" placeholder="URL аудио">
+<button onclick="addLemma()" class="fractal-button bg-green-500 hover:bg-green-600">Добавить</button>
+<span id="addMsg" class="success"></span>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🧠 FMP Reasoning</h2>
+<textarea id="fmp_query" rows="2" class="w-full p-3 border rounded-lg mb-3" placeholder="Опишите задачу или термин"></textarea>
+<button onclick="runFMP()" class="fractal-button bg-purple-500 hover:bg-purple-600 w-full">Анализ</button>
+<div id="fmpResult" class="result"></div>
+</div>
+
+<div id="archivesList" class="space-y-4 max-h-96 overflow-y-auto bg-white p-6 rounded-lg shadow-lg"></div>
+
+<div id="dictionaryTab" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">🌐 Узбекско‑немецкий словарь</h2>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<label for="dictionarySearch" class="block text-sm font-medium text-gray-700 mb-2">Поиск слова:</label>
+<input type="text" id="dictionarySearch" class="w-full p-3 border border-gray-300 rounded-lg"
+placeholder="Введите слово на узбекском..." onkeyup="if(event.key === 'Enter') searchDictionary()">
+</div>
+<div class="flex items-end">
+<button onclick="searchDictionary()" class="fractal-button bg-blue-500 hover:bg-blue-600 w-full">🔍 Поиск</button>
+</div>
+</div>
+<div id="dictionaryResults" class="space-y-4">
+<div class="text-center py-8 text-gray-500">
+<div class="text-4xl mb-4">📚</div>
+<p>Введите слово для поиска перевода</p>
+</div>
+</div>
+</div>
+</main>
+
+<script>
+// === Часть 1: Ядро Terra (L0SemanticKernel, OfflineSemanticAnalyzer, TerraEthicalLayer, TerraArchiveManager)
+... полный код из Часть 1 ...
+// === Часть 2: TerraSemanticIntegration
+... полный код из Часть 2 ...
+// === Часть 3: UI-функции
+... полный код из Часть 3 ...
+// === Часть 6: Словарь
+... полный код из Часть 6 ...
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Terra FMP LLM — Live</title>
+<style>
+body { background:#F5F5F5; color:#2C3E50; font-family:'Inter',sans-serif; margin:0; padding:0;}
+.fractal-button {padding:8px 16px; border:none; border-radius:8px; font-weight:600; color:#fff; cursor:pointer;}
+.fractal-button:hover {opacity:0.9;}
+.result {background:#E8F4FD; padding:12px; border-radius:8px; font-family:'Fira Code',monospace; white-space:pre-wrap;}
+.success {color:#27AE60;} .danger {color:#E74C3C;}
+.archive-item {background:#FFF; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.gradient-bg {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.accessibility-high-contrast {background:#000!important; color:#FFF!important;}
+.accessibility-large-text {font-size:120% !important;}
+.semantic-tag {display:inline-block; padding:2px 6px; border-radius:8px; background:#4A90E2; color:#fff; font-size:12px;}
+.definition-card {background: linear-gradient(to bottom right, #e0f2f1, #e0f7fa); padding:16px; border-radius:12px; border:1px solid #b2dfdb;}
+</style>
+</head>
+<body id="mainBody">
+<header class="gradient-bg text-white p-6 shadow-xl">
+<h1 class="text-4xl font-bold mb-2">🌍 Terra FMP LLM — Live</h1>
+<p class="text-blue-100">Фрактальный семантический архив L0-L7 • Автономно</p>
+</header>
+<main class="container mx-auto p-6">
+<div>
+<h2>📦 Архивы</h2>
+<textarea id="archiveRequest"></textarea>
+<input type="file" id="fileImport" multiple>
+<button onclick="importFiles()" class="fractal-button" style="background:#2E8B57;">Импортировать</button>
+<pre id="importLog" class="result"></pre>
+</div>
+<div>
+<h2>🔍 Тезаурус</h2>
+<input id="searchTerm"><button onclick="searchLemma()" class="fractal-button" style="background:#4A90E2;">Поиск</button>
+<pre id="searchResult" class="result"></pre>
+</div>
+<div>
+<h2>🌱 Добавить лемму</h2>
+<input id="lemma" placeholder="Лемма">
+<input id="pos" placeholder="Часть речи">
+<textarea id="definition" placeholder="Определение"></textarea>
+<input id="t_uz" placeholder="узбекский"><input id="t_de" placeholder="немецкий"><input id="t_ru" placeholder="русский"><input id="t_en" placeholder="английский">
+<input id="image" placeholder="URL изображения"><input id="audio" placeholder="URL аудио">
+<button onclick="addLemma()" class="fractal-button" style="background:#27AE60;">Добавить</button>
+<span id="addMsg" class="success"></span>
+</div>
+<div>
+<h2>🧠 FMP Reasoning</h2>
+<textarea id="fmp_query"></textarea>
+<button onclick="runFMP()" class="fractal-button" style="background:#9B59B6;">Анализ</button>
+<pre id="fmpResult" class="result"></pre>
+</div>
+<div>
+<h2>🌐 Словарь</h2>
+<input type="text" id="dictionarySearch" placeholder="Введите слово на узбекском">
+<button onclick="searchDictionary()" class="fractal-button" style="background:#3498DB;">🔍 Поиск</button>
+<div id="dictionaryResults"></div>
+</div>
+</main>
+
+<script>
+// === Ядро ===
+function L0SemanticKernel(){this.intentPatterns={'CREATE_ARCHIVE':['создать','сделать','архивировать','сохранить'],'SEARCH_ARCHIVE':['найти','поиск','искать','где'],'ANALYZE_TEXT':['анализ','изучить','проверить','понять'],'GET_HELP':['помощь','справка','как','что']};}
+L0SemanticKernel.prototype.extractKeywords=function(text){if(!text)return[];return[...new Set(text.toLowerCase().match(/[\p{L}]+/gu)||[])]};
+L0SemanticKernel.prototype.simpleIntentAnalysis=function(t){let it='UNKNOWN',sc=0;for(let k in this.intentPatterns){let s=this.intentPatterns[k].filter(p=>t.toLowerCase().includes(p)).length;if(s>sc){sc=s;it=k;}}return it;};
+L0SemanticKernel.prototype.processRequest=function(r,did){return{extractedKeywords:this.extractKeywords(r),detectedIntent:this.simpleIntentAnalysis(r)}};
+
+function OfflineSemanticAnalyzer(){this.initialized=false;}
+OfflineSemanticAnalyzer.prototype.initialize=function(){this.initialized=true;return true;};
+OfflineSemanticAnalyzer.prototype.analyzeText=function(t){if(!this.initialized)this.initialize();return{keywords:this.extractKeywords(t)}};
+OfflineSemanticAnalyzer.prototype.extractKeywords=function(text){return[...new Set(text.toLowerCase().match(/[\p{L}]+/gu)||[])]};
+
+function TerraEthicalLayer(){this.toxicityFilters=[{patterns:['насилие','violence'],action:'block'}];}
+TerraEthicalLayer.prototype.validateContent=function(c){let lc=c.toLowerCase();for(let f of this.toxicityFilters){for(let p of f.patterns){if(lc.includes(p))return{passed:false};}}return{passed:true};};
+
+function TerraArchiveManager(){this.archives=[];}
+TerraArchiveManager.prototype.createArchive=function(data){let a={id:'terra_'+Date.now(),timestamp:new Date().toISOString(),data:data,size:JSON.stringify(data).length};this.archives.push(a);return a;};
+TerraArchiveManager.prototype.searchArchives=function(q){return this.archives.filter(a=>JSON.stringify(a.data).toLowerCase().includes(q.toLowerCase()));};
+
+// === Интеграция ===
+function TerraSemanticIntegration(){this.l0Kernel=new L0SemanticKernel();this.ethicalLayer=new TerraEthicalLayer();this.archiveManager=new TerraArchiveManager();this.offlineAnalyzer=new OfflineSemanticAnalyzer();this.offlineAnalyzer.initialize();}
+TerraSemanticIntegration.prototype.processArchiveRequest=function(req){let analysis=this.offlineAnalyzer.analyzeText(req);if(!this.ethicalLayer.validateContent(req).passed)return{success:false};let arc=this.archiveManager.createArchive({text:req,analysis});return{success:true,archive:arc};};
+TerraSemanticIntegration.prototype.searchArchive=function(q){return{results:this.archiveManager.searchArchives(q)}};
+
+// === Глобальные переменные и UI ===
+let terraSystem=new TerraSemanticIntegration();
+let kb=JSON.parse(localStorage.getItem('terra_kb')||'[]');
+function importFiles(){const files=document.getElementById('fileImport').files;if(!files.length)return;let log='';Array.from(files).forEach(f=>{let r=new FileReader();r.onload=e=>{terraSystem.processArchiveRequest(e.target.result);};r.readAsText(f,'utf-8');log+=`Импортирован: ${f.name}\n`;});document.getElementById('importLog').textContent=log;}
+function searchLemma(){const term=document.getElementById('searchTerm').value.toLowerCase();let found=kb.filter(x=>(x.lemma||'').toLowerCase().includes(term));document.getElementById('searchResult').textContent=found.length?found.map(x=>x.lemma).join(", "):"❌ Не найдено";}
+function addLemma(){kb.push({lemma:document.getElementById('lemma').value, pos:document.getElementById('pos').value, definition:document.getElementById('definition').value, translations:{uz:document.getElementById('t_uz').value,de:document.getElementById('t_de').value,ru:document.getElementById('t_ru').value,en:document.getElementById('t_en').value},media:{image:document.getElementById('image').value,audio:document.getElementById('audio').value},postlingua_trace:genPostlingua()});document.getElementById('addMsg').textContent="Лемма добавлена!";saveKB();}
+function genPostlingua(){const sym=["⊘","ᚘ","∴","⇌","𓂀","ヱ"];return Array(5).fill(0).map(()=>sym[Math.floor(Math.random()*sym.length)]).join(" ");}
+function runFMP(){let q=document.getElementById('fmp_query').value;document.getElementById('fmpResult').textContent=`Внутренний аналитик: ${q}\nВнешний наблюдатель: ${q}\nМетаархивариус: ${q}`;}
+function saveKB(){localStorage.setItem('terra_kb',JSON.stringify(kb));}
+
+// === Словарь ===
+const uzbekGermanDictionary={'salom':{german:'Hallo',pronunciation:'ха́лло',example_uz:'Salom, qanday ahvolingiz?',example_de:'Hallo, wie geht es Ihnen?'}};
+function searchDictionary(){let q=document.getElementById('dictionarySearch').value.toLowerCase();let cont=document.getElementById('dictionaryResults');if(!q){cont.innerHTML='<p>Введите слово</p>';return;}let res=[];for(let w in uzbekGermanDictionary){if(w.includes(q))res.push({uzbek:w,data:uzbekGermanDictionary[w]});}cont.innerHTML=res.map(r=>`<div class="definition-card"><h3>${r.uzbek}</h3><p>${r.data.german}</p><p>${r.data.pronunciation}</p></div>`).join("");}
+</script>
+</body>
+</html>

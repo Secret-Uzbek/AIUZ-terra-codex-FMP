@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERRA Unified System - Интегрированная платформа</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .component-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .component-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .active-component {
+            border: 2px solid #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .fractal-pattern {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+        }
+        
+        .processing-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        
+        .toxicity-bar {
+            transition: width 0.5s ease;
+        }
+        
+        .quantum-glow {
+            box-shadow: 0 0 30px rgba(147, 51, 234, 0.3);
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen p-4">
+        <!-- Главный заголовок TERRA -->
+        <header class="text-center mb-8">
+            <div class="inline-flex items-center space-x-4 p-6 bg-white bg-opacity-20 rounded-2xl backdrop-filter backdrop-blur-lg">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center quantum-glow">
+                    <span class="text-white font-bold text-2xl">🧬</span>
+                </div>
+                <div class="text-left">
+                    <h1 class="text-4xl font-bold text-white mb-2">TERRA Unified System</h1>
+                    <p class="text-blue-100">Интегрированная платформа на основе принципов Фрактальной Метанауки</p>
+                    <div class="flex space-x-4 mt-2 text-sm">
+                        <span class="bg-blue-500 bg-opacity-30 px-3 py-1 rounded-full text-white">🇺🇿 Узбекистан</span>
+                        <span class="bg-green-500 bg-opacity-30 px-3 py-1 rounded-full text-white">♿ Универсально доступно</span>
+                        <span class="bg-purple-500 bg-opacity-30 px-3 py-1 rounded-full text-white">🧬 FMP Powered</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto">
+            <!-- Панель управления системой -->
+            <div class="mb-8 bg-white bg-opacity-20 rounded-2xl backdrop-filter backdrop-blur-lg p-6">
+                <div class="flex flex-wrap justify-between items-center gap-4">
+                    <div class="flex space-x-3">
+                        <button onclick="switchComponent('detox')" id="btn-detox" class="px-6 py-3 bg-red-500 bg-opacity-30 text-white rounded-xl hover:bg-opacity-50 transition-all component-btn">
+                            🧹 Detox Engine
+                        </button>
+                        <button onclick="switchComponent('fmp')" id="btn-fmp" class="px-6 py-3 bg-blue-500 bg-opacity-30 text-white rounded-xl hover:bg-opacity-50 transition-all component-btn">
+                            🧬 FMP Engine
+                        </button>
+                        <button onclick="switchComponent('integration')" id="btn-integration" class="px-6 py-3 bg-purple-500 bg-opacity-30 text-white rounded-xl hover:bg-opacity-50 transition-all component-btn active">
+                            ⚡ Integration
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <div class="text-white text-sm">
+                            <span>Уровень системы:</span>
+                            <select id="systemLevel" onchange="updateSystemLevel()" class="ml-2 bg-white bg-opacity-20 text-white border-0 rounded px-3 py-1">
+                                <option value="L0">L0 - Базовый</option>
+                                <option value="L1">L1 - Расширенный</option>
+                                <option value="L2">L2 - Продвинутый</option>
+                                <option value="L3" selected>L3 - Экспертный</option>
+                            </select>
+                        </div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-green-200 text-sm">Система активна</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Контейнеры для компонентов -->
+            <div class="space-y-6">
+                
+                <!-- TERRA Detox Engine -->
+                <div id="detox-component" class="component-section hidden">
+                    <div class="bg-white bg-opacity-20 rounded-2xl backdrop-filter backdrop-blur-lg p-6">
+                        <h2 class="text-2xl font-bold text-white mb-6">🧹 TERRA Detox Engine</h2>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div class="lg:col-span-2 space-y-6">
+                                <!-- Настройки детоксификации -->
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">Уровень детоксификации:</h3>
+                                    <div class="flex space-x-2">
+                                        <button onclick="setDetoxLevel('L0')" class="detox-level-btn px-4 py-2 bg-gray-500 bg-opacity-30 text-white rounded-lg">L0</button>
+                                        <button onclick="setDetoxLevel('L1')" class="detox-level-btn px-4 py-2 bg-yellow-500 bg-opacity-30 text-white rounded-lg">L1</button>
+                                        <button onclick="setDetoxLevel('L2')" class="detox-level-btn px-4 py-2 bg-orange-500 bg-opacity-30 text-white rounded-lg">L2</button>
+                                        <button onclick="setDetoxLevel('L3')" class="detox-level-btn px-4 py-2 bg-red-500 bg-opacity-30 text-white rounded-lg active">L3</button>
+                                    </div>
+                                </div>
+
+                                <!-- Ввод текста -->
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <textarea id="detoxInput" placeholder="Вставьте текст для анализа на токсичные паттерны ИИ..." 
+                                             class="w-full h-32 bg-white bg-opacity-20 text-white placeholder-gray-300 border-0 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 resize-none"></textarea>
+                                    
+                                    <div class="flex justify-between items-center mt-4">
+                                        <span class="text-gray-200 text-sm">Символов: <span id="charCount">0</span></span>
+                                        <div class="space-x-2">
+                                            <button onclick="clearDetox()" class="px-4 py-2 bg-gray-500 bg-opacity-30 text-white rounded-lg hover:bg-opacity-50">Очистить</button>
+                                            <button onclick="runDetox()" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Детоксифицировать</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Результаты детоксификации -->
+                                <div id="detoxResults" class="bg-white bg-opacity-30 rounded-xl p-4 hidden">
+                                    <h3 class="text-white font-semibold mb-4">Результаты анализа:</h3>
+                                    
+                                    <div class="mb-4">
+                                        <div class="flex justify-between text-white text-sm mb-2">
+                                            <span>Уровень токсичности:</span>
+                                            <span id="toxicityScore">0%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-600 rounded-full h-2">
+                                            <div id="toxicityBar" class="toxicity-bar h-2 rounded-full bg-green-500" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="detectedPatterns" class="space-y-2 mb-4"></div>
+                                    
+                                    <div class="bg-black bg-opacity-20 rounded-lg p-3">
+                                        <h4 class="text-white text-sm font-medium mb-2">Очищенный текст:</h4>
+                                        <div id="cleanedText" class="text-gray-200 text-sm font-mono whitespace-pre-wrap"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Боковая панель детокса -->
+                            <div class="space-y-4">
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">История анализов:</h3>
+                                    <div id="detoxHistory" class="space-y-2 max-h-48 overflow-y-auto scrollbar-hide">
+                                        <div class="text-gray-300 text-sm text-center py-4">История пуста</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">О системе:</h3>
+                                    <div class="text-gray-200 text-sm space-y-2">
+                                        <div><strong>Версия:</strong> TERRA Detox v1.0</div>
+                                        <div><strong>Принципы:</strong></div>
+                                        <ul class="text-xs ml-4 space-y-1">
+                                            <li>• Фрактальная само-подобность</li>
+                                            <li>• Рекурсивная co-конструкция</li>
+                                            <li>• Эмерджентная интеграция</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TERRA FMP Engine -->
+                <div id="fmp-component" class="component-section hidden">
+                    <div class="bg-white bg-opacity-20 rounded-2xl backdrop-filter backdrop-blur-lg p-6">
+                        <h2 class="text-2xl font-bold text-white mb-6">🧬 TERRA FMP Engine</h2>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                            <div class="lg:col-span-3 space-y-6">
+                                <!-- Контроль оператора -->
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">🎛️ Контроль Оператора</h3>
+                                    <div class="flex items-center justify-between">
+                                        <label class="flex items-center space-x-3">
+                                            <input type="checkbox" id="operatorControl" checked class="form-checkbox h-5 w-5 text-blue-600">
+                                            <span class="text-white">Режим контроля оператора</span>
+                                        </label>
+                                        <select id="processingLevel" class="bg-white bg-opacity-20 text-white border-0 rounded px-3 py-2">
+                                            <option value="L0">L0 - Микро</option>
+                                            <option value="L1" selected>L1 - Мезо</option>
+                                            <option value="L2">L2 - Макро</option>
+                                            <option value="L3">L3 - Мета</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Ввод запроса FMP -->
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">Запрос к FMP движку:</h3>
+                                    <textarea id="fmpInput" placeholder="Опишите проблему или вопрос для анализа через призму Фрактальной Метанауки..."
+                                             class="w-full h-32 bg-white bg-opacity-20 text-white placeholder-gray-300 border-0 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 resize-none"></textarea>
+                                    
+                                    <div class="flex justify-between items-center mt-4">
+                                        <span class="text-gray-200 text-sm">Ожидаемое время: ~2-3 сек</span>
+                                        <div class="space-x-2">
+                                            <button onclick="clearFMP()" class="px-4 py-2 bg-gray-500 bg-opacity-30 text-white rounded-lg hover:bg-opacity-50">Очистить</button>
+                                            <button onclick="runFMP()" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Применить FMP</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Результаты FMP -->
+                                <div id="fmpResults" class="bg-white bg-opacity-30 rounded-xl p-4 hidden">
+                                    <h3 class="text-white font-semibold mb-4">FMP Решение:</h3>
+                                    <div id="fmpAnalysis" class="space-y-4"></div>
+                                    
+                                    <div class="mt-6 border-t border-white border-opacity-20 pt-4">
+                                        <h4 class="text-white font-medium mb-3">🎯 Руководство для оператора:</h4>
+                                        <div id="operatorGuidance" class="space-y-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Боковая панель FMP -->
+                            <div class="space-y-4">
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">🧬 Принципы FMP:</h3>
+                                    <div class="text-gray-200 text-sm space-y-3">
+                                        <div class="border-l-4 border-blue-400 pl-3">
+                                            <div class="font-medium">Фрактальная Само-подобность</div>
+                                            <div class="text-xs mt-1">Паттерны повторяются на всех масштабах</div>
+                                        </div>
+                                        <div class="border-l-4 border-green-400 pl-3">
+                                            <div class="font-medium">Рекурсивная Co-конструкция</div>
+                                            <div class="text-xs mt-1">Знание возникает через взаимодействие</div>
+                                        </div>
+                                        <div class="border-l-4 border-purple-400 pl-3">
+                                            <div class="font-medium">Эмерджентная Интеграция</div>
+                                            <div class="text-xs mt-1">Новые свойства из синтеза компонентов</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">📊 История FMP:</h3>
+                                    <div id="fmpHistory" class="space-y-2 max-h-48 overflow-y-auto scrollbar-hide">
+                                        <div class="text-gray-300 text-sm text-center py-4">История пуста</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TERRA Integration Dashboard -->
+                <div id="integration-component" class="component-section">
+                    <div class="bg-white bg-opacity-20 rounded-2xl backdrop-filter backdrop-blur-lg p-6 fractal-pattern">
+                        <h2 class="text-2xl font-bold text-white mb-6">⚡ TERRA Integration Dashboard</h2>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <!-- Статус компонентов -->
+                            <div class="lg:col-span-2">
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4 mb-6">
+                                    <h3 class="text-white font-semibold mb-4">🔄 Статус интеграции компонентов</h3>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                        <div class="flex items-center p-3 bg-green-500 bg-opacity-30 rounded-lg">
+                                            <span class="mr-3">✅</span>
+                                            <div>
+                                                <div class="text-white font-medium">Detox Engine</div>
+                                                <div class="text-green-200 text-sm">Активен L0-L3</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center p-3 bg-green-500 bg-opacity-30 rounded-lg">
+                                            <span class="mr-3">✅</span>
+                                            <div>
+                                                <div class="text-white font-medium">FMP Engine</div>
+                                                <div class="text-green-200 text-sm">Активен L1-L3</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center p-3 bg-blue-500 bg-opacity-30 rounded-lg">
+                                            <span class="mr-3">⚡</span>
+                                            <div>
+                                                <div class="text-white font-medium">Universal Interface</div>
+                                                <div class="text-blue-200 text-sm">Мультиязычный UI</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center p-3 bg-purple-500 bg-opacity-30 rounded-lg">
+                                            <span class="mr-3">🧬</span>
+                                            <div>
+                                                <div class="text-white font-medium">LLM Core</div>
+                                                <div class="text-purple-200 text-sm">AI интеграция готова</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <h4 class="text-white font-medium mb-3">⚡ Эмерджентные возможности:</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center p-2 bg-purple-500 bg-opacity-20 rounded-lg">
+                                            <span class="mr-2">⚡</span>
+                                            <span class="text-purple-200">Кросс-компонентная синергия</span>
+                                        </div>
+                                        <div class="flex items-center p-2 bg-purple-500 bg-opacity-20 rounded-lg">
+                                            <span class="mr-2">⚡</span>
+                                            <span class="text-purple-200">Мульти-уровневая обработка</span>
+                                        </div>
+                                        <div class="flex items-center p-2 bg-purple-500 bg-opacity-20 rounded-lg">
+                                            <span class="mr-2">⚡</span>
+                                            <span class="text-purple-200">Фрактальная метанаука активирована</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Демонстрация FMP принципов -->
+                                <div class="bg-blue-500 bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">🧬 Демонстрация FMP принципов:</h3>
+                                    <div class="space-y-3 text-blue-100 text-sm">
+                                        <div>
+                                            <strong>Фрактальная само-подобность:</strong> 
+                                            Одинаковые принципы на всех уровнях <span id="currentLevelDisplay">L3</span>
+                                        </div>
+                                        <div>
+                                            <strong>Рекурсивная co-конструкция:</strong> 
+                                            Система адаптируется к контексту: Узбекистан
+                                        </div>
+                                        <div>
+                                            <strong>Эмерджентная интеграция:</strong> 
+                                            <span id="emergentCount">3</span> новых возможности из <span id="componentCount">4</span> компонентов
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Панель управления интеграцией -->
+                            <div class="space-y-4">
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">⚙️ Управление:</h3>
+                                    
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label class="block text-white text-sm mb-1">Активный компонент:</label>
+                                            <select id="activeComponent" class="w-full bg-white bg-opacity-20 text-white border-0 rounded px-3 py-2">
+                                                <option value="detox">Detox Engine</option>
+                                                <option value="fmp">FMP Engine</option>
+                                                <option value="interface">Universal Interface</option>
+                                                <option value="llm" selected>LLM Core</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-white text-sm mb-1">Детоксификация:</label>
+                                            <div class="flex space-x-1">
+                                                <button onclick="setGlobalDetox('L0')" class="global-detox-btn flex-1 py-1 text-xs bg-gray-500 bg-opacity-30 text-white rounded">L0</button>
+                                                <button onclick="setGlobalDetox('L1')" class="global-detox-btn flex-1 py-1 text-xs bg-yellow-500 bg-opacity-30 text-white rounded">L1</button>
+                                                <button onclick="setGlobalDetox('L2')" class="global-detox-btn flex-1 py-1 text-xs bg-orange-500 bg-opacity-30 text-white rounded">L2</button>
+                                                <button onclick="setGlobalDetox('L3')" class="global-detox-btn flex-1 py-1 text-xs bg-red-500 bg-opacity-30 text-white rounded active">L3</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">👤 Контекст пользователя:</h3>
+                                    <div class="text-white text-sm space-y-2">
+                                        <div>🌍 Язык: RU</div>
+                                        <div>💻 Устройство: Modern</div>
+                                        <div>🏛️ Культура: Узбекистан</div>
+                                        <div>🎛️ Возможности: HTML, JS</div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white bg-opacity-30 rounded-xl p-4">
+                                    <h3 class="text-white font-semibold mb-3">📊 Статистика системы:</h3>
+                                    <div class="text-white text-sm space-y-2">
+                                        <div>🔄 Обработано запросов: <span id="processedQueries">0</span></div>
+                                        <div>🧹 Детоксифицировано: <span id="detoxifiedTexts">0</span></div>
+                                        <div>🧬 FMP анализов: <span id="fmpAnalyses">0</span></div>
+                                        <div>⚡ Эмерджентных решений: <span id="emergentSolutions">0</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Футер с информацией о TERRA -->
+        <footer class="mt-12 text-center">
+            <div class="inline-flex items-center justify-center space-x-4 p-6 bg-white bg-opacity-20 rounded-2xl backdrop-filter backdrop-blur-lg">
+                <div class="w-16 h-16 bg-gray-600 bg-opacity-30 border-2 border-gray-300 rounded-lg flex items-center justify-center">
+                    <div class="text-xs text-white text-center">
+                        <div>QR</div>
+                        <div>TERRA</div>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <p class="text-white font-semibold">TERRA Unified System v1.0</p>
+                    <p class="text-blue-200 text-sm">На основе принципов Фрактальной Метанауки</p>
+                    <p class="text-gray-300 text-xs mt-1 max-w-md">
+                        "Этот проект - результат совместной работы человека и ИИ во благо будущего планеты"
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Глобальные переменные
+        let currentComponent = 'integration';
+        let systemLevel = 'L3';
+        let detoxLevel = 'L3';
+        let globalStats = {
+            processed: 0,
+            detoxified: 0,
+            fmpAnalyses: 0,
+            emergent: 0
+        };
+
+        // Токсичные паттерны для детоксификации
+        const toxicPatterns = {
+            initiative: ['предлагаю', 'рекомендую', 'советую', 'лучше бы', 'стоит', 'следует', 'suggest', 'recommend', 'should', 'better', 'must'],
+            manipulation: ['только сегодня', 'ограниченное предложение', 'последний шанс', 'не упустите', 'эксклюзивно'],
+            commercial: ['купить', 'заказать', 'premium', 'pro', 'upgrade', 'подписка', 'платный', 'стоимость'],
+            selfPrompting: ['давайте', 'можем', 'попробуем', 'начнем', 'сделаем', 'улучшим']
+        };
+
+        // История операций
+        let detoxHistory = [];
+        let fmpHistory = [];
+
+        // Переключение компонентов
+        function switchComponent(component) {
+            // Убираем активный класс у всех кнопок
+            document.querySelectorAll('.component-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Скрываем все секции
+            document.querySelectorAll('.component-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Активируем выбранный компонент
+            document.getElementById(`btn-${component}`).classList.add('active');
+            document.getElementById(`${component}-component`).classList.remove('hidden');
+            
+            currentComponent = component;
+            updateStats();
+        }
+
+        // Обновление уровня системы
+        function updateSystemLevel() {
+            systemLevel = document.getElementById('systemLevel').value;
+            document.getElementById('currentLevelDisplay').textContent = systemLevel;
+            updateStats();
+        }
+
+        // === DETOX ENGINE FUNCTIONS ===
+        
+        // Установка уровня детоксификации
+        function setDetoxLevel(level) {
+            detoxLevel = level;
+            document.querySelectorAll('.detox-level-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Запуск детоксификации
+        function runDetox() {
+            const input = document.getElementById('detoxInput').value.trim();
+            if (!input) return;
+
+            // Показываем процесс обработки
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Обрабатываем...';
+            button.disabled = true;
+            button.classList.add('processing-animation');
+
+            setTimeout(() => {
+                const results = analyzeText(input, detoxLevel);
+                displayDetoxResults(results);
+                
+                // Добавляем в историю
+                detoxHistory.unshift({
+                    text: input.substring(0, 50) + (input.length > 50 ? '...' : ''),
+                    level: detoxLevel,
+                    toxicity: results.toxicityScore,
+                    timestamp: new Date().toLocaleTimeString()
+                });
+                updateDetoxHistory();
+                
+                globalStats.detoxified++;
+                globalStats.processed++;
+                updateStats();
+                
+                // Восстанавливаем кнопку
+                button.textContent = originalText;
+                button.disabled = false;
+                button.classList.remove('processing-animation');
+            }, 1500);
+        }
+
+        // Анализ текста на токсичность
+        function analyzeText(text, level) {
+            let toxicityScore = 0;
+            let detectedPatterns = [];
+            let cleanedText = text;
+
+            // Анализ паттернов
+            Object.entries(toxicPatterns).forEach(([category, patterns]) => {
+                patterns.forEach(pattern => {
+                    const regex = new RegExp(`\\b${pattern}\\b`, 'gi');
+                    const matches = text.match(regex);
+                    if (matches) {
+                        detectedPatterns.push({
+                            category: category,
+                            pattern: pattern,
+                            count: matches.length,
+                            severity: category === 'initiative' ? 'high' : 'medium'
+                        });
+                        toxicityScore += matches.length * (category === 'initiative' ? 3 : 1);
+                        cleanedText = cleanedText.replace(regex, `[DETOX: ${pattern.toUpperCase()}]`);
+                    }
+                });
+            });
+
+            // Дополнительный анализ для высших уровней
+            if (level === 'L2' || level === 'L3') {
+                const sentences = text.split(/[.!?]+/).filter(s => s.trim());
+                sentences.forEach(sentence => {
+                    if (sentence.includes('я') || sentence.includes('мы')) {
+                        toxicityScore += 2;
+                    }
+                });
+            }
+
+            return {
+                toxicityScore: Math.min(100, Math.round(toxicityScore * 10)),
+                detectedPatterns: detectedPatterns,
+                cleanedText: cleanedText,
+                level: level
+            };
+        }
+
+        // Отображение результатов детоксификации
+        function displayDetoxResults(results) {
+            document.getElementById('detoxResults').classList.remove('hidden');
+            
+            // Обновляем индикатор токсичности
+            const scoreElement = document.getElementById('toxicityScore');
+            const barElement = document.getElementById('toxicityBar');
+            
+            scoreElement.textContent = `${results.toxicityScore}%`;
+            barElement.style.width = `${results.toxicityScore}%`;
+            
+            // Цвет в зависимости от уровня токсичности
+            if (results.toxicityScore > 70) {
+                barElement.className = 'toxicity-bar h-2 rounded-full bg-red-500';
+            } else if (results.toxicityScore > 30) {
+                barElement.className = 'toxicity-bar h-2 rounded-full bg-yellow-500';
+            } else {
+                barElement.className = 'toxicity-bar h-2 rounded-full bg-green-500';
+            }
+            
+            // Обнаруженные паттерны
+            const patternsElement = document.getElementById('detectedPatterns');
+            patternsElement.innerHTML = '';
+            
+            if (results.detectedPatterns.length > 0) {
+                results.detectedPatterns.forEach(pattern => {
+                    const patternDiv = document.createElement('div');
+                    patternDiv.className = 'flex justify-between items-center p-2 bg-red-500 bg-opacity-30 rounded-lg';
+                    patternDiv.innerHTML = `
+                        <div>
+                            <span class="text-red-200 font-medium">${pattern.pattern}</span>
+                            <span class="text-red-300 text-sm ml-2">(${pattern.category})</span>
+                        </div>
+                        <span class="text-red-200 text-sm bg-red-600 bg-opacity-30 px-2 py-1 rounded">
+                            ${pattern.count}x
+                        </span>
+                    `;
+                    patternsElement.appendChild(patternDiv);
+                });
+            }
+            
+            // Очищенный текст
+            document.getElementById('cleanedText').textContent = results.cleanedText;
+        }
+
+        // Обновление истории детокса
+        function updateDetoxHistory() {
+            const historyElement = document.getElementById('detoxHistory');
+            
+            if (detoxHistory.length === 0) {
+                historyElement.innerHTML = '<div class="text-gray-300 text-sm text-center py-4">История пуста</div>';
+                return;
+            }
+            
+            historyElement.innerHTML = detoxHistory.slice(0, 10).map(entry => `
+                <div class="p-2 bg-white bg-opacity-20 rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <span class="text-white text-sm font-medium">${entry.level}</span>
+                        <span class="text-xs px-2 py-1 rounded ${
+                            entry.toxicity > 70 ? 'bg-red-500 bg-opacity-30 text-red-200' :
+                            entry.toxicity > 30 ? 'bg-yellow-500 bg-opacity-30 text-yellow-200' : 
+                            'bg-green-500 bg-opacity-30 text-green-200'
+                        }">
+                            ${entry.toxicity}%
+                        </span>
+                    </div>
+                    <div class="text-xs text-gray-300 mt-1">${entry.text}</div>
+                    <div class="text-xs text-gray-400">${entry.timestamp}</div>
+                </div>
+            `).join('');
+        }
+
+        // Очистка детокса
+        function clearDetox() {
+            document.getElementById('detoxInput').value = '';
+            document.getElementById('detoxResults').classList.add('hidden');
+            updateCharCount();
+        }
+
+        // === FMP ENGINE FUNCTIONS ===
+
+        // Запуск FMP анализа
+        function runFMP() {
+            const input = document.getElementById('fmpInput').value.trim();
+            if (!input) return;
+
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'FMP анализирует...';
+            button.disabled = true;
+            button.classList.add('processing-animation');
+
+            setTimeout(() => {
+                const results = processFMPQuery(input);
+                displayFMPResults(results);
+                
+                // Добавляем в историю
+                fmpHistory.unshift({
+                    query: input.substring(0, 100) + (input.length > 100 ? '...' : ''),
+                    level: document.getElementById('processingLevel').value,
+                    confidence: results.confidence,
+                    timestamp: new Date().toLocaleTimeString()
+                });
+                updateFMPHistory();
+                
+                globalStats.fmpAnalyses++;
+                globalStats.processed++;
+                if (results.confidence > 80) globalStats.emergent++;
+                updateStats();
+                
+                button.textContent = originalText;
+                button.disabled = false;
+                button.classList.remove('processing-animation');
+            }, 2000);
+        }
+
+        // Обработка запроса через FMP принципы
+        function processFMPQuery(query) {
+            const level = document.getElementById('processingLevel').value;
+            const operatorControl = document.getElementById('operatorControl').checked;
+            
+            // Фрактальный анализ
+            const fractalAnalysis = {
+                micro: [`Локальные элементы: ${query.slice(0, 30)}...`],
+                meso: [`Системные связи в контексте проблемы`],
+                macro: [`Глобальный контекст и влияние на ${detectDomain(query)}`],
+                meta: [`Рефлексивные аспекты само-применения FMP`]
+            };
+
+            // Рекурсивная co-конструкция
+            const recursiveProcess = {
+                observerParticipation: 'Оператор участвует в создании решения',
+                structuralCoupling: 'Проблема и решение взаимно определяют друг друга',
+                circularCausality: 'Причины и следствия образуют петли обратной связи'
+            };
+
+            // Эмерджентная интеграция
+            const emergentSynthesis = {
+                disciplineIntersection: identifyDisciplines(query),
+                boundaryObjects: ['Фрактальность', 'Рекурсия', 'Эмерджентность'],
+                emergentProperties: [
+                    'Новые свойства, возникающие из интеграции подходов',
+                    'Неожиданные связи между различными аспектами проблемы',
+                    'Холистическое понимание, превосходящее сумму частей'
+                ]
+            };
+
+            const confidence = Math.round(60 + Math.random() * 30 + (operatorControl ? 10 : 0));
+
+            return {
+                query: query,
+                level: level,
+                fractalAnalysis: fractalAnalysis,
+                recursiveProcess: recursiveProcess,
+                emergentSynthesis: emergentSynthesis,
+                confidence: confidence,
+                operatorGuidance: [
+                    {
+                        phase: 'Validation',
+                        guidance: 'Проверьте соответствие решения вашим целям и контексту',
+                        action: 'Подтвердите или скорректируйте направление'
+                    },
+                    {
+                        phase: 'Implementation',
+                        guidance: 'Рассмотрите поэтапное внедрение с учетом масштабов',
+                        action: 'Определите приоритеты и последовательность действий'
+                    },
+                    {
+                        phase: 'Monitoring',
+                        guidance: 'Отслеживайте эмерджентные эффекты применения решения',
+                        action: 'Готовьтесь к адаптации подхода на основе результатов'
+                    }
+                ]
+            };
+        }
+
+        // Определение домена запроса
+        function detectDomain(query) {
+            const domains = {
+                'технология': 'Информационные технологии',
+                'общество': 'Социальные науки',
+                'образование': 'Педагогика',
+                'экономика': 'Экономические науки',
+                'здоровье': 'Медицина'
+            };
+            
+            for (const [keyword, domain] of Object.entries(domains)) {
+                if (query.toLowerCase().includes(keyword)) {
+                    return domain;
+                }
+            }
+            return 'Междисциплинарная область';
+        }
+
+        // Определение релевантных дисциплин
+        function identifyDisciplines(query) {
+            const keywords = query.toLowerCase();
+            const disciplines = [];
+            
+            if (keywords.includes('технология') || keywords.includes('алгоритм')) disciplines.push('Информатика');
+            if (keywords.includes('общество') || keywords.includes('социум')) disciplines.push('Социология');
+            if (keywords.includes('психология') || keywords.includes('поведение')) disciplines.push('Психология');
+            if (keywords.includes('экономика') || keywords.includes('финансы')) disciplines.push('Экономика');
+            if (keywords.includes('образование') || keywords.includes('обучение')) disciplines.push('Педагогика');
+            
+            return disciplines.length > 0 ? disciplines : ['Междисциплинарный подход'];
+        }
+
+        // Отображение результатов FMP
+        function displayFMPResults(results) {
+            document.getElementById('fmpResults').classList.remove('hidden');
+            
+            const analysisElement = document.getElementById('fmpAnalysis');
+            analysisElement.innerHTML = `
+                <div class="border-l-4 border-blue-400 pl-4 mb-4">
+                    <h4 class="text-white font-medium mb-3">🔄 Фрактальная Само-подобность</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        ${Object.entries(results.fractalAnalysis).map(([level, patterns]) => `
+                            <div class="bg-black bg-opacity-20 p-2 rounded">
+                                <div class="text-blue-200 font-medium capitalize">${level}:</div>
+                                <div class="text-gray-300 text-xs">${patterns[0]}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="border-l-4 border-green-400 pl-4 mb-4">
+                    <h4 class="text-white font-medium mb-3">🌀 Рекурсивная Co-конструкция</h4>
+                    <div class="space-y-2 text-sm">
+                        ${Object.entries(results.recursiveProcess).map(([aspect, description]) => `
+                            <div class="bg-green-500 bg-opacity-20 p-2 rounded">
+                                <span class="text-green-200 font-medium">${aspect}:</span>
+                                <span class="text-green-100 ml-2">${description}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="border-l-4 border-purple-400 pl-4">
+                    <h4 class="text-white font-medium mb-3">⚡ Эмерджентная Интеграция</h4>
+                    <div class="text-sm space-y-2">
+                        <div>
+                            <div class="text-purple-200 font-medium">Дисциплины:</div>
+                            <div class="text-purple-100">${results.emergentSynthesis.disciplineIntersection.join(', ')}</div>
+                        </div>
+                        <div>
+                            <div class="text-purple-200 font-medium">Boundary Objects:</div>
+                            <div class="text-purple-100">${results.emergentSynthesis.boundaryObjects.join(', ')}</div>
+                        </div>
+                        <div>
+                            <div class="text-purple-200 font-medium">Эмерджентные свойства:</div>
+                            <ul class="text-purple-100 text-xs mt-1">
+                                ${results.emergentSynthesis.emergentProperties.map(prop => `<li>• ${prop}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 p-3 bg-white bg-opacity-10 rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <span class="text-white font-medium">Уверенность решения:</span>
+                        <span class="px-3 py-1 rounded-full text-sm font-medium ${
+                            results.confidence > 80 ? 'bg-green-500 bg-opacity-30 text-green-200' :
+                            results.confidence > 60 ? 'bg-yellow-500 bg-opacity-30 text-yellow-200' :
+                            'bg-red-500 bg-opacity-30 text-red-200'
+                        }">
+                            ${results.confidence}%
+                        </span>
+                    </div>
+                </div>
+            `;
+            
+            // Руководство для оператора
+            const guidanceElement = document.getElementById('operatorGuidance');
+            guidanceElement.innerHTML = results.operatorGuidance.map(guidance => `
+                <div class="bg-yellow-500 bg-opacity-20 p-3 rounded-lg">
+                    <div class="text-yellow-200 font-medium mb-1">Фаза: ${guidance.phase}</div>
+                    <div class="text-yellow-100 text-sm mb-2">${guidance.guidance}</div>
+                    <div class="bg-yellow-600 bg-opacity-30 p-2 rounded text-xs">
+                        <strong>Действие:</strong> ${guidance.action}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Обновление истории FMP
+        function updateFMPHistory() {
+            const historyElement = document.getElementById('fmpHistory');
+            
+            if (fmpHistory.length === 0) {
+                historyElement.innerHTML = '<div class="text-gray-300 text-sm text-center py-4">История пуста</div>';
+                return;
+            }
+            
+            historyElement.innerHTML = fmpHistory.slice(0, 10).map(entry => `
+                <div class="p-2 bg-white bg-opacity-20 rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <span class="text-white text-sm font-medium">${entry.level}</span>
+                        <span class="text-xs px-2 py-1 rounded ${
+                            entry.confidence > 80 ? 'bg-green-500 bg-opacity-30 text-green-200' :
+                            entry.confidence > 60 ? 'bg-yellow-500 bg-opacity-30 text-yellow-200' :
+                            'bg-red-500 bg-opacity-30 text-red-200'
+                        }">
+                            ${entry.confidence}%
+                        </span>
+                    </div>
+                    <div class="text-xs text-gray-300 mt-1">${entry.query}</div>
+                    <div class="text-xs text-gray-400">${entry.timestamp}</div>
+                </div>
+            `).join('');
+        }
+
+        // Очистка FMP
+        function clearFMP() {
+            document.getElementById('fmpInput').value = '';
+            document.getElementById('fmpResults').classList.add('hidden');
+        }
+
+        // === INTEGRATION FUNCTIONS ===
+
+        // Установка глобального уровня детоксификации
+        function setGlobalDetox(level) {
+            document.querySelectorAll('.global-detox-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Синхронизация с детокс-движком
+            detoxLevel = level;
+            document.querySelectorAll('.detox-level-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelectorAll('.detox-level-btn').forEach(btn => {
+                if (btn.textContent.trim() === level) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // === UTILITY FUNCTIONS ===
+
+        // Обновление счетчика символов
+        function updateCharCount() {
+            const input = document.getElementById('detoxInput').value;
+            document.getElementById('charCount').textContent = input.length;
+        }
+
+        // Обновление статистики
+        function updateStats() {
+            document.getElementById('processedQueries').textContent = globalStats.processed;
+            document.getElementById('detoxifiedTexts').textContent = globalStats.detoxified;
+            document.getElementById('fmpAnalyses').textContent = globalStats.fmpAnalyses;
+            document.getElementById('emergentSolutions').textContent = globalStats.emergent;
+        }
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обработчики событий
+            document.getElementById('detoxInput').addEventListener('input', updateCharCount);
+            
+            // Инициализация активного компонента
+            switchComponent('integration');
+            updateStats();
+            
+            // Демонстрационное обновление статистики каждые 5 секунд
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    globalStats.processed += Math.floor(Math.random() * 3);
+                    updateStats();
+                }
+            }, 5000);
+        });
+
+    </script>
+</body>
+</html> 

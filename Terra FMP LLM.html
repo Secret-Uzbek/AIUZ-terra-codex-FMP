@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Terra FMP LLM — Live</title>
+<style>
+body { background:#F5F5F5; color:#2C3E50; font-family:'Inter',sans-serif; margin:0; padding:0;}
+.fractal-button {padding:8px 16px; border:none; border-radius:8px; font-weight:600; color:#fff; cursor:pointer;}
+.fractal-button:hover {opacity:0.9;}
+.result {background:#E8F4FD; padding:12px; border-radius:8px; font-family:'Fira Code',monospace; white-space:pre-wrap;}
+.success {color:#27AE60;} .danger {color:#E74C3C;}
+.archive-item {background:#FFF; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.gradient-bg {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+.definition-card {background: linear-gradient(to bottom right, #e0f2f1, #e0f7fa); padding:16px; border-radius:12px; border:1px solid #b2dfdb;}
+</style>
+</head>
+<body id="mainBody">
+<header class="gradient-bg text-white p-6 shadow-xl">
+<h1 class="text-4xl font-bold mb-2">🌍 Terra FMP LLM — Live</h1>
+<p class="text-blue-100">Фрактальный семантический архив L0-L7 • Автономно</p>
+</header>
+<main class="container mx-auto p-6">
+
+<h2>📦 Архивы</h2>
+<textarea id="archiveRequest"></textarea>
+<input type="file" id="fileImport" multiple>
+<button onclick="importFiles()" class="fractal-button" style="background:#2E8B57;">Импортировать</button>
+<pre id="importLog" class="result"></pre>
+
+<h2>🔍 Тезаурус</h2>
+<input id="searchTerm"><button onclick="searchLemma()" class="fractal-button" style="background:#4A90E2;">Поиск</button>
+<pre id="searchResult" class="result"></pre>
+
+<h2>🌱 Добавить лемму</h2>
+<input id="lemma" placeholder="Лемма">
+<input id="pos" placeholder="Часть речи">
+<textarea id="definition" placeholder="Определение"></textarea>
+<input id="t_uz" placeholder="узбекский"><input id="t_de" placeholder="немецкий"><input id="t_ru" placeholder="русский"><input id="t_en" placeholder="английский">
+<input id="image" placeholder="URL изображения"><input id="audio" placeholder="URL аудио">
+<button onclick="addLemma()" class="fractal-button" style="background:#27AE60;">Добавить</button>
+<span id="addMsg" class="success"></span>
+
+<h2>🧠 FMP Reasoning</h2>
+<textarea id="fmp_query"></textarea>
+<button onclick="runFMP()" class="fractal-button" style="background:#9B59B6;">Анализ</button>
+<pre id="fmpResult" class="result"></pre>
+
+<h2>🌐 Словарь</h2>
+<input type="text" id="dictionarySearch" placeholder="Введите слово на узбекском">
+<button onclick="searchDictionary()" class="fractal-button" style="background:#3498DB;">🔍 Поиск</button>
+<div id="dictionaryResults"></div>
+
+</main>
+<script>
+// Ядро
+function L0SemanticKernel(){this.intentPatterns={'CREATE_ARCHIVE':['создать','сделать','архивировать','сохранить'],'SEARCH_ARCHIVE':['найти','поиск','искать','где'],'ANALYZE_TEXT':['анализ','изучить','проверить','понять'],'GET_HELP':['помощь','справка','как','что']};}
+L0SemanticKernel.prototype.extractKeywords=function(text){if(!text)return[];return[...new Set(text.toLowerCase().match(/[\p{L}]+/gu)||[])]};
+L0SemanticKernel.prototype.simpleIntentAnalysis=function(t){let it='UNKNOWN',sc=0;for(let k in this.intentPatterns){let s=this.intentPatterns[k].filter(p=>t.toLowerCase().includes(p)).length;if(s>sc){sc=s;it=k;}}return it;};
+L0SemanticKernel.prototype.processRequest=function(r,did){return{extractedKeywords:this.extractKeywords(r),detectedIntent:this.simpleIntentAnalysis(r)}};
+
+function OfflineSemanticAnalyzer(){this.initialized=false;}
+OfflineSemanticAnalyzer.prototype.initialize=function(){this.initialized=true;return true;};
+OfflineSemanticAnalyzer.prototype.analyzeText=function(t){if(!this.initialized)this.initialize();return{keywords:this.extractKeywords(t)}};
+OfflineSemanticAnalyzer.prototype.extractKeywords=function(text){return[...new Set(text.toLowerCase().match(/[\p{L}]+/gu)||[])]};
+
+function TerraEthicalLayer(){this.toxicityFilters=[{patterns:['насилие','violence'],action:'block'}];}
+TerraEthicalLayer.prototype.validateContent=function(c){let lc=c.toLowerCase();for(let f of this.toxicityFilters){for(let p of f.patterns){if(lc.includes(p))return{passed:false};}}return{passed:true};};
+
+function TerraArchiveManager(){this.archives=[];}
+TerraArchiveManager.prototype.createArchive=function(data){let a={id:'terra_'+Date.now(),timestamp:new Date().toISOString(),data:data,size:JSON.stringify(data).length};this.archives.push(a);return a;};
+TerraArchiveManager.prototype.searchArchives=function(q){return this.archives.filter(a=>JSON.stringify(a.data).toLowerCase().includes(q.toLowerCase()));};
+
+function TerraSemanticIntegration(){this.l0Kernel=new L0SemanticKernel();this.ethicalLayer=new TerraEthicalLayer();this.archiveManager=new TerraArchiveManager();this.offlineAnalyzer=new OfflineSemanticAnalyzer();this.offlineAnalyzer.initialize();}
+TerraSemanticIntegration.prototype.processArchiveRequest=function(req){let analysis=this.offlineAnalyzer.analyzeText(req);if(!this.ethicalLayer.validateContent(req).passed)return{success:false};let arc=this.archiveManager.createArchive({text:req,analysis});return{success:true,archive:arc};};
+TerraSemanticIntegration.prototype.searchArchive=function(q){return{results:this.archiveManager.searchArchives(q)}};
+
+// Глобальные переменные
+let terraSystem=new TerraSemanticIntegration();
+let kb=JSON.parse(localStorage.getItem('terra_kb')||'[]');
+
+function importFiles(){
+    const files=document.getElementById('fileImport').files;if(!files.length)return;let log='';
+    Array.from(files).forEach(f=>{
+        let r=new FileReader();
+        r.onload=e=>{terraSystem.processArchiveRequest(e.target.result);};
+        r.readAsText(f,'utf-8');
+        log+=`Импортирован: ${f.name}\n`;
+    });
+    document.getElementById('importLog').textContent=log;
+}
+function searchLemma(){
+    const term=document.getElementById('searchTerm').value.toLowerCase();
+    let found=kb.filter(x=>(x.lemma||'').toLowerCase().includes(term));
+    document.getElementById('searchResult').textContent=found.length?found.map(x=>x.lemma).join(", "):"❌ Не найдено";
+}
+function addLemma(){
+    kb.push({lemma:document.getElementById('lemma').value, pos:document.getElementById('pos').value, definition:document.getElementById('definition').value, translations:{uz:document.getElementById('t_uz').value,de:document.getElementById('t_de').value,ru:document.getElementById('t_ru').value,en:document.getElementById('t_en').value},media:{image:document.getElementById('image').value,audio:document.getElementById('audio').value},postlingua_trace:genPostlingua()});
+    document.getElementById('addMsg').textContent="Лемма добавлена!";saveKB();
+}
+function genPostlingua(){const sym=["⊘","ᚘ","∴","⇌","𓂀","ヱ"];return Array(5).fill(0).map(()=>sym[Math.floor(Math.random()*sym.length)]).join(" ");}
+function runFMP(){let q=document.getElementById('fmp_query').value;document.getElementById('fmpResult').textContent=`Внутренний аналитик: ${q}\nВнешний наблюдатель: ${q}\nМетаархивариус: ${q}`;}
+function saveKB(){localStorage.setItem('terra_kb',JSON.stringify(kb));}
+
+// Словарь
+const uzbekGermanDictionary={
+    'salom':{german:'Hallo',pronunciation:'ха́лло',example_uz:'Salom, qanday ahvolingiz?',example_de:'Hallo, wie geht es Ihnen?'},
+    'rahmat':{german:'Danke',pronunciation:'да́нке',example_uz:'Yordam uchun rahmat',example_de:'Danke für die Hilfe'},
+    'uy':{german:'Haus',pronunciation:'хаус',example_uz:'Bizning uyimiz katta',example_de:'Unser Haus ist groß'},
+    'kitob':{german:'Buch',pronunciation:'бух',example_uz:'Men kitob oʻqiyapman',example_de:'Ich lese ein Buch'},
+    'maktab':{german:'Schule',pronunciation:'шу́ле',example_uz:'Bolalar maktabga borishadi',example_de:'Die Kinder gehen zur Schule'}
+};
+function searchDictionary(){
+    let q=document.getElementById('dictionarySearch').value.toLowerCase();
+    let cont=document.getElementById('dictionaryResults');
+    if(!q){cont.innerHTML='<p>Введите слово</p>';return;}
+    let res=[];
+    for(let w in uzbekGermanDictionary){
+        if(w.includes(q))res.push({uzbek:w,data:uzbekGermanDictionary[w]});
+    }
+    cont.innerHTML=res.length ? res.map(r=>`<div class="definition-card"><h3>${r.uzbek}</h3><p>${r.data.german}</p><p>${r.data.pronunciation}</p><p>🇺🇿 ${r.data.example_uz}</p><p>🇩🇪 ${r.data.example_de}</p></div>`).join("") : "<p>Нет переводов</p>";
+}
+</script>
+</body>
+</html>
