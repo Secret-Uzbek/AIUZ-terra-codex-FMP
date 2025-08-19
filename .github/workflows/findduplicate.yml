@@ -1,0 +1,19 @@
+name: Find Duplicate Files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  find_duplicates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: List potential duplicate files by name
+        run: |
+          find . -type f | sort | uniq -d > duplicate_files.txt
+      - name: Upload duplicates report
+        uses: actions/upload-artifact@v3
+        with:
+          name: duplicate_files_report
+          path: duplicate_files.txt
