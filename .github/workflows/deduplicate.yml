@@ -1,21 +1,19 @@
-name: Deduplicate Files
+name: Find Duplicate Files
 
 on:
   workflow_dispatch:
 
 jobs:
-  deduplicate:
+  find_duplicates:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run Deduplicator
-      uses: sreedevk/deduplicator@main
-      with:
-        args: "."
-    - name: Commit changes
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add .
-        git commit -m "Auto deduplicate files"
-        git push
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: List potential duplicate files by name
+        run: |
+          find . -type f | sort | uniq -d > duplicate_files.txt
+      - name: Upload duplicates report
+        uses: actions/upload-artifact@v2
+        with:
+          name: duplicate_files_report
+          path: duplicate_files.txt
