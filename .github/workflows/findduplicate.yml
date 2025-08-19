@@ -13,7 +13,7 @@ jobs:
         run: |
           find . -type f | sort | uniq -d > duplicate_files.txt
       - name: Upload duplicates report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: duplicate_files_report
           path: duplicate_files.txt
