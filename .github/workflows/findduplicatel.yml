@@ -9,11 +9,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Find duplicate filenames
+      - name: Find duplicate filenames and print to log
         run: |
-          find . -type f | sort | uniq -d > duplicate_files.txt
-      - name: Upload duplicate report
-        uses: actions/upload-artifact@v4
-        with:
-          name: duplicate_files_report
-          path: duplicate_files.txt
+          echo "=== DUPLICATE FILES LIST ==="
+          find . -type f | sort | uniq -d
+          echo "=== END OF LIST ==="
