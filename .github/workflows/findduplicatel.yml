@@ -1,16 +1,16 @@
-name: Find Duplicate Files
+name: Find Duplicate Files by Content
 
 on:
   workflow_dispatch:
 
 jobs:
-  find_duplicates:
+  find_duplicates_by_hash:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Find duplicate filenames and print to log
+      - name: Find duplicate files by hash and print to log
         run: |
-          echo "=== DUPLICATE FILES LIST ==="
-          find . -type f | sort | uniq -d
-          echo "=== END OF LIST ==="
+          echo "=== DUPLICATE FILES BY CONTENT (SHA256) ==="
+          find . -type f -exec sha256sum {} \; | sort | uniq -d -w64
+          echo "=== END OF CONTENT DUPES ==="
