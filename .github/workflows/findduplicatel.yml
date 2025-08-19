@@ -1,16 +1,26 @@
-name: Find Duplicate Files by Content
+name: List Real Duplicate Files by Content
 
 on:
   workflow_dispatch:
 
 jobs:
-  find_duplicates_by_hash:
+  dupes_by_content:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Find duplicate files by hash and print to log
+      - name: List duplicate files by SHA256 and paths
         run: |
-          echo "=== DUPLICATE FILES BY CONTENT (SHA256) ==="
-          find . -type f -exec sha256sum {} \; | sort | uniq -d -w64
-          echo "=== END OF CONTENT DUPES ==="
+          echo "=== REAL DUPLICATE FILES BY CONTENT (SHA256) ==="
+          find . -type f -exec sha256sum {} \; | sort > all_sha.txt
+          cut -d' ' -f1 all_sha.txt | uniq -d > dupesha.txt
+          if [ -s dupesha.txt ]; then
+            while read hash; do
+              echo "DUPLICATE GROUP $hash"
+              grep "^$hash" all_sha.txt
+            done < dupesha.txt
+          else
+            echo "NO DUPLICATE FILES"
+          fi
+          echo "=== END OF REAL CONTENT DUPES ==="
+
