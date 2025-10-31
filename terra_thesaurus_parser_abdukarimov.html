@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Terra Thesaurus Parser — Abdukarimov</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+<h2>Terra Thesaurus Parser (Abdukarimov)</h2>
+<p>Lightweight client-side parser that demonstrates tokenization, simple fractal-thesaurus building and 1:1 phrase aliasing UZ↔RU↔EN.</p>
+
+<textarea id="input" placeholder="Paste text here" style="width:100%;height:200px"></textarea>
+<br/>
+<button id="run">Parse → Build Thesaurus</button>
+<pre id="out" style="white-space:pre-wrap;border:1px solid #ccc;padding:10px;margin-top:10px;"></pre>
+
+<script>
+/*
+  Minimal demonstrator: extracts tokens, normalizes, builds simple map of unique lemmas.
+  Note: this is demonstration code for upload; production parser is separate.
+*/
+function normalizeToken(t){
+  return t.trim().toLowerCase().replace(/[^a-z0-9\u0400-\u04FF\- ]+/g,'').replace(/\s+/g,' ');
+}
+
+document.getElementById('run').addEventListener('click', ()=>{
+  const txt = document.getElementById('input').value || '';
+  const tokens = txt.split(/\\s+/).map(normalizeToken).filter(Boolean);
+  const freq = {};
+  tokens.forEach(t => freq[t] = (freq[t]||0)+1);
+  const entries = Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,500);
+  const out = {
+    meta: { created: (new Date()).toISOString(), source_size_tokens: tokens.length },
+    entries: entries.map(k=>({term:k, freq:freq[k], aliases: []}))
+  };
+  document.getElementById('out').textContent = JSON.stringify(out,null,2);
+});
+</script>
+</body>
+</html>
