@@ -1,0 +1,57 @@
+# Living Pipeline: FMP Monograph → DOI → Publication
+# Author: Abdurashid A. Abdukarimov
+# Purpose: deterministic 11-step pipeline to take monograph from living draft to citable DOI + living index
+
+1) Source snapshot
+   - Collect full textual sources (all chapters, appendices, figures, bib) as plain UTF-8 text.
+   - For each file compute SHA256 and record in manifest (manifest_sha256.txt).
+
+2) Preprocess & Normalize
+   - Normalize filenames: replace spaces & Cyrillic with ascii-alias; produce pair:
+       original: <orig name>
+       alias: original_alias_<safe-name>.<ext>
+   - Keep originals as original_<origname>.<ext>
+   - Convert docx -> markdown using pandoc where necessary (retain images).
+
+3) Validate metadata
+   - Ensure CITATION.cff present and contains 'living' semantics.
+   - Ensure author ORCID present.
+   - Ensure license file exists (Terra Public License v1.0).
+
+4) Quality checks
+   - Spellcheck (lang: en/ru/uz) — produce QC report.
+   - Verify bib entries (APA7 / BibTeX) map to references in chapters.
+
+5) Build living artifact
+   - Assemble 'monograph_full.md' by canonical L0 order (frontmatter → chapters → refs → appendices).
+   - Produce monograph_full.pdf (latex or pandoc).
+   - Produce living snapshot JSON: living_snapshot.json (metadata + sha256s).
+
+6) Register DOI (Zenodo sandbox practice)
+   - Upload Terra_Full_Archive.zip (or monograph + manifest) to Zenodo sandbox → obtain DOI.
+   - Record DOI badge and add to README / CITATION.cff.
+
+7) Release & Archive
+   - Create GitHub Release with attached ZIP and monograph PDF.
+   - Store release notes: living snapshot, DOI, date/time, commit hashes.
+
+8) Living index integration
+   - Generate Living_Index.md that lists every file, alias, original name, sha256, brief description, and L0-L7 tag.
+   - Place Living_Index.md at repo root and in TerraMemoryDNA index path.
+
+9) Living automation
+   - Setup daily cron (or Actions) that:
+       - scans for new files,
+       - recalculates checksums,
+       - updates Living_Index.md,
+       - optionally re-runs minimal build for metadata update.
+
+10) Audit log & provenance
+   - Generate audit_log.json per run (who, when, inputs, outputs, checksums).
+   - Preserve audit_log in a protected folder.
+
+11) Notification & Citation
+   - When DOI issued, update CITATION.cff with Zenodo DOI (or living DOI pointer).
+   - Publish short announcement in repo Release and in project channels.
+
+# End of living pipeline plan
