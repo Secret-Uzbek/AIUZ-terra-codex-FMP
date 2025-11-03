@@ -1,14 +1,14 @@
 name: Deduplicate Archive
 
 on:
-  workflow_dispatch:  # Manual trigger only
+  workflow_dispatch:
 
 jobs:
   deduplicate:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -18,19 +18,17 @@ jobs:
         with:
           python-version: '3.11'
       
-      - name: Find and remove duplicates
+      - name: Create dedup script
         run: |
-          python3 << 'EOF'
+          cat > dedup.py << 'ENDOFSCRIPT'
           import os
           import hashlib
           from pathlib import Path
           from collections import defaultdict
           
-          # File priority (higher = keep)
           PRIORITY = {'.md': 5, '.html': 4, '.txt': 3, '.docx': 2, '.pdf': 1, '.zip': 0}
           
           def get_hash(filepath):
-              """Calculate SHA256 hash of file"""
               sha256 = hashlib.sha256()
               try:
                   with open(filepath, 'rb') as f:
@@ -41,90 +39,71 @@ jobs:
                   return None
           
           def get_priority(filepath):
-              """Get file priority based on extension"""
               ext = Path(filepath).suffix.lower()
               return PRIORITY.get(ext, -1)
           
-          # Scan all files
-          print("🔍 Scanning repository...")
+          print("Scanning repository...")
           files_by_hash = defaultdict(list)
-          total_files = 0
+          total = 0
           
           for root, dirs, files in os.walk('.'):
-              # Skip .git and .github directories
               if '.git' in root:
                   continue
-              
               for file in files:
-                  filepath = os.path.join(root, file)
-                  file_hash = get_hash(filepath)
-                  
-                  if file_hash:
-                      files_by_hash[file_hash].append(filepath)
-                      total_files += 1
+                  fp = os.path.join(root, file)
+                  h = get_hash(fp)
+                  if h:
+                      files_by_hash[h].append(fp)
+                      total += 1
           
-          print(f"📊 Total files scanned: {total_files}")
+          print(f"Total files: {total}")
           
-          # Find duplicates
-          duplicates = {h: files for h, files in files_by_hash.items() if len(files) > 1}
+          duplicates = {h: f for h, f in files_by_hash.items() if len(f) > 1}
           
           if not duplicates:
-              print("✅ No duplicates found!")
+              print("No duplicates found")
               exit(0)
           
-          print(f"⚠️  Found {len(duplicates)} duplicate groups")
+          print(f"Duplicate groups: {len(duplicates)}")
           
-          # Generate report
-          report = []
-          report.append("# 🔍 Duplicate Files Report\n")
-          report.append(f"**Generated:** {Path.ctime(Path.cwd())}\n")
-          report.append(f"**Total files scanned:** {total_files}\n")
-          report.append(f"**Duplicate groups found:** {len(duplicates)}\n\n")
+          report = ["# Duplicate Files Report\n\n"]
+          to_delete = []
           
-          files_to_delete = []
+          for h, fps in duplicates.items():
+              sorted_fps = sorted(fps, key=get_priority, reverse=True)
+              keep = sorted_fps[0]
+              delete = sorted_fps[1:]
+              
+              report.append(f"## Hash: {h[:16]}\n")
+              report.append(f"Keep: {keep}\n")
+              report.append(f"Delete: {len(delete)}\n")
+              for d in delete:
+                  report.append(f"- {d}\n")
+                  to_delete.append(d)
+              report.append("\n")
           
-          for file_hash, filepaths in duplicates.items():
-              # Sort by priority (highest first)
-              sorted_files = sorted(filepaths, key=get_priority, reverse=True)
-              
-              keep = sorted_files[0]
-              delete = sorted_files[1:]
-              
-              report.append(f"## Hash: `{file_hash[:16]}...`\n")
-              report.append(f"**Keep:** `{keep}`\n")
-              report.append(f"**Delete ({len(delete)}):**\n")
-              
-              for dup in delete:
-                  report.append(f"- `{dup}`\n")
-                  files_to_delete.append(dup)
-              
-              report.append("\n---\n\n")
-          
-          # Write report
-          with open('DUPLICATE_REPORT.md', 'w', encoding='utf-8') as f:
+          with open('DUPLICATE_REPORT.md', 'w') as f:
               f.writelines(report)
           
-          print(f"📄 Report saved: DUPLICATE_REPORT.md")
-          print(f"🗑️  Files marked for deletion: {len(files_to_delete)}")
+          print(f"Marked for deletion: {len(to_delete)}")
           
-          # Delete duplicates
-          for filepath in files_to_delete:
+          for fp in to_delete:
               try:
-                  os.remove(filepath)
-                  print(f"   ✓ Deleted: {filepath}")
+                  os.remove(fp)
+                  print(f"Deleted: {fp}")
               except Exception as e:
-                  print(f"   ✗ Failed to delete {filepath}: {e}")
+                  print(f"Failed: {fp} - {e}")
           
-          print(f"\n✅ Cleanup complete!")
-          print(f"📊 Files removed: {len(files_to_delete)}")
-          print(f"📊 Files remaining: {total_files - len(files_to_delete)}")
-          
-          EOF
+          print(f"Cleanup complete. Removed: {len(to_delete)}")
+          ENDOFSCRIPT
+      
+      - name: Run deduplication
+        run: python3 dedup.py
       
       - name: Commit changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
           git add -A
-          git commit -m "chore: remove duplicate files (automated cleanup)" || echo "No changes to commit"
+          git commit -m "chore: remove duplicates" || echo "No changes"
           git push
