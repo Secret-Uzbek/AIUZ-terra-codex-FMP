@@ -1,141 +1,48 @@
-name: Deduplicate Archive
+name: cleanup
 
 on:
   workflow_dispatch:
 
 jobs:
-  deduplicate:
+  run:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Find and remove duplicates
+      - name: Remove duplicate files and fix encoding
         run: |
-          python3 << 'EOF'
-          import os
-          import hashlib
-          from pathlib import Path
-          from collections import defaultdict
-          from datetime import datetime
-          
-          # File priority (higher = keep)
-          PRIORITY = {'.md': 5, '.html': 4, '.txt': 3, '.docx': 2, '.pdf': 1, '.zip': 0}
-
-          def get_hash(filepath):
-              """Calculate SHA256 hash of file"""
-              sha256 = hashlib.sha256()
-              try:
-                  with open(filepath, 'rb') as f:
-                      for chunk in iter(lambda: f.read(8192), b''):
-                          sha256.update(chunk)
-                  return sha256.hexdigest()
-              except Exception as e:
-                  print(f" ✗ Failed to hash {filepath}: {e}")
-                  return None
-
-          def get_priority(filepath):
-              """Get file priority based on extension"""
-              ext = Path(filepath).suffix.lower()
-              return PRIORITY.get(ext, -1)
-
-          print(" Scanning repository...")
-          files_by_hash = defaultdict(list)
-          total_files = 0
-
-          # Walk repository, topdown so we can skip directories
-          for root, dirs, files in os.walk('.', topdown=True):
-              # Skip .git and .github directories entirely
-              dirs[:] = [d for d in dirs if d not in ('.git', '.github')]
-              for file in files:
-                  filepath = os.path.join(root, file)
-                  # Skip files in .git or .github just in case
-                  if '/.git/' in filepath or '/.github/' in filepath:
-                      continue
-                  file_hash = get_hash(filepath)
-                  if file_hash:
-                      files_by_hash[file_hash].append(filepath)
-                      total_files += 1
-
-          print(f" Total files scanned: {total_files}")
-
-          # Find duplicates
-          duplicates = {h: files for h, files in files_by_hash.items() if len(files) > 1}
-
-          if not duplicates:
-              print("✅ No duplicates found!")
-              exit(0)
-
-          print(f"⚠️ Found {len(duplicates)} duplicate groups")
-          report_lines = []
-          report_lines.append("# Duplicate Files Report\n")
-          report_lines.append(f"**Generated:** {datetime.utcnow().isoformat()} UTC\n")
-          report_lines.append(f"**Total files scanned:** {total_files}\n")
-          report_lines.append(f"**Duplicate groups found:** {len(duplicates)}\n\n")
-
-          files_to_delete = []
-
-          for file_hash, filepaths in duplicates.items():
-              # Sort by priority (highest first)
-              sorted_files = sorted(filepaths, key=get_priority, reverse=True)
-              keep = sorted_files[0]
-              delete_list = sorted_files[1:]
-
-              report_lines.append(f"## Hash: `{file_hash[:16]}...`\n")
-              report_lines.append(f"**Keep:** `{keep}`\n")
-              report_lines.append(f"**Delete ({len(delete_list)}):**\n")
-
-              for dup in delete_list:
-                  report_lines.append(f"- `{dup}`\n")
-                  files_to_delete.append(dup)
-
-              report_lines.append("\n---\n\n")
-
-          # Write report
-          with open('DUPLICATE_REPORT.md', 'w', encoding='utf-8') as f:
-              f.writelines(report_lines)
-
-          print(f" Report saved: DUPLICATE_REPORT.md")
-          print(f" Files marked for deletion: {len(files_to_delete)}")
-
-          # Delete duplicates (safe attempt)
-          deleted = 0
-          for filepath in files_to_delete:
-              try:
-                  # double-check file exists and is not a directory
-                  if os.path.isfile(filepath):
-                      os.remove(filepath)
-                      print(f" ✓ Deleted: {filepath}")
-                      deleted += 1
-                  else:
-                      print(f" ✗ Not a file or already removed: {filepath}")
-              except Exception as e:
-                  print(f" ✗ Failed to delete {filepath}: {e}")
-
-          print(f"\n✅ Cleanup complete!")
-          print(f" Files removed: {deleted}")
-          print(f" Files remaining (scanned - removed): {total_files - deleted}")
-
-          EOF
-
-      - name: Commit changes if any
+          sudo apt-get update -y
+          sudo apt-get install -y dos2unix
+          python3 - <<'PY'
+import os, hashlib, chardet, pathlib
+root = pathlib.Path(".")
+seen = {}
+deleted = 0
+converted = 0
+for path in root.rglob("*"):
+    if not path.is_file() or ".git" in path.parts or ".github" in path.parts: 
+        continue
+    h = hashlib.sha256(path.read_bytes()).hexdigest()
+    if h in seen:
+        path.unlink()
+        deleted += 1
+        print(f"Deleted duplicate: {path}")
+        continue
+    seen[h] = path
+    try:
+        data = path.read_bytes()
+        enc = chardet.detect(data)["encoding"] or "utf-8"
+        text = data.decode(enc, errors="replace")
+        path.write_text(text, encoding="utf-8", newline="\n")
+        converted += 1
+    except Exception as e:
+        print(f"::warning:: {path} {e}")
+print(f"Deleted {deleted} duplicates, converted {converted} files to UTF-8.")
+PY
+      - name: Commit and push changes
         run: |
-          git status --porcelain
-          # commit only if something changed
-          if [ -n "$(git status --porcelain)" ]; then
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git add -A
-            git commit -m "chore: remove duplicate files (automated cleanup)" || echo "No changes to commit"
-            git push || echo "Push failed (check permissions / branch protection)"
-          else
-            echo "No changes to commit"
-          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || (git commit -m "cleanup: remove duplicates, normalize utf-8" && git push)
