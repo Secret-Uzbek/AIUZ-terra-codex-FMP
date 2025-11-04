@@ -1,0 +1,21 @@
+name: Scan Duplicates
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Find duplicates
+        run: |
+          find . -type f ! -path './.git/*' -exec md5sum {} + | sort | uniq -w32 -D > duplicates.txt
+          cat duplicates.txt
+      
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: duplicate-report
+          path: duplicates.txt
