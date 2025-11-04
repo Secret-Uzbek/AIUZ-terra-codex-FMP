@@ -1,0 +1,84 @@
+name: Cleanup Repository (final safe)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Prepare environment
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y dos2unix recode
+          pip install chardet
+
+      - name: Find and remove duplicates + fix encoding
+        run: |
+          echo "Scanning files..."
+          python3 - <<'PY'
+import os, hashlib, chardet, sys
+from pathlib import Path
+
+root = Path(".")
+hashes = {}
+removed = 0
+converted = 0
+
+for path in root.rglob("*"):
+    if path.is_file() and ".git" not in str(path):
+        try:
+            data = path.read_bytes()
+        except Exception:
+            continue
+        h = hashlib.sha256(data).hexdigest()
+        if h in hashes:
+            print(f"Duplicate found: {path} (same as {hashes[h]})")
+            path.unlink()
+            removed += 1
+        else:
+            hashes[h] = path
+
+for path in root.rglob("*"):
+    if path.is_file() and ".git" not in str(path):
+        try:
+            data = path.read_bytes()
+            enc = chardet.detect(data).get('encoding')
+            if enc and enc.lower() != "utf-8":
+                text = data.decode(enc, errors='replace')
+                path.write_text(text, encoding='utf-8')
+                converted += 1
+        except Exception:
+            continue
+
+print(f"Removed {removed} duplicates, converted {converted} files to UTF-8.")
+PY
+
+      - name: Commit changes to new branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b cleanup-utf8-${{ github.run_number }}
+          git add .
+          git commit -m "Cleanup: remove duplicates + fix encoding" || echo "No changes to commit"
+          git push origin cleanup-utf8-${{ github.run_number }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: cleanup-utf8-${{ github.run_number }}
+          title: "Cleanup: remove duplicates + normalize UTF-8"
+          body: "Automated cleanup completed — removed duplicate files and converted text files to UTF-8."
+          base: main
