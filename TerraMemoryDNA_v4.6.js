@@ -1,4 +1,4 @@
-﻿# 🧬 TerraMemoryDNA v4.6 - WORKING SYSTEM
+# 🧬 TerraMemoryDNA v4.6 - WORKING SYSTEM
 
 **\[DOCUMENT\_TYPE]:** TerraMemoryDNA\_Working\_System\
 **\[VERSION]:** 4.6\
