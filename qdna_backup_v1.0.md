@@ -1,4 +1,4 @@
-﻿# QDNA_Backup_v1.0 — TERRA | FMP | ARCHIVE SNAPSHOT
+# QDNA_Backup_v1.0 — TERRA | FMP | ARCHIVE SNAPSHOT
 **AUTHOR:** Operator + TERRA AI  
 **DATE:** 2025-08-12  
 **VERSION:** 1.0  
