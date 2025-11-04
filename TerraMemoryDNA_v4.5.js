@@ -1,4 +1,4 @@
-﻿// TerraMemoryDNA_v4.5.js
+// TerraMemoryDNA_v4.5.js
 // Сохранить как: TerraMemoryDNA_v4.5.js
 
 const TerraMemoryDNA_v45 = {
