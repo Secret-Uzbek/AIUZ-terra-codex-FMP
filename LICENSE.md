@@ -1,4 +1,4 @@
-﻿LICENSE.md
+LICENSE.md
 
 # 📜 Terra Public License v1.0
 
