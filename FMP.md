@@ -1,4 +1,4 @@
-﻿
+
 
 Fractal Metascience Paradigm: Foundations for AI-Integrated Sustainable Educational Ecosystems
 
