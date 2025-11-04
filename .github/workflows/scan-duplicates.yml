@@ -9,18 +9,42 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Find duplicates and show in log
+      - name: Scan with Python
         run: |
-          echo "=== SCANNING FOR DUPLICATES ==="
-          find . -type f ! -path './.git/*' -exec sha256sum {} + | sort | uniq -w64 -D --all-repeated=separate > duplicates.txt
+          python3 << 'EOF'
+          import os
+          import hashlib
+          from collections import defaultdict
           
-          echo ""
-          echo "=== RESULTS ==="
-          if [ -s duplicates.txt ]; then
-            cat duplicates.txt
-            echo ""
-            echo "=== SUMMARY ==="
-            wc -l duplicates.txt
-          else
-            echo "No duplicates found!"
-          fi
+          print("=== SCANNING FOR DUPLICATES ===")
+          
+          hashes = defaultdict(list)
+          count = 0
+          
+          for root, dirs, files in os.walk('.'):
+              if '.git' in root:
+                  continue
+              for f in files:
+                  path = os.path.join(root, f)
+                  try:
+                      with open(path, 'rb') as file:
+                          h = hashlib.sha256(file.read()).hexdigest()
+                          hashes[h].append(path)
+                          count += 1
+                  except:
+                      pass
+          
+          print(f"\nTotal files scanned: {count}")
+          
+          duplicates = {h: paths for h, paths in hashes.items() if len(paths) > 1}
+          
+          if duplicates:
+              print(f"\nFound {len(duplicates)} groups of duplicates:\n")
+              for h, paths in list(duplicates.items())[:20]:  # Show first 20 groups
+                  print(f"\nHash: {h[:16]}...")
+                  for p in paths:
+                      print(f"  - {p}")
+          else:
+              print("\nNo duplicates found!")
+          
+          EOF
