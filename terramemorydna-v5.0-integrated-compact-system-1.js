@@ -1,4 +1,4 @@
-﻿```javascript
+```javascript
 // TerraMemoryDNA_v5.0_Integrated_Compact_System.js
 const TerraMemoryDNA = {
   v: "5.0", stage: "integrated_compact",
