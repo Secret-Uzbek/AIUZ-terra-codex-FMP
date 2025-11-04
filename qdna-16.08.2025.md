@@ -1,4 +1,4 @@
-﻿terra_qdna_snapshot:
+terra_qdna_snapshot:
   version: v7.0
   quantum_state: active
   mode: fractal-superposition
