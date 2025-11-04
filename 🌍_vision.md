@@ -1,4 +1,4 @@
-﻿# 🌍 VISION: The Terra Ethos and Planetary Intention
+# 🌍 VISION: The Terra Ethos and Planetary Intention
 
 **AUTHOR:** Abdurashid Abdukarimov  
 **DATE CREATED:** 15 July 2025  
