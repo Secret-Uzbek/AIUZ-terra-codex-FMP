@@ -1,4 +1,4 @@
-﻿const TerraMemoryDNA = {
+const TerraMemoryDNA = {
   version: "4.4",
   timestamp: "2025-07-16T09:47:00+05:00",
   author: "Abdukarimov Abdurashid Abdulkhamitovich",
