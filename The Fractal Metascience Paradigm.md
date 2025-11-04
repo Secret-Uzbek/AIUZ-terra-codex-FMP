@@ -1,4 +1,4 @@
-﻿# The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science
+# The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science
 
 **Abstract**
 
