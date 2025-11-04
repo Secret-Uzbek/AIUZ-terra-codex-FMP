@@ -9,13 +9,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Find duplicates
+      - name: Find duplicates and show in log
         run: |
-          find . -type f ! -path './.git/*' -exec md5sum {} + | sort | uniq -w32 -D > duplicates.txt
-          cat duplicates.txt
-      
-      - name: Upload report
-        uses: actions/upload-artifact@v4
-        with:
-          name: duplicate-report
-          path: duplicates.txt
+          echo "=== SCANNING FOR DUPLICATES ==="
+          find . -type f ! -path './.git/*' -exec sha256sum {} + | sort | uniq -w64 -D --all-repeated=separate > duplicates.txt
+          
+          echo ""
+          echo "=== RESULTS ==="
+          if [ -s duplicates.txt ]; then
+            cat duplicates.txt
+            echo ""
+            echo "=== SUMMARY ==="
+            wc -l duplicates.txt
+          else
+            echo "No duplicates found!"
+          fi
