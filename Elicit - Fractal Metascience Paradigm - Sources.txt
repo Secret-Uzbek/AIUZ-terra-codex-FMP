@@ -1,4 +1,4 @@
-﻿Aykol, M., Hummelshøj, J. S., Anapolsky, A., Aoyagi, K., Bazant, M. Z., Bligaard, T., Braatz, R. D., Broderick, S., Cogswell, D., Dagdelen, J., Drisdell, W., Garcia, E., Garikipati, K., Gavini, V., Gent, W. E., Giordano, L., Gomes, C. P., Gomez-Bombarelli, R., Balaji Gopal, C., … Storey, B. D. (2019). The Materials Research Platform: Defining the Requirements from User Stories. Matter, 1(6), 1433–1438. https://doi.org/10.1016/j.matt.2019.10.024
+Aykol, M., Hummelshøj, J. S., Anapolsky, A., Aoyagi, K., Bazant, M. Z., Bligaard, T., Braatz, R. D., Broderick, S., Cogswell, D., Dagdelen, J., Drisdell, W., Garcia, E., Garikipati, K., Gavini, V., Gent, W. E., Giordano, L., Gomes, C. P., Gomez-Bombarelli, R., Balaji Gopal, C., … Storey, B. D. (2019). The Materials Research Platform: Defining the Requirements from User Stories. Matter, 1(6), 1433–1438. https://doi.org/10.1016/j.matt.2019.10.024
 
 Sanchez, J. A., Lobdell, K. W., Moffatt-Bruce, S. D., & Fann, J. I. (2017). Investigating the Causes of Adverse Events. The Annals of Thoracic Surgery, 103(6), 1693–1699. https://doi.org/10.1016/j.athoracsur.2017.04.001
 
