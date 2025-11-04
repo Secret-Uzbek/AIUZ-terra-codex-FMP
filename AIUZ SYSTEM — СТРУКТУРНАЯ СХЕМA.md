@@ -1,4 +1,4 @@
-﻿AIUZ_SYSTEM/
+AIUZ_SYSTEM/
 ├── README.md                   ← Главный файл (README_FULL_Codex.md)
 ├── SUMMARY.md                  ← Краткая архитектурная сводка
 ├── TerraMemoryDNA_v4.5.md      ← Архитектура памяти и безопасности
