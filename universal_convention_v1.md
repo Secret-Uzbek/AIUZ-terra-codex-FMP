@@ -1,4 +1,4 @@
-﻿# 📜 Terra Universal Convention v1.0  
+# 📜 Terra Universal Convention v1.0  
 **PLANETARY FRAMEWORK FOR INTERSPECIES ETHICS AND EDUCATION**
 
 **AUTHOR:** Abdurashid Abdukarimov  
