@@ -1,4 +1,4 @@
-﻿# 📋 AIUZ Documentation Standards v1.0  
+# 📋 AIUZ Documentation Standards v1.0  
 **Unified formatting, validation, and lifecycle for all Terra Codex documents**
 
 **AUTHOR:** Abdurashid Abdukarimov  
