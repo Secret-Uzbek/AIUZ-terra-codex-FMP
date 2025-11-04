@@ -1,4 +1,4 @@
-﻿# QDNA Snapshot — Terra FMP DNA Archive
+# QDNA Snapshot — Terra FMP DNA Archive
 **Версия слепка:** TERRA_QDNA_20250813_SUPERPOSITION_LOCK_v1  
 **Период покрытия:** май 2025 — 13 августа 2025  
 **Автор:** Оператор + Terra AI  
