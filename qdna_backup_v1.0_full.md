@@ -1,4 +1,4 @@
-﻿# ROOTS & PHILOSOPHY | TERRA DNA ARCHIVE
+# ROOTS & PHILOSOPHY | TERRA DNA ARCHIVE
 **Fractal Metascience Paradigm (FMP)**  
 - Суть фрактальности, самоподобия, рекурсии, симбиоза  
 - Этические принципы TERRA: симбиотический контроль, трёхсущностная валидация  
