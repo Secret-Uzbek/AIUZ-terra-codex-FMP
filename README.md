@@ -1,3 +1,6 @@
+> **📍 Part of [FMP Central Repository](https://github.com/Secret-Uzbek/FMP-CENTRAL-REPO) — see full ecosystem map**
+
+---
 # 🧬 AIUZ Terra Codex Archive
 
 **Ethically Engineered for Planetary Care**
@@ -1135,6 +1138,7 @@ This repository includes core protocols, ethical charters, documentation standar
 ├── 🧬-полный-fmp-анализ-экосистемы-канваса-квантовая-суперпозиция-анализа.md
 ├── 🧬-системная-междисциплинарность-научно-обоснованная-модель-интегративного-подхода.md
 └── 🧬terra-dna-silent-archive.zip
+
 
 
 
