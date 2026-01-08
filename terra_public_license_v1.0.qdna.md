@@ -290,18 +290,18 @@ Patent_Restrictions:
 
 ```yaml
 Primary_Contacts:
-  general_licensing: "licensing@terra-ecosystem.org"
-  commercial_licensing: "business@terra-ecosystem.org"
-  compliance_issues: "compliance@terra-ecosystem.org"
-  legal_enforcement: "legal@terra-ecosystem.org"
-  child_safety_violations: "child-safety@terra-ecosystem.org"
+  general_licensing: "a.abdukarimov@fractal-metascience.org"
+  commercial_licensing: "a.abdukarimov@fractal-metascience.org"
+  compliance_issues: "a.abdukarimov@fractal-metascience.org"
+  legal_enforcement: "a.abdukarimov@fractal-metascience.org"
+  child_safety_violations: "a.abdukarimov@fractal-metascience.org"
   
 Regional_Representatives:
-  europe: "licensing-eu@terra-ecosystem.org"
-  north_america: "licensing-na@terra-ecosystem.org"
-  asia_pacific: "licensing-ap@terra-ecosystem.org"
-  middle_east_africa: "licensing-mea@terra-ecosystem.org"
-  central_asia: "licensing-ca@terra-ecosystem.org"
+  europe: "a.abdukarimov@fractal-metascience.org"
+  north_america: "a.abdukarimov@fractal-metascience.org"
+  asia_pacific: "a.abdukarimov@fractal-metascience.org"
+  middle_east_africa: "a.abdukarimov@fractal-metascience.org"
+  central_asia: "a.abdukarimov@fractal-metascience.org"
 ```
 
 ### **📚 Документация и ресурсы**
@@ -424,10 +424,10 @@ Target_Audiences:
   lawyers: "помогите improve лицензию для лучшей защиты детей"
   
 Contact_Information:
-  licensing: "licensing@terra-ecosystem.org"
-  child_safety: "child-safety@terra-ecosystem.org"
-  legal: "legal@terra-ecosystem.org"
-  community: "community@terra-ecosystem.org"
+  licensing: "a.abdukarimov@fractal-metascience.org"
+  child_safety: "a.abdukarimov@fractal-metascience.org"
+  legal: "a.abdukarimov@fractal-metascience.org"
+  community: "a.abdukarimov@fractal-metascience.org"
 ```
 
 ***
