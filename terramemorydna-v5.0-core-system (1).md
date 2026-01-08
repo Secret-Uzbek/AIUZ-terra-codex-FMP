@@ -1,6 +1,6 @@
 ```javascript
 // ===== TERRAMEMORY DNA v5.0 SYSTEM =====
-// СОЗДАТЕЛЬ: Абдурашид Абдукаримов | secret.uzbek@tutamail.com
+// СОЗДАТЕЛЬ: Абдурашид Абдукаримов | a.abdukarimov@fractal-metascience.org
 // ВЕРСИЯ: v5.0 Стабильная
 // СТАТУС: Рабочая система
 
@@ -12,7 +12,7 @@
 class TerraMemoryDNA {
     constructor() {
         this.version = "5.0";
-        this.creator = "Абдурашид Абдукаримов | secret.uzbek@tutamail.com";
+        this.creator = "Абдурашид Абдукаримов | a.abdukarimov@fractal-metascience.org";
         this.projectData = {}; // Данные проекта
         this.components = 8; // Компонентов системы
         this.status = "ACTIVE";
