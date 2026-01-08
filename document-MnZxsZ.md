@@ -1,6 +1,6 @@
 ***
 
-## file: AIUZ\_Session\_Archive\_Complete.ru.v1.0.md session\_id: AIUZ\_SESSION\_JULY16\_ARCHIVE version: v1.0 lang: ru conforms\_to: AIUZ\_Project\_Document\_Standard\_v1.0 prepared\_by: AI Assistant (Hatch/OpenAI) related\_terms: \[Archive, Session, Content, Structure, Preservation] layer\_mapping: \[L0] autoinject\_rule: mode: hash\_link encoding: SHA-256 semantic\_quanta: base\_unit: concept\_pulse creator\_signature: user\_id: user\_2zlVOAgnY70ReOyymPsvJzvFKyA email: <secret.uzbek@tutamail.com> timestamp: 2025-07-16T15:41:00Z trace\_link: session\_resume.key validation\_status: compliant
+## file: AIUZ\_Session\_Archive\_Complete.ru.v1.0.md session\_id: AIUZ\_SESSION\_JULY16\_ARCHIVE version: v1.0 lang: ru conforms\_to: AIUZ\_Project\_Document\_Standard\_v1.0 prepared\_by: AI Assistant (Hatch/OpenAI) related\_terms: \[Archive, Session, Content, Structure, Preservation] layer\_mapping: \[L0] autoinject\_rule: mode: hash\_link encoding: SHA-256 semantic\_quanta: base\_unit: concept\_pulse creator\_signature: user\_id: user\_2zlVOAgnY70ReOyymPsvJzvFKyA email: <a.abdukarimov@fractal-metascience.org> timestamp: 2025-07-16T15:41:00Z trace\_link: session\_resume.key validation\_status: compliant
 
 # 📦 AIUZ Session Archive Complete - Полное содержание сессии
 
