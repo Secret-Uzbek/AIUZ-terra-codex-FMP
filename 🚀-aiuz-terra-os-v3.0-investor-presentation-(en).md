@@ -4,7 +4,7 @@
 
 **Presentation for Investors and Partners**\
 **Date:** July 18, 2025\
-**Author:** <secret.uzbek@tutamail.com>\
+**Author:** <a.abdukarimov@fractal-metascience.org>\
 **Status:** READY FOR INVESTMENT
 
 ***
@@ -225,7 +225,7 @@
 
 ### Founder
 
-**<secret.uzbek@tutamail.com>**
+**<a.abdukarimov@fractal-metascience.org>**
 
 * Expert in ethical technologies
 * Experience in educational systems
@@ -269,7 +269,7 @@
 
 **Join the ethical technology revolution!**
 
-* 📧 **Contact:** <secret.uzbek@tutamail.com>
+* 📧 **Contact:** <a.abdukarimov@fractal-metascience.org>
 * 💰 **Investment:** From $500K to $10M
 * 🤝 **Partnership:** Strategic alliances
 * 🌍 **Impact:** Changing the world through ethical technology
@@ -287,13 +287,13 @@
 ## 📞 CONTACTS
 
 **AIUZ Terra OS Project**\
-**Founder:** <secret.uzbek@tutamail.com>\
+**Founder:** <a.abdukarimov@fractal-metascience.org>\
 **Version:** Complete Integration v3.0\
 **Status:** READY FOR INVESTMENT
 
 **Website:** terraos.ai\
 **Documentation:** docs.terraos.ai\
-**Investments:** <invest@terraos.ai>
+**Investments:** <a.abdukarimov@fractal-metascience.org>
 
 ***
 
