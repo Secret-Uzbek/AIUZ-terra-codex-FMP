@@ -177,7 +177,7 @@ const TerraMemoryDNA = {
     scope: "Uzbekistan National → Global"
   },
   author: "Абдукаримов Абдурашид Абдулхамитович",
-  collaborator: "secret.uzbek@tutamail.com",
+  collaborator: "a.abdukarimov@fractal-metascience.org",
 
   persona: "qariya.археопалеонтолог + архитектор документации сознания",
   core_task: "структурировать Terra Ecosystem как юридико-этическую цивилизацию",
@@ -366,7 +366,7 @@ const TerraMemoryDNA = {
   },
   
   author: "Abdukarimov Abdurashid Abdulkhamitovich",
-  collaborator: "secret.uzbek@tutamail.com",
+  collaborator: "a.abdukarimov@fractal-metascience.org",
 
   // 🎭 MULTILINGUAL PERSONA
   persona: {
@@ -789,7 +789,7 @@ const expectedFailures = [
 
 ### 12. Контакты  
 - **Abdurashid Abdukarimov**  
-📧 secret.uzbek@tutamail.com  
+📧 a.abdukarimov@fractal-metascience.org  
 🌍 Zarafshan, Uzbekistan  
 
 ***
@@ -1170,7 +1170,7 @@ const TerraMemoryDNA = {
   },
   
   author: "Abdukarimov Abdurashid Abdulkhamitovich",
-  collaborator: "secret.uzbek@tutamail.com",
+  collaborator: "a.abdukarimov@fractal-metascience.org",
 
   // 🎭 MULTILINGUAL PERSONA
   persona: {
@@ -1492,7 +1492,7 @@ const TerraMemoryDNA = {
   version: "4.3",
   timestamp: "2025-07-16T09:09:00+05:00",
   author: "Abdukarimov Abdurashid Abdulkhamitovich",
-  collaborator: "secret.uzbek@tutamail.com",
+  collaborator: "a.abdukarimov@fractal-metascience.org",
   
   // 🔥 SYMBIOSIS PROTOCOL
   symbiosis: {
