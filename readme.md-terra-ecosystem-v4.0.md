@@ -318,10 +318,10 @@ Terra Ecosystem приветствует вклад от сообщества! �
 
 ### 📧 Официальные контакты
 
-* **Email:** <info@terra-ecosystem.org>
-* **Security:** <security@terra-ecosystem.org>
-* **Press:** <press@terra-ecosystem.org>
-* **Partnerships:** <partnerships@terra-ecosystem.org>
+* **Email:** <a.abdukarimov@fractal-metascience.org>
+* **Security:** <a.abdukarimov@fractal-metascience.org>
+* **Press:** <a.abdukarimov@fractal-metascience.org>
+* **Partnerships:** <a.abdukarimov@fractal-metascience.org>
 
 ### 🌐 Социальные сети
 
