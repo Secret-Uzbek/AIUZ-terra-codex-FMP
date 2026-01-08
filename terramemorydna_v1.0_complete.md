@@ -218,7 +218,7 @@ Core_Terms:
 
 **Сертификат:** AIUZ-DNA-CERT-20250716-v1.0\
 **Подпись:** AIUZ2025\
-**Контакт:** <secret.uzbek@tutamail.com>
+**Контакт:** <a.abdukarimov@fractal-metascience.org>
 
 ***
 
@@ -234,4 +234,4 @@ Core_Terms:
 
 © AIUZ 2025. Все права защищены.\
 🛠 Создано при технической поддержке OpenAI.\
-📧 Контакт: <secret.uzbek@tutamail.com>
+📧 Контакт: <a.abdukarimov@fractal-metascience.org>
