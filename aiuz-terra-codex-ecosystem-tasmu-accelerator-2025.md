@@ -367,7 +367,7 @@ Transform Qatar into a beacon of planetary consciousness, demonstrating how huma
 
 **Abdurashid Abdukarimov**
 
-* Email: <secret.uzbek@tutamail.com>
+* Email: <a.abdukarimov@fractal-metascience.org>
 * Location: Tashkent, Uzbekistan
 * DID: aiuz:did:aiuz:stakeholder:abdukarimov\_aaahash1234567890
 
