@@ -10,7 +10,7 @@
 **\[QR\_SIGNATURE]:** AIUZ://auth/\[autogen\_SHA256]@aiuz2025.local
 
 **Дата архивации:** 16 июля 2025, 12:57 PM\
-**Оператор:** <secret.uzbek@tutamail.com>\
+**Оператор:** <a.abdukarimov@fractal-metascience.org>\
 **Статус:** ПОЛНЫЙ АРХИВ ПРОЕКТА
 
 ***
@@ -600,7 +600,7 @@ Terra Ecosystem ставит **детскую безопасность** выш�
 #### Приоритет 1: Угрозы детской безопасности
 
 ```yaml
-Contact: child-safety@terra-ecosystem.org
+Contact: a.abdukarimov@fractal-metascience.org
 Response_Time: "Немедленно (< 30 минут)"
 PGP_Key: "Доступен на https://terra-ecosystem.org/pgp"
 Phone: "+998-XX-XXX-XXXX (24/7 hotline)"
@@ -618,9 +618,9 @@ Signal: "Номер предоставляется по запросу"
 #### Приоритет 2: Общие уязвимости безопасности
 
 ```yaml
-Contact: security@terra-ecosystem.org
+Contact: a.abdukarimov@fractal-metascience.org
 Response_Time: "24 часа"
-PGP_Key: "security@terra-ecosystem.org.pgp"
+PGP_Key: "a.abdukarimov@fractal-metascience.org"
 Bug_Bounty: "Доступна для серьезных уязвимостей"
 ```
 
@@ -862,7 +862,7 @@ Actions:
 ```yaml
 Primary: "+998-XX-XXX-XXXX"
 International: "+1-XXX-XXX-XXXX"
-Email: "emergency@terra-ecosystem.org"
+Email: "a.abdukarimov@fractal-metascience.org"
 Signal: "Request number via emergency email"
 Telegram: "@TerraEmergencyBot"
 ```
