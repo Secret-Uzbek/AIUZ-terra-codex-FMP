@@ -35,7 +35,7 @@ Terra Ecosystem ставит **детскую безопасность** выш�
 #### 🔴 Приоритет 1: Угрозы детской безопасности
 
 ```yaml
-Contact: child-safety@terra-ecosystem.org
+Contact: a.abdukarimov@fractal-metascience.org
 Response_Time: "Немедленно (< 30 минут)"
 PGP_Key: "Доступен на https://terra-ecosystem.org/pgp"
 Phone: "+998-XX-XXX-XXXX (24/7 hotline)"
@@ -53,9 +53,9 @@ Signal: "Номер предоставляется по запросу"
 #### 🟠 Приоритет 2: Общие уязвимости безопасности
 
 ```yaml
-Contact: security@terra-ecosystem.org
+Contact: a.abdukarimov@fractal-metascience.org
 Response_Time: "24 часа"
-PGP_Key: "security@terra-ecosystem.org.pgp"
+PGP_Key: "a.abdukarimov@fractal-metascience.org"
 Bug_Bounty: "Доступна для серьезных уязвимостей"
 ```
 
@@ -340,7 +340,7 @@ Actions:
 ```yaml
 Primary: "+998-XX-XXX-XXXX"
 International: "+1-XXX-XXX-XXXX"
-Email: "emergency@terra-ecosystem.org"
+Email: "a.abdukarimov@fractal-metascience.org"
 Signal: "Request number via emergency email"
 Telegram: "@TerraEmergencyBot"
 ```
@@ -531,39 +531,39 @@ class ChildDataManager:
 
 **Chief Information Security Officer (CISO):**
 
-* Email: <ciso@terra-ecosystem.org>
+* Email: <a.abdukarimov@fractal-metascience.org>
 * Специализация: Enterprise security, child protection
 
 **Child Safety Officer:**
 
-* Email: <child-safety@terra-ecosystem.org>
+* Email: <a.abdukarimov@fractal-metascience.org>
 * Специализация: COPPA compliance, child psychology, threat assessment
 
 **Privacy Officer:**
 
-* Email: <privacy@terra-ecosystem.org>
+* Email: <a.abdukarimov@fractal-metascience.org>
 * Специализация: GDPR compliance, data governance, privacy engineering
 
 **Security Engineers:**
 
-* Email: <security-team@terra-ecosystem.org>
+* Email: <a.abdukarimov@fractal-metascience.org>
 * Специализация: Application security, infrastructure security, incident response
 
 ### 🌍 Regional Security Contacts
 
 **Central Asia (Uzbekistan/Kazakhstan/Kyrgyzstan):**
 
-* Email: <security-ca@terra-ecosystem.org>
+* Email: <a.abdukarimov@fractal-metascience.org>
 * Phone: +998-XX-XXX-XXXX
 
 **European Union (Germany/France/Netherlands):**
 
-* Email: <security-eu@terra-ecosystem.org>
+* Email: <a.abdukarimov@fractal-metascience.org>
 * Phone: +49-XXX-XXX-XXXX
 
 **North America (USA/Canada):**
 
-* Email: <security-na@terra-ecosystem.org>
+* Email: <a.abdukarimov@fractal-metascience.org>
 * Phone: +1-XXX-XXX-XXXX
 
 ***
@@ -660,10 +660,10 @@ Terra Ecosystem устанавливает **новый стандарт без�
 
 **Контакты:**
 
-* **Security Team:** <security@terra-ecosystem.org>
-* **Bug Bounty:** <bounty@terra-ecosystem.org>
-* **Child Safety:** <child-safety@terra-ecosystem.org>
-* **Community:** <security-community@terra-ecosystem.org>
+* **Security Team:** <a.abdukarimov@fractal-metascience.org>
+* **Bug Bounty:** <a.abdukarimov@fractal-metascience.org>
+* **Child Safety:** <a.abdukarimov@fractal-metascience.org>
+* **Community:** <a.abdukarimov@fractal-metascience.org>
 
 ***
 
@@ -675,4 +675,4 @@ Terra Ecosystem устанавливает **новый стандарт без�
 
 **Last Updated:** 16 июля 2025\
 **Next Review:** 16 октября 2025\
-**Emergency Contact:** <security@terra-ecosystem.org>
+**Emergency Contact:** <a.abdukarimov@fractal-metascience.org>
