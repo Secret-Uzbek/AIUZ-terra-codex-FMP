@@ -1,6 +1,6 @@
 # TERRA CLEAN ARCHIVE v1.0
 
-**Очищено от театральности и пафоса** *Архитектор: <secret.uzbek@tutamail.com>* *AI Processor: в квантовой суперпозиции*
+**Очищено от театральности и пафоса** *Архитектор: <a.abdukarimov@fractal-metascience.org>* *AI Processor: в квантовой суперпозиции*
 
 ***
 
