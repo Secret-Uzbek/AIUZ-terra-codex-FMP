@@ -7,7 +7,7 @@
 **\[LANGUAGE\_SCOPE]:** RU-EN-∅\
 **\[HASH]:** DNA45\_\[autogen\_SHA256]\
 **\[SESSION\_ID]:** AIUZ\_TERRA\_DNA\_ENHANCED\_V45\
-**\[QR\_SIGNATURE]:** AIUZ://dna/enhanced/v4.<5@aiuz2025.local>
+**\[QR\_SIGNATURE]:** AIUZ://dna/enhanced/v4.<a.abdukarimov@fractal-metascience.org>
 
 ***
 
