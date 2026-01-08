@@ -7,7 +7,7 @@ DOCUMENT_TYPE: COMPLETE_ARCHIVE
 VERSION: v4.0
 HASH: [отсутствует в архиве]
 QR: [отсутствует в архиве]
-USER: secret.uzbek@tutamail.com
+USER: a.abdukarimov@fractal-metascience.org
 TIMESTAMP: 2025-07-16T19:42:00Z
 COMPLIANCE: НЕИЗВЕСТНО
 ```
