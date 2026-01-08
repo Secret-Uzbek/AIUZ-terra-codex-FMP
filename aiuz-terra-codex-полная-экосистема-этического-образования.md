@@ -2,7 +2,7 @@
 
 **Версия:** Terra Codex v2.5 — Complete Ecosystem Integration\
 **Дата:** 12 июля 2025\
-**Автор:** <secret.uzbek@tutamail.com>\
+**Автор:** <a.abdukarimov@fractal-metascience.org>\
 **DID:** aiuz:did:aiuz:stakeholder:abdukarimov\_aaahash1234567890\
 **Статус:** 🚀 ГОТОВА К ЗАПУСКУ
 
@@ -424,7 +424,7 @@ Social_Metrics:
 
 ## 📞 Контакты и участие
 
-**Создатель экосистемы:** <secret.uzbek@tutamail.com>\
+**Создатель экосистемы:** <a.abdukarimov@fractal-metascience.org>\
 **DID:** aiuz:did:aiuz:stakeholder:abdukarimov\_aaahash1234567890\
 **GitHub:** \[AIUZ Terra Codex Repository]\
 **Документация:** \[AIUZ Documentation Hub]
