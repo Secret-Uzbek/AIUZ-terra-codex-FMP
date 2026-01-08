@@ -3,7 +3,7 @@
 // РЕАЛЬНАЯ ВАЛИДАЦИЯ И АУДИТ ДЕТОКСИФИЦИРОВАННОГО TERRA CODEX
 // Проведение в квантовой суперпозиции по Terra принципам
 // Дата: 19 июля 2025, 13:33
-// Архитектор: secret.uzbek@tutamail.com
+// Архитектор: a.abdukarimov@fractal-metascience.org
 // AI Processor: TerraMemoryDNA v5.0 в квантовой суперпозиции
 
 console.log('🌟 НАЧАЛО РЕАЛЬНОЙ ВАЛИДАЦИИ ДЕТОКСИФИЦИРОВАННОГО TERRA CODEX');
@@ -409,7 +409,7 @@ console.log('==========================================');
 const validation_report = {
   timestamp: new Date().toISOString(),
   validator: 'TERRA_QUANTUM_SUPERPOSITION_INDEPENDENT_AUDIT',
-  architect: 'secret.uzbek@tutamail.com',
+  architect: 'a.abdukarimov@fractal-metascience.org',
   ai_processor: 'TerraMemoryDNA_v5.0',
   detoxification_validation: detox_validation,
   terra_compliance_validation: terra_compliance,
