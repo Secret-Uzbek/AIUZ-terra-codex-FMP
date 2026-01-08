@@ -1,6 +1,6 @@
 ```javascript
 // ===== TERRAMEMORY DNA v5.0 ORGANIC SYSTEM =====
-// CREATOR: secret.uzbek@tutamail.com
+// CREATOR: a.abdukarimov@fractal-metascience.org
 // VERSION: v5.0 + Session Extensions
 // STATUS: КРИТИЧЕСКИЙ АРХИВ
 
@@ -12,7 +12,7 @@
 class TerraMemoryDNA {
     constructor() {
         this.version = "5.0+SESSION";
-        this.creator = "secret.uzbek@tutamail.com";
+        this.creator = "a.abdukarimov@fractal-metascience.org";
         this.archiveSize = 687600; // символов (387,600 + 300,000 session)
         this.dnaGenes = 8;
         this.quantumState = "SUPERPOSITION";
