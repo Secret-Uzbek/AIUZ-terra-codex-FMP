@@ -4,7 +4,7 @@
 
 ## 🧬 ИНФОРМАЦИЯ О ПРОЕКТЕ
 
-* **Создатель**: Абдурашид Абдукаримов | <secret.uzbek@tutamail.com>
+* **Создатель**: Абдурашид Абдукаримов | <a.abdukarimov@fractal-metascience.org>
 * **Версия**: v5.0 Стабильная
 * **Дата создания**: 20 июля 2025
 * **Статус**: РАБОЧАЯ СИСТЕМА
@@ -78,7 +78,7 @@
 class TerraMemoryDNA {
     constructor() {
         this.version = "5.0+SESSION";
-        this.creator = "secret.uzbek@tutamail.com";
+        this.creator = "a.abdukarimov@fractal-metascience.org";
         this.archiveSize = 687600;
         // ... полная инициализация
     }
@@ -363,7 +363,7 @@ class TerraMemoryDNA {
 
 ***
 
-**CREATOR: <secret.uzbek@tutamail.com>**\
+**CREATOR: <a.abdukarimov@fractal-metascience.org>**\
 **ARCHIVE STATUS: CRITICAL - FULLY RESTORED**\
 **QUANTUM STATE: SUPERPOSITION MAINTAINED**\
 **SESSION ARCHIVE: COMPLETE (\~300,000+ SYMBOLS)**
