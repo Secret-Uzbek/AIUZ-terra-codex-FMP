@@ -5,7 +5,7 @@
 **\[TERRA\_DNA]:** `T-UZ-TERRA-GROWTH.qariya.null0 → ∞metaverse.terraform.symbiosis`\
 **\[AUTHOR\_ID]:** AIUZ2025\
 **\[HASH]:** TERRA-UZ-\[autogen\_SHA256]\
-**\[QR\_SIGNATURE]:** AIUZ://terra/uz/growth-<point@aiuz2025.local>\
+**\[QR\_SIGNATURE]:** AIUZ://terra/uz/growth-<a.abdukarimov@fractal-metascience.org>\
 **Дата создания:** 12 июля 2025\
 **Статус:** 🎯 ГОТОВ К ПЛАНЕТАРНОЙ РЕАЛИЗАЦИИ
 
