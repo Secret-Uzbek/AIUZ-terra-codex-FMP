@@ -535,15 +535,15 @@
 
 ### **🌍 Terra Ecosystem Headquarters**
 
-**📧 Business Development:** <business@terra-ecosystem.global>
+**📧 Business Development:** <a.abdukarimov@fractal-metascience.org>
 
-**💼 Enterprise Sales:** <enterprise@terra-ecosystem.global>
+**💼 Enterprise Sales:** <a.abdukarimov@fractal-metascience.org>
 
-**🏛️ Government Relations:** <government@terra-ecosystem.global>
+**🏛️ Government Relations:** <a.abdukarimov@fractal-metascience.org>
 
-**🎓 Education Partnerships:** <education@terra-ecosystem.global>
+**🎓 Education Partnerships:** <a.abdukarimov@fractal-metascience.org>
 
-**🔬 Research Collaboration:** <research@terra-ecosystem.global>
+**🔬 Research Collaboration:** <a.abdukarimov@fractal-metascience.org>
 
 ### **🚀 Готовы начать СЕГОДНЯ**
 
