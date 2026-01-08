@@ -71,5 +71,5 @@
 
 ---
 
-**Контакт:** a.a.abdukarimov@tutamail.com  
+**Контакт:** a.abdukarimov@fractal-metascience.org  
 **ORCID:** [0009-0000-6394-4912](https://orcid.org/0009-0000-6394-4912)
