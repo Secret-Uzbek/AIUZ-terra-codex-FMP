@@ -9,7 +9,7 @@ creation_date: 2025-07-13
 version: 1.0
 author_did: did:aiuz:AIUZ2025
 hash_signature: AIUZ-9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c
-qr_verification: AIUZ://auth/9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c@aiuz2025.local
+qr_verification: AIUZ://auth/a.abdukarimov@fractal-metascience.org
 conforms_to: AIUZ_Project_Document_Standard_v1.0
 layer_compliance: [L0, L1, L2, L3, L4, L5]
 semantic_tags: [planetary_symbiosis, interscience, interspecies, consciousness_evolution]
