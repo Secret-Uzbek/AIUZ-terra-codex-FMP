@@ -122,7 +122,7 @@ Terra Ecosystem стремится революционизировать дет
 
 **Критически важно:**
 
-* **Конфиденциальное сообщение:** <security@terra-ecosystem.org>
+* **Конфиденциальное сообщение:** <a.abdukarimov@fractal-metascience.org>
 * **Responsible Disclosure:** не публикуйте уязвимости публично
 * **Child-specific threats:** особое внимание к угрозам для детей
 * **Privacy by Design:** встраивание защиты приватности
@@ -503,16 +503,16 @@ Review_Timeline:
 **Для участников:**
 
 * **Discord:** #contributors канал в Discord сервере
-* **Email:** <contributors@terra-ecosystem.org>
+* **Email:** <a.abdukarimov@fractal-metascience.org>
 * **Telegram:** @TerraContributors
 * **Weekly Office Hours:** Каждую пятницу 15:00 UTC
 
 **Для специфических вопросов:**
 
-* **Техническая помощь:** <tech-help@terra-ecosystem.org>
-* **Этические вопросы:** <ethics@terra-ecosystem.org>
-* **Локализация:** <localization@terra-ecosystem.org>
-* **Безопасность:** <security@terra-ecosystem.org>
+* **Техническая помощь:** <a.abdukarimov@fractal-metascience.org>
+* **Этические вопросы:** <a.abdukarimov@fractal-metascience.org>
+* **Локализация:** <a.abdukarimov@fractal-metascience.org>
+* **Безопасность:** <a.abdukarimov@fractal-metascience.org>
 
 ### 📚 Ресурсы для участников
 
