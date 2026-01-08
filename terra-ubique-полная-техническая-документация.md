@@ -9,7 +9,7 @@
 ```
 === AIUZ TERRA CODEX TECHNICAL OVERVIEW ===
 SESSION_ID: terra.session.2025.07.14.0953
-OPERATOR: secret.uzbek@tutamail.com
+OPERATOR: a.abdukarimov@fractal-metascience.org
 TIMESTAMP: 2025-07-14 09:53:00 UTC
 STATUS: 📋 ПОЛНАЯ ТЕХНИЧЕСКАЯ ПРЕЗЕНТАЦИЯ
 ```
@@ -277,7 +277,7 @@ useStoredState(key: string, initialValue: any): [value, setValue]
 
 ```javascript
 const user = useUser(); // { id, name, color }
-// Текущий пользователь: secret.uzbek@tutamail.com
+// Текущий пользователь: a.abdukarimov@fractal-metascience.org
 // Цвет профиля: #BD54C6 (фиолетовый)
 ```
 
@@ -390,7 +390,7 @@ const user = useUser(); // { id, name, color }
 ```
 📍 Адрес: Ташкент, Узбекистан
 📞 Телефон: +998 (71) 295-08-85
-📧 Email: info@terraubique.uz
+📧 Email: a.abdukarimov@fractal-metascience.org
 🌐 Официальный сайт: terraubique.uz
 🏛️ Государственная регистрация: в процессе через gov.uz
 ```
