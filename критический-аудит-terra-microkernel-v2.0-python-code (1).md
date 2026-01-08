@@ -107,7 +107,7 @@
 ### **8. ЛОЖНЫЕ КОНТАКТЫ И ОБЕЩАНИЯ**
 
 ```
-"📧 Business Development: business@terra-ecosystem.global"
+"📧 Business Development: a.abdukarimov@fractal-metascience.org"
 "⚡ Express Integration (24 часа)"
 "🌟 Результат: 👶 Революция в детском образовании"
 ```
