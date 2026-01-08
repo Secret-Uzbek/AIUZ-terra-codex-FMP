@@ -3274,7 +3274,7 @@ const TerraUltimateEcosystem = () => {
         {/* Footer */}
         <div className="mt-8 text-center text-sm text-gray-600">
           <p><strong>🧬 TERRA Ultimate Ecosystem v7.0</strong></p>
-          <p>Создано: Абдурашид Абдукаримов | secret.uzbek@tutamail.com</p>
+          <p>Создано: Абдурашид Абдукаримов | a.abdukarimov@fractal-metascience.org</p>
           <p>DID: aiuz:did:aiuz:stakeholder:abdukarimov_aaahash1234567890</p>
           <p className="text-xs mt-2">Quantum Superposition Technology | Fractal Metascience | All Archive Codes Integrated</p>
         </div>
@@ -10248,7 +10248,7 @@ This archive includes foundational protocols, ethical charters, documentation st
 
 ### 12. Контакты  
 - **Abdurashid Abdukarimov**  
-📧 secret.uzbek@tutamail.com  
+📧 a.abdukarimov@fractal-metascience.org  
 🌍 Zarafshan, Uzbekistan  
 
 ***
@@ -13055,7 +13055,7 @@ return (
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>info@terraubique.uz</span>
+                  <span>a.abdukarimov@fractal-metascience.org</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4" />
@@ -15866,7 +15866,7 @@ print("=" * 60)
 
 === AIUZ TERRA CODEX TECHNICAL OVERVIEW ===
 SESSION_ID: terra.session.2025.07.14.0953
-OPERATOR: secret.uzbek@tutamail.com
+OPERATOR: a.abdukarimov@fractal-metascience.org
 TIMESTAMP: 2025-07-14 09:53:00 UTC
 STATUS: 📋 ПОЛНАЯ ТЕХНИЧЕСКАЯ ПРЕЗЕНТАЦИЯ
 
@@ -16156,7 +16156,7 @@ useStoredState(key: string, initialValue: any): [value, setValue]
 
 ```javascript
 const user = useUser(); // { id, name, color }
-// Текущий пользователь: secret.uzbek@tutamail.com
+// Текущий пользователь: a.abdukarimov@fractal-metascience.org
 // Цвет профиля: #BD54C6 (фиолетовый)
 ```
 
@@ -16277,7 +16277,7 @@ const user = useUser(); // { id, name, color }
 ```
 📍 Адрес: Ташкент, Узбекистан
 📞 Телефон: +998 (71) 295-08-85
-📧 Email: info@terraubique.uz
+📧 Email: a.abdukarimov@fractal-metascience.org
 🌐 Официальный сайт: terraubique.uz
 🏛️ Государственная регистрация: в процессе через gov.uz
 ```
