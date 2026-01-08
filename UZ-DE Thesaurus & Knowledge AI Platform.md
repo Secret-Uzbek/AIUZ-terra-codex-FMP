@@ -461,7 +461,7 @@ institution: €49.99/месяц
 
 ```yaml
 technical_lead: "Abdurashid Abdukarimov"
-  - email: "tech@terra-thesaurus.uz"
+  - email: "a.abdukarimov@fractal-metascience.org"
   - expertise: "AI/ML, Computational Linguistics"
 
 cultural_consultant: "TBD"
@@ -473,10 +473,10 @@ ux_designer: "TBD"
 
 ### **📧 Поддержка**
 
-* **Техническая поддержка:** <support@terra-thesaurus.uz>
-* **Партнерства:** <partners@terra-thesaurus.uz>
-* **Обратная связь:** <feedback@terra-thesaurus.uz>
-* **Пресс-запросы:** <press@terra-thesaurus.uz>
+* **Техническая поддержка:** <a.abdukarimov@fractal-metascience.org>
+* **Партнерства:** <a.abdukarimov@fractal-metascience.org>
+* **Обратная связь:** <a.abdukarimov@fractal-metascience.org>
+* **Пресс-запросы:** <a.abdukarimov@fractal-metascience.org>
 
 ***
 
