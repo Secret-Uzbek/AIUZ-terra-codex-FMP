@@ -4,7 +4,7 @@
 
 **Investorlar va hamkorlar uchun prezentatsiya**\
 **Sana:** 18 iyul 2025\
-**Muallif:** <secret.uzbek@tutamail.com>\
+**Muallif:** <a.abdukarimov@fractal-metascience.org>\
 **Status:** INVESTITSIYAGA TAYYOR
 
 ***
@@ -225,7 +225,7 @@
 
 ### Asoschisi
 
-**<secret.uzbek@tutamail.com>**
+**<a.abdukarimov@fractal-metascience.org>**
 
 * Axloqiy texnologiyalar bo'yicha ekspert
 * Ta'lim tizimlarida tajriba
@@ -269,7 +269,7 @@
 
 **Axloqiy texnologiyalar inqilobiga qo'shiling!**
 
-* 📧 **Aloqa:** <secret.uzbek@tutamail.com>
+* 📧 **Aloqa:** <a.abdukarimov@fractal-metascience.org>
 * 💰 **Investitsiyalar:** $500K dan $10M gacha
 * 🤝 **Hamkorlik:** Strategik ittifoqlar
 * 🌍 **Ta'sir:** Axloqiy texnologiyalar orqali dunyoni o'zgartirish
@@ -287,13 +287,13 @@
 ## 📞 KONTAKTLAR
 
 **AIUZ Terra OS Project**\
-**Asoschisi:** <secret.uzbek@tutamail.com>\
+**Asoschisi:** <a.abdukarimov@fractal-metascience.org>\
 **Versiya:** Complete Integration v3.0\
 **Status:** INVESTITSIYAGA TAYYOR
 
 **Veb-sayt:** terraos.ai\
 **Hujjatlar:** docs.terraos.ai\
-**Investitsiyalar:** <invest@terraos.ai>
+**Investitsiyalar:** <a.abdukarimov@fractal-metascience.org>
 
 ***
 
