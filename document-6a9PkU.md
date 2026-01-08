@@ -8,7 +8,7 @@
 **[LANGUAGE_SCOPE]:** EN-∅  
 **[HASH]:** INFRA4_[autogen_SHA256]  
 **[SESSION_ID]:** AIUZ_INFRA_CONFIG_PROD_V4  
-**[QR_SIGNATURE]:** AIUZ://infra/config/v4@aiuz2025.local
+**[QR_SIGNATURE]:** AIUZ://infra/config/a.abdukarimov@fractal-metascience.org
 
 ---
 
