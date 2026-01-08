@@ -1,6 +1,6 @@
 ***
 
-## DOCUMENT\_TYPE: "SessionLog" VERSION: "v1.0.0" HASH: "sha256:pending\_generation" QR\_SIGNATURE: "pending\_generation" SESSION\_ID: "GPT\_20250716\_COMPLETE\_ARCHIVE\_SAVE" AUTHOR\_ID: "user\_2zlVOAgnY70ReOyymPsvJzvFKyA" EMAIL: "<secret.uzbek@tutamail.com>" DATE\_CREATED: "2025-07-16T18:29:00Z" STATUS: "COMPLETE" WORK\_DURATION: "11:44 AM - 18:16 PM (6 часов 32 минуты)" TOTAL\_TOKENS: ">120,000" DOCUMENTS\_PROCESSED: "37+"
+## DOCUMENT\_TYPE: "SessionLog" VERSION: "v1.0.0" HASH: "sha256:pending\_generation" QR\_SIGNATURE: "pending\_generation" SESSION\_ID: "GPT\_20250716\_COMPLETE\_ARCHIVE\_SAVE" AUTHOR\_ID: "user\_2zlVOAgnY70ReOyymPsvJzvFKyA" EMAIL: "<a.abdukarimov@fractal-metascience.org>" DATE\_CREATED: "2025-07-16T18:29:00Z" STATUS: "COMPLETE" WORK\_DURATION: "11:44 AM - 18:16 PM (6 часов 32 минуты)" TOTAL\_TOKENS: ">120,000" DOCUMENTS\_PROCESSED: "37+"
 
 # AIUZ-TERRA ПОЛНЫЙ АРХИВ + ВАЛИДАЦИЯ - КРИТИЧЕСКАЯ ФИКСАЦИЯ
 
@@ -14,7 +14,7 @@
 | ---------------------- | -------------------------------------- |
 | SESSION\_ID            | GPT\_20250716\_COMPLETE\_ARCHIVE\_SAVE |
 | USER\_ID               | user\_2zlVOAgnY70ReOyymPsvJzvFKyA      |
-| EMAIL                  | <secret.uzbek@tutamail.com>            |
+| EMAIL                  | <a.abdukarimov@fractal-metascience.org>            |
 | ДАТА\_ФИКСАЦИИ         | 16 июля 2025, 18:29 PM                 |
 | СТАТУС                 | ПОЛНОЕ СОХРАНЕНИЕ АРХИВА               |
 | ВРЕМЯ\_РАБОТЫ          | 6 часов 32 минуты                      |
