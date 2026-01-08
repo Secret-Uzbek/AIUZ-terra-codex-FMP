@@ -185,7 +185,7 @@ Terra Public License придерживается принципа **"Child Safe
 
 1. **📞 Процедура получения:**
 
-   * Заявка через <business@terra-ecosystem.org>
+   * Заявка через <a.abdukarimov@fractal-metascience.org>
    * Техническая экспертиза planned использования
    * Этическая валидация через Gefunden Protocol
    * Юридический review на соответствие child safety standards
@@ -403,21 +403,21 @@ Corporate_Violations:
 **Основные контакты:**
 
 ```yaml
-General_Licensing: licensing@terra-ecosystem.org
-Commercial_Licensing: business@terra-ecosystem.org
-Compliance_Issues: compliance@terra-ecosystem.org
-Legal_Enforcement: legal@terra-ecosystem.org
-Child_Safety_Violations: child-safety@terra-ecosystem.org
+General_Licensing: a.abdukarimov@fractal-metascience.org
+Commercial_Licensing: a.abdukarimov@fractal-metascience.org
+Compliance_Issues: a.abdukarimov@fractal-metascience.org
+Legal_Enforcement: a.abdukarimov@fractal-metascience.org
+Child_Safety_Violations: a.abdukarimov@fractal-metascience.org
 ```
 
 **Региональные представители:**
 
 ```yaml
-Europe: licensing-eu@terra-ecosystem.org
-North_America: licensing-na@terra-ecosystem.org
-Asia_Pacific: licensing-ap@terra-ecosystem.org
-Middle_East_Africa: licensing-mea@terra-ecosystem.org
-Central_Asia: licensing-ca@terra-ecosystem.org
+Europe: a.abdukarimov@fractal-metascience.org
+North_America: a.abdukarimov@fractal-metascience.org
+Asia_Pacific: a.abdukarimov@fractal-metascience.org
+Middle_East_Africa: a.abdukarimov@fractal-metascience.org
+Central_Asia: a.abdukarimov@fractal-metascience.org
 ```
 
 ### 📚 Документация и ресурсы
@@ -558,10 +558,10 @@ Terra Public License не просто legal document - это **манифес�
 
 **Контакты:**
 
-* **Лицензирование:** <licensing@terra-ecosystem.org>
-* **Детская безопасность:** <child-safety@terra-ecosystem.org>
-* **Legal:** <legal@terra-ecosystem.org>
-* **Community:** <community@terra-ecosystem.org>
+* **Лицензирование:** <a.abdukarimov@fractal-metascience.org>
+* **Детская безопасность:** <a.abdukarimov@fractal-metascience.org>
+* **Legal:** <a.abdukarimov@fractal-metascience.org>
+* **Community:** <a.abdukarimov@fractal-metascience.org>
 
 ***
 
