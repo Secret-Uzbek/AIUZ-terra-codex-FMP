@@ -60,7 +60,7 @@ This repository includes core protocols, ethical charters, documentation standar
 ## 🌐 Contact & Credits
 
 **Author:** Abdurashid Abdulkhamitovich Abdukarimov (Tashkent, Uzbekistan)  
-**Email:** a.a.abdukarimov@tutamail.com  
+**Email:** a.abdukarimov@fractal-metascience.org  
 **ORCID:** https://orcid.org/0009-0000-6394-4912
 
 ---
