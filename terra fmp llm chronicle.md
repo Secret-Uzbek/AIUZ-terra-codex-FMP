@@ -2074,7 +2074,7 @@ institution: €49.99/месяц
 ### **👥 Команда Проекта**
 \`\`\`yaml
 technical\_lead: "Abdurashid Abdukarimov"
-  - email: "tech@terra-thesaurus.uz"
+  - email: "a.abdukarimov@fractal-metascience.org"
   - expertise: "AI/ML, Computational Linguistics"
 cultural\_consultant: "TBD"
   - expertise: "Uzbek-German Cultural Studies"
@@ -2082,10 +2082,10 @@ ux\_designer: "TBD"
   - expertise: "Educational UX, AR/VR Interfaces"
 \`\`\`
 ### **📧 Поддержка**
-\* **Техническая поддержка:** <support@terra-thesaurus.uz>
-\* **Партнерства:** <partners@terra-thesaurus.uz>
-\* **Обратная связь:** <feedback@terra-thesaurus.uz>
-\* **Пресс-запросы:** <press@terra-thesaurus.uz>
+\* **Техническая поддержка:** <a.abdukarimov@fractal-metascience.org>
+\* **Партнерства:** <a.abdukarimov@fractal-metascience.org>
+\* **Обратная связь:** <a.abdukarimov@fractal-metascience.org>
+\* **Пресс-запросы:** <a.abdukarimov@fractal-metascience.org>
 \*\*\*
 ## 🎯 **ЗАКЛЮЧЕНИЕ**
 UZ-DE Thesaurus & Knowledge AI Platform представляет собой комплексное решение для преодоления языковых и культурных барьеров между Узбекистаном и Германией. Сочетая передовые технологии ИИ, AR, и глубокое понимание культурных контекстов, платформа создает уникальную образовательную экосистему.
