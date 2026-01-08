@@ -115,17 +115,17 @@ Terra Ecosystem приверженa созданию **безопасного, �
 
 ```yaml
 Приоритет_1_Детская_Безопасность:
-  Email: "child-safety@terra-ecosystem.org"
+  Email: "a.abdukarimov@fractal-metascience.org"
   Время_ответа: "Немедленно (< 1 час)"
   Шифрование: "PGP ключ доступен"
 
 Приоритет_2_Этические_Нарушения:
-  Email: "ethics@terra-ecosystem.org"
+  Email: "a.abdukarimov@fractal-metascience.org"
   Время_ответа: "24 часа"
   Анонимность: "Поддерживается"
 
 Приоритет_3_Общие_Вопросы:
-  Email: "conduct@terra-ecosystem.org"
+  Email: "a.abdukarimov@fractal-metascience.org"
   Telegram: "@TerraEthicsBot"
   Время_ответа: "72 часа"
 ```
@@ -311,7 +311,7 @@ Terra Ecosystem приверженa созданию **безопасного, �
 **24/7 Child Safety Hotline:**
 
 * **Телефон:** +998-XX-XXX-XXXX (Узбекистан)
-* **Email:** <emergency@terra-ecosystem.org>
+* **Email:** <a.abdukarimov@fractal-metascience.org>
 * **Telegram:** @TerraEmergencyBot
 * **Signal:** Номер доступен участникам сообщества
 
@@ -431,4 +431,4 @@ Terra Ecosystem стремится создать **образцовое гло�
 
 *© 2025 Terra Ecosystem Community. Этот кодекс поведения лицензирован под Terra Public License v1.0.*
 
-**📞 Вопросы?** Свяжитесь с нами: <conduct@terra-ecosystem.org>
+**📞 Вопросы?** Свяжитесь с нами: <a.abdukarimov@fractal-metascience.org>
