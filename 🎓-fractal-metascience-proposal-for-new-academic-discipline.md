@@ -329,3 +329,8 @@ Integration with existing PhD programs in:
 * Next-generation researcher development
 
 This proposal presents Fractal Metascience as a necessary and timely addition to the academic landscape, addressing critical gaps in our capacity to understand and address complex, multi-scale challenges facing humanity in the 21st century.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
