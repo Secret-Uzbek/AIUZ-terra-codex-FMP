@@ -219,3 +219,8 @@ In this spirit, we offer FMP not as a final answer but as a contribution to ongo
 **Sustainable Finance:** Developing financial systems that incorporate long-term sustainability considerations and stakeholder value rather than just short-term profit maximization.
 
 **Social Enterprise:** Supporting hybrid organizations that integrate social and environmental goals with economic sustainability, exhibiting recursive value creation.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
