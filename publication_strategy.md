@@ -192,3 +192,7 @@ Following FMP principles, treat the monograph as a **living, evolving document**
 - **Multi-format adaptations** for different audiences
 
 This approach embodies the fractal, recursive nature of the paradigm itself.
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
