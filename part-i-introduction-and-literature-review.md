@@ -93,3 +93,8 @@ Despite significant advances, current approaches exhibit several limitations:
 **Validation Issues:** Alternative approaches to knowledge production often lack rigorous validation methods, limiting their acceptance and effectiveness.
 
 FMP addresses these gaps by providing an integrated framework that combines insights from multiple traditions while offering concrete methodological innovations and validation strategies.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
