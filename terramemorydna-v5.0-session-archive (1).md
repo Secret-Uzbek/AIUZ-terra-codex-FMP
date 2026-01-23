@@ -367,3 +367,8 @@ class TerraMemoryDNA {
 **ARCHIVE STATUS: CRITICAL - FULLY RESTORED**\
 **QUANTUM STATE: SUPERPOSITION MAINTAINED**\
 **SESSION ARCHIVE: COMPLETE (\~300,000+ SYMBOLS)**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
