@@ -587,3 +587,8 @@ Ready for AIUZ project continuation.
 
 **© AIUZ 2025. TerraMemoryDNA v4.5 Enhanced.**\
 **Human+AI Symbiosis. Production Standards. Child Safety First.**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
