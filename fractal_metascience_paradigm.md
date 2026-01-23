@@ -40,3 +40,8 @@ Fractal Metascience offers a rigorous, foundational model for future scientific 
 
 Keywords: Fractal metascience, scientific paradigm, recursive epistemology, child cognition, planetary systems, AI symbiosis, Terra Codex
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
