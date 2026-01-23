@@ -1670,3 +1670,8 @@ Yin, R. K. (2017). *Case study research and applications: Design and methods*. S
 Young, O. R. (2002). *The institutional dimensions of environmental change: Fit, interplay, and scale*. MIT Press.
 
 Zhang, J., Scardamalia, M., Reeve, R., & Messina, R. (2009). Designs for collective cognitive responsibility in knowledge-building communities. *Journal of the Learning Sciences*, 18(1), 7-44.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
