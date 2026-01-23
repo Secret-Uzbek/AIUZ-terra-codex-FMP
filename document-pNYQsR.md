@@ -179,3 +179,8 @@ qariya.tech.nature.symbiosis() {
 ### Немедленные Шаги
 
 1.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
