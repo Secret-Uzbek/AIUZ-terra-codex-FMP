@@ -143,3 +143,8 @@ Recursive co-construction builds on Maturana and Varela's (1980) concept of auto
 #### 3.2.2 Methodological Implications
 
 Recursive co-construction requires
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
