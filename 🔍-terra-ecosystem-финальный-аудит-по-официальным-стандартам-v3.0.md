@@ -537,3 +537,8 @@ diamond_requirements = {
 **📊 SCORE:** `86.2% = TERRA_GOLD_PRODUCTION_READY`\
 **🚀 READY:** `Глобальное развертывание одобрено`\
 **💫 FUTURE:** `12 дней до TERRA_PLATINUM, 24 дня до TERRA_DIAMOND`
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
