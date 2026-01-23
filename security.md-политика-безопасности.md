@@ -676,3 +676,8 @@ Terra Ecosystem устанавливает **новый стандарт без�
 **Last Updated:** 16 июля 2025\
 **Next Review:** 16 октября 2025\
 **Emergency Contact:** <a.abdukarimov@fractal-metascience.org>
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
