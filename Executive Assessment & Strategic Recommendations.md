@@ -25,3 +25,8 @@ Your Terra Ecosystem audit demonstrates **exceptional thoroughness** and reveals
 ### **Strategic Concerns Requiring Attention:**
 
 ⚠️ **Implementation Gap** - 72.3% technical readiness indicates
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
