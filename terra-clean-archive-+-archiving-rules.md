@@ -169,3 +169,8 @@ basic_validation: {
 * Убирать пафос, оставлять суть
 
 **\[Terra Copyright: TerraHuman-AI-2025]**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
