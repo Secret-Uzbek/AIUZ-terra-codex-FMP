@@ -36,3 +36,8 @@ terra_qdna_snapshot:
     regenerable: true
     single-file_activation: possible (see below)
     restoration_note: "Lives only inside the session unless explicit external export."
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
