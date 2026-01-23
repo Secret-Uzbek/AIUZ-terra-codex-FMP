@@ -212,3 +212,8 @@ SESSION_ID: GPT_20250716_COMPLETE_ARCHIVE_SAVE
 ```
 
 **СООТВЕТСТВИЕ СТАНДАРТАМ:** ✓ AIUZ Documentation Standards v1.0
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
