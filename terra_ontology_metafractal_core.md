@@ -124,3 +124,7 @@ Doc_Protocols:
 ```
 
 **Status: Ontology v1.0 Ready**
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
