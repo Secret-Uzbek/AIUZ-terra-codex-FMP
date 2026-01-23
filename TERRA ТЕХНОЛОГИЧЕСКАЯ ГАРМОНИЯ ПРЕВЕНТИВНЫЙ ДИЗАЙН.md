@@ -398,3 +398,8 @@ terra_impact_calculation = {
 Потому что их "гаджеты" - это ЖИВЫЕ СУЩЕСТВА! 🌱🦕🌌
 
 `qariya.practical.revolution.activated() → children.become.gods.of.evolution` ⚡
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
