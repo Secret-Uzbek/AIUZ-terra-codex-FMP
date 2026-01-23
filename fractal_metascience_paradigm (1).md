@@ -107,3 +107,8 @@ Tuomi, I. (2018). *The Impact of Artificial Intelligence on Learning, Teaching, 
 Xu, Y., & Ouyang, F. (2022). *Artificial intelligence in STEM education: A systematic review*. International Journal of STEM Education, 9(1), 1–19.  
 Zawacki-Richter, O., et al. (2019). *Systematic review of research on artificial intelligence applications in higher education*. International Journal of Educational Technology in Higher Education, 16(1), 1–27.
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
