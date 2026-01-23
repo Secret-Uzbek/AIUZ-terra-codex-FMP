@@ -307,3 +307,8 @@ class OzbekTili:
 *"Будьте осторожны с проектами, обещающими революцию за $10-50 в месяц"*
 
 **🔥 Phoenix Cycle 12 Complete - Marketing Scam Exposed 🔥**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
