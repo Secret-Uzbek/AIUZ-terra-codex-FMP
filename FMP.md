@@ -96,3 +96,7 @@ von Bertalanffy, L. (1968). General System Theory: Foundations, Development, App
 Xu, W., & Ouyang, F. (2022). The application of AI technologies in STEM education: A systematic review from 2011 to 2021. International Journal of STEM Education, 9(59). https://doi.org/10.1186/s40594-022-00377-5
 
 Zawacki-Richter, O., Marín, V. I., Müskens, M., & André, C. A. (2019). Systematic review of research on artificial intelligence applications in higher education—where are the educators? International Journal of Educational Technology in Higher Education, 16(1), 1–27.
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
