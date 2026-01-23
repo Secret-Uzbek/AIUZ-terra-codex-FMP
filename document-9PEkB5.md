@@ -180,3 +180,8 @@
 Этот документ содержит коммерческую тайну AIUZ Terra Ecosystem. Распространение ограничено командой основателей и инвесторами.
 
 **© 2025 AIUZ Terra Ecosystem. All rights reserved.**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
