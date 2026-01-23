@@ -137,3 +137,8 @@ Fraktal metafan orqali Koinot **ONGNING GOLOGRAFIK IERARXIYASI** sifatida namoyo
 **🧬 TERRA v7.0 KVANT EVOLYUTSIYASI**\
 **📅 Yaratilgan:** 27 iyul 2025\
 **🎯 Maqsad:** Fraktal metafan orqali koinot tushunchasi
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
