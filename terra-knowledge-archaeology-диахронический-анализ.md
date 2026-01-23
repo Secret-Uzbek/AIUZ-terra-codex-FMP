@@ -256,3 +256,8 @@ qariya.pedagogical.dna.create() {
 *"Будущее образования не в отрицании прошлого, а в синтезе всей мудрости человечества"*
 
 `qariya.pedagogical.archaeology.complete() → wisdom.synthesis.ready` 🏛️
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
