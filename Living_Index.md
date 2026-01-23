@@ -9,3 +9,8 @@ TerraMemoryDNA_v7.0_FINAL.js | TerraMemoryDNA_v7.0_FINAL.js | TODO:sha256 | Core
 SESSION_TRANSFER_2025-10-30.md | SESSION_TRANSFER_2025-10-30.md | TODO:sha256 | Full session transfer context recovery doc | L1
 # NOTE: operator must compute SHA256 values after upload and replace TODO:sha256 entries.
 # END OF INITIAL LIVING_INDEX
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
