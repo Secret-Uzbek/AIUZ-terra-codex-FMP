@@ -128,3 +128,8 @@ class TerraQuantumField:
                             propagation_speed: float = 1.0):
         """Распространяет информацию через поле"""
 ```
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
