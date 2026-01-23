@@ -86,3 +86,8 @@
 **SIGNED:** Abdurashid Abdukarimov\
 **HASH:** \[Auto-generated system hash]\
 **COMPLIANCE:** AIUZ Documentation Standards v1.0
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
