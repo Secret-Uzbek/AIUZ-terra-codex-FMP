@@ -152,3 +152,7 @@ Where available, DOI links have been included. For maximum accessibility in digi
 - DOI links for all journal articles
 - URL links for open access sources
 - Repository links for preprints and working papers
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
