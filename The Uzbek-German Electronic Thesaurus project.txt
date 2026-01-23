@@ -7,3 +7,7 @@ The project's development is divided into several stages, including source prepa
 The project focuses on thematic areas such as tourism, logistics, education, migration, and transportation. It also incorporates AR/AI/EdTech modules, such as AR-lexica, to enhance the user experience and facilitate language learning.
 
 The project is supported by a strong scientific and legal framework, including dissertations, journals, author's declarations, and archival protection mechanisms. The creation of this multilingual thesaurus represents a significant contribution to digital lexicography, intercultural communication, and language preservation. Its multidisciplinary approach, integrating AI, AR, EdTech, linguistics, and applied disciplines, makes it a valuable resource for a wide range of users.
+
+---
+Contact: a.abdukarimov@fractal-metascience.org
+ORCID: 0009-0000-6394-4912
