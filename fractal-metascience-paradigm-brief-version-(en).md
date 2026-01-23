@@ -50,3 +50,8 @@ By recognizing the fractal nature of knowledge itself, FMP opens new pathways fo
 ***
 
 *This brief introduction is extracted from the comprehensive monograph "The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science" developed within the TERRA Ecosystem.*
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
