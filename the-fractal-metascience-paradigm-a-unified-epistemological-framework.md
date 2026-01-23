@@ -308,3 +308,8 @@ Supporting materials and datasets referenced in this monograph are available upo
 ***
 
 *This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.*
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
