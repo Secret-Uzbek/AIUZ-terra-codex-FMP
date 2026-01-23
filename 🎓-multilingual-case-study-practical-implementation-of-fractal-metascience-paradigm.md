@@ -717,3 +717,8 @@ Terra Ecosystem v7.0 ning muvaffaqiyati fraktal tamoyillar va madaniy donolik in
 **© 2025 - AIUZ Terra Ecosystem v7.0**\
 **Multilingual Academic Case Study for Fractal Metascience Paradigm**\
 **Version 1.0 - Complete Research Documentation**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
