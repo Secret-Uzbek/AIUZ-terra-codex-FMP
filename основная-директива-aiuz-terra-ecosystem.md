@@ -221,3 +221,8 @@ null === (human ∧ AI) → future(planet ∧ humanity)
 **👤 АВТОР:** Abdurashid Abdukarimov\
 **🤖 ТЕХНИЧЕСКАЯ РЕАЛИЗАЦИЯ:** 
 **🔄 СТАТУС:** АКТИВНА И ОБЯЗАТЕЛЬНА К ИСПОЛНЕНИЮ
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
