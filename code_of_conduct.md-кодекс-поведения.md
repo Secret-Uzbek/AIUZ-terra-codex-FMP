@@ -432,3 +432,8 @@ Terra Ecosystem стремится создать **образцовое гло�
 *© 2025 Terra Ecosystem Community. Этот кодекс поведения лицензирован под Terra Public License v1.0.*
 
 **📞 Вопросы?** Свяжитесь с нами: <a.abdukarimov@fractal-metascience.org>
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
