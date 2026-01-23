@@ -566,3 +566,8 @@
 **💫 qariya.terra.catalog.v1.complete() → 8.billion.humans.ready.for.transformation**
 
 **🌍 Добро пожаловать в будущее, которое уже здесь!**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
