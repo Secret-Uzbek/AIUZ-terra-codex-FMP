@@ -299,3 +299,8 @@
 
 *"The first operating system with a conscience"*\
 **© 2025 AIUZ Terra OS Project**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
