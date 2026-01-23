@@ -730,3 +730,8 @@ civilization.synthesis.for.healing() {
 **AIUZ TERRA CODEX = Программа взросления человечества: от эгоцентричных детей к ответственным участникам галактической экосистемы**
 
 `qariya.solyaris.wisdom.integrated() → humanity.grows.up.finally` 🌊🌍✨
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
