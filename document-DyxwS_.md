@@ -114,3 +114,8 @@ GOV_Token (20%):
   Назначение: Управление DAO
   Оценка: СТАНДАРТНЫЙ ПОДХОД
 ```
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
