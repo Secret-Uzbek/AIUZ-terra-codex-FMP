@@ -44,3 +44,8 @@ The Fractal Metascience Paradigm, justified through systems theory, cognitive sc
 **References**
 (Here, a formal reference list will be inserted with full citation details for all sources mentioned.)
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
