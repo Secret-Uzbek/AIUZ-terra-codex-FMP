@@ -417,3 +417,7 @@ Sustainability challenges involve complex interactions across multiple scales—
 #### 5.3.4 Measurement and Evaluation Framework
 
 **Multi-Scale Indicators:**
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
