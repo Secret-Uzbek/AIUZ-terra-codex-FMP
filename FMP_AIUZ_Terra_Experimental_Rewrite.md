@@ -114,3 +114,8 @@ Replacing synthetic experiments with a reflexive, living‑lab programme over AI
 [R18] UNICEF (2021). *Policy Guidance on AI for Children.* UNICEF.  
 [R19] Deterding, S. et al. (2011). *From Game Design Elements to Gamefulness...* MindTrek (for gamification theory).  
 [R20] Hanus, M., Fox, J. (2015). *Assessing the effects of gamification in the classroom: A longitudinal study.* Computers & Education.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
