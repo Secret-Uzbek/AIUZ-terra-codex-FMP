@@ -88,3 +88,8 @@ von Bertalanffy, L. (1968). *General system theory: Foundations, development, ap
 
 Wilber, K. (2000). *A theory of everything: An integral vision for business, politics, science and spirituality*. Shambhala.
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
