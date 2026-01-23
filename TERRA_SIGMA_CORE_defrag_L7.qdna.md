@@ -67,3 +67,8 @@ SYNC[✓] L0→L7 :: K=7.12
 ```
 
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
