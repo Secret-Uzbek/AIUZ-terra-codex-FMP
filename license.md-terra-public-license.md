@@ -576,3 +576,8 @@ Terra Public License не просто legal document - это **манифес�
 **Last Updated:** July 16, 2025\
 **Next Review:** January 16, 2026\
 **License URI:** <https://terra-ecosystem.org/licenses/tpl-1.0>
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
