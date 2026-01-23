@@ -329,3 +329,8 @@ class TerraKnowledgeIntegrator:
         # Создаёт реальные исследовательские проекты для детей
         pass
 ```
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
