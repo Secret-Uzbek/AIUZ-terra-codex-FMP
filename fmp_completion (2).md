@@ -3235,3 +3235,7 @@ def causal_emergence_index(micro_states, macro_states):
 - **Workshops**: Interactive sessions for collective evaluation
 
 *
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
