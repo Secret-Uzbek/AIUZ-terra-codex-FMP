@@ -10,3 +10,8 @@
 ГНЕЗДО: TURIZM / TOURISMUS
   uzb: sayohat, yo‘nalish, mehmonxona, gid, ekskursiya, viza
   deu: Reise, Route, Hotel, Führer, Exkursion, Visum
+
+
+---
+Contact: a.abdukarimov@fractal-metascience.org
+ORCID: 0009-0000-6394-4912
