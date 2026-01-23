@@ -1069,3 +1069,8 @@ UZ-DE Thesaurus & Knowledge AI Platform теперь представляет с
 
 **📅 ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ:** 24 июля 2025\
 **📊 СТАТУС:** МУЛЬТИМОДУЛЬНАЯ ПЛАТФОРМА + ЛОГИСТИКА + AI-СЛОВАРИ + ТУРИЗМ **🔄 ВЕРСИЯ:** 7.0 ПОЛНАЯ ЭКОСИСТЕМА С 3 СПЕЦИАЛИЗИРОВАННЫМИ МОДУЛЯМИ
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
