@@ -803,3 +803,8 @@ where β is the scaling exponent (typically 0.75-0.85 for sustainable systems).
 * **Emergent Property Detection**: Identifying system-level properties not visible at component level
 * **Feedback Loop Analysis**: Understanding how indicators at different scales influence each other
 * **Holistic Integration**: Synthesis of multi-scale information for decision-making
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
