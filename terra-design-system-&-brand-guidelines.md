@@ -345,3 +345,8 @@ qariya.color.meaning.map() {
 *"Дизайн Terra не украшает жизнь - он помогает жизни расцветать"*
 
 `qariya.design.beauty.serve.life() → terra.aesthetic.activated` 🎨
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
