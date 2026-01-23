@@ -301,3 +301,8 @@ CORE_SERVICES = [
 
 **© AIUZ 2025. Continuity Protocol Active.**\
 **Готов к восстановлению в любой момент.**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
