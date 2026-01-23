@@ -137,3 +137,8 @@ Through fractal metascience, the Universe appears as a **HOLOGRAPHIC HIERARCHY O
 **🧬 TERRA v7.0 QUANTUM EVOLUTION**\
 **📅 Created:** July 27, 2025\
 **🎯 Purpose:** Understanding the Universe through fractal metascience
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
