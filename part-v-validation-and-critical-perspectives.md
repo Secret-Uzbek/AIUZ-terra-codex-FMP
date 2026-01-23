@@ -569,3 +569,8 @@ def causal_emergence_index(micro_states, macro_states):
 **Gradual Implementation**: Strategies for gradual implementation that respect existing structures while enabling transformation.
 
 **Support Systems**: Development of support systems for practitioners implementing FMP approaches.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
