@@ -97,3 +97,8 @@ Varela, F. J., Thompson, E., & Rosch, E. (1991). *The embodied mind: Cognitive s
 von Neumann, J. (1955). *Mathematical foundations of quantum mechanics*. Princeton University Press.  
 Wheeler, J. A., & Zurek, W. H. (1983). *Quantum theory and measurement*. Princeton University Press.
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
