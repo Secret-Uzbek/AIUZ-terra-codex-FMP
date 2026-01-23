@@ -491,3 +491,8 @@ terra.license.commercial.apply(startup|smb|enterprise)
 
 **TERRA PUBLIC LICENSE v1.0 АКТИВИРОВАНА** 📜\
 **Этическое лицензирование для защиты детей планеты** ✅
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
