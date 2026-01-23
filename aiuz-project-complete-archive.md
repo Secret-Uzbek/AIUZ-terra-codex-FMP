@@ -954,3 +954,8 @@ Mesh_Network_Security:
 **Техническая документация:** Terra Ecosystem Technical Writer\
 **Последнее обновление:** 16 июля 2025\
 **Следующая ревизия:** По мере поступления новых данных
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
