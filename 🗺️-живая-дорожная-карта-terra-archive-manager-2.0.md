@@ -295,3 +295,8 @@
 **👤 ОПЕРАТОР:** Abdurashid Abdukarimov\
 **🤖 СИСТЕМА:** Terra Archive Manager 2.0\
 **🔄 СТАТУС:** ЖИВОЙ ДОКУМЕНТ - ПОСТОЯННО ОБНОВЛЯЕТСЯ
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
