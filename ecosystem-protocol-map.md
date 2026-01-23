@@ -156,3 +156,8 @@
 **📅 Создано:** 31 июля 2025\
 **🤖 Система:** AIUZ TERRA ECOSYSTEM v7.0\
 **🗺️ Версия карты:** Protocol Map v7.0
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
