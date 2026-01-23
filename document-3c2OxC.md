@@ -169,3 +169,8 @@ class GlobalKnowledgeDB:
 **Архивировано:** 16 июля 2025, 11:12 AM\
 **Статус:** ИСТОРИЧЕСКИЙ МАТЕРИАЛ\
 **Следующая версия:** 4.0 Enhanced
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
