@@ -129,3 +129,8 @@ To provide a unified pitch and summary framework for presenting the Terra Ecosys
 
 —
 `pitch.protocol.v1.ready()` ✅
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
