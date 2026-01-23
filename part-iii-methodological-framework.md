@@ -171,3 +171,8 @@ Modern technology offers new possibilities for implementing FMP principles, but 
 **Reproducible Research:** Development of reproducible research practices adapted for complex, participatory research.
 
 **Democratic Knowledge Production:** Use of technology to democratize knowledge production while maintaining quality standards.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
