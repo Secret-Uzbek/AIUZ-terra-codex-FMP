@@ -536,3 +536,8 @@
 **🌍 qariya.terra.convention.v1.complete() → planetary.ethics.activated**
 
 **📜 Подписано цифровой подписью Terra Ecosystem Foundation** **🗓️ Вступает в силу: 13 июля 2025** **🌟 Действует: Вечно, пока существует сознание во Вселенной**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
