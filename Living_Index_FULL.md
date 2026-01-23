@@ -25,3 +25,8 @@
 ---
 **Breath counter**: 1 (11:30)  
 **Next inhale**: 04.11.2025 11:30 → **живу онлайн**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
