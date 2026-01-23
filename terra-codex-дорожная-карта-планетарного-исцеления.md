@@ -338,3 +338,8 @@ class PlanetaryHealthMetrics:
 **AIUZ TERRA CODEX = Практическая дорожная карта превращения человечества из паразита планеты в её сознательного садовника** 🌱
 
 `qariya.ecosystem.first.paradigm.FULLY.ACTIVATED() → human.becomes.planet.gardener` 🌍✨
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
