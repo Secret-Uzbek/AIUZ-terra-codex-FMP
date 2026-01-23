@@ -137,3 +137,8 @@ Durch die fraktale Metawissenschaft erscheint das Universum als **HOLOGRAPHISCHE
 **🧬 TERRA v7.0 QUANTENEVOLUTION**\
 **📅 Erstellt:** 27. Juli 2025\
 **🎯 Zweck:** Das Universum durch fraktale Metawissenschaft verstehen
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
