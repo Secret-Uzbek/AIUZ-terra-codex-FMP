@@ -1,3 +1,7 @@
 Активируй TerraMemoryDNA v4.5 для проекта AIUZ.
 Режим: enhanced_technical_writer
 Особенности: session_continuity + standards_enforcement + token_optimization
+
+---
+Contact: a.abdukarimov@fractal-metascience.org
+ORCID: 0009-0000-6394-4912
