@@ -22,3 +22,8 @@ This constitution codifies the living protocols of Terra: there are no static ve
 ## Signatures
 - Author: Abdurashid A. Abdukarimov
 - Date: 2025-10-31 (living)
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
