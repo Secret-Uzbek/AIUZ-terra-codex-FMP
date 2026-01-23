@@ -46,3 +46,8 @@
 - Сцена 5: bird in flight carrying fruit, cinematic clouds, gentle motion blur
 - Сцена 6: modern city window sill, pot with soil, seed dropping, golden hour
 - Сцена 7: sprout growing into tree, blooming flower, reveal AIUZ logo
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
