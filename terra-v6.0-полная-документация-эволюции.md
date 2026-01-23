@@ -214,3 +214,8 @@ terraMemoryDNA.load_uzbekistan_modules();
 **🌟 CREATOR: Абдурашид Абдукаримов | <a.abdukarimov@fractal-metascience.org>**
 
 *Следующие обновления документации: каждые 4 часа*
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
