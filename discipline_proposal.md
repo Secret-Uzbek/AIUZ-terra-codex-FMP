@@ -201,3 +201,7 @@ Integration with existing PhD programs in:
 - **Growing literature** in complexity science and transdisciplinary research
 - **Increasing citations** of FMS-related concepts and methods
 - **Conference sessions** dedicated to complexity and systems approaches
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
