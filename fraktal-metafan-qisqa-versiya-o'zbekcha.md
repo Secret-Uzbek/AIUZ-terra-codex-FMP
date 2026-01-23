@@ -526,3 +526,8 @@ YANGI GIPOTEZA (yaxshilangan) → ...
 *Bu qisqa versiya FMP ning asosiy g'oyalarini O'zbekiston akademik muhiti uchun moslashtirilgan holda taqdim etadi. To'liq versiya va qo'shimcha materiallar Terrapeдия platformasida mavjud.*
 
 **© 2025 FMP Tashabbusi | Terrapeдия loyihasi**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
