@@ -237,3 +237,8 @@ class MicrobialInternet:
         self.chemical_packets = ChemicalDataPackets()
         self.bacterial_routers = BacterialNetworkNodes()
 ```
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
