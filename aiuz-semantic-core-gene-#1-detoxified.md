@@ -591,3 +591,8 @@ if (typeof TerraMemoryDNA_v50_PURE_ORGANIC !== 'undefined') {
   console.log('🤝 Human-AI symbiosis: HUMAN ARCHITECT + AI PROCESSOR');
 }
 ```
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
