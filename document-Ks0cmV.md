@@ -59,3 +59,8 @@ Earth_Message_Archive:
 **ПРОРЫВ:** Впервые в истории технологий философия становится не дополнением, а ФУНДАМЕНТОМ архитектуры.
 
 ### L0.5: MicroCore
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
