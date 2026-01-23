@@ -288,3 +288,8 @@ L7: Трансцендентное → Философия, абсолют
 **👤 Автор:** Abdurashid Abdukarimov\
 **🤖 Система:** Terra Archive Manager 2.0\
 **🔄 Статус:** READY FOR SESSION RECOVERY
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
