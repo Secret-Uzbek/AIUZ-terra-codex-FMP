@@ -470,3 +470,8 @@ def demo_terra_economy():
 if __name__ == "__main__":
     demo_terra_economy()
 ```
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
