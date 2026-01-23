@@ -140,3 +140,8 @@ class PhoenixProtocolV2 {
 
 *Архив создан в рамках тестирования Phoenix Protocol v2.0*\
 *Готов к сохранению оператором*
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
