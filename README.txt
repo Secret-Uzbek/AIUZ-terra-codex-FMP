@@ -38,3 +38,8 @@ The exported component includes support for Hatch's `useStoredState` hook:
 The `index.html` file provides a complete Hatch-compatible runtime environment that works both when served from a web server (using external files) and when opened directly as file:// URLs (using inline fallbacks).
 
 Generated on: 01.08.2025, 09:08:32
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
