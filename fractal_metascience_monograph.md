@@ -229,3 +229,8 @@ FMP is proposed for dissemination under a Creative Commons Attribution-NonCommer
 
 These recommendations form the scaffolding for a multi-scalar dissemination strategy that reflects the fractal, participatory, and recursive ethos of the paradigm itself.
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
