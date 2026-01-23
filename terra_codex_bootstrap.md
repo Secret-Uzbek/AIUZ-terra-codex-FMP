@@ -45,3 +45,8 @@ version: 1.0
 ---
 
 © TerraCodex AIUZ — Persistent Fractal Knowledge System™
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
