@@ -241,3 +241,8 @@ FMP maintains theoretical coherence through:
 **Epistemological Alignment:** The principles support a participatory epistemology that acknowledges the co-construction of knowledge.
 
 **Methodological Complementarity:** Each principle contributes distinctive but compatible methodological insights that strengthen the overall framework.
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
