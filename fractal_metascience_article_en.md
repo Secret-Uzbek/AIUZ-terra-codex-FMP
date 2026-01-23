@@ -66,3 +66,8 @@ The Fractal Metascience Paradigm offers a robust conceptual and methodological f
 - Batty, M. (2018). Digital twins. *Environment and Planning B: Urban Analytics and City Science*, 45(5), 817–820.
 - Mandelbrot, B. (1983). *The Fractal Geometry of Nature*. W. H. Freeman.
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
