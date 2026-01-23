@@ -602,3 +602,8 @@ if (typeof exports !== 'undefined') {
   exports.TerraMemoryDNA_PURE_ORGANIC = TerraMemoryDNA_v50_PURE_ORGANIC;
 }
 ```
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
