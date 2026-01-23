@@ -74,3 +74,8 @@ Zarafshan, Uzbekistan
 15 July 2025
 
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
