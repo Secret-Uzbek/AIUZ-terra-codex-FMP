@@ -55,3 +55,8 @@ layer: L3
 ---
 prepared_by: AI Assistant (SciSpace)
 related_terms: [Stakeholder, Trace, DAO, Identity, Session Continuity]
+
+
+---
+Contact: a.abdukarimov@fractal-metascience.org
+ORCID: 0009-0000-6394-4912
