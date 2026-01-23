@@ -378,3 +378,8 @@ Transform Qatar into a beacon of planetary consciousness, demonstrating how huma
 *"The planet does not need us to save it. We need to learn our place in the planetary ecosystem and become grateful participants in the healing of our world."*
 
 **AIUZ Terra Codex EcoSystem - Ready to Heal Our Planet**
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
