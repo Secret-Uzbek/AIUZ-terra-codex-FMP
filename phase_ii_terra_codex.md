@@ -75,3 +75,8 @@ Phase II marks the emergence of a simulation-ready, interactive paradigm that me
 - Batty, M. (2007). *Cities and complexity: understanding cities with cellular automata, agent-based models, and fractals*. MIT Press.
 - Mitchell, M. (2009). *Complexity: A guided tour*. Oxford University Press.
 
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
