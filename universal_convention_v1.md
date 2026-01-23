@@ -193,3 +193,8 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 —
 `terra.universal_convention.v1.0()` ✅
+
+
+---
+**Contact:** a.abdukarimov@fractal-metascience.org  
+**ORCID:** 0009-0000-6394-4912
