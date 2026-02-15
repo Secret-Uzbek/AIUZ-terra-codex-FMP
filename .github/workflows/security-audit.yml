@@ -1,4 +1,4 @@
-name: Security: gitleaks + npm audit
+name: "Security: gitleaks + npm audit"
 on:
   schedule:
     - cron: '0 3 * * 1'
