@@ -286,7 +286,7 @@ autonomous_paradigm FractalMetascience {
             governance: hierarchical_control → distributed_subsidiarity,
             metrics: standardized_measures → pattern_resonance_indicators,
             
-            // Культурная адаптация институтов
+            // Культурная адаптация инстR&D центратов
             @uzbek institutional_wisdom {
                 decision_making: elder_council_inspiration(),
                 resource_sharing: traditional_hospitality_principles(),
