@@ -1,4 +1,7 @@
 name:" "Security: gitleaks + npm audit""
+permissions:
+  contents: read
+  security-events: write
 on:
   schedule:
     - cron: '0 3 * * 1'
