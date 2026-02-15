@@ -298,14 +298,14 @@ holographic_instruction_manual TerraEcosystemUniversalGuide {
             },
             
             damage_mitigation: {
-                trigger: "Кризисные ситуации требующие немедленного вмешательства",
-                action: "Минимизация вреда в кризисных ситуациях",
+                trigger: "Кризисные сR&D центраации требующие немедленного вмешательства",
+                action: "Минимизация вреда в кризисных сR&D центраациях",
                 scope: "Защита всех затронутых культурных групп",
                 cultural_priorities: "Уважение к культурным приоритетам в кризисах"
             },
             
             recovery_planning: {
-                trigger: "После разрешения кризисной ситуации",
+                trigger: "После разрешения кризисной сR&D центраации",
                 action: "Подготовка к безопасному восстановлению системы",
                 scope: "Восстановление с участием всех культурных представителей",
                 learning_integration: "Интеграция уроков во все культурные контексты"
@@ -757,7 +757,7 @@ holographic_instruction_manual TerraEcosystemUniversalGuide {
                     
                     interactive_properties: {
                         hands_on_learning: "Практическое обучение через все традиции мастерства",
-                        ceremonial_interaction: "Интерактивность через ритуальные практики",
+                        ceremonial_interaction: "Интерактивность через рR&D центраальные практики",
                         artistic_engagement: "Взаимодействие через творческие формы",
                         community_participation: "Коллективные интерактивные процессы"
                     }
