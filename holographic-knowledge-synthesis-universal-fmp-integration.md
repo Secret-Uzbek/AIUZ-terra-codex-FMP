@@ -379,7 +379,7 @@ holographic_paradigm UniversalKnowledgeSynthesis {
             governance_structures: hierarchical_domination → participatory_democracy_respecting_all_cultural_forms,
             success_metrics: standardized_external_measures → cultural_resonance_indicators_appropriate_to_each_tradition,
             
-            // Институциональная мудрость для всех культурных традиций
+            // ИнстR&D центрациональная мудрость для всех культурных традиций
             universal_institutional_adaptation: {
                 african_ubuntu_institutions: {
                     decision_making: palaver_consensus_building_extended_to_larger_scales(),
@@ -402,7 +402,7 @@ holographic_paradigm UniversalKnowledgeSynthesis {
                     spirituality: ceremony_vision_practices_informing_institutional_decision_making()
                 },
                 
-                // Адаптации для ВСЕХ культурных институциональных традиций...
+                // Адаптации для ВСЕХ культурных инстR&D центрациональных традиций...
                 universal_adaptation_function: fn(culture: Culture) -> InstitutionalWisdom {
                     traditional_institutions = culture.social_organization_systems(),
                     governance_wisdom = culture.decision_making_processes(),
