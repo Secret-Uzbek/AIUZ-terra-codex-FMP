@@ -400,11 +400,11 @@ class CosmicAwarenessApps:
                 'description': 'Система раннего предупреждения о космических угрозах',
                 'child_interaction': 'track_near_earth_objects_safely',
                 'learning_goal': 'понимание_планетарных_рисков_и_защиты',
-                'terra_connection': 'подготовка_terra_points_к_чрезвычайным_ситуациям'
+                'terra_connection': 'подготовка_terra_points_к_чрезвычайным_сR&D центраациям'
             },
             
             'exoplanet_colony_planner': {
-                'description': 'Планирование колоний на других планетах',
+                'description': 'Планирование автономн. техн. зоный на других планетах',
                 'child_interaction': 'design_sustainable_space_habitats',
                 'learning_goal': 'принципы_терраформирования_и_устойчивости',
                 'terra_connection': 'применение_terra_технологий_в_космосе'
