@@ -602,7 +602,7 @@ class TerraEmergencyRestoration:
     
     @staticmethod
     def emergency_civilization_seed(location: str = "unknown_planet") -> TerraTamagotchi:
-        """Создаёт семя новой цивилизации в экстренной ситуации"""
+        """Создаёт семя новой цивилизации в экстренной сR&D центраации"""
         
         # Создаём экстренного Terra Tamagotchi
         emergency_child_id = f"emergency_survivor_{uuid.uuid4().hex[:8]}"
