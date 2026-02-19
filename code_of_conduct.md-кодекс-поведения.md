@@ -1,7 +1,4 @@
 # 📜 TERRA ECOSYSTEM CODE OF CONDUCT
-
-# 📜 TERRA ECOSYSTEM CODE OF CONDUCT
-
 **Ethical Code of Conduct for the Terra Ecosystem Community**
 
 **Author:** Abdurashid Abdukarimov  
