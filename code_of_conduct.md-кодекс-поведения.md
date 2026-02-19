@@ -2,8 +2,8 @@
 **Ethical Code of Conduct for the Terra Ecosystem Community**
 
 **Author:** Abdurashid Abdukarimov  
-**Date:** July 16, 2025  
-**Version:** v1.0  
+**Date:** 19.02.2026 revised
+**Version:** v1.1  
 **Status:** Terra Platinum Certified  
 **Foundation:** Terra Universal Convention v1.0 + Gefunden Ethical Framework + NULLO-PLT-UCOMM-EUO-FMP
 
