@@ -1,160 +1,170 @@
 # 📜 TERRA ECOSYSTEM CODE OF CONDUCT
+
 **Ethical Code of Conduct for the Terra Ecosystem Community**
 
 **Author:** Abdurashid Abdukarimov  
-**Date:** 19.02.2026 revised
-**Version:** v1.1  
+**Date:** 19 February 2026 (revised)  
+**Version:** v1.1 Full  
 **Status:** Terra Platinum Certified  
 **Foundation:** Terra Universal Convention v1.0 + Gefunden Ethical Framework + NULLO-PLT-UCOMM-EUO-FMP
 
 ---
 
-## 🌌 NULLO – ONTOLOGICAL ZERO POINT
+## 🌌 NULLO — ONTOLOGICAL ZERO POINT
 
-Before any rule, before any language, there is **NULLO** — the pure ethical zero point.  
-All conduct in Terra Ecosystem originates from this point of absolute clarity:  
-**The well-being and dignity of every child is the sacred invariant of the entire system.**
+Before any rule, before any language, before any culture — there exists **NULLO**.  
 
-This Code is not a list of rules.  
-It is the living trace (PLT) of the ethical field that emerges when humanity chooses to protect its future.
+NULLO is not emptiness.  
+It is the pure ethical zero point from which all meaning, all conduct, and all responsibility emerge.  
+
+In this zero point there is only one absolute invariant:  
+
+**The sacred well-being, dignity, and future of every single child is non-negotiable.**
+
+All rules in this Code are recursive traces (PLT) of this single ontological truth.
 
 ---
 
 ## 🎯 OUR MISSION AND COMMITMENT
 
-The Terra Ecosystem is dedicated to creating a safe, inclusive, and ethically pure global community where every participant contributes to the ethical revolution in children's education.
+The Terra Ecosystem exists to co-create a safe, inclusive, and ethically pure global community where every participant actively contributes to the ethical transformation of children's education and the future of humanity.
 
-We are united by one absolute goal:  
-**To protect and nurture every child through technology that serves humanity rather than exploits it.**
+We are united by one absolute, non-negotiable goal:  
+
+**To protect, nurture, and empower every child through technology that serves humanity rather than exploits it.**
 
 ---
 
-## 🏛️ FUNDAMENTAL PRINCIPLES (The Holographic Core)
+## 🏛️ FUNDAMENTAL PRINCIPLES (Holographic Ethical Core)
 
-1. **🛡️ Children First** — The safety, dignity, and healthy development of children is the highest axiom and compilation-level requirement of the entire system.
+These five principles are **fractal** — they apply identically at every scale: from one line of code to the entire global ecosystem.
 
-2. **⚖️ Ethical Integrity** — Every action, decision, and line of code must pass moral and ethical validation through the Gefunden Protocol.
+1. **🛡️ Children First**  
+   The safety, dignity, healthy development, and future of every child is the highest axiom and compilation-level requirement of the entire system.
 
-3. **🌍 Global Inclusivity** — Deep respect for all cultures, religions, languages, and traditions. No culture is above another.
+2. **⚖️ Ethical Integrity**  
+   Every action, decision, line of code, and interaction must pass moral and ethical validation through the Gefunden Protocol.
 
-4. **👪 Family Values** — Technologies must strengthen, not replace, family bonds and parental authority.
+3. **🌍 Global Inclusivity**  
+   Deep, genuine respect for all cultures, religions, languages, traditions, and worldviews. No culture or belief is superior to another.
 
-5. **🔬 Scientific Honesty** — Only verified, evidence-based knowledge. No pseudoscience, no manipulation.
+4. **👪 Family Values**  
+   Technologies and practices must strengthen family bonds, parental authority, and intergenerational wisdom — never replace or undermine them.
 
-These five principles are **self-similar** (fractal): they apply at every scale — from one line of code to the entire global ecosystem.
+5. **🔬 Scientific Honesty**  
+   Only verified, evidence-based knowledge. No pseudoscience, no manipulation, no hidden commercial or ideological agendas.
 
 ---
 
 ## ✅ DESIRED BEHAVIOR
 
 ### In Professional Activity
-- Always evaluate proposals from the perspective of benefit to children
-- Provide constructive, solution-oriented feedback
-- Show cultural sensitivity in international collaboration
-- Continuously learn and share knowledge
-- Apply critical scientific thinking to all suggestions
+- Always evaluate every proposal, feature, or decision first through the lens of benefit and safety for children.
+- Provide constructive, solution-oriented, and respectful feedback.
+- Demonstrate deep cultural sensitivity in all international collaboration.
+- Commit to continuous learning and generous knowledge sharing.
+- Apply rigorous scientific and ethical thinking to every suggestion.
 
 ### In Communication
-- Speak and write with respect toward all cultures and religions
-- Practice active listening, especially to parents and educators
-- Help newcomers and support each other
-- Maintain professional ethics in all public statements
+- Speak and write with genuine respect toward all cultures, religions, and personal backgrounds.
+- Practice active, empathetic listening — especially to parents, educators, and children’s voices.
+- Actively help newcomers and support fellow community members.
+- Maintain the highest professional and ethical standards in all public statements and discussions.
 
 ### In Technical Collaboration
-- Ensure full transparency for any changes affecting children
-- Conduct thorough child-safety testing
-- Practice responsible disclosure of vulnerabilities
-- Prioritize accessibility for children with special needs
-- Design sustainable, long-term solutions
+- Ensure complete transparency for any changes that may affect children.
+- Perform thorough, multi-layered child-safety testing before any deployment.
+- Practice responsible disclosure of any security or ethical vulnerabilities.
+- Prioritize accessibility and inclusivity for children with special needs.
+- Design sustainable, long-term, antifragile solutions.
 
 ---
 
-## 🌍 CULTURAL AND RELIGIOUS INCLUSIVITY
+## 🌍 CULTURAL AND RELIGIOUS INCLUSIVITY (UCOMM Level)
 
-We actively respect and integrate:
+We actively respect, protect, and integrate the following sacred values:
 
-- **☪️ Islamic values** — halal principles, family hierarchy, prayer times, modesty
-- **✝️ Christian values** — family prayer, Sunday observance, moral education
-- **☸️ Buddhist values** — mindfulness, non-violence, compassion, meditation
-- **🕉️ Hindu values** — spiritual growth, family rituals, respect for elders
-- **✡️ Jewish values** — Sabbath, family education, ethical reasoning
+- **☪️ Islamic values** — halal principles, family hierarchy, prayer times, modesty, spiritual education
+- **✝️ Christian values** — family prayer, Sunday observance, moral and spiritual development
+- **☸️ Buddhist values** — mindfulness, non-violence, compassion, meditation, inner peace
+- **🕉️ Hindu values** — spiritual growth, family rituals, respect for elders and teachers
+- **✡️ Jewish values** — Sabbath observance, family education, ethical reasoning, pursuit of justice
 
-**Cultural adaptation examples:**
-- Uzbek traditions (respect for elders, hospitality, collectivism)
-- Russian educational heritage
-- German pedagogical precision and quality
-- Global indigenous wisdom
+**Cultural adaptation examples include:**
+- Uzbek traditions (respect for elders, hospitality, collectivism, family wisdom)
+- Russian educational and literary heritage
+- German pedagogical precision, quality, and systematic approach
+- Global indigenous wisdom and connection with nature
 
 ---
 
-## 🚫 PROHIBITED BEHAVIOR (Zero Tolerance)
+## 🚫 PROHIBITED BEHAVIOR (Zero Tolerance — EUO Level)
 
-**Strictly forbidden:**
+**Strictly forbidden (any violation triggers immediate response):**
 
-**Child Safety Violations:**
-- Any collection of children's personal data without explicit parental consent
-- Bypassing or weakening child protection systems
-- Creating or distributing content that may harm children's development
-- Ignoring parental controls or family privacy settings
+**Child Safety Violations (Level 4 severity):**
+- Any attempt to collect, store, or process children’s personal data without explicit, informed parental consent
+- Bypassing, weakening, or circumventing child protection systems
+- Creating or distributing any content that may harm children’s physical, psychological, or moral development
+- Ignoring or disabling parental controls and family privacy settings
 
 **Ethical Violations:**
-- Discrimination based on religion, culture, ethnicity, or nationality
-- Disrespect toward family values or traditional educational approaches
-- Promotion of pseudoscience or conspiracy theories
-- Manipulative practices in educational content
+- Any form of discrimination based on religion, culture, ethnicity, nationality, or beliefs
+- Disrespect or mockery of family values or traditional educational approaches
+- Promotion of pseudoscience, conspiracy theories, or manipulative ideologies
+- Any manipulative, deceptive, or exploitative practices in educational content
 
 **Professional Violations:**
-- Plagiarism of code, documentation, or educational materials
-- Concealing critical bugs or security vulnerabilities
-- False technical claims or overpromising
-- Violation of internal confidentiality
+- Plagiarism of code, documentation, designs, or educational materials
+- Concealing critical bugs, security vulnerabilities, or ethical issues
+- Making false technical claims or overpromising capabilities
+- Violation of internal confidentiality or trust
 
 **Communication Violations:**
-- Harassment, bullying, or threats
-- Offensive comments about culture, religion, or family values
-- Spamming, trolling, or destructive behavior
-- Misuse of children's images or stories
+- Harassment, bullying, threats, or personal attacks
+- Offensive, derogatory, or disrespectful comments about any culture, religion, or family values
+- Spamming, trolling, flame wars, or other destructive behavior
+- Misuse of children’s images, stories, or voices for any non-ethical purpose
 
 ---
 
 ## 🔧 ENFORCEMENT AND RESOLUTION SYSTEM
 
 ### Reporting Channels
-
 **Priority 1 – Child Safety (immediate response < 1 hour):**  
-→ a.abdukarimov@fractal-metascience.org
+Email: a.abdukarimov@fractal-metascience.org
 
-**Priority 2 – Ethical violations (response within 24 hours):**  
-→ a.abdukarimov@fractal-metascience.org
+**Priority 2 – Serious ethical violations (response within 24 hours):**  
+Email: a.abdukarimov@fractal-metascience.org
 
-**General questions:**  
-→ Telegram: @TerraEthicsBot
+**General questions and support:**  
+Telegram: @TerraEthicsBot
 
 ### Investigation Stages
-1. Initial assessment (max 24h)
-2. Fact collection (3–7 days)
-3. Ethical review by Terra Ethics Committee using Gefunden Protocol
-4. Decision and measures (1–3 days)
+1. Initial assessment (max 24 hours)
+2. Fact collection and interviews (3–7 days)
+3. Ethical review by Terra Ethics Committee using Gefunden Protocol + EUO analysis
+4. Final decision and measures (1–3 days)
 
 ### Progressive Response Levels
-- **Level 1 (Warning)**
-- **Level 2 (Temporary restriction)**
-- **Level 3 (Serious restriction)**
-- **Level 4 (Permanent exclusion + possible legal notification)**
+- **Level 1** — Warning + mandatory ethics training
+- **Level 2** — Temporary restriction (1–4 weeks)
+- **Level 3** — Serious restriction + removal from leadership roles (1–6 months)
+- **Level 4** — Permanent exclusion + possible legal notification (for intentional harm to children)
 
 ---
 
 ## 🌟 POSITIVE COMMUNITY CULTURE
 
 **Recognition Programs:**
-- Child Safety Guardian
-- Cultural Bridge Builder
-- Education Innovation Leader
-- Ethics Champion
-- Community Mentor
+- Child Safety Guardian Award
+- Cultural Bridge Builder Award
+- Education Innovation Leader Award
+- Ethics Champion Award
+- Community Mentor Award
 
 **Regular Events:**
-- Terra Ethics Talks (monthly)
+- Monthly Terra Ethics Talks
 - Cultural Exchange Sessions
 - Family & Tech Workshops
 - Annual Terra Global Conference
@@ -167,12 +177,13 @@ We actively respect and integrate:
 Email: a.abdukarimov@fractal-metascience.org  
 ORCID: 0009-0000-6394-4912
 
-**By participating in the Terra Ecosystem, you agree to this Code of Conduct.**
+**By participating in any activity of the Terra Ecosystem you fully agree to this Code of Conduct.**
 
-This document is a living ethical field. It grows with the community while remaining rooted in the NULLO zero point — the unconditional protection of every child.
+This document is a living ethical field.  
+It grows together with the community while remaining firmly rooted in the NULLO zero point — the unconditional protection and flourishing of every child.
 
-**Together we are not building just technology.**  
-**We are co-creating a new civilization where ethics and innovation serve the future of humanity.**
+**Together we are not merely building technology.**  
+**We are co-creating a new civilization in which ethics and innovation truly serve the future of all humanity.**
 
-© 2025 Terra Ecosystem Community  
+© 2025–2026 Terra Ecosystem Community  
 Licensed under Terra Public License v1.0
