@@ -15,7 +15,7 @@ jobs:
         uses: zricethezav/gitleaks-action@v1
         with:
           args: detect --source . --report-path gitleaks-report.json || true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: gitleaks-report
           path: gitleaks-report.json
@@ -33,7 +33,7 @@ jobs:
       - name: Run npm audit if package.json
         run: |
           if [ -f package.json ]; then npm audit --json > npm-audit.json || true; fi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: npm-audit
           path: npm-audit.json
