@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Secret-Uzbek/AIUZ-terra-codex-FMP"
+authors:
+  - family-names: Abdukarimov
+    given-names: Abdurashid
+    orcid: "https://orcid.org/0009-0000-6394-4912"
+    affiliation: "Fractal Metascience Foundation, Tashkent, Uzbekistan"
+    email: "a.a.abdukarimov@tutamail.com"
+repository-code: "https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP"
+abstract: "Part of the Fractal Metascience Paradigm (FMP) ecosystem — an epistemological framework integrating Zero-Point Ontology (NULLO), Post-Lingua Trace (PLT), Universal Communication (UCOM), and Emergent Universal Organization (EUO)."
+keywords:
+  - fractal-metascience
+  - epistemology
+  - nullo
+  - post-lingua-trace
+  - ucom
+  - euo
+  - uzbekistan
+  - open-science
+license: CC-BY-4.0
+doi: "10.5281/zenodo.14205350"
+date-released: "2025-11-01"
+version: "1.0.0"
