@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run gitleaks
-        uses: zricethezav/gitleaks-action@v1
+        uses: zricethezav/gitleaks-action@v2
         with:
           args: detect --source . --report-path gitleaks-report.json || true
       - uses: actions/upload-artifact@v4
