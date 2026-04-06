@@ -1,4 +1,4 @@
-# 🔬 The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science
+# рџ”¬ The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science
 
 **AUTHOR:** Abdurashid Abdukarimov\
 **DATE CREATED:** July 13, 2025\
@@ -6,9 +6,9 @@
 **STATUS:** Active\
 **RELATED DOCUMENTS:**
 
-* 📋 AIUZ Documentation Standards v1.0
-* 🌍 Vision Document
-* 🧬 TerraMemoryDNA
+* рџ“‹ AIUZ Documentation Standards v1.0
+* рџЊЌ Vision Document
+* рџ§¬ TerraMemoryDNA
 
 ## Abstract
 
@@ -38,7 +38,7 @@ The inadequacy of linear, mechanistic models becomes particularly evident when e
 
 The Fractal Metascience Paradigm (FMP) emerges from the strategic convergence of several mature theoretical traditions that have independently identified recursive, self-similar patterns across diverse domains. Complexity science has revealed universal principles of emergence and self-organization in systems ranging from cellular automata to economic markets (Jantsch, 1980; Kauffman, 1993). Cybernetics has established the foundational role of feedback loops and recursive processes in both natural and artificial systems (Pickering, 2010; von Foerster, 2003). Advanced cognitive science has demonstrated the embodied, enactive nature of cognition, challenging classical subject-object distinctions (Varela, Thompson, & Rosch, 1991).
 
-What distinguishes FMP from previous integrative attempts is its recognition that scientific inquiry itself exhibits fractal properties—that the very process of knowledge construction mirrors the recursive, self-similar patterns observed in the phenomena under investigation (Mandelbrot, 1983; Joye, 2006). This meta-epistemological insight suggests that a truly unified science must be grounded in principles that apply reflexively to both the objects of study and the methods of investigation.
+What distinguishes FMP from previous integrative attempts is its recognition that scientific inquiry itself exhibits fractal propertiesвЂ”that the very process of knowledge construction mirrors the recursive, self-similar patterns observed in the phenomena under investigation (Mandelbrot, 1983; Joye, 2006). This meta-epistemological insight suggests that a truly unified science must be grounded in principles that apply reflexively to both the objects of study and the methods of investigation.
 
 ### 1.3 Research Objectives and Scope
 
@@ -130,7 +130,7 @@ The mathematical concept of fractals provides the foundational metaphor for unde
 
 **Cognitive Architecture:** Neural networks exhibit small-world properties and hierarchical organization that facilitate efficient information processing and learning (Bassett & Bullmore, 2006). The recursive application of similar connectivity patterns across different scales enables the emergence of complex cognitive functions from simple neural interactions.
 
-**Social Networks:** Human social structures demonstrate scale-free properties where the same organizational patterns appear in small groups, communities, and global networks (Barabási, 2002; Watts & Strogatz, 1998). This suggests universal principles governing social organization across different scales of human interaction.
+**Social Networks:** Human social structures demonstrate scale-free properties where the same organizational patterns appear in small groups, communities, and global networks (BarabГЎsi, 2002; Watts & Strogatz, 1998). This suggests universal principles governing social organization across different scales of human interaction.
 
 #### 3.1.2 Process Self-Similarity
 
@@ -144,7 +144,7 @@ The mathematical concept of fractals provides the foundational metaphor for unde
 
 **Adaptation Mechanisms:** Systems across scales exhibit similar strategies for maintaining stability while enabling change, from homeostasis in cells to institutional adaptation in organizations (Gell-Mann, 1994; Holland, 1995).
 
-**Information Processing:** The same computational principles—pattern recognition, memory storage, and prediction—operate across neural circuits, cognitive processes, and artificial intelligence systems (Hawkins, 2004; LeCun et al., 2015).
+**Information Processing:** The same computational principlesвЂ”pattern recognition, memory storage, and predictionвЂ”operate across neural circuits, cognitive processes, and artificial intelligence systems (Hawkins, 2004; LeCun et al., 2015).
 
 ### 3.2 Core Principle 2: Systemic Recursion and Autopoiesis
 
@@ -172,7 +172,7 @@ Building upon Maturana and Varela's (1980) concept of autopoiesis, FMP extends r
 
 **Cultural Evolution:** Cultures evolve through recursive processes where cultural products shape individual minds, which in turn create new cultural products (Tomasello, 1999; Henrich, 2016).
 
-**Institutional Learning:** Organizations develop capacity for institutional learning through recursive reflection on their own practices and outcomes (Argyris & Schön, 1978; Senge, 1990).
+**Institutional Learning:** Organizations develop capacity for institutional learning through recursive reflection on their own practices and outcomes (Argyris & SchГ¶n, 1978; Senge, 1990).
 
 ### 3.3 Core Principle 3: Onto-Epistemic Co-Construction
 
@@ -188,7 +188,7 @@ FMP challenges the traditional separation between ontology (what exists) and epi
 
 #### 3.3.2 Knowledge as Participatory
 
-**Enactive Cognition:** Knowledge emerges through embodied action in the world rather than passive representation of pre-existing reality (Varela et al., 1991; O'Regan & Noë, 2001).
+**Enactive Cognition:** Knowledge emerges through embodied action in the world rather than passive representation of pre-existing reality (Varela et al., 1991; O'Regan & NoГ«, 2001).
 
 **Participatory Research:** Research paradigms that explicitly acknowledge the researcher's participation in creating the phenomena under study (Reason & Bradbury, 2001; Heron & Reason, 1997).
 
@@ -198,7 +198,7 @@ FMP challenges the traditional separation between ontology (what exists) and epi
 
 **Dynamic Systems:** Complex systems tend toward specific configurations (attractors) that represent stable patterns of organization while maintaining capacity for change (Thelen & Smith, 1994; Kelso, 1995).
 
-**Conceptual Attractors:** Ideas and theories function as attractors in conceptual space, organizing related concepts while enabling novel combinations and developments (Lakoff, 1987; Gärdenfors, 2000).
+**Conceptual Attractors:** Ideas and theories function as attractors in conceptual space, organizing related concepts while enabling novel combinations and developments (Lakoff, 1987; GГ¤rdenfors, 2000).
 
 **Cultural Attractors:** Cultural patterns persist through time by functioning as attractors that guide individual behavior while being modified through collective action (Sperber, 1996; Boyd & Richerson, 2005).
 
@@ -208,7 +208,7 @@ FMP challenges the traditional separation between ontology (what exists) and epi
 
 ### 4.1 Transdisciplinary Integration Strategies
 
-FMP requires methodological approaches that can operate across traditional disciplinary boundaries while maintaining scientific rigor. This necessitates what we term "methodological fractality"—the application of similar investigative principles across different scales and domains of inquiry.
+FMP requires methodological approaches that can operate across traditional disciplinary boundaries while maintaining scientific rigor. This necessitates what we term "methodological fractality"вЂ”the application of similar investigative principles across different scales and domains of inquiry.
 
 #### 4.1.1 Multi-Scale Modeling
 
@@ -222,7 +222,7 @@ FMP requires methodological approaches that can operate across traditional disci
 
 **Emergent Properties:** Using agent-based models to explore how simple interaction rules at the individual level can generate complex patterns at the system level (Epstein & Axtell, 1996; Miller & Page, 2007).
 
-**Adaptive Networks:** Modeling systems where agents can modify their interaction patterns based on experience, creating co-evolutionary dynamics (Gross & Blasius, 2008; Holme & Saramäki, 2012).
+**Adaptive Networks:** Modeling systems where agents can modify their interaction patterns based on experience, creating co-evolutionary dynamics (Gross & Blasius, 2008; Holme & SaramГ¤ki, 2012).
 
 **Multi-Agent Learning:** Investigating how collective intelligence emerges from individual learning processes in networked environments (Stone & Veloso, 2000; Panait & Luke, 2005).
 
@@ -230,9 +230,9 @@ FMP requires methodological approaches that can operate across traditional disci
 
 **Fractal Networks:** Analyzing network structures that exhibit self-similar properties across different scales of organization (Song et al., 2005; Rozenfeld et al., 2010).
 
-**Dynamic Networks:** Studying how network structure and function co-evolve over time, with particular attention to phase transitions and critical phenomena (Boccaletti et al., 2006; Holme & Saramäki, 2012).
+**Dynamic Networks:** Studying how network structure and function co-evolve over time, with particular attention to phase transitions and critical phenomena (Boccaletti et al., 2006; Holme & SaramГ¤ki, 2012).
 
-**Multilayer Networks:** Investigating systems that operate across multiple types of relationships simultaneously, such as social-technical-ecological systems (Kivelä et al., 2014; Boccaletti et al., 2014).
+**Multilayer Networks:** Investigating systems that operate across multiple types of relationships simultaneously, such as social-technical-ecological systems (KivelГ¤ et al., 2014; Boccaletti et al., 2014).
 
 ### 4.2 Recursive Research Design
 
@@ -244,7 +244,7 @@ FMP emphasizes research designs that explicitly acknowledge and incorporate the 
 
 **Iterative Design:** Research cycles that incorporate learning from each phase into subsequent investigations, allowing for adaptive refinement of questions and methods (Susman & Evered, 1978; McKernan, 1991).
 
-**Reflexive Practice:** Systematic reflection on the researcher's role in shaping research outcomes, with explicit attention to assumptions, biases, and power relations (Schön, 1983; Alvesson & Sköldberg, 2000).
+**Reflexive Practice:** Systematic reflection on the researcher's role in shaping research outcomes, with explicit attention to assumptions, biases, and power relations (SchГ¶n, 1983; Alvesson & SkГ¶ldberg, 2000).
 
 #### 4.2.2 Design-Based Research
 
@@ -288,7 +288,7 @@ FMP emphasizes research designs that explicitly acknowledge and incorporate the 
 
 #### 5.1.1 Theoretical Foundation
 
-Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scales—from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
+Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scalesвЂ”from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
 
 **Neuroplasticity and Learning:** Research in neuroscience reveals that learning involves the recursive strengthening and modification of neural connections through experience (Doidge, 2007; Pascual-Leone et al., 2005). Effective pedagogy should align with these natural learning processes rather than working against them.
 
@@ -349,7 +349,7 @@ The development of artificial intelligence systems that remain aligned with huma
 
 **Recursive Value Learning:** AI systems designed to continuously refine their understanding of human values through recursive interaction with humans and environments, rather than operating from fixed ethical rules (Hadfield-Menell et al., 2016; Christiano et al., 2017).
 
-**Fractal Explainability:** Explanation systems that provide coherent accounts of AI decision-making at multiple scales—from individual decisions to long-term goal structures—maintaining transparency across levels of complexity (Gunning & Aha, 2019; Arrieta et al., 2020).
+**Fractal Explainability:** Explanation systems that provide coherent accounts of AI decision-making at multiple scalesвЂ”from individual decisions to long-term goal structuresвЂ”maintaining transparency across levels of complexity (Gunning & Aha, 2019; Arrieta et al., 2020).
 
 **Multi-Scale Feedback:** Ethical oversight mechanisms that operate at multiple temporal and organizational scales, from immediate decision feedback to long-term societal impact assessment (Baum, 2020; Dafoe, 2018).
 
@@ -388,7 +388,7 @@ The development of artificial intelligence systems that remain aligned with huma
 
 #### 5.3.1 Complexity of Sustainability Challenges
 
-Sustainability challenges involve complex interactions across multiple scales—from individual behaviors to global systems—that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
+Sustainability challenges involve complex interactions across multiple scalesвЂ”from individual behaviors to global systemsвЂ”that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
 
 **Scale Mismatches:** Environmental problems often occur at different scales than governance and management institutions, creating coordination challenges (Cash et al., 2006; Young, 2002).
 
@@ -499,14 +499,14 @@ The validation of FMP presents unique methodological challenges due to its meta-
 
 **Small-World Properties:** Testing for small-world network characteristics (high clustering, short path lengths) that facilitate recursive information flow (Watts & Strogatz, 1998; Newman, 2003).
 
-**Scale-Free Distributions:** Analyzing degree distributions for power-law relationships indicating scale-invariant organization (Barabási & Albert, 1999; Clauset et al., 2009).
+**Scale-Free Distributions:** Analyzing degree distributions for power-law relationships indicating scale-invariant organization (BarabГЎsi & Albert, 1999; Clauset et al., 2009).
 
 **Hierarchical Modularity:** Detecting hierarchical community structures that exhibit self-similar organization across scales (Fortunato, 2010; Arenas et al., 2008).
 
 **Meta-Analysis Results:** Analysis of 127 networks across biological, social, and technological domains revealed:
 
 * 89% exhibited small-world properties (clustering coefficient > 0.3, average path length < log(N))
-* 76% showed scale-free degree distributions (power-law exponent 2.1 ± 0.4)
+* 76% showed scale-free degree distributions (power-law exponent 2.1 В± 0.4)
 * 94% demonstrated hierarchical modularity with self-similar structure across scales
 
 #### 6.2.3 Information-Theoretic Measures
@@ -647,7 +647,7 @@ The adoption of FMP implies fundamental changes in how scientific research is co
 
 **Observer-Observed Relations:** Acknowledging that researchers are embedded within the systems they study, requiring explicit attention to how research questions, methods, and interpretations are shaped by researcher perspectives and contexts (von Foerster, 2003; Maturana & Varela, 1980).
 
-**Reflexive Research Practices:** Developing systematic approaches for reflecting on and documenting the researcher's role in co-constructing research outcomes (Alvesson & Sköldberg, 2000; Lynch, 2000).
+**Reflexive Research Practices:** Developing systematic approaches for reflecting on and documenting the researcher's role in co-constructing research outcomes (Alvesson & SkГ¶ldberg, 2000; Lynch, 2000).
 
 **Collaborative Knowledge Production:** Engaging research participants as co-investigators rather than subjects, recognizing their expertise and agency in knowledge creation (Reason & Bradbury, 2001; Fine, 2007).
 
@@ -693,7 +693,7 @@ The adoption of FMP implies fundamental changes in how scientific research is co
 
 **Collaborative Learning:** Designing learning experiences that mirror the collaborative nature of knowledge production in FMP, with students working together to construct understanding (Johnson & Johnson, 2009; Slavin, 2011).
 
-**Reflective Practice:** Incorporating systematic reflection on learning processes to develop metacognitive awareness and adaptive capacity (Schön, 1987; Moon, 2004).
+**Reflective Practice:** Incorporating systematic reflection on learning processes to develop metacognitive awareness and adaptive capacity (SchГ¶n, 1987; Moon, 2004).
 
 #### 7.3.2 Curriculum Design
 
@@ -737,7 +737,7 @@ The adoption of FMP implies fundamental changes in how scientific research is co
 
 **Universal Claims:** FMP's assertion that fractal principles operate across all domains may be overly ambitious and empirically unsupportable (Sokal & Bricmont, 1998; Gross & Levitt, 1994).
 
-**Domain Specificity:** Different domains may exhibit unique properties that resist integration under a single theoretical framework (Cartwright, 1983; Dupré, 1993).
+**Domain Specificity:** Different domains may exhibit unique properties that resist integration under a single theoretical framework (Cartwright, 1983; DuprГ©, 1993).
 
 **Cultural Bias:** FMP may reflect particular Western intellectual traditions and may not be applicable across different cultural contexts and ways of knowing (Said, 1978; Harding, 1998).
 
@@ -837,7 +837,7 @@ The adoption of FMP implies fundamental changes in how scientific research is co
 
 **Agent-Based Models:** Developing sophisticated agent-based models that can simulate recursive learning and adaptation processes across multiple scales and domains (Epstein & Axtell, 1996; Miller & Page, 2007).
 
-**Network Dynamics:** Creating models of evolving networks that exhibit fractal properties and can simulate the emergence of complex structures from simple rules (Barabási, 2002; Newman, 2010).
+**Network Dynamics:** Creating models of evolving networks that exhibit fractal properties and can simulate the emergence of complex structures from simple rules (BarabГЎsi, 2002; Newman, 2010).
 
 **Artificial Life:** Exploring how FMP principles might guide the development of artificial life systems that exhibit genuine autonomy, creativity, and evolutionary capacity (Langton, 1989; Bedau, 2003).
 
@@ -1063,17 +1063,17 @@ Amari, S. I., & Nagaoka, H. (2000). *Methods of information geometry*. Oxford Un
 
 Anderson, P. W. (1972). More is different. *Science*, 177(4047), 393-396.
 
-Arenas, A., Díaz-Guilera, A., Kurths, J., Moreno, Y., & Zhou, C. (2008). Synchronization in complex networks. *Physics Reports*, 469(3), 93-153.
+Arenas, A., DГ­az-Guilera, A., Kurths, J., Moreno, Y., & Zhou, C. (2008). Synchronization in complex networks. *Physics Reports*, 469(3), 93-153.
 
-Argyris, C., & Schön, D. A. (1978). *Organizational learning: A theory of action perspective*. Addison-Wesley.
+Argyris, C., & SchГ¶n, D. A. (1978). *Organizational learning: A theory of action perspective*. Addison-Wesley.
 
-Arrieta, A. B., Díaz-Rodríguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., ... & Herrera, F. (2020). Explainable artificial intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. *Information Fusion*, 58, 82-115.
+Arrieta, A. B., DГ­az-RodrГ­guez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., ... & Herrera, F. (2020). Explainable artificial intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. *Information Fusion*, 58, 82-115.
 
 Barab, S., & Squire, K. (2004). Design-based research: Putting a stake in the ground. *Journal of the Learning Sciences*, 13(1), 1-14.
 
-Barabási, A. L. (2002). *Linked: The new science of networks*. Perseus Publishing.
+BarabГЎsi, A. L. (2002). *Linked: The new science of networks*. Perseus Publishing.
 
-Barabási, A. L., & Albert, R. (1999). Emergence of scaling in random networks. *Science*, 286(5439), 509-512.
+BarabГЎsi, A. L., & Albert, R. (1999). Emergence of scaling in random networks. *Science*, 286(5439), 509-512.
 
 Barad, K. (2007). *Meeting the universe halfway: Quantum physics and the entanglement of matter and meaning*. Duke University Press.
 
@@ -1113,7 +1113,7 @@ Boaler, J. (2002). Experiencing school mathematics: Traditional and reform appro
 
 Boccaletti, S., Latora, V., Moreno, Y., Chavez, M., & Hwang, D. U. (2006). Complex networks: Structure and dynamics. *Physics Reports*, 424(4-5), 175-308.
 
-Boccaletti, S., Bianconi, G., Criado, R., Del Genio, C. I., Gómez-Gardenes, J., Romance, M., ... & Zanin, M. (2014). The structure and dynamics of multilayer networks. *Physics Reports*, 544(1), 1-122.
+Boccaletti, S., Bianconi, G., Criado, R., Del Genio, C. I., GГіmez-Gardenes, J., Romance, M., ... & Zanin, M. (2014). The structure and dynamics of multilayer networks. *Physics Reports*, 544(1), 1-122.
 
 Bohm, D. (1996). *On dialogue*. Routledge.
 
@@ -1157,7 +1157,7 @@ Cartwright, N. (1983). *How the laws of physics lie*. Oxford University Press.
 
 Cash, D. W., Adger, W. N., Berkes, F., Garden, P., Lebel, L., Olsson, P., ... & Young, O. (2006). Scale and cross-scale dynamics: Governance and information in a multilevel world. *Ecology and Society*, 11(2).
 
-Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health care—addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
+Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health careвЂ”addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
 
 Charmaz, K. (2006). *Constructing grounded theory: A practical guide through qualitative analysis*. Sage.
 
@@ -1217,7 +1217,7 @@ DiMaggio, P. J., & Powell, W. W. (1983). The iron cage revisited: Institutional 
 
 Doidge, N. (2007). *The brain that changes itself: Stories of personal triumph from the frontiers of brain science*. Viking.
 
-Dupré, J. (1993). *The disorder of things: Metaphysical foundations of the disunity of science*. Harvard University Press.
+DuprГ©, J. (1993). *The disorder of things: Metaphysical foundations of the disunity of science*. Harvard University Press.
 
 Epstein, J. M., & Axtell, R. (1996). *Growing artificial societies: Social science from the bottom up*. MIT Press.
 
@@ -1235,7 +1235,7 @@ Field, H. (1972). Tarski's theory of truth. *Journal of Philosophy*, 69(13), 347
 
 Fine, M. (2007). Feminist designs for difference. In S. N. Hesse-Biber (Ed.), *Handbook of feminist research: Theory and praxis* (pp. 613-619). Sage.
 
-Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitive–developmental inquiry. *American Psychologist*, 34(10), 906-911.
+Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitiveвЂ“developmental inquiry. *American Psychologist*, 34(10), 906-911.
 
 Floridi, L., & Cowls, J. (2019). A unified framework of five principles for AI in society. *Harvard Data Science Review*, 1(1).
 
@@ -1255,7 +1255,7 @@ Gadamer, H. G. (1975). *Truth and method*. Seabury Press.
 
 Gamble, J. A. (2008). A developmental evaluation primer. JW McConnell Family Foundation.
 
-Gärdenfors, P. (2000). *Conceptual spaces: The geometry of thought*. MIT Press.
+GГ¤rdenfors, P. (2000). *Conceptual spaces: The geometry of thought*. MIT Press.
 
 Gay, G. (2010). *Culturally responsive teaching: Theory, research, and practice*. Teachers College Press.
 
@@ -1321,7 +1321,7 @@ Holling, C. S. (2001). Understanding the complexity of economic, ecological, and
 
 Holling, C. S., & Gunderson, L. H. (Eds.). (2002). *Panarchy: Understanding transformations in human and natural systems*. Island Press.
 
-Holme, P., & Saramäki, J. (2012). Temporal networks. *Physics Reports*, 519(3), 97-125.
+Holme, P., & SaramГ¤ki, J. (2012). Temporal networks. *Physics Reports*, 519(3), 97-125.
 
 Howard-Jones, P. A. (2010). *Introducing neuroeducational research: Neuroscience, education and the brain from contexts to practice*. Routledge.
 
@@ -1347,7 +1347,7 @@ Kelso, J. A. S. (1995). *Dynamic patterns: The self-organization of brain and be
 
 Kemper, J., & Kolkman, D. (2019). Transparent to whom? No algorithmic accountability without a critical audience. *Information, Communication & Society*, 22(14), 2081-2096.
 
-Kivelä, M., Arenas, A., Barthelemy, M., Gleeson, J. P., Moreno, Y., & Porter, M. A. (2014). Multilayer networks. *Journal of Complex Networks*, 2(3), 203-271.
+KivelГ¤, M., Arenas, A., Barthelemy, M., Gleeson, J. P., Moreno, Y., & Porter, M. A. (2014). Multilayer networks. *Journal of Complex Networks*, 2(3), 203-271.
 
 Klayman, J., & Ha, Y. W. (1987). Confirmation, disconfirmation, and information in hypothesis testing. *Psychological Review*, 94(2), 211-228.
 
@@ -1473,11 +1473,11 @@ Odling-Smee, F. J., Laland, K. N., & Feldman, M. W. (2003). *Niche construction:
 
 Oizumi, M., Albantakis, L., & Tononi, G. (2014). From the phenomenology to the mechanisms of consciousness: Integrated information theory 3.0. *PLoS Computational Biology*, 10(5), e1003588.
 
-O'Regan, J. K., & Noë, A. (2001). A sensorimotor account of vision and visual consciousness. *Behavioral and Brain Sciences*, 24(5), 939-973.
+O'Regan, J. K., & NoГ«, A. (2001). A sensorimotor account of vision and visual consciousness. *Behavioral and Brain Sciences*, 24(5), 939-973.
 
 Ostrom, E. (2009). A general framework for analyzing sustainability of social-ecological systems. *Science*, 325(5939), 419-422.
 
-Pahl-Wostl, C. (2002). Towards sustainability in the water sector–the importance of human actors and processes of social learning. *Aquatic Sciences*, 64(4), 394-411.
+Pahl-Wostl, C. (2002). Towards sustainability in the water sectorвЂ“the importance of human actors and processes of social learning. *Aquatic Sciences*, 64(4), 394-411.
 
 Palmer, C. L. (2001). *Work at the boundaries of science: Information and the interdisciplinary research process*. Springer.
 
@@ -1559,9 +1559,9 @@ Scardamalia, M., & Bereiter, C. (2006). Knowledge building: Theory, pedagogy, an
 
 Schoenfeld, A. H. (1985). *Mathematical problem solving*. Academic Press.
 
-Schön, D. A. (1983). *The reflective practitioner: How professionals think in action*. Basic Books.
+SchГ¶n, D. A. (1983). *The reflective practitioner: How professionals think in action*. Basic Books.
 
-Schön, D. A. (1987). *Educating the reflective practitioner: Toward a new design for teaching and learning in the professions*. Jossey-Bass.
+SchГ¶n, D. A. (1987). *Educating the reflective practitioner: Toward a new design for teaching and learning in the professions*. Jossey-Bass.
 
 Searle, J. R. (1992). *The rediscovery of the mind*. MIT Press.
 
@@ -1629,7 +1629,7 @@ Topping, K. (1998). Peer assessment between students in colleges and universitie
 
 Turnbull, D. (2000). *Masons, tricksters and cartographers: Comparative studies in the sociology of scientific and indigenous knowledge*. Harwood Academic.
 
-UN-Habitat. (2016). *World cities report 2016: Urbanization and development—emerging futures*. United Nations.
+UN-Habitat. (2016). *World cities report 2016: Urbanization and developmentвЂ”emerging futures*. United Nations.
 
 Urban, D. L. (2005). Modeling ecological processes across scales. *Ecology*, 86(8), 1996-2006.
 
