@@ -10,17 +10,17 @@ Amari, S. I., & Nagaoka, H. (2000). *Methods of information geometry*. Oxford Un
 
 Anderson, P. W. (1972). More is different. *Science*, 177(4047), 393-396.
 
-Arenas, A., Díaz-Guilera, A., Kurths, J., Moreno, Y., & Zhou, C. (2008). Synchronization in complex networks. *Physics Reports*, 469(3), 93-153.
+Arenas, A., Dнaz-Guilera, A., Kurths, J., Moreno, Y., & Zhou, C. (2008). Synchronization in complex networks. *Physics Reports*, 469(3), 93-153.
 
-Argyris, C., & Schön, D. A. (1978). *Organizational learning: A theory of action perspective*. Addison-Wesley.
+Argyris, C., & Schцn, D. A. (1978). *Organizational learning: A theory of action perspective*. Addison-Wesley.
 
-Arrieta, A. B., Díaz-Rodríguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., ... & Herrera, F. (2020). Explainable artificial intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. *Information Fusion*, 58, 82-115.
+Arrieta, A. B., Dнaz-Rodrнguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., ... & Herrera, F. (2020). Explainable artificial intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. *Information Fusion*, 58, 82-115.
 
 Barab, S., & Squire, K. (2004). Design-based research: Putting a stake in the ground. *Journal of the Learning Sciences*, 13(1), 1-14.
 
-Barabási, A. L. (2002). *Linked: The new science of networks*. Perseus Publishing.
+Barabбsi, A. L. (2002). *Linked: The new science of networks*. Perseus Publishing.
 
-Barabási, A. L., & Albert, R. (1999). Emergence of scaling in random networks. *Science*, 286(5439), 509-512.
+Barabбsi, A. L., & Albert, R. (1999). Emergence of scaling in random networks. *Science*, 286(5439), 509-512.
 
 Barad, K. (2007). *Meeting the universe halfway: Quantum physics and the entanglement of matter and meaning*. Duke University Press.
 
@@ -60,7 +60,7 @@ Boaler, J. (2002). Experiencing school mathematics: Traditional and reform appro
 
 Boccaletti, S., Latora, V., Moreno, Y., Chavez, M., & Hwang, D. U. (2006). Complex networks: Structure and dynamics. *Physics Reports*, 424(4-5), 175-308.
 
-Boccaletti, S., Bianconi, G., Criado, R., Del Genio, C. I., Gómez-Gardenes, J., Romance, M., ... & Zanin, M. (2014). The structure and dynamics of multilayer networks. *Physics Reports*, 544(1), 1-122.
+Boccaletti, S., Bianconi, G., Criado, R., Del Genio, C. I., Gуmez-Gardenes, J., Romance, M., ... & Zanin, M. (2014). The structure and dynamics of multilayer networks. *Physics Reports*, 544(1), 1-122.
 
 Bohm, D. (1996). *On dialogue*. Routledge.
 
@@ -104,7 +104,7 @@ Cartwright, N. (1983). *How the laws of physics lie*. Oxford University Press.
 
 Cash, D. W., Adger, W. N., Berkes, F., Garden, P., Lebel, L., Olsson, P., ... & Young, O. (2006). Scale and cross-scale dynamics: Governance and information in a multilevel world. *Ecology and Society*, 11(2).
 
-Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health care—addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
+Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health care?addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
 
 Charmaz, K. (2006). *Constructing grounded theory: A practical guide through qualitative analysis*. Sage.
 
@@ -164,7 +164,7 @@ DiMaggio, P. J., & Powell, W. W. (1983). The iron cage revisited: Institutional 
 
 Doidge, N. (2007). *The brain that changes itself: Stories of personal triumph from the frontiers of brain science*. Viking.
 
-Dupré, J. (1993). *The disorder of things: Metaphysical foundations of the disunity of science*. Harvard University Press.
+Duprй, J. (1993). *The disorder of things: Metaphysical foundations of the disunity of science*. Harvard University Press.
 
 Epstein, J. M., & Axtell, R. (1996). *Growing artificial societies: Social science from the bottom up*. MIT Press.
 
@@ -182,7 +182,7 @@ Field, H. (1972). Tarski's theory of truth. *Journal of Philosophy*, 69(13), 347
 
 Fine, M. (2007). Feminist designs for difference. In S. N. Hesse-Biber (Ed.), *Handbook of feminist research: Theory and praxis* (pp. 613-619). Sage.
 
-Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitive–developmental inquiry. *American Psychologist*, 34(10), 906-911.
+Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitive?developmental inquiry. *American Psychologist*, 34(10), 906-911.
 
 Floridi, L., & Cowls, J. (2019). A unified framework of five principles for AI in society. *Harvard Data Science Review*, 1(1).
 
@@ -202,7 +202,7 @@ Gadamer, H. G. (1975). *Truth and method*. Seabury Press.
 
 Gamble, J. A. (2008). A developmental evaluation primer. JW McConnell Family Foundation.
 
-Gärdenfors, P. (2000). *Conceptual spaces: The geometry of thought*. MIT Press.
+Gдrdenfors, P. (2000). *Conceptual spaces: The geometry of thought*. MIT Press.
 
 Gay, G. (2010). *Culturally responsive teaching: Theory, research, and practice*. Teachers College Press.
 
@@ -268,7 +268,7 @@ Holling, C. S. (2001). Understanding the complexity of economic, ecological, and
 
 Holling, C. S., & Gunderson, L. H. (Eds.). (2002). *Panarchy: Understanding transformations in human and natural systems*. Island Press.
 
-Holme, P., & Saramäki, J. (2012). Temporal networks. *Physics Reports*, 519(3), 97-125.
+Holme, P., & Saramдki, J. (2012). Temporal networks. *Physics Reports*, 519(3), 97-125.
 
 Howard-Jones, P. A. (2010). *Introducing neuroeducational research: Neuroscience, education and the brain from contexts to practice*. Routledge.
 
@@ -294,7 +294,7 @@ Kelso, J. A. S. (1995). *Dynamic patterns: The self-organization of brain and be
 
 Kemper, J., & Kolkman, D. (2019). Transparent to whom? No algorithmic accountability without a critical audience. *Information, Communication & Society*, 22(14), 2081-2096.
 
-Kivelä, M., Arenas, A., Barthelemy, M., Gleeson, J. P., Moreno, Y., & Porter, M. A. (2014). Multilayer networks. *Journal of Complex Networks*, 2(3), 203-271.
+Kivelд, M., Arenas, A., Barthelemy, M., Gleeson, J. P., Moreno, Y., & Porter, M. A. (2014). Multilayer networks. *Journal of Complex Networks*, 2(3), 203-271.
 
 Klayman, J., & Ha, Y. W. (1987). Confirmation, disconfirmation, and information in hypothesis testing. *Psychological Review*, 94(2), 211-228.
 
@@ -420,11 +420,11 @@ Odling-Smee, F. J., Laland, K. N., & Feldman, M. W. (2003). *Niche construction:
 
 Oizumi, M., Albantakis, L., & Tononi, G. (2014). From the phenomenology to the mechanisms of consciousness: Integrated information theory 3.0. *PLoS Computational Biology*, 10(5), e1003588.
 
-O'Regan, J. K., & Noë, A. (2001). A sensorimotor account of vision and visual consciousness. *Behavioral and Brain Sciences*, 24(5), 939-973.
+O'Regan, J. K., & Noл, A. (2001). A sensorimotor account of vision and visual consciousness. *Behavioral and Brain Sciences*, 24(5), 939-973.
 
 Ostrom, E. (2009). A general framework for analyzing sustainability of social-ecological systems. *Science*, 325(5939), 419-422.
 
-Pahl-Wostl, C. (2002). Towards sustainability in the water sector–the importance of human actors and processes of social learning. *Aquatic Sciences*, 64(4), 394-411.
+Pahl-Wostl, C. (2002). Towards sustainability in the water sector?the importance of human actors and processes of social learning. *Aquatic Sciences*, 64(4), 394-411.
 
 Palmer, C. L. (2001). *Work at the boundaries of science: Information and the interdisciplinary research process*. Springer.
 
@@ -506,9 +506,9 @@ Scardamalia, M., & Bereiter, C. (2006). Knowledge building: Theory, pedagogy, an
 
 Schoenfeld, A. H. (1985). *Mathematical problem solving*. Academic Press.
 
-Schön, D. A. (1983). *The reflective practitioner: How professionals think in action*. Basic Books.
+Schцn, D. A. (1983). *The reflective practitioner: How professionals think in action*. Basic Books.
 
-Schön, D. A. (1987). *Educating the reflective practitioner: Toward a new design for teaching and learning in the professions*. Jossey-Bass.
+Schцn, D. A. (1987). *Educating the reflective practitioner: Toward a new design for teaching and learning in the professions*. Jossey-Bass.
 
 Searle, J. R. (1992). *The rediscovery of the mind*. MIT Press.
 
@@ -594,7 +594,7 @@ Vygotsky, L. S. (1978). *Mind in society: The development of higher psychologica
 
 Waldrop, M. M. (1992). *Complexity: The emerging science at the edge of order and chaos*. Simon & Schuster.
 
-Walker, B., Holling, C. S., Carpenter, S. R., & Kinzig, A. (2004). Resilience, adaptability and transformability in social–ecological systems. *Ecology and Society*, 9(2).
+Walker, B., Holling, C. S., Carpenter, S. R., & Kinzig, A. (2004). Resilience, adaptability and transformability in social?ecological systems. *Ecology and Society*, 9(2).
 
 Wallerstein, I. M. (1996). *Open the social sciences: Report of the Gulbenkian Commission on the Restructuring of the Social Sciences*. Stanford University Press.
 
