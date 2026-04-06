@@ -14,14 +14,14 @@ Following the articulation of the theoretical core of the Fractal Metascience Pa
 
 ### 2.1. Quantum-Informed Systems Thinking
 All applied cases follow the simulation protocol of quantum superposition modeling, enabling layered causal interrelations to be represented in fractal ontologies. This method draws upon:
-- Bohr’s complementarity principle (Bohr, 1928)
+- BohrвЂ™s complementarity principle (Bohr, 1928)
 - Quantum cognition (Busemeyer & Bruza, 2012)
 - Complexity science in cognitive-educational systems (Mitchell, 2009)
 
 ### 2.2. Visual Metaontology: Terra Codex Interface
 The Terra Codex operates as a visual simulator rendering superpositional, fractal, and feedback-based systems across domains. It translates theoretical constructs into modular, adaptive knowledge representations. The following technologies are utilized:
 - React-based UI with Tailwind and Recharts
-- State-management via triadic entanglement model (agent–observer–system)
+- State-management via triadic entanglement model (agentвЂ“observerвЂ“system)
 - Dynamic XAI overlays for transparency
 
 ## 3. Applied Case I: Neurocognitive Learning Systems
@@ -69,9 +69,9 @@ These applied cases demonstrate that the Fractal Metascience Paradigm is not mer
 Phase II marks the emergence of a simulation-ready, interactive paradigm that merges theoretical elegance with applied functionality, setting the groundwork for transdisciplinary science in the quantum age.
 
 ## References
-- Bohr, N. (1928). The quantum postulate and the recent development of atomic theory. *Nature*, 121, 580–590.
+- Bohr, N. (1928). The quantum postulate and the recent development of atomic theory. *Nature*, 121, 580вЂ“590.
 - Busemeyer, J. R., & Bruza, P. D. (2012). *Quantum models of cognition and decision*. Cambridge University Press.
-- Davidson, R. J., & McEwen, B. S. (2012). Social influences on neuroplasticity: stress and interventions to promote well-being. *Nature Neuroscience*, 15(5), 689–695.
+- Davidson, R. J., & McEwen, B. S. (2012). Social influences on neuroplasticity: stress and interventions to promote well-being. *Nature Neuroscience*, 15(5), 689вЂ“695.
 - Batty, M. (2007). *Cities and complexity: understanding cities with cellular automata, agent-based models, and fractals*. MIT Press.
 - Mitchell, M. (2009). *Complexity: A guided tour*. Oxford University Press.
 
