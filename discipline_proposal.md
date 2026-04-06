@@ -1,12 +1,12 @@
-# 🎓 Fractal Metascience: Proposal for New Academic Discipline
+# рџЋ“ Fractal Metascience: Proposal for New Academic Discipline
 
-## 📋 **Executive Summary**
+## рџ“‹ **Executive Summary**
 
 **Fractal Metascience (FMS)** represents an emerging transdisciplinary field that applies complexity science principles, fractal mathematics, and systems thinking to understand and improve scientific practice itself. This proposal outlines the theoretical foundations, methodological innovations, and institutional requirements for establishing FMS as a recognized academic discipline.
 
 ---
 
-## 🏛️ **Disciplinary Justification**
+## рџЏ›пёЏ **Disciplinary Justification**
 
 ### **1. Unique Knowledge Domain**
 
@@ -35,7 +35,7 @@ FMS employs unique methodologies including:
 
 ---
 
-## 🧠 **Core Theoretical Framework**
+## рџ§  **Core Theoretical Framework**
 
 ### **Foundational Principles**
 
@@ -54,7 +54,7 @@ FMS employs unique methodologies including:
 
 ---
 
-## 🎯 **Academic Program Structure**
+## рџЋЇ **Academic Program Structure**
 
 ### **Undergraduate Minor Program (18 credits)**
 
@@ -103,7 +103,7 @@ Integration with existing PhD programs in:
 
 ---
 
-## 🏫 **Institutional Implementation Strategy**
+## рџЏ« **Institutional Implementation Strategy**
 
 ### **Phase 1: Pilot Programs (Years 1-2)**
 
@@ -140,7 +140,7 @@ Integration with existing PhD programs in:
 
 ---
 
-## 👥 **Faculty and Expertise Requirements**
+## рџ‘Ґ **Faculty and Expertise Requirements**
 
 ### **Core Faculty Profiles**
 
@@ -173,7 +173,7 @@ Integration with existing PhD programs in:
 
 ---
 
-## 💰 **Resource Requirements & Sustainability**
+## рџ’° **Resource Requirements & Sustainability**
 
 ### **Startup Costs (Years 1-3)**
 - **Faculty positions**: $200K-400K annually per position
@@ -195,7 +195,7 @@ Integration with existing PhD programs in:
 
 ---
 
-## 📊 **Evidence of Disciplinary Need**
+## рџ“Љ **Evidence of Disciplinary Need**
 
 ### **Academic Indicators**
 - **Growing literature** in complexity science and transdisciplinary research
