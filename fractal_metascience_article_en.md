@@ -21,9 +21,9 @@ This paradigm aligns with research in AI-integrated STEM education (Xu & Ouyang,
 
 **3. AI as a Catalyst in Fractal Educational Systems**
 
-Systematic reviews (Zawacki-Richter et al., 2019; Holmes et al., 2019) demonstrate AI’s potential to transform education through adaptive tutoring systems, predictive analytics, intelligent content generation, and personalized feedback loops. These functions mirror the dynamic behavior of fractal systems—responsive, self-adaptive, and recursively structured.
+Systematic reviews (Zawacki-Richter et al., 2019; Holmes et al., 2019) demonstrate AIвЂ™s potential to transform education through adaptive tutoring systems, predictive analytics, intelligent content generation, and personalized feedback loops. These functions mirror the dynamic behavior of fractal systemsвЂ”responsive, self-adaptive, and recursively structured.
 
-However, ethical concerns (Tuomi, 2018; Holmes et al., 2021) call for explainable and transparent AI systems. In the FMP, explainability is not merely a technical feature but an epistemological requirement: learners must understand and internalize the recursive feedback loops that guide their cognitive development. Thus, AI systems must be designed to enhance—not obscure—learner agency.
+However, ethical concerns (Tuomi, 2018; Holmes et al., 2021) call for explainable and transparent AI systems. In the FMP, explainability is not merely a technical feature but an epistemological requirement: learners must understand and internalize the recursive feedback loops that guide their cognitive development. Thus, AI systems must be designed to enhanceвЂ”not obscureвЂ”learner agency.
 
 **4. Neuroplasticity and the Cognitive Dimension of Fractal Learning**
 
@@ -59,11 +59,11 @@ The Fractal Metascience Paradigm offers a robust conceptual and methodological f
 **References**
 - von Bertalanffy, L. (1968). *General System Theory: Foundations, Development, Applications*. George Braziller.
 - Xu, W., & Ouyang, F. (2022). The application of AI technologies in STEM education: A systematic review from 2011 to 2021. *International Journal of STEM Education*, 9(59). https://doi.org/10.1186/s40594-022-00377-5
-- Zawacki-Richter, O., et al. (2019). Systematic review of research on artificial intelligence applications in higher education. *International Journal of Educational Technology in Higher Education*, 16(1), 1–27.
+- Zawacki-Richter, O., et al. (2019). Systematic review of research on artificial intelligence applications in higher education. *International Journal of Educational Technology in Higher Education*, 16(1), 1вЂ“27.
 - Tuomi, I. (2018). The impact of artificial intelligence on learning, teaching, and education. *European Commission JRC Science for Policy Report*.
-- Draganski, B., et al. (2004). Changes in grey matter induced by training. *Nature*, 427(6972), 311–312.
+- Draganski, B., et al. (2004). Changes in grey matter induced by training. *Nature*, 427(6972), 311вЂ“312.
 - Holmes, W., Bialik, M., & Fadel, C. (2019). *Artificial Intelligence in Education: Promises and Implications for Teaching and Learning*. Center for Curriculum Redesign.
-- Batty, M. (2018). Digital twins. *Environment and Planning B: Urban Analytics and City Science*, 45(5), 817–820.
+- Batty, M. (2018). Digital twins. *Environment and Planning B: Urban Analytics and City Science*, 45(5), 817вЂ“820.
 - Mandelbrot, B. (1983). *The Fractal Geometry of Nature*. W. H. Freeman.
 
 
