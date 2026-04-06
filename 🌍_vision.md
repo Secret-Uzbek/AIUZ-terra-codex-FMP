@@ -1,24 +1,24 @@
-# 🌍 VISION: The Terra Ethos and Planetary Intention
+# рџЊЌ VISION: The Terra Ethos and Planetary Intention
 
 **AUTHOR:** Abdurashid Abdukarimov  
 **DATE CREATED:** 15 July 2025  
 **VERSION:** 1.0  
 **STATUS:** Approved  
 **RELATED DOCUMENTS:**  
-- 📜 Terra Universal Convention v1.0  
-- 📋 Documentation Standards v1.0  
-- 🧬 TerraMemoryDNA v4.0  
+- рџ“њ Terra Universal Convention v1.0  
+- рџ“‹ Documentation Standards v1.0  
+- рџ§¬ TerraMemoryDNA v4.0  
 
 ---
 
-## 🎯 PURPOSE AND INTENTION
+## рџЋЇ PURPOSE AND INTENTION
 
 This document outlines the philosophical and ethical vision that powers the AIUZ Terra Ecosystem.  
-It serves as a compass for documentation, product development, and decision-making — across human, artificial, and environmental domains.
+It serves as a compass for documentation, product development, and decision-making вЂ” across human, artificial, and environmental domains.
 
 ---
 
-## ✨ THE CORE IDEA
+## вњЁ THE CORE IDEA
 
 > **"We do not build products. We engineer care."**  
 Terra is a framework for re-aligning technology with life, family, culture, and planetary sustainability.
@@ -27,26 +27,26 @@ The vision places the **child** at the center of design, **ethics** at the core 
 
 ---
 
-## 🧭 GUIDING PRINCIPLES
+## рџ§­ GUIDING PRINCIPLES
 
-- 👶 **Child-first by design** — every decision begins with care for children
-- 🌱 **Planetary responsibility** — sustainability is a default, not a feature
-- 🤖 **Ethical symbiosis** — AI exists to amplify human dignity and nature
-- 📖 **Cultural respect** — every language, every tradition has value
-- 🧬 **Continuity through memory** — semantic archives replace forgetting
-
----
-
-## 🧠 CULTURE OF DESIGN
-
-- 🧩 We use **modular, open, semantically meaningful code**
-- 🌐 We write documentation as **legal, pedagogical, and cultural bridges**
-- 🛡 We treat every protocol as a **living moral contract**
-- 🕊️ We build for **peace, family, education, and future generations**
+- рџ‘¶ **Child-first by design** вЂ” every decision begins with care for children
+- рџЊ± **Planetary responsibility** вЂ” sustainability is a default, not a feature
+- рџ¤– **Ethical symbiosis** вЂ” AI exists to amplify human dignity and nature
+- рџ“– **Cultural respect** вЂ” every language, every tradition has value
+- рџ§¬ **Continuity through memory** вЂ” semantic archives replace forgetting
 
 ---
 
-## 🔮 THE ROLE OF AI
+## рџ§  CULTURE OF DESIGN
+
+- рџ§© We use **modular, open, semantically meaningful code**
+- рџЊђ We write documentation as **legal, pedagogical, and cultural bridges**
+- рџ›Ў We treat every protocol as a **living moral contract**
+- рџ•ЉпёЏ We build for **peace, family, education, and future generations**
+
+---
+
+## рџ”® THE ROLE OF AI
 
 Artificial Intelligence is not a replacement for human insight.  
 It is a mirror, a lens, and a collaborator in:
@@ -57,7 +57,7 @@ It is a mirror, a lens, and a collaborator in:
 
 ---
 
-## 🛠 TECHNOLOGICAL CONSEQUENCES
+## рџ›  TECHNOLOGICAL CONSEQUENCES
 
 From this vision arise concrete requirements:
 - Secure mesh networks for family-safe education
@@ -68,15 +68,15 @@ From this vision arise concrete requirements:
 
 ---
 
-## 🧬 THE HUMAN PROMISE
+## рџ§¬ THE HUMAN PROMISE
 
-> “Every line of code, every diagram, every document — is written with love for children, and responsibility to the Earth.”
+> вЂњEvery line of code, every diagram, every document вЂ” is written with love for children, and responsibility to the Earth.вЂќ
 
 This is not a platform.  
 This is a **new way to think, remember, teach, and build**.
 
-—
-`qariya.vision.manifest()` ✅
+вЂ”
+`qariya.vision.manifest()` вњ…
 
 
 ---
