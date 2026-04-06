@@ -6,15 +6,15 @@ The Fractal Metascience Paradigm proposes a unified, transdisciplinary framework
 
 ## Introduction
 
-Throughout the history of science, paradigms have shaped the way knowledge is structured, interpreted, and validated. From Newtonian mechanics to Einsteinian relativity and quantum theory, scientific revolutions (Kuhn, 1962) have emerged when anomalies in prevailing models demanded a new explanatory framework. Today, we face unprecedented complexity—ecological, technological, cognitive—that resists reductionist methods. The Fractal Metascience Paradigm (FMP) emerges in response, offering a meta-theoretical approach grounded in recursive, self-similar systems.
+Throughout the history of science, paradigms have shaped the way knowledge is structured, interpreted, and validated. From Newtonian mechanics to Einsteinian relativity and quantum theory, scientific revolutions (Kuhn, 1962) have emerged when anomalies in prevailing models demanded a new explanatory framework. Today, we face unprecedented complexityвЂ”ecological, technological, cognitiveвЂ”that resists reductionist methods. The Fractal Metascience Paradigm (FMP) emerges in response, offering a meta-theoretical approach grounded in recursive, self-similar systems.
 
 ## 1. Foundational Concepts and Definitions
 
 ### 1.1 Fractality
-Fractality refers to self-similarity across scales—each part reflects the structure of the whole (Mandelbrot, 1983). In FMP, knowledge itself is viewed as fractally structured: theories, models, and data interact recursively, generating higher-order patterns.
+Fractality refers to self-similarity across scalesвЂ”each part reflects the structure of the whole (Mandelbrot, 1983). In FMP, knowledge itself is viewed as fractally structured: theories, models, and data interact recursively, generating higher-order patterns.
 
 ### 1.2 Metascience
-Metascience is the study of science itself—its methods, logic, epistemology. FMP operates as a meta-framework, analyzing and structuring science through its own recursive logic (Ioannidis, 2014).
+Metascience is the study of science itselfвЂ”its methods, logic, epistemology. FMP operates as a meta-framework, analyzing and structuring science through its own recursive logic (Ioannidis, 2014).
 
 ### 1.3 Quantum Superposition
 Borrowed metaphorically from quantum mechanics, superposition here refers to holding multiple disciplinary perspectives simultaneously. It encourages ontological pluralism and cognitive multiplicity (Khrennikov, 2010).
@@ -93,9 +93,9 @@ Barad, K. (2007). *Meeting the Universe Halfway: Quantum Physics and the Entangl
 Bertalanffy, L. von. (1968). *General System Theory: Foundations, Development, Applications*. George Braziller.  
 Capra, F. (1996). *The Web of Life: A New Scientific Understanding of Living Systems*. Anchor Books.  
 Doidge, N. (2007). *The Brain That Changes Itself*. Viking.  
-Douady, S., & Couder, Y. (1996). *Phyllotaxis as a physical self-organized growth process*. Physical Review Letters, 68(13), 2098–2101.  
+Douady, S., & Couder, Y. (1996). *Phyllotaxis as a physical self-organized growth process*. Physical Review Letters, 68(13), 2098вЂ“2101.  
 Folke, C., et al. (2010). *Resilience thinking: Integrating resilience, adaptability and transformability*. Ecology and Society, 15(4).  
-Gunning, D., & Aha, D. (2019). *DARPA's Explainable Artificial Intelligence (XAI) Program*. AI Magazine, 40(2), 44–58.  
+Gunning, D., & Aha, D. (2019). *DARPA's Explainable Artificial Intelligence (XAI) Program*. AI Magazine, 40(2), 44вЂ“58.  
 Ioannidis, J. P. A. (2014). *How to make more published research true*. PLoS Medicine, 11(10), e1001747.  
 Khrennikov, A. (2010). *Ubiquitous quantum structure: From psychology to finances*. Springer.  
 Kuhn, T. S. (1962). *The Structure of Scientific Revolutions*. University of Chicago Press.  
@@ -104,8 +104,8 @@ Meadows, D. H. (2008). *Thinking in Systems: A Primer*. Chelsea Green Publishing
 Morin, E. (2008). *On Complexity*. Hampton Press.  
 Talbot, M. (1991). *The Holographic Universe*. Harper Perennial.  
 Tuomi, I. (2018). *The Impact of Artificial Intelligence on Learning, Teaching, and Education*. European Commission.  
-Xu, Y., & Ouyang, F. (2022). *Artificial intelligence in STEM education: A systematic review*. International Journal of STEM Education, 9(1), 1–19.  
-Zawacki-Richter, O., et al. (2019). *Systematic review of research on artificial intelligence applications in higher education*. International Journal of Educational Technology in Higher Education, 16(1), 1–27.
+Xu, Y., & Ouyang, F. (2022). *Artificial intelligence in STEM education: A systematic review*. International Journal of STEM Education, 9(1), 1вЂ“19.  
+Zawacki-Richter, O., et al. (2019). *Systematic review of research on artificial intelligence applications in higher education*. International Journal of Educational Technology in Higher Education, 16(1), 1вЂ“27.
 
 
 
