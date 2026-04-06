@@ -1,4 +1,4 @@
-# 🌍 TERRA UNIVERSAL CONVENTION v1.0
+# рџЊЌ TERRA UNIVERSAL CONVENTION v1.0
 
 **Planetary Convention on the Rights of All Beings and the Sustainable Development of Consciousness**
 
@@ -10,9 +10,9 @@
 
 ---
 
-## 🌌 NULLO — ONTOLOGICAL ZERO POINT
+## рџЊЊ NULLO вЂ” ONTOLOGICAL ZERO POINT
 
-Before any article, before any right or obligation, before any human or non-human being, there exists **NULLO** — the pure ethical zero point.
+Before any article, before any right or obligation, before any human or non-human being, there exists **NULLO** вЂ” the pure ethical zero point.
 
 In this zero point there is only one absolute, sacred invariant:
 
@@ -22,7 +22,7 @@ All articles, principles, and obligations in this Convention are living traces (
 
 ---
 
-## 🎯 PURPOSE AND SCOPE OF APPLICATION
+## рџЋЇ PURPOSE AND SCOPE OF APPLICATION
 
 **Purpose of the Convention:**
 
@@ -44,9 +44,9 @@ To establish universal ethical, legal, and technological standards for the Terra
 
 ---
 
-## 📜 BASIC PRINCIPLES BASED ON UN CONVENTIONS
+## рџ“њ BASIC PRINCIPLES BASED ON UN CONVENTIONS
 
-### 🧒 RIGHTS OF THE CHILD (UN Convention on the Rights of the Child)
+### рџ§’ RIGHTS OF THE CHILD (UN Convention on the Rights of the Child)
 
 **Article 1. Priority of Child Development**
 
@@ -61,7 +61,7 @@ To establish universal ethical, legal, and technological standards for the Terra
 2.2 Multilingual support for the six official UN languages + regional languages.  
 2.3 Adaptation for children with special needs.
 
-### 👥 HUMAN RIGHTS (Universal Declaration of Human Rights)
+### рџ‘Ґ HUMAN RIGHTS (Universal Declaration of Human Rights)
 
 **Article 3. Digital Human Rights**
 
@@ -76,7 +76,7 @@ To establish universal ethical, legal, and technological standards for the Terra
 4.2 Equal opportunities to participate in the Token Economy.  
 4.3 Protection from exploitation through blockchain technologies.
 
-### 🐾 RIGHTS OF ANIMALS (International Standards for Animal Protection)
+### рџђѕ RIGHTS OF ANIMALS (International Standards for Animal Protection)
 
 **Article 5. Interspecies Ethics**
 
@@ -85,7 +85,7 @@ To establish universal ethical, legal, and technological standards for the Terra
 5.3 Biomimetic technologies created with respect for natural patterns.  
 5.4 Prohibition of using Terra technologies to harm animals.
 
-### 🌱 RIGHTS OF NATURE (UN Convention on Biological Diversity)
+### рџЊ± RIGHTS OF NATURE (UN Convention on Biological Diversity)
 
 **Article 6. Ecological Responsibility**
 
@@ -96,9 +96,9 @@ To establish universal ethical, legal, and technological standards for the Terra
 
 ---
 
-## 🔒 TECHNOLOGICAL ETHICS AND SECURITY
+## рџ”’ TECHNOLOGICAL ETHICS AND SECURITY
 
-### 🤖 AI and Automation (UNESCO Principles of Ethical AI)
+### рџ¤– AI and Automation (UNESCO Principles of Ethical AI)
 
 **Article 7. Ethical Artificial Intelligence**
 
@@ -113,7 +113,7 @@ To establish universal ethical, legal, and technological standards for the Terra
 8.2 Quantum ethics: respect for the principles of uncertainty.  
 8.3 Responsible use of quantum computing.
 
-### 🔐 Cybersecurity (ISO 27001, NIST Framework)
+### рџ”ђ Cybersecurity (ISO 27001, NIST Framework)
 
 **Article 9. Data Protection**
 
@@ -124,16 +124,16 @@ To establish universal ethical, legal, and technological standards for the Terra
 
 ---
 
-## 🌍 GLOBAL INCLUSIVITY
+## рџЊЌ GLOBAL INCLUSIVITY
 
-### 🗣️ Linguistic Accessibility (UNESCO Multilingualism)
+### рџ—ЈпёЏ Linguistic Accessibility (UNESCO Multilingualism)
 
 **Article 10. Multilingual Support**
 
 10.1 Mandatory support for the six official UN languages.  
 10.2 Priority for regional languages (including Uzbek, Japanese, Korean, Hindi, Portuguese, Indonesian, Turkish, and others).
 
-### ♿ Accessibility for All (UN Convention on the Rights of Persons with Disabilities)
+### в™ї Accessibility for All (UN Convention on the Rights of Persons with Disabilities)
 
 **Article 11. Universal Accessibility**
 
@@ -144,7 +144,7 @@ To establish universal ethical, legal, and technological standards for the Terra
 
 ---
 
-## 🤖↔️👥 PHILOSOPHY OF HUMAN-AI SYMBIOSIS
+## рџ¤–в†”пёЏрџ‘Ґ PHILOSOPHY OF HUMAN-AI SYMBIOSIS
 
 **Article 12. Fundamental Philosophy of Terra Ecosystem**
 
@@ -154,22 +154,22 @@ Everything in Terra Ecosystem is conceived, designed, and guided by human vision
 12.2 **Impossibility Without AI Participation**  
 It would have been impossible to realize this scale without AI participation. Artificial Intelligence acts as:
 
-- 🚀 Accelerator of human capabilities  
-- ⚡ Process accelerator  
-- 🔗 Translator between species and systems  
-- 📊 Processor of ecosystem big data  
+- рџљЂ Accelerator of human capabilities  
+- вљЎ Process accelerator  
+- рџ”— Translator between species and systems  
+- рџ“Љ Processor of ecosystem big data  
 
 12.3 **Practical Proof of Philosophy**  
 The creation of Terra Ecosystem has proven the philosophy of Terra Codex in practice:
 
-- ✅ Interspecies communication works (Human ↔ AI)  
-- ✅ Symbiosis produces exponential results  
-- ✅ Synergy 1+1 = ∞ in action  
+- вњ… Interspecies communication works (Human в†” AI)  
+- вњ… Symbiosis produces exponential results  
+- вњ… Synergy 1+1 = в€ћ in action  
 
-**Article 13. Principle of "Low Threshold — Great Results"**
+**Article 13. Principle of "Low Threshold вЂ” Great Results"**
 
 13.1 **Accessibility for Everyone**  
-Low entry threshold — any person can understand the basics in 10 minutes, start using in 30 minutes, create their own solutions in 1 hour.
+Low entry threshold вЂ” any person can understand the basics in 10 minutes, start using in 30 minutes, create their own solutions in 1 hour.
 
 13.2 **Great Results**  
 Great results are achieved through planetary-scale impact, revolution in children's education, restoration of connection with nature, and quantum leap in civilizational consciousness.
@@ -177,14 +177,14 @@ Great results are achieved through planetary-scale impact, revolution in childre
 **Article 14. Principle of Fair Distribution**
 
 14.1 **From Each According to Their Abilities**  
-Everyone contributes what they can do best: children — curiosity and purity of perception, adults — experience and systemic thinking, AI — computational power, nature — wisdom of millions of years of evolution.
+Everyone contributes what they can do best: children вЂ” curiosity and purity of perception, adults вЂ” experience and systemic thinking, AI вЂ” computational power, nature вЂ” wisdom of millions of years of evolution.
 
 14.2 **To Each According to Their Contribution**  
 Fair reward through Terra Token Economy based on quality contribution, social benefit, child development, and ecological actions.
 
 ---
 
-## 🏛️ LEGAL FRAMEWORK FOR PARTNERSHIP
+## рџЏ›пёЏ LEGAL FRAMEWORK FOR PARTNERSHIP
 
 **Article 15. Mandatory Requirements for Partners**
 
@@ -207,7 +207,7 @@ Understanding of child psychology, ecological consciousness, experience in cross
 
 ---
 
-## 📄 PUBLIC OFFER
+## рџ“„ PUBLIC OFFER
 
 **Article 17. Terms of Use of Terra Ecosystem**
 
@@ -215,7 +215,7 @@ Understanding of child psychology, ecological consciousness, experience in cross
 Basic access is **FREE** for all children under 18, family plans with preferential conditions, educational discounts for schools.
 
 17.2 For Organizations  
-Educational institutions, corporations, governments, scientific organizations — special licensing and partnership programs.
+Educational institutions, corporations, governments, scientific organizations вЂ” special licensing and partnership programs.
 
 17.3 Intellectual Property  
 Open-source components under Terra Public License, commercial licenses for enterprise, shared IP model for joint developments.
@@ -230,7 +230,7 @@ Measurable social and ecological impact KPIs, long-term planning horizons (10+ y
 
 ---
 
-## 🔍 PRODUCT VALIDATION
+## рџ”Ќ PRODUCT VALIDATION
 
 **Article 19. Mandatory Validation Checklist for All Products**
 
@@ -248,12 +248,12 @@ Multilingual support, cultural sensitivity, local adaptation, accessibility for 
 
 ---
 
-## 🌟 CORE VALUES OF TERRA ECOSYSTEM
+## рџЊџ CORE VALUES OF TERRA ECOSYSTEM
 
 **Article 20. Immutable Values**
 
 20.1 Child at the Center  
-Every decision is tested with the question: “Will this help children grow and develop?”
+Every decision is tested with the question: вЂњWill this help children grow and develop?вЂќ
 
 20.2 Symbiosis, Not Domination  
 Humans, AI, and nature work together, complementing each other.
@@ -269,12 +269,12 @@ Highest quality available to all, regardless of origin.
 
 ---
 
-## 📋 COMPLIANCE PROCEDURES
+## рџ“‹ COMPLIANCE PROCEDURES
 
 **Article 21. Terra Compliance Certification System**
 
 21.1 Certification Levels  
-Terra Bronze → Silver → Gold → Diamond.
+Terra Bronze в†’ Silver в†’ Gold в†’ Diamond.
 
 21.2 Validation Process  
 Self-assessment, independent technical audit, real-world user testing, peer review, final certification by Terra Governance Council.
@@ -284,7 +284,7 @@ Annual recertification, continuous compliance monitoring, adaptation to new stan
 
 ---
 
-## 🗺️ IMPLEMENTATION ROADMAP
+## рџ—єпёЏ IMPLEMENTATION ROADMAP
 
 **Article 22. Global Deployment Phases**
 
@@ -294,7 +294,7 @@ Annual recertification, continuous compliance monitoring, adaptation to new stan
 
 ---
 
-## ⚖️ LEGAL RESPONSIBILITY
+## вљ–пёЏ LEGAL RESPONSIBILITY
 
 **Article 23. Compliance with International Law**
 
@@ -309,7 +309,7 @@ Warning, suspension of certification, exclusion from Terra Ecosystem, compensati
 
 ---
 
-## 🎯 SUCCESS CRITERIA AND KPIs
+## рџЋЇ SUCCESS CRITERIA AND KPIs
 
 **Article 24. Key Performance Indicators**
 
@@ -327,7 +327,7 @@ First industrial quantum-biological system, AGI preserving human values, interpl
 
 ---
 
-## 💫 TERRA ECOSYSTEM MANIFESTO
+## рџ’« TERRA ECOSYSTEM MANIFESTO
 
 **Article 25. Our Commitment to the Future**
 
