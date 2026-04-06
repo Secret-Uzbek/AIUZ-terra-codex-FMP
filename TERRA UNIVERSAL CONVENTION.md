@@ -253,7 +253,7 @@ Multilingual support, cultural sensitivity, local adaptation, accessibility for 
 **Article 20. Immutable Values**
 
 20.1 Child at the Center  
-Every decision is tested with the question: “Will this help children grow and develop?”
+Every decision is tested with the question: "Will this help children grow and develop?"
 
 20.2 Symbiosis, Not Domination  
 Humans, AI, and nature work together, complementing each other.

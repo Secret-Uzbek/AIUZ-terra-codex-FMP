@@ -21,7 +21,7 @@ This paradigm aligns with research in AI-integrated STEM education (Xu & Ouyang,
 
 **3. AI as a Catalyst in Fractal Educational Systems**
 
-Systematic reviews (Zawacki-Richter et al., 2019; Holmes et al., 2019) demonstrate AI’s potential to transform education through adaptive tutoring systems, predictive analytics, intelligent content generation, and personalized feedback loops. These functions mirror the dynamic behavior of fractal systems—responsive, self-adaptive, and recursively structured.
+Systematic reviews (Zawacki-Richter et al., 2019; Holmes et al., 2019) demonstrate AI's potential to transform education through adaptive tutoring systems, predictive analytics, intelligent content generation, and personalized feedback loops. These functions mirror the dynamic behavior of fractal systems—responsive, self-adaptive, and recursively structured.
 
 However, ethical concerns (Tuomi, 2018; Holmes et al., 2021) call for explainable and transparent AI systems. In the FMP, explainability is not merely a technical feature but an epistemological requirement: learners must understand and internalize the recursive feedback loops that guide their cognitive development. Thus, AI systems must be designed to enhance—not obscure—learner agency.
 

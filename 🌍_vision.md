@@ -70,7 +70,7 @@ From this vision arise concrete requirements:
 
 ## 🧬 THE HUMAN PROMISE
 
-> “Every line of code, every diagram, every document — is written with love for children, and responsibility to the Earth.”
+> "Every line of code, every diagram, every document — is written with love for children, and responsibility to the Earth."
 
 This is not a platform.  
 This is a **new way to think, remember, teach, and build**.

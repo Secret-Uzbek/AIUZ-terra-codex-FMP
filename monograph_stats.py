@@ -7,7 +7,7 @@ text = """<ВСТАВИТЬ СЮДА ПОЛНЫЙ ТЕКСТ ИЗ Canvas>"""
 num_words = len(re.findall(r'\b\w+\b', text))
 num_chars = len(text)
 num_sections = len(re.findall(r'^###\s+\d+\.', text, re.MULTILINE))
-num_quotes = len(re.findall(r'"[^"]+"', text)) + len(re.findall(r'“[^”]+”', text))
+num_quotes = len(re.findall(r'"[^"]+"', text)) + len(re.findall(r'"[^"]+"', text))
 num_references = len(re.findall(r'- \*.+?\*', text))  # markdown references
 
 {

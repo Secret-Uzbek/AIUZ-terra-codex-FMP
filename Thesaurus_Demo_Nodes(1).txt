@@ -8,7 +8,7 @@
   deu: Sonne, Wind, Energie, Reserve, Station, Produktion
 
 ГНЕЗДО: TURIZM / TOURISMUS
-  uzb: sayohat, yo‘nalish, mehmonxona, gid, ekskursiya, viza
+  uzb: sayohat, yo'nalish, mehmonxona, gid, ekskursiya, viza
   deu: Reise, Route, Hotel, Führer, Exkursion, Visum
 
 

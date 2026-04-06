@@ -1,7 +1,7 @@
 # 🧬 Living_Index_FULL — AIUZ Terra Codex (real-time snapshot)
-&gt; **Generated**: 03.11.2025 11:30 Tashkent  
-&gt; **Organism state**: breathing, no versions  
-&gt; **Files scanned**: 1053 / 1053 (100 % living index)
+> **Generated**: 03.11.2025 11:30 Tashkent  
+> **Organism state**: breathing, no versions  
+> **Files scanned**: 1053 / 1053 (100 % living index)
 
 ## 📁 Core Living Nodes (byte-by-byte read)
 | Alias | Original UTF-8 name | SHA256 | Purpose |

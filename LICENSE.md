@@ -88,7 +88,7 @@ Violation of this ethical clause renders the license void for that user or entit
 
 You may create derivative versions of this license, provided that:
 
-- Your version is clearly labeled (e.g. “Based on Terra Public License v1.0”)  
+- Your version is clearly labeled (e.g. "Based on Terra Public License v1.0")  
 - It maintains all core ethical constraints and child safety axioms  
 - The original authorship, NULLO foundation, and Invisible Shadow principle are preserved  
 

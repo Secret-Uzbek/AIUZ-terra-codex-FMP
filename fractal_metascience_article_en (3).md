@@ -22,7 +22,7 @@ Drawing on the work of Maturana and Varela (1980), FMP assumes that living syste
 
 ### 3. Onto-Epistemic Co-Construction
 
-In FMP, ontology (what exists) and epistemology (how we know) are inseparable. This idea resonates with Barad’s (2007) concept of **agential realism**, where the observer and the observed are entangled in acts of measurement. The paradigm posits that knowledge is not a mirror of reality but a co-constructed artifact that reflects systemic attractors—recurring configurations of meaning and organization.
+In FMP, ontology (what exists) and epistemology (how we know) are inseparable. This idea resonates with Barad's (2007) concept of **agential realism**, where the observer and the observed are entangled in acts of measurement. The paradigm posits that knowledge is not a mirror of reality but a co-constructed artifact that reflects systemic attractors—recurring configurations of meaning and organization.
 
 ## Methodological Framework
 
@@ -86,7 +86,7 @@ Davis, B., & Sumara, D. (2006). *Complexity and education: Inquiries into learni
 
 Floridi, L., & Cowls, J. (2019). A unified framework of five principles for AI in society. *Harvard Data Science Review*, 1(1).
 
-Goodwin, B. (1994). *How the leopard changed its spots: The evolution of complexity*. Charles Scribner’s Sons.
+Goodwin, B. (1994). *How the leopard changed its spots: The evolution of complexity*. Charles Scribner's Sons.
 
 Kauffman, S. A. (1993). *The origins of order: Self-organization and selection in evolution*. Oxford University Press.
 

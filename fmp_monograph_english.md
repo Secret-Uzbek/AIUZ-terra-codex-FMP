@@ -15,10 +15,10 @@ This monograph inaugurates the foundational structure of the Fractal Metascience
 ### 2.1 Epistemological Shift Beyond Classical Paradigms
 FMP critiques the limitations of linear-reductionist epistemologies inherent in post-Newtonian and classical positivist traditions. Drawing on the works of Popper (1959), Kuhn (1962), and Lakatos (1970), the paradigm positions itself beyond the binary dialectics of falsifiability and paradigm revolution, instead proposing a **recursive and fractal evolution of knowledge**.
 
-> “Knowledge advances not linearly, nor in abrupt revolutions, but fractally — expanding in self-similar, nested waves of conceptual resonance.” — FMP Principle I
+> "Knowledge advances not linearly, nor in abrupt revolutions, but fractally — expanding in self-similar, nested waves of conceptual resonance." — FMP Principle I
 
 ### 2.2 Ontology of Fractal Systems
-FMP’s ontology is grounded in the recursive structure of nature and thought, as demonstrated by Mandelbrot’s fractal geometry (1982), Prigogine’s dissipative systems (1984), and contemporary insights in complex adaptive systems (Mitchell, 2009). Reality is perceived not as a set of isolated entities, but as a **multilayered holographic totality**, dynamically nested within itself.
+FMP's ontology is grounded in the recursive structure of nature and thought, as demonstrated by Mandelbrot's fractal geometry (1982), Prigogine's dissipative systems (1984), and contemporary insights in complex adaptive systems (Mitchell, 2009). Reality is perceived not as a set of isolated entities, but as a **multilayered holographic totality**, dynamically nested within itself.
 
 ### 2.3 Integration with Quantum Logic
 The paradigm explicitly incorporates **quantum logic and superposition** (von Neumann, 1955; Wheeler & Zurek, 1983) as not just physical descriptions but epistemic principles guiding perception, cognition, and interpretation. This principle governs the dynamic simulation mode of the AIUZ Terra Ecosystem itself.
@@ -71,7 +71,7 @@ FMP allows convergence across:
 
 ## VI. Comparative Paradigm Analysis
 
-| Criterion | Classical Science | Kuhn’s Paradigm | FMP |
+| Criterion | Classical Science | Kuhn's Paradigm | FMP |
 |----------|------------------|----------------|-----|
 | Logic | Binary / Linear | Revolutionary | Fractal / Recursive |
 | Observer Role | External | Embedded (Kuhn) | Entangled (Triune) |
@@ -91,7 +91,7 @@ Lakatos, I. (1970). *Falsification and the methodology of scientific research pr
 Mandelbrot, B. (1982). *The fractal geometry of nature*. W.H. Freeman and Company.  
 Mitchell, M. (2009). *Complexity: A guided tour*. Oxford University Press.  
 Popper, K. (1959). *The logic of scientific discovery*. Routledge.  
-Prigogine, I. (1984). *Order out of chaos: Man’s new dialogue with nature*. Bantam.  
+Prigogine, I. (1984). *Order out of chaos: Man's new dialogue with nature*. Bantam.  
 Tuomi, I. (2018). The ethical implications of AI in education. *European Journal of Education*, 53(4), 512–519.  
 Varela, F. J., Thompson, E., & Rosch, E. (1991). *The embodied mind: Cognitive science and human experience*. MIT Press.  
 von Neumann, J. (1955). *Mathematical foundations of quantum mechanics*. Princeton University Press.  

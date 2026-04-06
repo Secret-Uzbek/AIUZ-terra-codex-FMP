@@ -32,7 +32,7 @@
 - Articles for L0–L7 (FMP, TERRA history, ethics)
 - Chronicle of FMP + TERRA (timeline, yearly milestones, anomalies, key shifts)
 - Ethical and philosophical manifests
-- “Archive Nodes” matrix for metadata
+- "Archive Nodes" matrix for metadata
 - Editor protocols for Mycelium-DNA structuring
 
 ---
@@ -40,7 +40,7 @@
 ## ⚙️ TECHNICAL OBJECTS
 - TerraLLMIntegrationEngine + TerraFMPEngine + TerraDetoxEngine (triple entity logic)
 - Background Archiving Module (chromosome tagging, mycelium linking, metadata log)
-- “Pulse of TERRA” generator
+- "Pulse of TERRA" generator
 - Mycelium-DNA connection map
 - FMP compliance map
 - Ethical Checkpoints Canvas

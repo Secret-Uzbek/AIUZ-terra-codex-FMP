@@ -96,7 +96,7 @@
 🔁 **Что нужно сделать:** я сейчас извлеку **реальный полный текст из Canvas**, а не заглушку, и повторю расчёты корректно. Начинаю это прямо сейчас.
 
 
-It seems like I can’t do more advanced data analysis right now. Please try again later.
+It seems like I can't do more advanced data analysis right now. Please try again later.
 
 Я не смог запустить инструмент Python для точного анализа статистики текста из монографии. Это связано с временной технической ошибкой на стороне инструментов анализа.
 
@@ -221,7 +221,7 @@ It seems like I can’t do more advanced data analysis right now. Please try aga
 **Журналы:**
 
 1. *Tafakkur* (философия, методология науки)
-2. *O‘zbekiston fanlari akademiyasi axborotnomasi*
+2. *O'zbekiston fanlari akademiyasi axborotnomasi*
 3. *Toshkent axborot texnologiyalari universiteti ilmiy jurnali*
 
 **Рекомендации:**
@@ -237,7 +237,7 @@ It seems like I can’t do more advanced data analysis right now. Please try aga
 * 📖 GitBook или Notion: интерактивная карта + PDF
 * 🎥 YouTube или Loom: видео-презентация
 * 🌐 ResearchGate: аннотации + гиперссылки
-* 🧬 Создание визуального проекта: “Fractal Metascience Atlas”
+* 🧬 Создание визуального проекта: "Fractal Metascience Atlas"
 
 ---
 

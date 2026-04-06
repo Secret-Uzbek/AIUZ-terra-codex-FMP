@@ -40,7 +40,7 @@ Fractal structures abound in morphogenesis, neural networks, and ecological syst
 
 ### 4.3 Philosophy and Cognitive Science
 
-FMP aligns with integral epistemologies that bridge mind and matter (Wilber, 2000). Its recursive logic underlies human cognition, reflecting the brain’s fractal-like neural architecture (Sporns, 2011).
+FMP aligns with integral epistemologies that bridge mind and matter (Wilber, 2000). Its recursive logic underlies human cognition, reflecting the brain's fractal-like neural architecture (Sporns, 2011).
 
 ### 4.4 Social Systems
 

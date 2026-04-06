@@ -28,7 +28,7 @@ We adopt four FMP-aligned principles as operational axioms:
 # 3. Method
 
 ## 3.1 Design as Research (RtD/DBR Living‑Lab)
-We employ a living‑lab methodology (open, in‑situ co‑creation; cycles of design–deploy–reflect) and design‑based research (DBR) in education, aligning with research‑through‑design. Terra’s real releases and governance rituals constitute experimental cycles; each cycle couples a planned intervention with measurement and reflexive re‑specification of constraints.
+We employ a living‑lab methodology (open, in‑situ co‑creation; cycles of design–deploy–reflect) and design‑based research (DBR) in education, aligning with research‑through‑design. Terra's real releases and governance rituals constitute experimental cycles; each cycle couples a planned intervention with measurement and reflexive re‑specification of constraints.
 
 ## 3.2 Units, Measures, and Traces
 - **Safety & Compliance:** presence of required metadata/hashes/QR; child‑safety conformity; accessibility checks (WCAG) and information‑security posture (ISO/IEC 27001 indicators).
@@ -37,12 +37,12 @@ We employ a living‑lab methodology (open, in‑situ co‑creation; cycles of d
 - **Semantic Quality:** lexical/ontological integrity (OntoLex‑lemon alignment), cross‑lingual mapping fidelity, and example quality for DE↔UZ entries.
 - **Traceability:** end‑to‑end auditability via hashes/QR and signed artefacts.
 
-**Primary data sources:** versioned documents, validator outputs, audit logs, governance meeting notes, release notes, and session logs (including the “critical fixation” snapshot).
+**Primary data sources:** versioned documents, validator outputs, audit logs, governance meeting notes, release notes, and session logs (including the "critical fixation" snapshot).
 
 ## 3.3 Procedures
 1) **Baseline Audit (t0).** Apply AIUZ Audit Regulation to all 37 artefacts; record pass/fail per check. Establish baseline rates (above).
 2) **Constraint Injection.** Encode non‑negotiables: (i) child data minimisation & lawful basis for processing; (ii) accessibility gates; (iii) cryptographic integrity (hash + QR) for all publishable artefacts; (iv) transparent ethics justifications for risky actions.
-3) **Reflexive Simulation Runs.** Execute continuous simulation on a rolling window of artefacts: each simulated “release train” runs the Interaction Validator, Audit checks, and Ethics validator on changed artefacts and governance decisions; failed checks trigger design refactoring.
+3) **Reflexive Simulation Runs.** Execute continuous simulation on a rolling window of artefacts: each simulated "release train" runs the Interaction Validator, Audit checks, and Ethics validator on changed artefacts and governance decisions; failed checks trigger design refactoring.
 4) **Field Interventions.** Introduce targeted refactorings (metadata normalisation; automated hashing; QR signing; ontology alignment scripts; token‑reward safeguard for minors; observability dashboards).
 5) **Re‑audit (t1).** Re‑run the complete audit; compare deltas; document emergent behaviour.
 
@@ -78,7 +78,7 @@ Given the archival baseline (37 artefacts) and the measures above, post‑interv
 
 # 5. Discussion: Positioning in the Literature
 
-Our approach operationalises a living‑lab/DBR methodology in which a platform is both study instrument and evolving subject. This mirrors second‑order cybernetics’ insistence that the observer is part of the observed system and aligns with research‑through‑design practices in HCI and learning sciences. The microservice governance and evolvability findings (e.g., service granularity, central guidelines, code review, automation) resonate with multivocal reviews and interview studies from industry. Accessibility (WCAG), security (ISO/IEC 27001), and privacy governance (GDPR, NIST Privacy Framework) function as normative constraints that shape what can emerge safely. For multilingual lexical/semantic layers, we standardise on OntoLex‑lemon and draw on cross‑lingual embeddings and large lexical resources (WordNet/BabelNet) to stabilise DE–UZ mappings.
+Our approach operationalises a living‑lab/DBR methodology in which a platform is both study instrument and evolving subject. This mirrors second‑order cybernetics' insistence that the observer is part of the observed system and aligns with research‑through‑design practices in HCI and learning sciences. The microservice governance and evolvability findings (e.g., service granularity, central guidelines, code review, automation) resonate with multivocal reviews and interview studies from industry. Accessibility (WCAG), security (ISO/IEC 27001), and privacy governance (GDPR, NIST Privacy Framework) function as normative constraints that shape what can emerge safely. For multilingual lexical/semantic layers, we standardise on OntoLex‑lemon and draw on cross‑lingual embeddings and large lexical resources (WordNet/BabelNet) to stabilise DE–UZ mappings.
 
 Collectively, these convergences support the FMP thesis: fractal, holographic constraints applied at micro‑levels (documents, services, entries) create macro‑level order (safe, evolvable, accountable ecosystem) without requiring centralised micromanagement.
 
@@ -88,14 +88,14 @@ We provide: (i) the rewritten chapter (this file); (ii) machine‑readable schem
 
 # 7. Conclusion
 
-Replacing synthetic experiments with a reflexive, living‑lab programme over AIUZ Terra CodeX demonstrates that FMP’s principles are not merely descriptive metaphors; they are operational constraints that, when encoded into ethics, audit, and interaction layers, drive emergent safety, coherence, and evolvability across the ecosystem.
+Replacing synthetic experiments with a reflexive, living‑lab programme over AIUZ Terra CodeX demonstrates that FMP's principles are not merely descriptive metaphors; they are operational constraints that, when encoded into ethics, audit, and interaction layers, drive emergent safety, coherence, and evolvability across the ecosystem.
 
 
 
 # References (updated)
 
 [R1] European Network of Living Labs (ENoLL). *What is a Living Lab?* (accessed).  
-[R2] Dell’Era, C., Landoni, P. (2014). *Living Lab: A Methodology between User‐Centred Design and Participatory Design.* Creativity and Innovation Management.  
+[R2] Dell'Era, C., Landoni, P. (2014). *Living Lab: A Methodology between User‐Centred Design and Participatory Design.* Creativity and Innovation Management.  
 [R3] Barab, S., Squire, K. (2004). *Design-Based Research: Putting a Stake in the Ground.* The Journal of the Learning Sciences.  
 [R4] Zimmerman, J., Forlizzi, J., Evenson, S. (2007). *Research through Design as a Method for Interaction Design Research.* HCI.  
 [R5] von Foerster, H. (2003). *Understanding Understanding: Essays on Cybernetics and Cognition.* Springer.  
@@ -109,7 +109,7 @@ Replacing synthetic experiments with a reflexive, living‑lab programme over AI
 [R13] Navigli, R., Ponzetto, S. (2012). *BabelNet: The automatic construction...* AI.  
 [R14] W3C (2023). *Web Content Accessibility Guidelines (WCAG) 2.2.* Recommendation.  
 [R15] ISO/IEC 27001:2022. *Information Security Management Systems—Requirements.* ISO.  
-[R16] European Union (2016). *GDPR — Article 8 (children’s consent).* EUR‑Lex.  
+[R16] European Union (2016). *GDPR — Article 8 (children's consent).* EUR‑Lex.  
 [R17] NIST (2020). *Privacy Framework Version 1.0.* NIST.  
 [R18] UNICEF (2021). *Policy Guidance on AI for Children.* UNICEF.  
 [R19] Deterding, S. et al. (2011). *From Game Design Elements to Gamefulness...* MindTrek (for gamification theory).  

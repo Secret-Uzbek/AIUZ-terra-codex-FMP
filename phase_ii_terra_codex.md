@@ -14,7 +14,7 @@ Following the articulation of the theoretical core of the Fractal Metascience Pa
 
 ### 2.1. Quantum-Informed Systems Thinking
 All applied cases follow the simulation protocol of quantum superposition modeling, enabling layered causal interrelations to be represented in fractal ontologies. This method draws upon:
-- Bohr’s complementarity principle (Bohr, 1928)
+- Bohr's complementarity principle (Bohr, 1928)
 - Quantum cognition (Busemeyer & Bruza, 2012)
 - Complexity science in cognitive-educational systems (Mitchell, 2009)
 

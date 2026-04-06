@@ -115,7 +115,7 @@ Doidge, N. (2007). The brain that changes itself: Stories of triumph from the fr
 
 Floridi, L., & Cowls, J. (2019). A unified framework of five principles for AI in society. Harvard Data Science Review, 1(1).
 
-Goodwin, B. (1994). How the leopard changed its spots: The evolution of complexity. Charles Scribner’s Sons.
+Goodwin, B. (1994). How the leopard changed its spots: The evolution of complexity. Charles Scribner's Sons.
 
 Jantsch, E. (1980). The self-organizing universe: Scientific and human implications of the emerging paradigm of evolution. Pergamon Press.
 
@@ -137,7 +137,7 @@ Pickering, A. (2010). The cybernetic brain: Sketches of another future. Universi
 
 Popper, K. (1959). The logic of scientific discovery. Routledge.
 
-Prigogine, I. (1984). Order out of chaos: Man’s new dialogue with nature. Bantam.
+Prigogine, I. (1984). Order out of chaos: Man's new dialogue with nature. Bantam.
 
 Siemens, G. (2005). Connectivism: A learning theory for the digital age. International Journal of Instructional Technology and Distance Learning, 2(1).
 
