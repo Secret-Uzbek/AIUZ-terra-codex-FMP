@@ -8,14 +8,14 @@
 
 #### Theoretical Foundation
 
-Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scales—from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
+Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scalesвЂ”from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
 
 **Neuroplasticity and Learning**: Research demonstrates that learning involves recursive strengthening and modification of neural connections through experience (Doidge, 2007; Pascual-Leone et al., 2005).
 
 *Key Findings*:
 
 * **Hebbian Learning**: "Neurons that fire together, wire together" (Hebb, 1949)
-* **Long-term Potentiation**: Synaptic strengthening through repeated activation (Bliss & Lømo, 1973)
+* **Long-term Potentiation**: Synaptic strengthening through repeated activation (Bliss & LГёmo, 1973)
 * **Adult Neurogenesis**: New neuron production continues throughout life (Eriksson et al., 1998)
 * **Critical Periods**: Developmental windows for optimal plasticity (Knudsen, 2004)
 
@@ -28,7 +28,7 @@ Fractal pedagogy applies FMP principles to create learning environments that exh
 
 **Zone of Proximal Development**: Vygotsky's (1978) concept illustrates how learning occurs through recursive interaction between individual capability and social support.
 
-*Mathematical Model*: *Learning = f(Individual Capacity × Social Support × Cultural Tools)*
+*Mathematical Model*: *Learning = f(Individual Capacity Г— Social Support Г— Cultural Tools)*
 
 *Fractal Application*:
 
@@ -544,7 +544,7 @@ Example explanation: "Your test results suggest that your cancer might respond w
 
 #### Complexity of Sustainability Challenges
 
-Sustainability challenges involve complex interactions across multiple scales—from individual behaviors to global systems—that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
+Sustainability challenges involve complex interactions across multiple scalesвЂ”from individual behaviors to global systemsвЂ”that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
 
 **Scale Mismatches**: Environmental problems often occur at different scales than governance and management institutions (Cash et al., 2006; Young, 2002).
 
@@ -584,9 +584,9 @@ Sustainability challenges involve complex interactions across multiple scales—
 * **Redundancy**: Multiple pathways ensuring system resilience
 * **Local Adaptation**: Global principles adapted to local conditions
 
-*Mathematical Framework*: Resource flow networks following fractal scaling laws: *Flow(scale) = Flow₀ × scale^β*
+*Mathematical Framework*: Resource flow networks following fractal scaling laws: *Flow(scale) = Flowв‚Ђ Г— scale^ОІ*
 
-where β is the scaling exponent (typically 0.75-0.85 for sustainable systems).
+where ОІ is the scaling exponent (typically 0.75-0.85 for sustainable systems).
 
 **Recursive Adaptation**: Management systems that can learn and adapt at multiple temporal scales (Holling & Gunderson, 2002; Folke et al., 2005).
 
@@ -618,7 +618,7 @@ where β is the scaling exponent (typically 0.75-0.85 for sustainable systems).
 
 #### Case Study: Urban Sustainability Networks
 
-**Challenge**: Cities consume 78% of global energy and produce 70% of CO₂ emissions while containing 54% of the world's population (UN-Habitat, 2016). Urban sustainability requires integration across transportation, energy, water, waste, and social systems.
+**Challenge**: Cities consume 78% of global energy and produce 70% of COв‚‚ emissions while containing 54% of the world's population (UN-Habitat, 2016). Urban sustainability requires integration across transportation, energy, water, waste, and social systems.
 
 *Urban Sustainability Indicators*:
 
@@ -643,7 +643,7 @@ where β is the scaling exponent (typically 0.75-0.85 for sustainable systems).
 * 40% reduction in building energy consumption
 * 60% reduction in water consumption
 * 35% reduction in waste generation
-* 15°C reduction in urban heat island effect
+* 15В°C reduction in urban heat island effect
 
 **Neighborhood Level**: Microgrids and circular resource flows:
 
@@ -718,15 +718,15 @@ where β is the scaling exponent (typically 0.75-0.85 for sustainable systems).
 * **Renewable Energy**: 67% of electricity from renewable sources (up from 23%)
 * **GHG Emissions**: 42% reduction in territorial emissions
 * **Waste Reduction**: 28% improvement in recycling rates
-* **Air Quality**: 31% reduction in NO₂ concentrations
+* **Air Quality**: 31% reduction in NOв‚‚ concentrations
 * **Water Efficiency**: 24% reduction in per-capita water consumption
 
 *Economic Outcomes*:
 
 * **Green Jobs**: 18,000 new jobs in sustainability sectors
-* **Energy Savings**: €156 million annual savings from efficiency improvements
+* **Energy Savings**: в‚¬156 million annual savings from efficiency improvements
 * **Innovation**: 340 new sustainability startups established
-* **Investment**: €2.3 billion in private sustainability investments attracted
+* **Investment**: в‚¬2.3 billion in private sustainability investments attracted
 
 *Social Outcomes*:
 

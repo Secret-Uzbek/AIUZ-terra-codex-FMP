@@ -18,9 +18,9 @@ Arrieta, A. B., Dнaz-Rodrнguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barb
 
 Barab, S., & Squire, K. (2004). Design-based research: Putting a stake in the ground. *Journal of the Learning Sciences*, 13(1), 1-14.
 
-Barabбsi, A. L. (2002). *Linked: The new science of networks*. Perseus Publishing.
+Barabsi, A. L. (2002). *Linked: The new science of networks*. Perseus Publishing.
 
-Barabбsi, A. L., & Albert, R. (1999). Emergence of scaling in random networks. *Science*, 286(5439), 509-512.
+Barabsi, A. L., & Albert, R. (1999). Emergence of scaling in random networks. *Science*, 286(5439), 509-512.
 
 Barad, K. (2007). *Meeting the universe halfway: Quantum physics and the entanglement of matter and meaning*. Duke University Press.
 

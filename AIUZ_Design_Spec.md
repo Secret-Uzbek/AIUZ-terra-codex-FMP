@@ -1,4 +1,4 @@
-# AIUZ Presentation Design — Aesthetic Spec (v1)
+# AIUZ Presentation Design вЂ” Aesthetic Spec (v1)
 
 **Palette**
 - Cosmic Blue: #0D1B2A (backgrounds, depth)

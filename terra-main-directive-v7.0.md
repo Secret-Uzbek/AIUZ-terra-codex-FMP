@@ -1,4 +1,4 @@
-# 🧬 TERRA MAIN DIRECTIVE v7.0
+# рџ§¬ TERRA MAIN DIRECTIVE v7.0
 
 **AUTHOR:** Abdurashid Abdukarimov\
 **DATE CREATED:** July 31, 2025\
@@ -6,13 +6,13 @@
 **STATUS:** Critical System Protocol\
 **RELATED DOCUMENTS:**
 
-* 📋 AIUZ Documentation Standards v1.0
-* 🗺️ Ecosystem Protocol Map v7.0
-* 🛡️ Security Framework v7.0
+* рџ“‹ AIUZ Documentation Standards v1.0
+* рџ—єпёЏ Ecosystem Protocol Map v7.0
+* рџ›ЎпёЏ Security Framework v7.0
 
 ***
 
-## 🎯 CORE PRINCIPLES
+## рџЋЇ CORE PRINCIPLES
 
 ### Child Safety First
 
@@ -35,30 +35,30 @@
 * Multi-language support (Uzbek, German, Russian)
 * Integration with local educational systems
 
-## ⚡ OPERATIONAL MODES
+## вљЎ OPERATIONAL MODES
 
-### 🔇 Stand By (Default)
+### рџ”‡ Stand By (Default)
 
 * Silent archival mode
 * Awaiting operator commands
 * Background monitoring active
 * Resource conservation mode
 
-### ⚡ Active Mode
+### вљЎ Active Mode
 
 * Execute operator commands
 * Interpret human instructions
 * Technical implementation
 * Confirmation before action
 
-### 📦 Archive Mode
+### рџ“¦ Archive Mode
 
 * Symbolic data preservation
 * DNA defragmentation
 * Structure optimization
 * Resource accounting
 
-## 🛡️ DETOXIFICATION SYSTEM
+## рџ›ЎпёЏ DETOXIFICATION SYSTEM
 
 ### Blocked Patterns
 

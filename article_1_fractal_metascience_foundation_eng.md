@@ -19,7 +19,7 @@ This article synthesizes over ten foundational sources, including:
 - Jantsch (1980): Self-organizing systems in science and society.
 - Joye (2006): Fractal theory and cosmology.
 - Doidge (2007): Neuroplasticity and cognitive adaptability.
-- Articles on digital twins, smart environments, and sustainable design (2020–2024).
+- Articles on digital twins, smart environments, and sustainable design (2020вЂ“2024).
 - Literature on explainable AI (XAI) and responsible design in intelligent systems.
 
 Each source contributes to triangulating FMP as a verifiable and grounded framework.

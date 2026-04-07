@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terra Archive Manager 2.0 – Full System</title>
+  <title>Terra Archive Manager 2.0 вЂ“ Full System</title>
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -61,12 +61,12 @@
 </head>
 <body>
   <header>
-    <h1>📂 Terra Archive Manager 2.0 – Full System</h1>
-    <p>SemanticCore • Parser • Thesaurus • Encyclopedia • Terra OS</p>
+    <h1>рџ“‚ Terra Archive Manager 2.0 вЂ“ Full System</h1>
+    <p>SemanticCore вЂў Parser вЂў Thesaurus вЂў Encyclopedia вЂў Terra OS</p>
   </header>
   <main>
     <section class="section-block">
-      <h2>📥 Upload Your Files</h2>
+      <h2>рџ“Ґ Upload Your Files</h2>
       <div class="upload-section">
         <input type="file" id="fileInput" multiple />
         <button onclick="handleFiles()">Load Files</button>
@@ -75,34 +75,34 @@
     </section>
 
     <section class="section-block">
-      <h2>🔢 Parse & View</h2>
+      <h2>рџ”ў Parse & View</h2>
       <button onclick="parseFiles()">Parse All</button>
       <textarea id="output" readonly></textarea>
     </section>
 
     <section class="section-block">
-      <h2>📖 Create New Entry</h2>
+      <h2>рџ“– Create New Entry</h2>
       <input type="text" id="entryTitle" placeholder="Dictionary / Article Title" />
       <textarea id="entryContent" placeholder="Type content here..."></textarea>
       <button onclick="saveEntry()">Save to Local Archive</button>
     </section>
 
     <section class="section-block">
-      <h2>📚 Thesaurus Search</h2>
+      <h2>рџ“љ Thesaurus Search</h2>
       <input type="text" id="thesaurusInput" placeholder="Enter term...">
       <button onclick="searchThesaurus()">Search</button>
       <div class="thesaurus" id="thesaurusOutput"></div>
     </section>
 
     <section class="section-block">
-      <h2>🌐 Encyclopedia Module</h2>
+      <h2>рџЊђ Encyclopedia Module</h2>
       <input type="text" id="encyclopediaInput" placeholder="Topic...">
       <button onclick="generateEncyclopedia()">Generate</button>
       <div class="encyclopedia" id="encyclopediaOutput"></div>
     </section>
   </main>
   <footer>
-    Terra Archive Manager 2.0 — Full Edition. Offline/Online, with/without AI. | © 2025 AIUZ / Abdurashid Abdukarimov
+    Terra Archive Manager 2.0 вЂ” Full Edition. Offline/Online, with/without AI. | В© 2025 AIUZ / Abdurashid Abdukarimov
   </footer>
 
   <script>
@@ -115,7 +115,7 @@
       list.innerHTML = '';
       files.forEach(f => {
         const div = document.createElement('div');
-        div.textContent = `✔ ${f.name}`;
+        div.textContent = `вњ” ${f.name}`;
         list.appendChild(div);
       });
     }

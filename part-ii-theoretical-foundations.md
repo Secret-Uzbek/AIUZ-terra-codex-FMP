@@ -12,7 +12,7 @@ The first foundational principle of FMP proposes that patterns of organization e
 
 Fractal self-similarity can be formally described through scaling relationships. If a system exhibits fractal properties, measurements at different scales follow power law relationships:
 
-M(r) ∝ r^D
+M(r) в€ќ r^D
 
 Where M(r) represents a measurement at scale r, and D is the fractal dimension. In the context of knowledge systems, this suggests that organizational patterns, information flows, and problem-solving strategies exhibit similar structures whether we examine individual cognition, group dynamics, or institutional behavior.
 
@@ -42,7 +42,7 @@ The second principle recognizes that knowledge emerges through recursive interac
 
 #### 3.2.1 Theoretical Framework
 
-Recursive co-construction builds on Maturana and Varela's (1980) concept of autopoiesis—the process by which living systems maintain themselves through continuous self-production. Extended to knowledge systems, this suggests that:
+Recursive co-construction builds on Maturana and Varela's (1980) concept of autopoiesisвЂ”the process by which living systems maintain themselves through continuous self-production. Extended to knowledge systems, this suggests that:
 
 **Observer-Observed Unity:** The observer and observed are not separate entities but aspects of a single recursive process. Knowledge emerges from their interaction rather than from observation of independent objects.
 
@@ -102,7 +102,7 @@ FMP proposes emergence as the mechanism for transdisciplinary integration:
 
 **Dynamic Boundaries:** Rather than fixed disciplinary boundaries, FMP works with dynamic, permeable boundaries that shift based on the phenomena being investigated.
 
-**Multi-Scale Integration:** Integration occurs simultaneously at multiple scales—conceptual, methodological, institutional, and cultural.
+**Multi-Scale Integration:** Integration occurs simultaneously at multiple scalesвЂ”conceptual, methodological, institutional, and cultural.
 
 **Cultural Translation:** Rather than imposing a single framework, FMP develops translation mechanisms that preserve the integrity of different ways of knowing while enabling dialogue.
 
@@ -194,7 +194,7 @@ FMP proposes emergence as the mechanism for transdisciplinary integration:
 
 **Dynamic Boundaries:** Rather than fixed disciplinary boundaries, FMP works with dynamic, permeable boundaries that shift based on the phenomena being investigated.
 
-**Multi-Scale Integration:** Integration occurs simultaneously at multiple scales—conceptual, methodological, institutional, and cultural.
+**Multi-Scale Integration:** Integration occurs simultaneously at multiple scalesвЂ”conceptual, methodological, institutional, and cultural.
 
 **Cultural Translation:** Rather than imposing a single framework, FMP develops translation mechanisms that preserve the integrity of different ways of knowing while enabling dialogue.
 
