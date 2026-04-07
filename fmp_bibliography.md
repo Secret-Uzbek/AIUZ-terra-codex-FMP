@@ -1,4 +1,4 @@
-# 📚 Fractal Metascience Paradigm - Complete APA 7 Bibliography
+# рџ“љ Fractal Metascience Paradigm - Complete APA 7 Bibliography
 
 ## References
 
@@ -8,19 +8,19 @@ Amey, M. J., & Brown, D. F. (2005). *Interdisciplinary collaboration and academi
 
 Anderson, P. W. (1972). More is different. *Science*, 177(4047), 393-396. https://doi.org/10.1126/science.177.4047.393
 
-Arenas, A., Díaz-Guilera, A., Kurths, J., Moreno, Y., & Zhou, C. (2008). Synchronization in complex networks. *Physics Reports*, 469(3), 93-153.
+Arenas, A., DГ­az-Guilera, A., Kurths, J., Moreno, Y., & Zhou, C. (2008). Synchronization in complex networks. *Physics Reports*, 469(3), 93-153.
 
-Argyris, C., & Schön, D. A. (1978). *Organizational learning: A theory of action perspective*. Addison-Wesley.
+Argyris, C., & SchГ¶n, D. A. (1978). *Organizational learning: A theory of action perspective*. Addison-Wesley.
 
-Arrieta, A. B., Díaz-Rodríguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., García, S., Gil-López, S., Molina, D., Benjamins, R., Chatila, R., & Herrera, F. (2020). Explainable artificial intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. *Information Fusion*, 58, 82-115.
+Arrieta, A. B., DГ­az-RodrГ­guez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., GarcГ­a, S., Gil-LГіpez, S., Molina, D., Benjamins, R., Chatila, R., & Herrera, F. (2020). Explainable artificial intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. *Information Fusion*, 58, 82-115.
 
 Baker, A. (2016). *Simplicity*. Stanford Encyclopedia of Philosophy. Stanford University Press.
 
 Barab, S., & Squire, K. (2004). Design-based research: Putting a stake in the ground. *Journal of the Learning Sciences*, 13(1), 1-14.
 
-Barabási, A. L. (2002). *Linked: The new science of networks*. Perseus Publishing.
+BarabГЎsi, A. L. (2002). *Linked: The new science of networks*. Perseus Publishing.
 
-Barabási, A. L., & Albert, R. (1999). Emergence of scaling in random networks. *Science*, 286(5439), 509-512.
+BarabГЎsi, A. L., & Albert, R. (1999). Emergence of scaling in random networks. *Science*, 286(5439), 509-512.
 
 Barad, K. (2007). *Meeting the universe halfway: Quantum physics and the entanglement of matter and meaning*. Duke University Press.
 
@@ -62,7 +62,7 @@ Black, P., & Wiliam, D. (1998). Assessment and classroom learning. *Assessment i
 
 Boaler, J. (2002). *Experiencing school mathematics: Traditional and reform approaches to teaching and their impact on student learning*. Erlbaum.
 
-Boccaletti, S., Bianconi, G., Criado, R., Del Genio, C. I., Gómez-Gardenes, J., Romance, M., Sendiña-Nadal, I., Wang, Z., & Zanin, M. (2014). The structure and dynamics of multilayer networks. *Physics Reports*, 544(1), 1-122.
+Boccaletti, S., Bianconi, G., Criado, R., Del Genio, C. I., GГіmez-Gardenes, J., Romance, M., SendiГ±a-Nadal, I., Wang, Z., & Zanin, M. (2014). The structure and dynamics of multilayer networks. *Physics Reports*, 544(1), 1-122.
 
 Boccaletti, S., Latora, V., Moreno, Y., Chavez, M., & Hwang, D. U. (2006). Complex networks: Structure and dynamics. *Physics Reports*, 424(4-5), 175-308.
 
@@ -108,7 +108,7 @@ Cartwright, N. (1983). *How the laws of physics lie*. Oxford University Press.
 
 Cash, D. W., Adger, W. N., Berkes, F., Garden, P., Lebel, L., Olsson, P., Pritchard, L., & Young, O. (2006). Scale and cross-scale dynamics: Governance and information in a multilevel world. *Ecology and Society*, 11(2), Article 8.
 
-Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health care—addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
+Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health careвЂ”addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
 
 Charmaz, K. (2006). *Constructing grounded theory: A practical guide through qualitative analysis*. Sage.
 
@@ -136,7 +136,7 @@ Creswell, J. W., & Plano Clark, V. L. (2017). *Designing and conducting mixed me
 
 *[Note: This represents the first portion of the complete 127+ source bibliography. The full bibliography would continue with all remaining sources in proper APA 7 format, maintaining alphabetical order and consistent formatting throughout.]*
 
-## 📊 Bibliography Statistics
+## рџ“Љ Bibliography Statistics
 
 - **Total Sources**: 127+ references
 - **Book Sources**: ~45% 
@@ -146,7 +146,7 @@ Creswell, J. W., & Plano Clark, V. L. (2017). *Designing and conducting mixed me
 - **Peak Publication Decades**: 1990s-2020s (complexity science emergence)
 - **Interdisciplinary Coverage**: Psychology, Education, AI, Physics, Biology, Philosophy, Sociology
 
-## 🔗 Digital Access Notes
+## рџ”— Digital Access Notes
 
 Where available, DOI links have been included. For maximum accessibility in digital formats, consider adding:
 - DOI links for all journal articles

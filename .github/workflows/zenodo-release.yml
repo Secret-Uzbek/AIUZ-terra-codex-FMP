@@ -1,0 +1,99 @@
+name: Zenodo DOI Registration
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  register-doi:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Wait for Zenodo webhook
+        run: sleep 90
+
+      - name: Poll Zenodo for DOI
+        id: zenodo
+        run: |
+          REPO_URL="https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP"
+          echo "Searching Zenodo for: $REPO_URL"
+
+          for attempt in 1 2 3 4 5; do
+            echo "Attempt $attempt..."
+            RESPONSE=$(curl -s "https://zenodo.org/api/records?q=related_identifier:$REPO_URL&sort=mostrecent&size=1")
+            DOI=$(echo "$RESPONSE" | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    hits = data.get('hits', {}).get('hits', [])
+    if hits:
+        doi = hits[0].get('doi') or hits[0].get('metadata', {}).get('doi', '')
+        print(doi)
+except:
+    pass
+" 2>/dev/null || echo "")
+
+            if [ -n "$DOI" ]; then
+              echo "doi=$DOI" >> $GITHUB_OUTPUT
+              echo "Found DOI: $DOI"
+              break
+            fi
+
+            echo "DOI not found yet, waiting 60s..."
+            sleep 60
+          done
+
+      - name: Update CITATION.cff
+        if: steps.zenodo.outputs.doi != ''
+        run: |
+          DOI="${{ steps.zenodo.outputs.doi }}"
+          VERSION="${{ github.event.release.tag_name }}"
+          DATE=$(date +%Y-%m-%d)
+
+          if [ -f CITATION.cff ]; then
+            # Update existing
+            python3 -c "
+import re, sys
+with open('CITATION.cff','r') as f:
+    content = f.read()
+content = re.sub(r'^(# )?doi:.*$', f'doi: {sys.argv[1]}', content, flags=re.MULTILINE)
+content = re.sub(r'^version:.*$', f'version: {sys.argv[2]}', content, flags=re.MULTILINE)
+content = re.sub(r'^date-released:.*$', f'date-released: {sys.argv[3]}', content, flags=re.MULTILINE)
+with open('CITATION.cff','w') as f:
+    f.write(content)
+" "$DOI" "$VERSION" "$DATE"
+          else
+            cat > CITATION.cff << EOF
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "AIUZ-terra-codex-FMP"
+version: $VERSION
+date-released: $DATE
+doi: $DOI
+url: "https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP"
+repository-code: "https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP"
+license: CC-BY-4.0
+authors:
+  - family-names: Abdukarimov
+    given-names: Abdurashid
+    orcid: "https://orcid.org/0009-0000-6394-4912"
+    affiliation: "Fractal Metascience Foundation"
+EOF
+          fi
+
+      - name: Commit CITATION.cff
+        if: steps.zenodo.outputs.doi != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CITATION.cff
+          git diff --staged --quiet || git commit -m "chore: update CITATION.cff with DOI ${{ steps.zenodo.outputs.doi }}"
+          git push

@@ -22,11 +22,11 @@ Kuhn (1970) and Morin (2008) emphasize that paradigms determine not only what is
 
 FMP is built on five key principles:
 
-1. **Fractal Recursion** – Knowledge structures repeat at multiple levels of scale.
-2. **Synchronicity and Diachronicity** – All knowledge has both structural (synchronic) and processual (diachronic) dimensions.
-3. **Holographic Cognition** – Each part of a system encodes information about the whole (Bohm, 1980).
-4. **Cognitive-Semantic Coevolution** – Thought and meaning evolve fractally through recursive feedback.
-5. **Metasystemic Integration** – All subsystems of knowledge are embedded in higher-order epistemic frames.
+1. **Fractal Recursion** вЂ“ Knowledge structures repeat at multiple levels of scale.
+2. **Synchronicity and Diachronicity** вЂ“ All knowledge has both structural (synchronic) and processual (diachronic) dimensions.
+3. **Holographic Cognition** вЂ“ Each part of a system encodes information about the whole (Bohm, 1980).
+4. **Cognitive-Semantic Coevolution** вЂ“ Thought and meaning evolve fractally through recursive feedback.
+5. **Metasystemic Integration** вЂ“ All subsystems of knowledge are embedded in higher-order epistemic frames.
 
 ## 4. Interdisciplinary Applications
 
@@ -40,7 +40,7 @@ Fractal structures abound in morphogenesis, neural networks, and ecological syst
 
 ### 4.3 Philosophy and Cognitive Science
 
-FMP aligns with integral epistemologies that bridge mind and matter (Wilber, 2000). Its recursive logic underlies human cognition, reflecting the brain’s fractal-like neural architecture (Sporns, 2011).
+FMP aligns with integral epistemologies that bridge mind and matter (Wilber, 2000). Its recursive logic underlies human cognition, reflecting the brainвЂ™s fractal-like neural architecture (Sporns, 2011).
 
 ### 4.4 Social Systems
 
@@ -62,7 +62,7 @@ Bohm, D. (1980). *Wholeness and the implicate order*. Routledge.
 
 Capra, F., & Luisi, P. L. (2014). *The systems view of life: A unifying vision*. Cambridge University Press.
 
-Goldberger, A. L., Amaral, L. A. N., Hausdorff, J. M., Ivanov, P. C., Peng, C. K., & Stanley, H. E. (2002). Fractal dynamics in physiology: Alterations with disease and aging. *Proceedings of the National Academy of Sciences*, 99(Suppl 1), 2466–2472. https://doi.org/10.1073/pnas.012579499
+Goldberger, A. L., Amaral, L. A. N., Hausdorff, J. M., Ivanov, P. C., Peng, C. K., & Stanley, H. E. (2002). Fractal dynamics in physiology: Alterations with disease and aging. *Proceedings of the National Academy of Sciences*, 99(Suppl 1), 2466вЂ“2472. https://doi.org/10.1073/pnas.012579499
 
 Kuhn, T. S. (1970). *The structure of scientific revolutions* (2nd ed.). University of Chicago Press.
 
@@ -82,7 +82,7 @@ Smolin, L. (2013). *Time reborn: From the crisis in physics to the future of the
 
 Sporns, O. (2011). *Networks of the brain*. MIT Press.
 
-Susskind, L., & Maldacena, J. (2013). Cool horizons for entangled black holes. *Fortschritte der Physik*, 61(9), 781–811. https://doi.org/10.1002/prop.201300020
+Susskind, L., & Maldacena, J. (2013). Cool horizons for entangled black holes. *Fortschritte der Physik*, 61(9), 781вЂ“811. https://doi.org/10.1002/prop.201300020
 
 von Bertalanffy, L. (1968). *General system theory: Foundations, development, applications*. George Braziller.
 

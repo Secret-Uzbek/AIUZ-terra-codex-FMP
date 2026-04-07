@@ -1,4 +1,4 @@
-# Living Pipeline: FMP Monograph → DOI → Publication
+# Living Pipeline: FMP Monograph в†’ DOI в†’ Publication
 # Author: Abdurashid A. Abdukarimov
 # Purpose: deterministic 11-step pipeline to take monograph from living draft to citable DOI + living index
 
@@ -19,16 +19,16 @@
    - Ensure license file exists (Terra Public License v1.0).
 
 4) Quality checks
-   - Spellcheck (lang: en/ru/uz) — produce QC report.
+   - Spellcheck (lang: en/ru/uz) вЂ” produce QC report.
    - Verify bib entries (APA7 / BibTeX) map to references in chapters.
 
 5) Build living artifact
-   - Assemble 'monograph_full.md' by canonical L0 order (frontmatter → chapters → refs → appendices).
+   - Assemble 'monograph_full.md' by canonical L0 order (frontmatter в†’ chapters в†’ refs в†’ appendices).
    - Produce monograph_full.pdf (latex or pandoc).
    - Produce living snapshot JSON: living_snapshot.json (metadata + sha256s).
 
 6) Register DOI (Zenodo sandbox practice)
-   - Upload Terra_Full_Archive.zip (or monograph + manifest) to Zenodo sandbox → obtain DOI.
+   - Upload Terra_Full_Archive.zip (or monograph + manifest) to Zenodo sandbox в†’ obtain DOI.
    - Record DOI badge and add to README / CITATION.cff.
 
 7) Release & Archive

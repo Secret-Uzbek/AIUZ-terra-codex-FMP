@@ -10,7 +10,7 @@ The Fractal Metascience Paradigm (FMP) represents a groundbreaking approach to u
 
 ### 1. Fractal Self-Similarity
 
-Knowledge patterns repeat across scales—from individual cognition to institutional behavior. What works at one level can be adapted to other levels through recognition of self-similar structures.
+Knowledge patterns repeat across scalesвЂ”from individual cognition to institutional behavior. What works at one level can be adapted to other levels through recognition of self-similar structures.
 
 ### 2. Recursive Co-Construction
 
@@ -43,7 +43,7 @@ The framework supports development of:
 
 ## Conclusion
 
-FMP represents not merely a new theory, but a practical framework for creating more inclusive, adaptive, and effective approaches to knowledge creation and application in the 21st century. Its emphasis on fractal inclusivity—ensuring equal access regardless of technological, cultural, or economic constraints—makes it particularly relevant for addressing global inequalities in knowledge access.
+FMP represents not merely a new theory, but a practical framework for creating more inclusive, adaptive, and effective approaches to knowledge creation and application in the 21st century. Its emphasis on fractal inclusivityвЂ”ensuring equal access regardless of technological, cultural, or economic constraintsвЂ”makes it particularly relevant for addressing global inequalities in knowledge access.
 
 By recognizing the fractal nature of knowledge itself, FMP opens new pathways for human understanding that honor both the diversity of human experience and the underlying unity of natural patterns.
 

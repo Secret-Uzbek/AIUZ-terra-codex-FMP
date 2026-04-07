@@ -1,4 +1,4 @@
-# 🚀 AIUZ TERRA OS v3.0
+# рџљЂ AIUZ TERRA OS v3.0
 
 ## O'rnatilgan Axloq bilan Birinchi Operatsion Tizim
 
@@ -9,7 +9,7 @@
 
 ***
 
-## 🎯 IJROCHI XULOSA
+## рџЋЇ IJROCHI XULOSA
 
 ### Inqilobiy Texnologiya
 
@@ -17,14 +17,14 @@
 
 ### Asosiy Yutuqlar
 
-* ✅ **To'liq integratsiya** 6 qatlamli arxitekturaning
-* ✅ **30+ komponent** joylashtirishga tayyor
-* ✅ **Axloqiy validatsiya** barcha darajalarida
-* ✅ **Global tayyorlik** masshtablashga
+* вњ… **To'liq integratsiya** 6 qatlamli arxitekturaning
+* вњ… **30+ komponent** joylashtirishga tayyor
+* вњ… **Axloqiy validatsiya** barcha darajalarida
+* вњ… **Global tayyorlik** masshtablashga
 
 ***
 
-## 🌍 BOZOR IMKONIYATLARI
+## рџЊЌ BOZOR IMKONIYATLARI
 
 ### Global OS Bozori
 
@@ -38,16 +38,16 @@
 
 ### Maqsadli Segmentlar
 
-* 🎓 **Ta'lim muassasalari** (maktablar, universitetlar)
-* 🏢 **Axloqiy kompaniyalar** (ESG-yo'naltirilgan)
-* 🌐 **Xalqaro tashkilotlar** (BMT, YUNESKO)
-* 👶 **Bolalar qurilmalari** (planshetlar, o'quv tizimlari)
+* рџЋ“ **Ta'lim muassasalari** (maktablar, universitetlar)
+* рџЏў **Axloqiy kompaniyalar** (ESG-yo'naltirilgan)
+* рџЊђ **Xalqaro tashkilotlar** (BMT, YUNESKO)
+* рџ‘¶ **Bolalar qurilmalari** (planshetlar, o'quv tizimlari)
 
 ***
 
-## 💎 RAQOBAT USTUNLIKLARI
+## рџ’Ћ RAQOBAT USTUNLIKLARI
 
-### 🏆 Noyob Xususiyatlar
+### рџЏ† Noyob Xususiyatlar
 
 #### 1. O'rnatilgan Axloq
 
@@ -75,18 +75,18 @@
 
 ***
 
-## 📊 TEXNIK KO'RSATKICHLAR
+## рџ“Љ TEXNIK KO'RSATKICHLAR
 
 ### Arxitektura Pishqanligi
 
 ```
-✅ L0: Falsafiy asos        - 100% tayyor
-✅ L0.5: Terra MicroCore    - 100% tayyor
-✅ L1: Protokol qatlami     - 100% tayyor
-✅ L2: Infratuzilma qatlami - 100% tayyor
-✅ L3: Boshqaruv qatlami    - 100% tayyor
-✅ L4: Interfeys qatlami    - 100% tayyor
-✅ Terra OS: Asosiy integratsiya - 100% tayyor
+вњ… L0: Falsafiy asos        - 100% tayyor
+вњ… L0.5: Terra MicroCore    - 100% tayyor
+вњ… L1: Protokol qatlami     - 100% tayyor
+вњ… L2: Infratuzilma qatlami - 100% tayyor
+вњ… L3: Boshqaruv qatlami    - 100% tayyor
+вњ… L4: Interfeys qatlami    - 100% tayyor
+вњ… Terra OS: Asosiy integratsiya - 100% tayyor
 ```
 
 ### Ishlash
@@ -98,7 +98,7 @@
 
 ***
 
-## 🎓 HAQIQIY QOLLANISHLAR
+## рџЋ“ HAQIQIY QOLLANISHLAR
 
 ### Keys 1: Ta'lim Muassasalari
 
@@ -120,7 +120,7 @@
 
 ***
 
-## 💰 BIZNES MODEL
+## рџ’° BIZNES MODEL
 
 ### Daromad Manbalari
 
@@ -150,7 +150,7 @@
 
 ***
 
-## 🎯 BOZORGA CHIQISH STRATEGIYASI
+## рџЋЇ BOZORGA CHIQISH STRATEGIYASI
 
 ### 1-bosqich: Pilot Loyihalar (Q3 2025)
 
@@ -172,7 +172,7 @@
 
 ***
 
-## 🤝 HAMKORLIK IMKONIYATLARI
+## рџ¤ќ HAMKORLIK IMKONIYATLARI
 
 ### Texnologik Hamkorlar
 
@@ -194,7 +194,7 @@
 
 ***
 
-## 💡 INVESTITSIYA IMKONIYATLARI
+## рџ’Ў INVESTITSIYA IMKONIYATLARI
 
 ### A raundi: $10M (Joriy)
 
@@ -221,7 +221,7 @@
 
 ***
 
-## 🏆 JAMOA VA EKSPERTIZA
+## рџЏ† JAMOA VA EKSPERTIZA
 
 ### Asoschisi
 
@@ -241,7 +241,7 @@
 
 ***
 
-## 🌟 IJTIMOIY TA'SIR
+## рџЊџ IJTIMOIY TA'SIR
 
 ### Ta'limiy Ta'sir
 
@@ -263,28 +263,28 @@
 
 ***
 
-## 🎯 HARAKATLARGA CHAQIRUV
+## рџЋЇ HARAKATLARGA CHAQIRUV
 
 ### Investorlar uchun
 
 **Axloqiy texnologiyalar inqilobiga qo'shiling!**
 
-* 📧 **Aloqa:** <a.abdukarimov@fractal-metascience.org>
-* 💰 **Investitsiyalar:** $500K dan $10M gacha
-* 🤝 **Hamkorlik:** Strategik ittifoqlar
-* 🌍 **Ta'sir:** Axloqiy texnologiyalar orqali dunyoni o'zgartirish
+* рџ“§ **Aloqa:** <a.abdukarimov@fractal-metascience.org>
+* рџ’° **Investitsiyalar:** $500K dan $10M gacha
+* рџ¤ќ **Hamkorlik:** Strategik ittifoqlar
+* рџЊЌ **Ta'sir:** Axloqiy texnologiyalar orqali dunyoni o'zgartirish
 
 ### Hamkorlar uchun
 
 **Terra OS global ekotizimining bir qismi bo'ling!**
 
-* 🎓 **Ta'lim muassasalari** - pilot dasturlar
-* 🏢 **Korporatsiyalar** - ESG-muvofiqlik
-* 🌐 **Tashkilotlar** - xalqaro loyihalar
+* рџЋ“ **Ta'lim muassasalari** - pilot dasturlar
+* рџЏў **Korporatsiyalar** - ESG-muvofiqlik
+* рџЊђ **Tashkilotlar** - xalqaro loyihalar
 
 ***
 
-## 📞 KONTAKTLAR
+## рџ“ћ KONTAKTLAR
 
 **AIUZ Terra OS Project**\
 **Asoschisi:** <a.abdukarimov@fractal-metascience.org>\
@@ -298,7 +298,7 @@
 ***
 
 *"Vijdonli birinchi operatsion tizim"*\
-**© 2025 AIUZ Terra OS Project**
+**В© 2025 AIUZ Terra OS Project**
 
 
 ---

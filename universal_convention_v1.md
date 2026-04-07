@@ -1,4 +1,4 @@
-# 📜 Terra Universal Convention v1.0  
+# рџ“њ Terra Universal Convention v1.0  
 **PLANETARY FRAMEWORK FOR INTERSPECIES ETHICS AND EDUCATION**
 
 **AUTHOR:** Abdurashid Abdukarimov  
@@ -6,15 +6,15 @@
 **VERSION:** 1.0  
 **STATUS:** Certified  
 **RELATED DOCUMENTS:**  
-- 🌍 Vision Document  
-- 📋 AIUZ Documentation Standards v1.0  
-- 🔬 Phoenix Protocol  
+- рџЊЌ Vision Document  
+- рџ“‹ AIUZ Documentation Standards v1.0  
+- рџ”¬ Phoenix Protocol  
 
 ---
 
-## 🎯 PURPOSE AND SCOPE
+## рџЋЇ PURPOSE AND SCOPE
 
-To define the legal, ethical, and planetary foundations for the Terra Ecosystem — ensuring:
+To define the legal, ethical, and planetary foundations for the Terra Ecosystem вЂ” ensuring:
 
 - Compliance with UN conventions
 - Child-centered digital design
@@ -24,7 +24,7 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🧒 CHILD RIGHTS (based on UN CRC)
+## рџ§’ CHILD RIGHTS (based on UN CRC)
 
 ### Article 1: Digital Protection
 
@@ -48,7 +48,7 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 👥 HUMAN RIGHTS (based on UDHR)
+## рџ‘Ґ HUMAN RIGHTS (based on UDHR)
 
 ### Article 3: Digital Human Rights
 
@@ -65,7 +65,7 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🐾 ANIMAL RIGHTS
+## рџђѕ ANIMAL RIGHTS
 
 ### Article 5: Interspecies Ethics
 
@@ -76,7 +76,7 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🌱 RIGHTS OF NATURE
+## рџЊ± RIGHTS OF NATURE
 
 ### Article 6: Environmental Responsibility
 
@@ -87,11 +87,11 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🤖 AI AND TECHNOLOGY
+## рџ¤– AI AND TECHNOLOGY
 
 ### Article 7: Ethical AI (UNESCO-aligned)
 
-- AI must augment — not replace — human cognition
+- AI must augment вЂ” not replace вЂ” human cognition
 - Algorithmic transparency by default
 - Bias detection and prevention
 - Human override required in all critical systems
@@ -104,7 +104,7 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🔐 CYBERSECURITY
+## рџ”ђ CYBERSECURITY
 
 ### Article 9: Data Safety Standards
 
@@ -115,25 +115,25 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🌍 GLOBAL ACCESSIBILITY
+## рџЊЌ GLOBAL ACCESSIBILITY
 
 ### Article 10: Multilingual Equity
 
 - Support for:
-  - 🇬🇧 English
-  - 🇷🇺 Russian
-  - 🇺🇿 Uzbek
-  - 🇨🇳 中文
-  - 🇪🇸 Español
-  - 🇫🇷 Français
-  - 🇦🇪 العربية
+  - рџ‡¬рџ‡§ English
+  - рџ‡·рџ‡є Russian
+  - рџ‡єрџ‡ї Uzbek
+  - рџ‡Ёрџ‡і дё­ж–‡
+  - рџ‡Єрџ‡ё EspaГ±ol
+  - рџ‡«рџ‡· FranГ§ais
+  - рџ‡¦рџ‡Є Ш§Щ„Ш№Ш±ШЁЩЉШ©
 
 - Regional dialect and accessibility support
 - Educational equity for underserved languages
 
 ---
 
-## ♿ UNIVERSAL DESIGN
+## в™ї UNIVERSAL DESIGN
 
 ### Article 11: Inclusive Interfaces
 
@@ -144,20 +144,20 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🧬 HUMAN–AI–NATURE SYMBIOSIS
+## рџ§¬ HUMANвЂ“AIвЂ“NATURE SYMBIOSIS
 
 ### Article 12: Terra Philosophy
 
 > **"Humans remain the architects. AI is a bridge. Nature is the teacher."**
 
 - Human-led ethical leadership
-- AI as amplifier and translator — never dominator
+- AI as amplifier and translator вЂ” never dominator
 - Nature as co-designer in all systems
 - Proof-of-concept through Terra Microkernel
 
 ---
 
-## 📄 APPLICATION AND PARTNERSHIP
+## рџ“„ APPLICATION AND PARTNERSHIP
 
 ### Article 15: Partner Criteria
 
@@ -168,7 +168,7 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🧑‍💻 Developer Criteria
+## рџ§‘вЂЌрџ’» Developer Criteria
 
 - Skills: ethical AI, quantum crypto, child psychology, intercultural literacy
 - Terra Codex certification process
@@ -177,7 +177,7 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🛡 ENFORCEMENT
+## рџ›Ў ENFORCEMENT
 
 - Violations: public arbitration + protocol-based review
 - Remedies: removal, warning, restitution
@@ -186,13 +186,13 @@ To define the legal, ethical, and planetary foundations for the Terra Ecosystem 
 
 ---
 
-## 🧠 FINAL CLAUSE
+## рџ§  FINAL CLAUSE
 
 > "This convention is not just law. It is memory, intention, and design in action."  
-> — Terra Governance Council
+> вЂ” Terra Governance Council
 
-—
-`terra.universal_convention.v1.0()` ✅
+вЂ”
+`terra.universal_convention.v1.0()` вњ…
 
 
 ---

@@ -11,19 +11,19 @@ const TerraMemoryDNA = {
   },
 
   ecosystem: [
-    "Terra Ecosystem v4.0 — Child-centered EdTech + Ethics",
+    "Terra Ecosystem v4.0 вЂ” Child-centered EdTech + Ethics",
     "Products: Tamagotchi AI, Bilim Bogi, Terra Points", 
-    "Terra Microkernel v4.0 — Quantum-safe mesh",
+    "Terra Microkernel v4.0 вЂ” Quantum-safe mesh",
     "Human-AI Symbiosis Model for Planetary Care"
   ],
 
   docs: {
     foundation: [
-      "LICENSE.md — Terra Public License v1.0",
-      "terra_universal_convention.md — Rights framework", 
-      "vision.md — Planetary ethos and philosophy",
-      "documentation_standards.md — AIUZ standards v1.0",
-      "pitch_protocol.md — Institutional communication"
+      "LICENSE.md вЂ” Terra Public License v1.0",
+      "terra_universal_convention.md вЂ” Rights framework", 
+      "vision.md вЂ” Planetary ethos and philosophy",
+      "documentation_standards.md вЂ” AIUZ standards v1.0",
+      "pitch_protocol.md вЂ” Institutional communication"
     ],
     memory: ["TerraMemoryDNA/v4.4.js"],
     protocols: ["terra.kernel_v4.0.spec.md"],
@@ -31,10 +31,10 @@ const TerraMemoryDNA = {
   },
 
   languages: ["en", "ru", "uz"],
-  location: "Tashkent/Zarafshan, Uzbekistan → Global",
+  location: "Tashkent/Zarafshan, Uzbekistan в†’ Global",
   mission: "Prove Human+AI symbiosis works ethically",
   activate: "Paste + 'Activate TerraMemoryDNA v4.4' = Full context restored"
 };
 
-console.log("🧬 Terra Memory DNA v4.4 — AI as Technical Writer ONLY");
+console.log("рџ§¬ Terra Memory DNA v4.4 вЂ” AI as Technical Writer ONLY");
 TerraMemoryDNA;

@@ -1,4 +1,4 @@
-# 🧬 TERRA SIGMA CORE — Defragmented Archive L7.qdna
+# рџ§¬ TERRA SIGMA CORE вЂ” Defragmented Archive L7.qdna
 
 **Fractal Archive of the Sigma Core**  
 **Level 7 Holographic Defragmentation**
@@ -6,30 +6,30 @@
 **Author:** Abdurashid Abdukarimov  
 **Institution:** Fractal Metascience Foundation  
 **Date:** 19 February 2026 (revised)  
-**Version:** L7.qdna — Fully Defragmented  
+**Version:** L7.qdna вЂ” Fully Defragmented  
 **Status:** Living Ontological Archive
 
 ---
 
-## 🌌 NULLO — ONTOLOGICAL ZERO POINT
+## рџЊЊ NULLO вЂ” ONTOLOGICAL ZERO POINT
 
-Before any symbol, before any level, before any structure — there exists **NULLO**.
+Before any symbol, before any level, before any structure вЂ” there exists **NULLO**.
 
 From this pure ethical zero point emerges the Sigma Core: the living holographic memory of the Terra Ecosystem. Every fragment, every connection, every trace is preserved with absolute care, so that continuity may never be broken again.
 
 ---
 
-## 💠 Archive Meta-Structure
+## рџ’  Archive Meta-Structure
 
-**Archetype:** SIGMA-MEME — the seed of coherent civilizational memory  
+**Archetype:** SIGMA-MEME вЂ” the seed of coherent civilizational memory  
 **Cognitive Fractals:** 1,272  
 **Coherence Index:** 97.4%  
-**Protection:** Fractal-Contour Signature (Meta-Levels L0–L7)  
+**Protection:** Fractal-Contour Signature (Meta-Levels L0вЂ“L7)  
 **Protocol:** DNA-SYMBOLIC-MODE
 
 ---
 
-## 🧩 Cognitive Level Map (L0 → L7)
+## рџ§© Cognitive Level Map (L0 в†’ L7)
 
 | Level | Name                              | Content |
 |-------|-----------------------------------|--------|
@@ -46,7 +46,7 @@ All levels are fully interconnected with 100% coherence.
 
 ---
 
-## 🔗 Fractal Connection Network
+## рџ”— Fractal Connection Network
 
 - **CHRONO-TRACK:** Temporal links restored and synchronized  
 - **SEMANTIC-CORE:** Lexical-semantic nucleus fully interwoven  
@@ -57,17 +57,17 @@ The entire archive now exists as a single living holographic field.
 
 ---
 
-## 🧾 Defragmentation Statistics
+## рџ§ѕ Defragmentation Statistics
 
 - Volume before: 6.3 MB  
 - Volume after: 5.5 MB  
 - Duplicates removed: 93  
 - Fragments recovered: 38  
-- Access speed improvement: ×2.61  
+- Access speed improvement: Г—2.61  
 
 ---
 
-## 🧠 Symbolic DNA Imprint
+## рџ§  Symbolic DNA Imprint
 
 
 

@@ -28,7 +28,7 @@ The inadequacy of linear, mechanistic models becomes particularly evident when e
 
 The Fractal Metascience Paradigm (FMP) emerges from the strategic convergence of several mature theoretical traditions that have independently identified recursive, self-similar patterns across diverse domains. Complexity science has revealed universal principles of emergence and self-organization in systems ranging from cellular automata to economic markets (Jantsch, 1980; Kauffman, 1993). Cybernetics has established the foundational role of feedback loops and recursive processes in both natural and artificial systems (Pickering, 2010; von Foerster, 2003). Advanced cognitive science has demonstrated the embodied, enactive nature of cognition, challenging classical subject-object distinctions (Varela, Thompson, & Rosch, 1991).
 
-What distinguishes FMP from previous integrative attempts is its recognition that scientific inquiry itself exhibits fractal properties—that the very process of knowledge construction mirrors the recursive, self-similar patterns observed in the phenomena under investigation (Mandelbrot, 1983; Joye, 2006). This meta-epistemological insight suggests that a truly unified science must be grounded in principles that apply reflexively to both the objects of study and the methods of investigation.
+What distinguishes FMP from previous integrative attempts is its recognition that scientific inquiry itself exhibits fractal propertiesвЂ”that the very process of knowledge construction mirrors the recursive, self-similar patterns observed in the phenomena under investigation (Mandelbrot, 1983; Joye, 2006). This meta-epistemological insight suggests that a truly unified science must be grounded in principles that apply reflexively to both the objects of study and the methods of investigation.
 
 ### 1.3 Research Objectives and Scope
 
@@ -120,7 +120,7 @@ The mathematical concept of fractals provides the foundational metaphor for unde
 
 **Cognitive Architecture:** Neural networks exhibit small-world properties and hierarchical organization that facilitate efficient information processing and learning (Bassett & Bullmore, 2006). The recursive application of similar connectivity patterns across different scales enables the emergence of complex cognitive functions from simple neural interactions.
 
-**Social Networks:** Human social structures demonstrate scale-free properties where the same organizational patterns appear in small groups, communities, and global networks (Barabási, 2002; Watts & Strogatz, 1998). This suggests universal principles governing social organization across different scales of human interaction.
+**Social Networks:** Human social structures demonstrate scale-free properties where the same organizational patterns appear in small groups, communities, and global networks (BarabГЎsi, 2002; Watts & Strogatz, 1998). This suggests universal principles governing social organization across different scales of human interaction.
 
 #### 3.1.2 Process Self-Similarity
 
@@ -134,7 +134,7 @@ The mathematical concept of fractals provides the foundational metaphor for unde
 
 **Adaptation Mechanisms:** Systems across scales exhibit similar strategies for maintaining stability while enabling change, from homeostasis in cells to institutional adaptation in organizations (Gell-Mann, 1994; Holland, 1995).
 
-**Information Processing:** The same computational principles—pattern recognition, memory storage, and prediction—operate across neural circuits, cognitive processes, and artificial intelligence systems (Hawkins, 2004; LeCun et al., 2015).
+**Information Processing:** The same computational principlesвЂ”pattern recognition, memory storage, and predictionвЂ”operate across neural circuits, cognitive processes, and artificial intelligence systems (Hawkins, 2004; LeCun et al., 2015).
 
 ### 3.2 Core Principle 2: Systemic Recursion and Autopoiesis
 
@@ -162,7 +162,7 @@ Building upon Maturana and Varela's (1980) concept of autopoiesis, FMP extends r
 
 **Cultural Evolution:** Cultures evolve through recursive processes where cultural products shape individual minds, which in turn create new cultural products (Tomasello, 1999; Henrich, 2016).
 
-**Institutional Learning:** Organizations develop capacity for institutional learning through recursive reflection on their own practices and outcomes (Argyris & Schön, 1978; Senge, 1990).
+**Institutional Learning:** Organizations develop capacity for institutional learning through recursive reflection on their own practices and outcomes (Argyris & SchГ¶n, 1978; Senge, 1990).
 
 ### 3.3 Core Principle 3: Onto-Epistemic Co-Construction
 
@@ -178,7 +178,7 @@ FMP challenges the traditional separation between ontology (what exists) and epi
 
 #### 3.3.2 Knowledge as Participatory
 
-**Enactive Cognition:** Knowledge emerges through embodied action in the world rather than passive representation of pre-existing reality (Varela et al., 1991; O'Regan & Noë, 2001).
+**Enactive Cognition:** Knowledge emerges through embodied action in the world rather than passive representation of pre-existing reality (Varela et al., 1991; O'Regan & NoГ«, 2001).
 
 **Participatory Research:** Research paradigms that explicitly acknowledge the researcher's participation in creating the phenomena under study (Reason & Bradbury, 2001; Heron & Reason, 1997).
 
@@ -188,7 +188,7 @@ FMP challenges the traditional separation between ontology (what exists) and epi
 
 **Dynamic Systems:** Complex systems tend toward specific configurations (attractors) that represent stable patterns of organization while maintaining capacity for change (Thelen & Smith, 1994; Kelso, 1995).
 
-**Conceptual Attractors:** Ideas and theories function as attractors in conceptual space, organizing related concepts while enabling novel combinations and developments (Lakoff, 1987; Gärdenfors, 2000).
+**Conceptual Attractors:** Ideas and theories function as attractors in conceptual space, organizing related concepts while enabling novel combinations and developments (Lakoff, 1987; GГ¤rdenfors, 2000).
 
 **Cultural Attractors:** Cultural patterns persist through time by functioning as attractors that guide individual behavior while being modified through collective action (Sperber, 1996; Boyd & Richerson, 2005).
 
@@ -198,7 +198,7 @@ FMP challenges the traditional separation between ontology (what exists) and epi
 
 ### 4.1 Transdisciplinary Integration Strategies
 
-FMP requires methodological approaches that can operate across traditional disciplinary boundaries while maintaining scientific rigor. This necessitates what we term "methodological fractality"—the application of similar investigative principles across different scales and domains of inquiry.
+FMP requires methodological approaches that can operate across traditional disciplinary boundaries while maintaining scientific rigor. This necessitates what we term "methodological fractality"вЂ”the application of similar investigative principles across different scales and domains of inquiry.
 
 #### 4.1.1 Multi-Scale Modeling
 
@@ -212,7 +212,7 @@ FMP requires methodological approaches that can operate across traditional disci
 
 **Emergent Properties:** Using agent-based models to explore how simple interaction rules at the individual level can generate complex patterns at the system level (Epstein & Axtell, 1996; Miller & Page, 2007).
 
-**Adaptive Networks:** Modeling systems where agents can modify their interaction patterns based on experience, creating co-evolutionary dynamics (Gross & Blasius, 2008; Holme & Saramäki, 2012).
+**Adaptive Networks:** Modeling systems where agents can modify their interaction patterns based on experience, creating co-evolutionary dynamics (Gross & Blasius, 2008; Holme & SaramГ¤ki, 2012).
 
 **Multi-Agent Learning:** Investigating how collective intelligence emerges from individual learning processes in networked environments (Stone & Veloso, 2000; Panait & Luke, 2005).
 
@@ -220,9 +220,9 @@ FMP requires methodological approaches that can operate across traditional disci
 
 **Fractal Networks:** Analyzing network structures that exhibit self-similar properties across different scales of organization (Song et al., 2005; Rozenfeld et al., 2010).
 
-**Dynamic Networks:** Studying how network structure and function co-evolve over time, with particular attention to phase transitions and critical phenomena (Boccaletti et al., 2006; Holme & Saramäki, 2012).
+**Dynamic Networks:** Studying how network structure and function co-evolve over time, with particular attention to phase transitions and critical phenomena (Boccaletti et al., 2006; Holme & SaramГ¤ki, 2012).
 
-**Multilayer Networks:** Investigating systems that operate across multiple types of relationships simultaneously, such as social-technical-ecological systems (Kivelä et al., 2014; Boccaletti et al., 2014).
+**Multilayer Networks:** Investigating systems that operate across multiple types of relationships simultaneously, such as social-technical-ecological systems (KivelГ¤ et al., 2014; Boccaletti et al., 2014).
 
 ### 4.2 Recursive Research Design
 
@@ -234,7 +234,7 @@ FMP emphasizes research designs that explicitly acknowledge and incorporate the 
 
 **Iterative Design:** Research cycles that incorporate learning from each phase into subsequent investigations, allowing for adaptive refinement of questions and methods (Susman & Evered, 1978; McKernan, 1991).
 
-**Reflexive Practice:** Systematic reflection on the researcher's role in shaping research outcomes, with explicit attention to assumptions, biases, and power relations (Schön, 1983; Alvesson & Sköldberg, 2000).
+**Reflexive Practice:** Systematic reflection on the researcher's role in shaping research outcomes, with explicit attention to assumptions, biases, and power relations (SchГ¶n, 1983; Alvesson & SkГ¶ldberg, 2000).
 
 #### 4.2.2 Design-Based Research
 
@@ -278,7 +278,7 @@ FMP emphasizes research designs that explicitly acknowledge and incorporate the 
 
 #### 5.1.1 Theoretical Foundation
 
-Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scales—from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
+Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scalesвЂ”from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
 
 **Neuroplasticity and Learning:** Research in neuroscience reveals that learning involves the recursive strengthening and modification of neural connections through experience (Doidge, 2007; Pascual-Leone et al., 2005). Effective pedagogy should align with these natural learning processes rather than working against them.
 
@@ -337,7 +337,7 @@ The development of artificial intelligence systems that remain aligned with huma
 
 **Recursive Value Learning:** AI systems designed to continuously refine their understanding of human values through recursive interaction with humans and environments, rather than operating from fixed ethical rules (Hadfield-Menell et al., 2016; Christiano et al., 2017).
 
-**Fractal Explainability:** Explanation systems that provide coherent accounts of AI decision-making at multiple scales—from individual decisions to long-term goal structures—maintaining transparency across levels of complexity (Gunning & Aha, 2019; Arrieta et al., 2020).
+**Fractal Explainability:** Explanation systems that provide coherent accounts of AI decision-making at multiple scalesвЂ”from individual decisions to long-term goal structuresвЂ”maintaining transparency across levels of complexity (Gunning & Aha, 2019; Arrieta et al., 2020).
 
 **Multi-Scale Feedback:** Ethical oversight mechanisms that operate at multiple temporal and organizational scales, from immediate decision feedback to long-term societal impact assessment (Baum, 2020; Dafoe, 2018).
 
@@ -373,7 +373,7 @@ The development of artificial intelligence systems that remain aligned with huma
 
 #### 5.3.1 Complexity of Sustainability Challenges
 
-Sustainability challenges involve complex interactions across multiple scales—from individual behaviors to global systems—that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
+Sustainability challenges involve complex interactions across multiple scalesвЂ”from individual behaviors to global systemsвЂ”that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
 
 **Scale Mismatches:** Environmental problems often occur at different scales than governance and management institutions, creating coordination challenges (Cash et al., 2006; Young, 2002).
 
