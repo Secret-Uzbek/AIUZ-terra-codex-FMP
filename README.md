@@ -1,6 +1,10 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17548828.svg)](https://doi.org/10.5281/zenodo.17548828)
+[![Layer](https://img.shields.io/badge/Layer-Publication%20%26%20FMP-9333ea)](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP)
 [![Release](https://img.shields.io/github/v/release/Secret-Uzbek/AIUZ-terra-codex-FMP?display_name=tag)](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/releases)
 [![Last Commit](https://img.shields.io/github/last-commit/Secret-Uzbek/AIUZ-terra-codex-FMP)](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/commits/main)
+[![Release Pipeline](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/actions/workflows/release-and-publish.yml/badge.svg)](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/actions/workflows/release-and-publish.yml)
+[![Zenodo Sync](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/actions/workflows/zenodo-release.yml/badge.svg)](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/actions/workflows/zenodo-release.yml)
+[![Terra Audit](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/actions/workflows/terra-audit.yml/badge.svg)](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/actions/workflows/terra-audit.yml)
 [![Pages](https://img.shields.io/badge/pages-GitHub%20Pages-2d6cdf)](https://Secret-Uzbek.github.io/AIUZ-terra-codex-FMP)
 [![Terra Legal](https://img.shields.io/badge/governance-terra--legal-0f766e)](https://github.com/AIUZ-Terra-Codex-EcoSystem/terra-legal)
 
@@ -9,16 +13,19 @@
 English-first repository surface for the Fractal Metascience Paradigm layer
 inside the wider AIUZ Terra CodeX ecosystem.
 
-## Overview
+## Layer role
 
-This repository holds theory-facing and publication-facing FMP material:
+This repository is the FMP package and publication bridge layer inside the wider
+AIUZ Terra CodeX weave.
+
+It holds theory-facing and publication-facing FMP material:
 
 - article drafts and article packages;
 - documentation standards and repository rules;
 - living indexes and trace artifacts;
 - supporting files for publication, release, and dissemination.
 
-It is not the whole Terra ecosystem.
+It is not the whole Terra ecosystem and not the raw implementation branch.
 It is one focused layer inside it.
 
 ## Theory and Practice
@@ -47,6 +54,7 @@ Read first:
 - [Fractal Repository Template Protocol](https://github.com/AIUZ-Terra-Codex-EcoSystem/terra-legal/blob/main/FRACTAL_REPOSITORY_TEMPLATE_PROTOCOL.md)
 - [Bibliography Sync Protocol](https://github.com/AIUZ-Terra-Codex-EcoSystem/terra-legal/blob/main/BIBLIOGRAPHY_SYNC_PROTOCOL.md)
 - [Technical Glossary](https://github.com/AIUZ-Terra-Codex-EcoSystem/terra-legal/blob/main/TECHNICAL_GLOSSARY.md)
+- [GitHub Layer Model](https://github.com/AIUZ-Terra-Codex-EcoSystem/terra-legal/blob/main/GITHUB_LAYER_MODEL.md)
 
 ## Reading Paths
 
@@ -77,6 +85,13 @@ Keep here:
 - FMP theory and article material;
 - publication-support artifacts;
 - standards directly tied to this repository surface.
+
+Do not overload this repository with:
+
+- unrelated practice archives;
+- donor governance copies without need;
+- machine traces as the first human entry;
+- random shadow residue.
 
 Move out or archive:
 
