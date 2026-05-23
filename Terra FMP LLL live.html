@@ -1,4 +1,12 @@
-=== ЧАСТЬ 1 / N — ЯДРО: TerraArchiveManager + L0SemanticKernel + TerraEthicalLayer + OfflineSemanticAnalyzer (без урезаний) ===
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terra FMP LLL Live</title>
+</head>
+<body>
+<pre>=== ЧАСТЬ 1 / N — ЯДРО: TerraArchiveManager + L0SemanticKernel + TerraEthicalLayer + OfflineSemanticAnalyzer (без урезаний) ===</pre>
 <script>
 // =========== L0 Semantic Kernel ===========
 function L0SemanticKernel() {
@@ -1462,10 +1470,9 @@ function saveKB(){localStorage.setItem('terra_kb',JSON.stringify(kb));}
 const uzbekGermanDictionary={'salom':{german:'Hallo',pronunciation:'ха́лло',example_uz:'Salom, qanday ahvolingiz?',example_de:'Hallo, wie geht es Ihnen?'}};
 function searchDictionary(){let q=document.getElementById('dictionarySearch').value.toLowerCase();let cont=document.getElementById('dictionaryResults');if(!q){cont.innerHTML='<p>Введите слово</p>';return;}let res=[];for(let w in uzbekGermanDictionary){if(w.includes(q))res.push({uzbek:w,data:uzbekGermanDictionary[w]});}cont.innerHTML=res.map(r=>`<div class="definition-card"><h3>${r.uzbek}</h3><p>${r.data.german}</p><p>${r.data.pronunciation}</p></div>`).join("");}
 </script>
-</body>
-</html>
-
-<!-- TERRA: canonical identifiers -->
-<hr>
+<footer style="padding: 20px; text-align: center; border-top: 1px solid #d7e3f0; background: #f7fbff;">
 <p><strong>Contact:</strong> <a href="mailto:a.abdukarimov@fractal-metascience.org">a.abdukarimov@fractal-metascience.org</a><br>
 <strong>ORCID:</strong> 0009-0000-6394-4912</p>
+</footer>
+</body>
+</html>
