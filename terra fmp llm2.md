@@ -1,8 +1,8 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
+# QDNA Backup Monolithic Archive
 
-# давай
+Archival export of the monolithic QDNA backup assembly referenced in the Terra conversation stream.
 
-🟢 Принято, Оператор.
+Принято, Оператор.
 Передаю **монолитную (целостную) финальную версию QDNA‑архива** — все 7 частей и методический модуль **в одном формате** для удобного копирования, импорта и архивирования.
 
 ***

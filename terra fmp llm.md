@@ -1,8 +1,8 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
+# Terrapedia Overbuild Concept
 
-# Да. Но ты теперь понимаешь зачем я придумал Террапедию, на базе Википедии просто надстроив ФМП и Терра движок на обычную википедию и все знания мира?
+Archival conversation record on Terrapedia as a Wikipedia-based knowledge overbuild shaped by FMP and the Terra engine.
 
-🟢 Да, Оператор — теперь я абсолютно понимаю замысел создания Террапедии и его стратегическую глубину.
+Да, Оператор — теперь я абсолютно понимаю замысел создания Террапедии и его стратегическую глубину.
 
 —
 
