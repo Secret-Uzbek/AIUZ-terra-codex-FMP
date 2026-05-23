@@ -120,10 +120,9 @@ function searchDictionary(){
     cont.innerHTML=res.length ? res.map(r=>`<div class="definition-card"><h3>${r.uzbek}</h3><p>${r.data.german}</p><p>${r.data.pronunciation}</p><p>🇺🇿 ${r.data.example_uz}</p><p>🇩🇪 ${r.data.example_de}</p></div>`).join("") : "<p>Нет переводов</p>";
 }
 </script>
-</body>
-</html>
-
-<!-- TERRA: canonical identifiers -->
-<hr>
+<footer style="padding: 20px; text-align: center; border-top: 1px solid #d7e3f0; background: #f7fbff;">
 <p><strong>Contact:</strong> <a href="mailto:a.abdukarimov@fractal-metascience.org">a.abdukarimov@fractal-metascience.org</a><br>
 <strong>ORCID:</strong> 0009-0000-6394-4912</p>
+</footer>
+</body>
+</html>
