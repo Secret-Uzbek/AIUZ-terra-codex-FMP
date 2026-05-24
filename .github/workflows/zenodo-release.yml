@@ -69,9 +69,9 @@ jobs:
         run: |
           set -euo pipefail
           python3 <<'PY'
+          import os
           import pathlib
           import re
-          import os
 
           path = pathlib.Path("CITATION.cff")
           content = path.read_text(encoding="utf-8")
