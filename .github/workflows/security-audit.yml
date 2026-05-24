@@ -1,39 +1,112 @@
-name: "FMP: Security Audit"
+name: security-audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_gitleaks:
+        description: "Run gitleaks scan"
+        required: false
+        default: true
+        type: boolean
+      run_npm_audit:
+        description: "Run npm audit when package-lock.json is present"
+        required: false
+        default: true
+        type: boolean
+      fail_on_findings:
+        description: "Fail the workflow when findings are detected"
+        required: false
+        default: false
+        type: boolean
+
 permissions:
   contents: read
-  security-events: write
-on:
-  schedule:
-    - cron: '0 3 * * 1'
-  workflow_dispatch:
+
+concurrency:
+  group: security-audit-${{ github.repository }}
+  cancel-in-progress: false
+
 jobs:
-  gitleaks:
+  audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Run gitleaks
-        uses: zricethezav/gitleaks-action@v2
+        if: ${{ inputs.run_gitleaks }}
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: detect --source . --report-path gitleaks-report.json || true
-      - uses: actions/upload-artifact@v6
+          args: detect --source . --report-format json --report-path gitleaks-report.json
+        continue-on-error: true
+
+      - name: Upload gitleaks report
+        if: ${{ inputs.run_gitleaks && hashFiles('gitleaks-report.json') != '' }}
+        uses: actions/upload-artifact@v4
         with:
           name: gitleaks-report
           path: gitleaks-report.json
-  npm-audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: Use Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: '18'
-      - name: Install deps if package.json present
+
+      - name: Run npm audit
+        if: ${{ inputs.run_npm_audit && hashFiles('package-lock.json') != '' }}
+        shell: bash
+        continue-on-error: true
         run: |
-          if [ -f package.json ]; then npm ci --no-audit || true; fi
-      - name: Run npm audit if package.json
-        run: |
-          if [ -f package.json ]; then npm audit --json > npm-audit.json || true; fi
-      - uses: actions/upload-artifact@v6
+          set -euo pipefail
+          npm ci --ignore-scripts
+          npm audit --json > npm-audit.json
+
+      - name: Upload npm audit report
+        if: ${{ inputs.run_npm_audit && hashFiles('npm-audit.json') != '' }}
+        uses: actions/upload-artifact@v4
         with:
-          name: npm-audit
+          name: npm-audit-report
           path: npm-audit.json
+
+      - name: Evaluate findings
+        if: ${{ inputs.fail_on_findings }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          bad=0
+
+          if [ -f gitleaks-report.json ] && [ "$(tr -d '[:space:]' < gitleaks-report.json)" != "[]" ]; then
+            echo "Gitleaks findings detected." >&2
+            bad=1
+          fi
+
+          if [ -f npm-audit.json ]; then
+            critical="$(python3 - <<'PY'
+import json
+from pathlib import Path
+path = Path('npm-audit.json')
+if not path.exists():
+    print(0)
+    raise SystemExit(0)
+data = json.loads(path.read_text(encoding='utf-8'))
+meta = data.get('metadata', {}).get('vulnerabilities', {})
+print(int(meta.get('critical', 0)) + int(meta.get('high', 0)))
+PY
+)"
+            if [ "${critical}" -gt 0 ]; then
+              echo "High or critical npm vulnerabilities detected: ${critical}" >&2
+              bad=1
+            fi
+          fi
+
+          exit "${bad}"
+
+      - name: Summary
+        shell: bash
+        run: |
+          {
+            echo "## Security audit"
+            echo "- Repository: \`${{ github.repository }}\`"
+            echo "- Gitleaks requested: \`${{ inputs.run_gitleaks }}\`"
+            echo "- npm audit requested: \`${{ inputs.run_npm_audit }}\`"
+            echo "- Fail on findings: \`${{ inputs.fail_on_findings }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
