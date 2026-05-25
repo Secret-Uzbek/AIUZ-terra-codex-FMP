@@ -1,4 +1,4 @@
-name: Figshare & OSF Sync
+﻿name: Figshare & OSF Sync
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
 
       - name: Upload to Figshare
         env:
-          FIGSHARE_TOKEN: ${{ secrets.FIGSHARE_TOKEN }}
+          FIGSHARE_TOKEN: ${{ secrets.FIGSHARE_SYNC_TOKEN || secrets.FIGSHARE_TOKEN }}
         run: |
           if [ -z "$FIGSHARE_TOKEN" ]; then
             echo "FIGSHARE_TOKEN not set, skipping"
@@ -25,7 +25,7 @@ jobs:
 
       - name: Register on OSF
         env:
-          OSF_TOKEN: ${{ secrets.OSF_TOKEN }}
+          OSF_TOKEN: ${{ secrets.OSF_SYNC_TOKEN || secrets.OSF_TOKEN }}
         run: |
           if [ -z "$OSF_TOKEN" ]; then
             echo "OSF_TOKEN not set, skipping"

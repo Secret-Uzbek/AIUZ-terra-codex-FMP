@@ -1,4 +1,4 @@
-name: release-and-publish
+﻿name: release-and-publish
 
 on:
   workflow_dispatch:
@@ -20,6 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB || secrets.GHP_TOKEN || github.token }}
 
       - name: Resolve release metadata
         id: meta
