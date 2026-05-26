@@ -16,8 +16,8 @@ Repository: `AIUZ-terra-codex-FMP`
 - `FMP.md`
 - `fmp_monograph_english.md`
 - `fmp_research_paper (2).md`
-- `fractal_metascience_article_en.md`
-- `fractal_metascience_article_en (3).md`
+- `fractal_metascience_ai_integrated_educational_ecosystems.md`
+- `fractal_metascience_unified_epistemological_framework.md`
 - `part-i-introduction-and-literature-review.md`
 - `part-ii-theoretical-foundations.md`
 - `the-fractal-metascience-paradigm-a-unified-epistemological-architecture-for-a-post-crisis-civilization.md`
