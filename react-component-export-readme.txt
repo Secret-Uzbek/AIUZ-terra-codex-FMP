@@ -1,10 +1,10 @@
 # React Component Export
 
-This ZIP file contains the exported React component from your Hatch canvas.
+This package contains exported React surfaces from Hatch canvas sessions.
 
 ## Files:
-- component.jsx: The main React component source code
-- component.js: The compiled/executable JavaScript version
+- terra-child-safe-ethics-microkernel.jsx: Main React source surface
+- terra-ecosystem-workbench-compiled.js: Compiled browser-ready JavaScript surface
 - index.html: Ready-to-run HTML file with fallback inline code and data
 - storedState.json: Initial state data
 
@@ -21,7 +21,7 @@ This ZIP file contains the exported React component from your Hatch canvas.
 
 ## Usage:
 ```jsx
-import Component from './component';
+import Component from './terra-child-safe-ethics-microkernel';
 
 function App() {
   return <Component />;
