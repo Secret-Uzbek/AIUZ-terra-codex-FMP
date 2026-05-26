@@ -1,4 +1,4 @@
-# рџ“‹ AIUZ Documentation Standards v1.0  
+# 📋 AIUZ Documentation Standards v1.0  
 **Unified formatting, validation, and lifecycle for all Terra Codex documents**
 
 **AUTHOR:** Abdurashid Abdukarimov  
@@ -6,15 +6,15 @@
 **VERSION:** 1.0  
 **STATUS:** Active  
 **RELATED DOCUMENTS:**  
-- рџ“њ Universal Convention v1.0  
-- рџ§¬ TerraMemoryDNA  
-- рџ“„ Pitch Protocol  
+- 📜 Universal Convention v1.0  
+- 🧬 TerraMemoryDNA  
+- 📄 Pitch Protocol  
 
 ---
 
-## рџЋЇ PURPOSE
+## 🎯 PURPOSE
 
-To define the formatting, validation, and evolution standards for all documents and specifications in the Terra Ecosystem вЂ” ensuring:
+To define the formatting, validation, and evolution standards for all documents and specifications in the Terra Ecosystem — ensuring:
 
 - Semantic clarity  
 - Ethical consistency  
@@ -24,7 +24,7 @@ To define the formatting, validation, and evolution standards for all documents 
 
 ---
 
-## рџ§± DOCUMENT STRUCTURE
+## 🧱 DOCUMENT STRUCTURE
 
 Each document MUST contain:
 
@@ -39,42 +39,44 @@ Each document MUST contain:
 
 ---
 
-## рџЋЇ PURPOSE AND SCOPE
+## 🎯 PURPOSE AND SCOPE
 
-## рџ“‹ MAIN CONTENT
+## 📋 MAIN CONTENT
 
-## вљ™пёЏ IMPLEMENTATION
+## ⚙️ IMPLEMENTATION
 
-## рџ”Ќ VALIDATION CRITERIA
+## 🔍 VALIDATION CRITERIA
 
-## рџ“Љ SUCCESS METRICS
+## 📊 SUCCESS METRICS
 
-## рџ”„ ITERATION & IMPROVEMENTрџ§© CATEGORIES & ICONS
-рџЊЌ Global Vision
+## 🔄 ITERATION & IMPROVEMENT
 
-рџЏ—пёЏ Architecture
+## 🧩 CATEGORIES & ICONS
+🌌 Global Vision
 
-вљ™пёЏ Technical Specs
+🏗️ Architecture
 
-рџ“љ Educational Content
+⚙️ Technical Specs
 
-рџ”¬ Research Protocols
+📚 Educational Content
 
-рџ“‹ Admin / Process Docs
+🔬 Research Protocols
 
-рџЋЇ How-To Guides
+📋 Admin / Process Docs
 
-рџ•°пёЏ VERSIONING FORMAT
+🎯 How-To Guides
+
+## 🕰️ VERSIONING FORMAT
 MAJOR.MINOR.PATCH
 
-1.0.0 вЂ” First stable version
+1.0.0 — First stable version
 
-1.1.0 вЂ” New features or blocks
+1.1.0 — New features or blocks
 
-1.1.2 вЂ” Minor fix or clarification
+1.1.2 — Minor fix or clarification
 
-рџ”Ќ MULTI-STAGE VALIDATION
-вњ… Stage 1: Auto Check
+## 🔍 MULTI-STAGE VALIDATION
+✅ Stage 1: Auto Check
 Required fields complete
 
 Links valid
@@ -83,7 +85,7 @@ Spellcheck and structure
 
 Hash generated
 
-рџ§  Stage 2: Expert Review
+🧠 Stage 2: Expert Review
 Technical accuracy
 
 Educational utility
@@ -92,14 +94,14 @@ Ethical alignment
 
 Cultural adaptability
 
-рџ‘Ґ Stage 3: User Testing
+👥 Stage 3: User Testing
 Children, families, educators
 
 Community feedback
 
 Accessibility confirmed
 
-рџ§ѕ QUALITY CRITERIA
+## 🧾 QUALITY CRITERIA
 For Conceptual Docs:
 Clear logic
 
@@ -127,7 +129,7 @@ Cultural safety
 
 Inclusion
 
-рџ“Љ METRICS
+## 📊 METRICS
 Completeness (%)
 
 Last updated (days)
@@ -138,7 +140,8 @@ Feedback score
 
 Onboarding effectiveness
 
-рџЊђ CULTURAL ADAPTATION FLOWBASE DOC в†’ CULTURAL REVIEW в†’ LOCAL ADAPTATION в†’ REGIONAL VALIDATION в†’ PUBLICATION
+## 🌐 CULTURAL ADAPTATION FLOW
+BASE DOC → CULTURAL REVIEW → LOCAL ADAPTATION → REGIONAL VALIDATION → PUBLICATION
 
 
 ---
