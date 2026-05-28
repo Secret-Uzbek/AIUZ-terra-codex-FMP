@@ -1,6 +1,6 @@
 # 📋 CHANGELOG
 
-All notable changes to **.terra-legal** are documented here.
+All notable changes to **AIUZ-terra-codex-FMP** are documented here.
 
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 Versioning: [Semantic Versioning](https://semver.org/)
@@ -10,7 +10,7 @@ Versioning: [Semantic Versioning](https://semver.org/)
 ## [Unreleased]
 
 ### Planned
-- Zenodo DOI registration for CITATION.cff
+- Zenodo DOI metadata verification for CITATION.cff
 - Translations: Russian (RU), Uzbek (UZ), German (DE)
 - GitHub Actions compliance check workflow
 - Terra Registry integration
@@ -21,20 +21,20 @@ Versioning: [Semantic Versioning](https://semver.org/)
 
 ### Added
 - `DOCUMENTATION-STANDARD.md` — writing and structure guidelines
-- `LINKING-INSTRUCTIONS.md` — how to connect repos to terra-legal layer
+- `LINKING-INSTRUCTIONS.md` — repository linking instructions
 - `CHANGELOG.md` — this file
 - `GOVERNANCE.md` — decision-making and maintainer structure
 
 ### Notes
-- Initial complete release of .terra-legal framework
-- All core governance documents now present
+- Initial documentation framework for the AIUZ-terra-codex-FMP publication bridge
+- Core governance and documentation documents present
 
 ---
 
 ## [0.9.0] - 2025-07-16
 
 ### Added
-- `LICENSE.md` — Terra Public License v1.0 (TPL-1.0)
+- `LICENSE` — repository license file
 - `CODE_OF_CONDUCT.md` — Child Safety First community guidelines
 - `CONTRIBUTING.md` — contribution workflow
 - `SECURITY.md` — vulnerability reporting policy
@@ -42,15 +42,15 @@ Versioning: [Semantic Versioning](https://semver.org/)
 - `README.md` — repository overview
 
 ### Notes
-- Initial release of Terra Public License v1.0
+- Initial license and documentation baseline
 - Child Safety First principle established as core value
-- International compliance: GDPR Art.8, COPPA, UNESCO AI Ethics
+- International compliance orientation: GDPR Art.8, COPPA, UNESCO AI Ethics
 
 ---
 
 ## LINKS
 
-- [Terra Public License v1.0](./LICENSE.md)
+- [License](./LICENSE)
 - [FMP Ecosystem](https://github.com/Secret-Uzbek/FMP-CENTRAL-REPO)
 - [ORCID 0009-0000-6394-4912](https://orcid.org/0009-0000-6394-4912)
 
