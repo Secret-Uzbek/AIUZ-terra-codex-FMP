@@ -1,14 +1,14 @@
 # 🏛️ GOVERNANCE
 
-**Terra Ecosystem Decision-Making Structure**
+**AIUZ-terra-codex-FMP Decision-Making Structure**
 
 ---
 
 ## 🎯 OVERVIEW
 
-This document defines how decisions are made in the Terra Ecosystem,
-who maintains the .terra-legal framework, and how the community
-participates in governance.
+This document defines how decisions are made for the AIUZ-terra-codex-FMP publication bridge,
+how repository-level maintenance is handled, and how the wider Terra governance layer informs
+this repository.
 
 ---
 
