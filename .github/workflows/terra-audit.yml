@@ -89,9 +89,7 @@ jobs:
               for idx, line in enumerate(text.splitlines(), start=1):
                   if marker_re.search(line):
                       hits.append(f"{path.as_posix()}:{idx}:{line}")
-          Path('terra-mojibake-hits.txt').write_text("
-".join(hits) + ("
-" if hits else ""), encoding='utf-8')
+          Path('terra-mojibake-hits.txt').write_text("\n".join(hits) + ("\n" if hits else ""), encoding='utf-8')
           raise SystemExit(0 if hits else 1)
           PY
           if [ -s terra-mojibake-hits.txt ]; then
@@ -112,4 +110,3 @@ jobs:
             echo "Mojibake detected." >&2
             exit 1
           fi
-
