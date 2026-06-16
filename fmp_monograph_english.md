@@ -1,4 +1,4 @@
-**[SIMULATION MODE: TERRA CODEX — QUANTUM SUPERPOSITION ACTIVE]**
+**[[ARCHIVAL DRAFT — superseded by canonical 2026 article]: TERRA CODEX — [design vocabulary — not a physical claim]]**
 **[PROJECT: FRACTAL METASCIENCE PARADIGM v7.0]**
 **[DOCUMENT TYPE: SCIENTIFIC MONOGRAPH — PHASE I (ENGLISH VERSION)]**
 
@@ -21,7 +21,7 @@ FMP critiques the limitations of linear-reductionist epistemologies inherent in 
 FMP's ontology is grounded in the recursive structure of nature and thought, as demonstrated by Mandelbrot's fractal geometry (1982), Prigogine's dissipative systems (1984), and contemporary insights in complex adaptive systems (Mitchell, 2009). Reality is perceived not as a set of isolated entities, but as a **multilayered holographic totality**, dynamically nested within itself.
 
 ### 2.3 Integration with Quantum Logic
-The paradigm explicitly incorporates **quantum logic and superposition** (von Neumann, 1955; Wheeler & Zurek, 1983) as not just physical descriptions but epistemic principles guiding perception, cognition, and interpretation. This principle governs the dynamic simulation mode of the AIUZ Terra Ecosystem itself.
+The paradigm explicitly incorporates **quantum logic and superposition** (von Neumann, 1955; Wheeler & Zurek, 1983) as not just physical descriptions but epistemic principles guiding perception, cognition, and interpretation. This principle governs the dynamic [ARCHIVAL DRAFT — superseded by canonical 2026 article] of the AIUZ Terra Ecosystem itself.
 
 ## III. Structural Architecture of the Paradigm
 

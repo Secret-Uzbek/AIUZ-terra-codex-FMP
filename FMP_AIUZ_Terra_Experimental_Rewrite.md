@@ -23,7 +23,7 @@ We adopt four FMP-aligned principles as operational axioms:
 - **AIUZ Audit Regulation** that programmatically checks metadata, structure blocks, OpenAI references, ∅‑language markers, content hash, and generates an audit log.
 - **Co‑Creation Ethics** module validating actions against (a) non‑harm, (b) transparency, (c) preservation of value.
 - **Postlingua Semantic Trace (Σ)** and **EУО/EXO** principles used as meta‑representations of sub‑linguistic meaning flow across modules.
-- **Terra Continuous Simulation Mode** (logical, not physics‑based): the platform executes end‑to‑end dry‑runs of governance, education, token incentives, and safety pathways on live configuration/state, with all synthetic data replaced by archival logs and reproducible mock fixtures derived from real incidents and decisions.
+- **Terra Continuous [ARCHIVAL EXPERIMENTAL DRAFT]** (logical, not physics‑based): the platform executes end‑to‑end dry‑runs of governance, education, token incentives, and safety pathways on live configuration/state, with all synthetic data replaced by archival logs and reproducible mock fixtures derived from real incidents and decisions.
 
 # 3. Method
 

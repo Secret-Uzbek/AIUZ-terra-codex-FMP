@@ -1,3 +1,9 @@
+> **ARCHIVAL AI CHAT LOG** — This file is a raw export of an AI conversation session.
+> Statistical figures, Cohen's d values, p-values, meta-analysis claims, and similar
+> quantitative statements within are illustrative examples generated during the conversation,
+> NOT results of completed empirical studies. For validated FMP research see:
+> https://doi.org/10.5281/zenodo.18155672
+
 # QDNA Backup Monolithic Archive
 
 Archival export of the monolithic QDNA backup assembly referenced in the Terra conversation stream.
