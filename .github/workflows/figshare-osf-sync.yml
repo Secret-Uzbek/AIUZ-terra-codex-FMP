@@ -1,4 +1,4 @@
-﻿name: Figshare & OSF Sync
+name: Figshare & OSF Sync
 
 on:
   workflow_dispatch:

@@ -1,4 +1,4 @@
-﻿# The Fractal Metascience Paradigm: Foundations of a Universal Scientific Framework
+# The Fractal Metascience Paradigm: Foundations of a Universal Scientific Framework
 
 ## Abstract
 

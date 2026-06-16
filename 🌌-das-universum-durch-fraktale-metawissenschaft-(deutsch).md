@@ -1,4 +1,4 @@
-﻿# 🌐Њ **Das Universum durch das Paradigma der Fraktalen Metawissenschaft verstehen**
+# 🌐Њ **Das Universum durch das Paradigma der Fraktalen Metawissenschaft verstehen**
 
 **Autor:** Abdurashid Abdukarimov\
 **Datum:** 27. Juli 2025\

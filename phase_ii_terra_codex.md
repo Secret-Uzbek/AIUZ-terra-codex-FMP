@@ -1,4 +1,4 @@
-﻿# Phase II: Applied Cases and Visualization Framework of the Fractal Metascience Paradigm
+# Phase II: Applied Cases and Visualization Framework of the Fractal Metascience Paradigm
 
 ## Abstract
 This phase builds upon the foundational monograph of the Fractal Metascience Paradigm by operationalizing the theoretical framework through applied interdisciplinary case studies and the implementation of the Terra Codex visualization system. It bridges abstract theoretical constructs with empirical and systemic applications, emphasizing cognitive modeling, sustainability frameworks, and quantum-informed epistemologies.

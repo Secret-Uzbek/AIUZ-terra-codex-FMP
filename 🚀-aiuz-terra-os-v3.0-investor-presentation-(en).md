@@ -1,4 +1,4 @@
-﻿# 🚀 AIUZ TERRA OS v3.0
+# 🚀 AIUZ TERRA OS v3.0
 
 ## The First Operating System with Built-in Ethics
 

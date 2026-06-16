@@ -1,4 +1,4 @@
-﻿# рџЋ“ Fractal Metascience: Proposal for New Academic Discipline
+# рџЋ“ Fractal Metascience: Proposal for New Academic Discipline
 
 ## 📋 **Executive Summary**
 

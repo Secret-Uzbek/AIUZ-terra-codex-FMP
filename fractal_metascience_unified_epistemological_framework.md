@@ -1,4 +1,4 @@
-﻿# The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework
+# The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework
 
 ## Abstract
 

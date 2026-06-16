@@ -1,4 +1,4 @@
-﻿# рџ”¬ The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science
+# рџ”¬ The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science
 
 **AUTHOR:** Abdurashid Abdukarimov\
 **DATE CREATED:** July 13, 2025\

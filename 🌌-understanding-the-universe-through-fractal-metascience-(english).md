@@ -1,4 +1,4 @@
-﻿# 🌐Њ **Understanding the Universe through Fractal Metascience Paradigm**
+# 🌐Њ **Understanding the Universe through Fractal Metascience Paradigm**
 
 **Author:** Abdurashid Abdukarimov\
 **Date:** July 27, 2025\

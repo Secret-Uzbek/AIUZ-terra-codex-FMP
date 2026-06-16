@@ -1,4 +1,4 @@
-﻿# рџ“„ Terra Pitch Protocol v1.0  
+# рџ“„ Terra Pitch Protocol v1.0  
 **Institutional, investment, and grant-focused communication standard**
 
 **AUTHOR:** Abdurashid Abdukarimov  

@@ -1,4 +1,4 @@
-﻿# 🌍 TERRA UNIVERSAL CONVENTION v1.0
+# 🌍 TERRA UNIVERSAL CONVENTION v1.0
 
 **Planetary Convention on the Rights of All Beings and the Sustainable Development of Consciousness**
 

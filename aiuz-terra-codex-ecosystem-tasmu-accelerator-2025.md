@@ -1,4 +1,4 @@
-﻿# AIUZ Terra Codex EcoSystem
+# AIUZ Terra Codex EcoSystem
 
 ## Planetary-Scale Consciousness & Ecological Rehabilitation Framework
 

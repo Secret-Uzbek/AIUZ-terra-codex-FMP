@@ -1,4 +1,4 @@
-﻿# 🚀 AIUZ TERRA OS v3.0
+# 🚀 AIUZ TERRA OS v3.0
 
 ## O'rnatilgan Axloq bilan Birinchi Operatsion Tizim
 
