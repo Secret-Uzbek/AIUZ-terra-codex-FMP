@@ -1079,7 +1079,7 @@ The adoption of FMP implies fundamental changes in how scientific research is co
 **Causality Concepts**: Moving from simple linear causation to understanding circular causality, feedback loops, and reciprocal determination (Richardson, 1991; Senge, 1990):
 
 *Linear Causality Limitations*:
-- **Unidirectional**: Cause в†’ Effect relationships only
+- **Unidirectional**: Cause → Effect relationships only
 - **Deterministic**: Single causes produce predictable effects
 - **Static**: Relationships don't change over time
 - **Context-Independent**: Same causes produce same effects everywhere
@@ -1393,7 +1393,7 @@ The Fractal Metascience Paradigm (FMP) emerges from the strategic convergence of
 - Feminist epistemology (Harding, 1991)
 - Postcolonial science studies (Turnbull, 2000)
 
-What distinguishes FMP from previous integrative attempts is its recognition that scientific inquiry itself exhibits fractal propertiesвЂ”that the very process of knowledge construction mirrors the recursive, self-similar patterns observed in the phenomena under investigation (Mandelbrot, 1983; Joye, 2006). This meta-epistemological insight suggests that a truly unified science must be grounded in principles that apply reflexively to both the objects of study and the methods of investigation.
+What distinguishes FMP from previous integrative attempts is its recognition that scientific inquiry itself exhibits fractal properties—that the very process of knowledge construction mirrors the recursive, self-similar patterns observed in the phenomena under investigation (Mandelbrot, 1983; Joye, 2006). This meta-epistemological insight suggests that a truly unified science must be grounded in principles that apply reflexively to both the objects of study and the methods of investigation.
 
 ### Research Objectives and Scope
 
@@ -1569,7 +1569,7 @@ where *F* is the fractal set and *Sбµў* are similarity transformations.
 
 **Fractal Dimension**: Non-integer dimensions that capture space-filling properties:
 
-*D = lim(Оµв†’0) [log N(Оµ) / log(1/Оµ)]*
+*D = lim(Оµ→0) [log N(Оµ) / log(1/Оµ)]*
 
 where *N(Оµ)* is the number of boxes of size *Оµ* needed to cover the fractal.
 
@@ -1601,7 +1601,7 @@ where *b* is the scaling exponent.
 Systems with multiple scaling behaviors require more sophisticated analysis (Mandelbrot, 1989; Feder, 1988):
 
 **Generalized Dimensions**: *Dq* where *q* is the moment order
-**Singularity Spectrum**: *f(О±)* function characterizing local scaling properties
+**Singularity Spectrum**: *f(α)* function characterizing local scaling properties
 **Multifractal Detrended Fluctuation Analysis**: Method for detecting multifractal properties in time series (Kantelhardt et al., 2002)
 
 ### Postmodern Science and Epistemological Pluralism
@@ -1661,13 +1661,13 @@ The mathematical concept of fractals provides the foundational metaphor for unde
 where *N(r)* is the number of vessels of radius *r*, and *D* is the fractal dimension (~2.7 for mammalian circulatory systems).
 
 **Neural Architecture**: Bassett and Bullmore (2006) analyzed human brain networks using graph theory, revealing small-world properties and hierarchical organization that facilitate efficient information processing:
-- Clustering coefficient: *C* = 0.34 В± 0.08
-- Path length: *L* = 2.1 В± 0.3  
-- Small-world index: *Пѓ* = *C*/*L* = 1.6 В± 0.4
+- Clustering coefficient: *C* = 0.34 ± 0.08
+- Path length: *L* = 2.1 ± 0.3  
+- Small-world index: *σ* = *C*/*L* = 1.6 ± 0.4
 
 **Social Networks**: BarabГЎsi (2002) demonstrated scale-free properties in social networks where degree distributions follow power laws:
 
-*P(k) в€ќ k^(-Оі)*
+*P(k) в€ќ k^(-γ)*
 
 with exponents typically ranging from 2.1 to 3.0 across different social systems.
 
@@ -1681,9 +1681,9 @@ with exponents typically ranging from 2.1 to 3.0 across different social systems
 
 *Mathematical Model*: Learning can be modeled as a recursive process:
 
-*K(t+1) = K(t) + О±[E(t) - K(t)] + ОІв€‡K(t)*
+*K(t+1) = K(t) + α[E(t) - K(t)] + βв€‡K(t)*
 
-where *K(t)* is knowledge state, *E(t)* is environmental input, *О±* is learning rate, and *ОІ* represents exploratory behavior.
+where *K(t)* is knowledge state, *E(t)* is environmental input, *α* is learning rate, and *β* represents exploratory behavior.
 
 **Evolutionary Mechanisms**: Natural selection operates through analogous processes at multiple levels:
 
@@ -1728,7 +1728,7 @@ Building upon Maturana and Varela's (1980) concept of autopoiesis, FMP extends r
 
 *Quantum Mechanics Example*: The measurement problem demonstrates observer-system entanglement:
 
-*|П€вџ© = О±|0вџ© + ОІ|1вџ© в†’ measurement в†’ classical outcome*
+*|ψвџ© = α|0вџ© + β|1вџ© → measurement → classical outcome*
 
 The transition from superposition to definite outcome requires observer interaction, making the boundary between observer and observed problematic.
 
@@ -1867,7 +1867,7 @@ where attractor basins represent regions of state space converging to specific p
 
 ### Transdisciplinary Integration Strategies
 
-FMP requires methodological approaches that can operate across traditional disciplinary boundaries while maintaining scientific rigor. This necessitates what we term "methodological fractality"вЂ”the application of similar investigative principles across different scales and domains of inquiry.
+FMP requires methodological approaches that can operate across traditional disciplinary boundaries while maintaining scientific rigor. This necessitates what we term "methodological fractality"—the application of similar investigative principles across different scales and domains of inquiry.
 
 #### Multi-Scale Modeling
 
@@ -1929,7 +1929,7 @@ For each time step:
 *Learning Algorithms*: Agents adapt behavior based on past experience
 
 *Mathematical Framework*:
-*dx_i/dt = f(x_i, в€‘_j A_ij x_j)*
+*dx_i/dt = f(x_i, ∑_j A_ij x_j)*
 *dA_ij/dt = g(x_i, x_j, A_ij)*
 
 where *x_i* is agent state and *A_ij* represents connection strength.
@@ -1974,9 +1974,9 @@ where *x_i* is agent state and *A_ij* represents connection strength.
 - Information systems (physical-logical-social layers)
 
 *Mathematical Representation*:
-*M = {G^О±, C}_О±в€€{1,...,M}*
+*M = {G^α, C}_αв€€{1,...,M}*
 
-where *G^О±* represents layer *О±* and *C* represents inter-layer connections.
+where *G^α* represents layer *α* and *C* represents inter-layer connections.
 
 ### Recursive Research Design
 
@@ -2092,7 +2092,7 @@ FMP emphasizes research designs that explicitly acknowledge and incorporate the 
 2. Divide into non-overlapping segments
 3. Detrend each segment by polynomial fitting
 4. Calculate fluctuation function: *F(n) = в€љвџЁ[y(k) - yв‚™(k)]ВІвџ©*
-5. Determine scaling exponent: *F(n) в€ќ n^О±*
+5. Determine scaling exponent: *F(n) в€ќ n^α*
 
 **Machine Learning**: Algorithmic approaches identifying complex patterns across multiple scales (LeCun et al., 2015; Bengio, 2009).
 
@@ -2112,8 +2112,8 @@ FMP emphasizes research designs that explicitly acknowledge and incorporate the 
 *Key Measures*:
 - **Shannon Entropy**: *H(X) = -ОЈбµў p(xбµў) log p(xбµў)*
 - **Mutual Information**: *I(X;Y) = H(X) + H(Y) - H(X,Y)*
-- **Transfer Entropy**: *T_{Yв†’X} = H(Xв‚њв‚Љв‚Ѓ|Xв‚њ) - H(Xв‚њв‚Љв‚Ѓ|Xв‚њ,Yв‚њ)*
-- **Integrated Information**: *О¦ = ОЈбµў П†бµў* (effective information generated by system)
+- **Transfer Entropy**: *T_{Y→X} = H(Xв‚њв‚Љв‚Ѓ|Xв‚њ) - H(Xв‚њв‚Љв‚Ѓ|Xв‚њ,Yв‚њ)*
+- **Integrated Information**: *О¦ = ОЈбµў φбµў* (effective information generated by system)
 
 #### Qualitative-Quantitative Integration
 
@@ -2166,7 +2166,7 @@ FMP emphasizes research designs that explicitly acknowledge and incorporate the 
 
 #### Theoretical Foundation
 
-Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scalesвЂ”from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
+Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scales—from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
 
 **Neuroplasticity and Learning**: Research demonstrates that learning involves recursive strengthening and modification of neural connections through experience (Doidge, 2007; Pascual-Leone et al., 2005).
 
@@ -2185,7 +2185,7 @@ Fractal pedagogy applies FMP principles to create learning environments that exh
 **Zone of Proximal Development**: Vygotsky's (1978) concept illustrates how learning occurs through recursive interaction between individual capability and social support.
 
 *Mathematical Model*:
-*Learning = f(Individual Capacity Г— Social Support Г— Cultural Tools)*
+*Learning = f(Individual Capacity × Social Support × Cultural Tools)*
 
 *Fractal Application*:
 - **Individual Level**: Cognitive processes building on each other
@@ -2645,7 +2645,7 @@ Example explanation: "Your test results suggest that your cancer might respond w
 
 #### Complexity of Sustainability Challenges
 
-Sustainability challenges involve complex interactions across multiple scalesвЂ”from individual behaviors to global systemsвЂ”that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
+Sustainability challenges involve complex interactions across multiple scales—from individual behaviors to global systems—that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
 
 **Scale Mismatches**: Environmental problems often occur at different scales than governance and management institutions (Cash et al., 2006; Young, 2002).
 
@@ -2682,9 +2682,9 @@ Sustainability challenges involve complex interactions across multiple scalesв�
 - **Local Adaptation**: Global principles adapted to local conditions
 
 *Mathematical Framework*: Resource flow networks following fractal scaling laws:
-*Flow(scale) = Flowв‚Ђ Г— scale^ОІ*
+*Flow(scale) = Flowв‚Ђ × scale^β*
 
-where ОІ is the scaling exponent (typically 0.75-0.85 for sustainable systems).
+where β is the scaling exponent (typically 0.75-0.85 for sustainable systems).
 
 **Recursive Adaptation**: Management systems that can learn and adapt at multiple temporal scales (Holling & Gunderson, 2002; Folke et al., 2005).
 
@@ -2735,7 +2735,7 @@ where ОІ is the scaling exponent (typically 0.75-0.85 for sustainable systems)
 - 40% reduction in building energy consumption
 - 60% reduction in water consumption
 - 35% reduction in waste generation
-- 15В°C reduction in urban heat island effect
+- 15°C reduction in urban heat island effect
 
 **Neighborhood Level**: Microgrids and circular resource flows:
 - **Community Solar**: Shared renewable energy generation
@@ -3007,13 +3007,13 @@ def box_counting_dimension(data_points, box_sizes):
 **Power Spectral Analysis**: Detecting scale-invariant relationships in time series (Beran, 1994):
 - **Fourier Transform**: Converting time series to frequency domain
 - **Power Spectrum**: Calculating power at different frequencies
-- **Scaling Exponent**: Fitting power law P(f) в€ќ f^(-ОІ)
+- **Scaling Exponent**: Fitting power law P(f) в€ќ f^(-β)
 - **Fractal Dimension**: Relating scaling exponent to fractal properties
 
 **Multifractal Analysis**: Characterizing systems with multiple scaling behaviors (Kantelhardt et al., 2002):
 - **Multifractal Detrended Fluctuation Analysis (MF-DFA)**
 - **Wavelet Transform Modulus Maxima (WTMM)**
-- **Multifractal Spectrum**: f(О±) function characterizing scaling diversity
+- **Multifractal Spectrum**: f(α) function characterizing scaling diversity
 - **Generalized Dimensions**: Dq for different moment orders q
 
 **Research Program**: Systematic analysis of fractal properties across 15 diverse datasets:
@@ -3044,12 +3044,12 @@ def box_counting_dimension(data_points, box_sizes):
 *Small-World Metrics*:
 - **Clustering Coefficient**: C = (number of triangles) / (number of possible triangles)
 - **Average Path Length**: L = average shortest path between all node pairs
-- **Small-World Index**: Пѓ = (C/C_random) / (L/L_random)
+- **Small-World Index**: σ = (C/C_random) / (L/L_random)
 
 *Small-World Criteria*:
 - High clustering: C >> C_random
-- Short path lengths: L в‰€ L_random
-- Small-world index: Пѓ >> 1
+- Short path lengths: L ≈ L_random
+- Small-world index: σ >> 1
 
 **Scale-Free Distributions**: Analyzing degree distributions for power-law relationships (BarabГЎsi & Albert, 1999; Clauset et al., 2009):
 
@@ -3088,7 +3088,7 @@ def test_power_law(degree_sequence):
 
 *Findings*:
 - **Small-World Properties**: 89% of networks (C > 0.3, L < log(N))
-- **Scale-Free Distributions**: 76% showed power-law degree distributions (2.1 в‰¤ О± в‰¤ 3.0)
+- **Scale-Free Distributions**: 76% showed power-law degree distributions (2.1 ≤ α ≤ 3.0)
 - **Hierarchical Modularity**: 94% demonstrated nested community structure
 - **Cross-Domain Consistency**: Similar properties across different domains
 

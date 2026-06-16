@@ -1,4 +1,4 @@
-# рџ“љ Fractal Metascience Paradigm - Complete APA 7 Bibliography
+# 📚 Fractal Metascience Paradigm - Complete APA 7 Bibliography
 
 ## References
 
@@ -108,7 +108,7 @@ Cartwright, N. (1983). *How the laws of physics lie*. Oxford University Press.
 
 Cash, D. W., Adger, W. N., Berkes, F., Garden, P., Lebel, L., Olsson, P., Pritchard, L., & Young, O. (2006). Scale and cross-scale dynamics: Governance and information in a multilevel world. *Ecology and Society*, 11(2), Article 8.
 
-Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health careвЂ”addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
+Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health care—addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
 
 Charmaz, K. (2006). *Constructing grounded theory: A practical guide through qualitative analysis*. Sage.
 
@@ -136,7 +136,7 @@ Creswell, J. W., & Plano Clark, V. L. (2017). *Designing and conducting mixed me
 
 *[Note: This represents the first portion of the complete 127+ source bibliography. The full bibliography would continue with all remaining sources in proper APA 7 format, maintaining alphabetical order and consistent formatting throughout.]*
 
-## рџ“Љ Bibliography Statistics
+## 📊 Bibliography Statistics
 
 - **Total Sources**: 127+ references
 - **Book Sources**: ~45% 
@@ -146,7 +146,7 @@ Creswell, J. W., & Plano Clark, V. L. (2017). *Designing and conducting mixed me
 - **Peak Publication Decades**: 1990s-2020s (complexity science emergence)
 - **Interdisciplinary Coverage**: Psychology, Education, AI, Physics, Biology, Philosophy, Sociology
 
-## рџ”— Digital Access Notes
+## 🔗 Digital Access Notes
 
 Where available, DOI links have been included. For maximum accessibility in digital formats, consider adding:
 - DOI links for all journal articles

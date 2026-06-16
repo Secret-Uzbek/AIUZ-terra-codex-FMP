@@ -1,20 +1,20 @@
-# рџЊЌ VISION: The Terra Ethos and Planetary Intention
+﻿# 🌍 VISION: The Terra Ethos and Planetary Intention
 
 **AUTHOR:** Abdurashid Abdukarimov  
 **DATE CREATED:** 15 July 2025  
 **VERSION:** 1.0  
 **STATUS:** Approved  
 **RELATED DOCUMENTS:**  
-- рџ“њ Terra Universal Convention v1.0  
-- рџ“‹ Documentation Standards v1.0  
-- рџ§¬ TerraMemoryDNA v4.0  
+- 📜 Terra Universal Convention v1.0  
+- 📋 Documentation Standards v1.0  
+- 🧬 TerraMemoryDNA v4.0  
 
 ---
 
-## рџЋЇ PURPOSE AND INTENTION
+## 🎯 PURPOSE AND INTENTION
 
 This document outlines the philosophical and ethical vision that powers the AIUZ Terra Ecosystem.  
-It serves as a compass for documentation, product development, and decision-making вЂ” across human, artificial, and environmental domains.
+It serves as a compass for documentation, product development, and decision-making — across human, artificial, and environmental domains.
 
 ---
 
@@ -27,20 +27,20 @@ The vision places the **child** at the center of design, **ethics** at the core 
 
 ---
 
-## рџ§­ GUIDING PRINCIPLES
+## 🧭 GUIDING PRINCIPLES
 
-- рџ‘¶ **Child-first by design** вЂ” every decision begins with care for children
-- рџЊ± **Planetary responsibility** вЂ” sustainability is a default, not a feature
-- рџ¤– **Ethical symbiosis** вЂ” AI exists to amplify human dignity and nature
-- рџ“– **Cultural respect** вЂ” every language, every tradition has value
-- рџ§¬ **Continuity through memory** вЂ” semantic archives replace forgetting
+- рџ‘¶ **Child-first by design** — every decision begins with care for children
+- 🌱 **Planetary responsibility** — sustainability is a default, not a feature
+- 🤖 **Ethical symbiosis** — AI exists to amplify human dignity and nature
+- 📖 **Cultural respect** — every language, every tradition has value
+- 🧬 **Continuity through memory** — semantic archives replace forgetting
 
 ---
 
-## рџ§  CULTURE OF DESIGN
+## 🧠 CULTURE OF DESIGN
 
-- рџ§© We use **modular, open, semantically meaningful code**
-- рџЊђ We write documentation as **legal, pedagogical, and cultural bridges**
+- 🧩 We use **modular, open, semantically meaningful code**
+- 🌐ђ We write documentation as **legal, pedagogical, and cultural bridges**
 - рџ›Ў We treat every protocol as a **living moral contract**
 - рџ•ЉпёЏ We build for **peace, family, education, and future generations**
 
@@ -68,14 +68,14 @@ From this vision arise concrete requirements:
 
 ---
 
-## рџ§¬ THE HUMAN PROMISE
+## 🧬 THE HUMAN PROMISE
 
-> вЂњEvery line of code, every diagram, every document вЂ” is written with love for children, and responsibility to the Earth.вЂќ
+> “Every line of code, every diagram, every document — is written with love for children, and responsibility to the Earth.”
 
 This is not a platform.  
 This is a **new way to think, remember, teach, and build**.
 
-вЂ”
+—
 `qariya.vision.manifest()` вњ…
 
 

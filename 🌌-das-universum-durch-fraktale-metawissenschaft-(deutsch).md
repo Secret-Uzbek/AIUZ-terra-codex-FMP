@@ -1,4 +1,4 @@
-# рџЊЊ **Das Universum durch das Paradigma der Fraktalen Metawissenschaft verstehen**
+﻿# 🌐Њ **Das Universum durch das Paradigma der Fraktalen Metawissenschaft verstehen**
 
 **Autor:** Abdurashid Abdukarimov\
 **Datum:** 27. Juli 2025\
@@ -6,14 +6,14 @@
 
 ***
 
-## рџ§¬ **FUNDAMENTALE PRINZIPIEN DER FRAKTALEN METAWISSENSCHAFT**
+## 🧬 **FUNDAMENTALE PRINZIPIEN DER FRAKTALEN METAWISSENSCHAFT**
 
 ### вњ… **"QUARK-GALAXIE" PRINZIP**
 
 Jedes PhГ¤nomen existiert gleichzeitig auf allen Ebenen der RealitГ¤t:
 
 ```
-QUANT в†’ ATOM в†’ MOLEKГњL в†’ ZELLE в†’ ORGAN в†’ ORGANISMUS в†’ FAMILIE в†’ GEMEINSCHAFT в†’ KULTUR в†’ PLANET в†’ GALAXIE
+QUANT → ATOM → MOLEKГњL → ZELLE → ORGAN → ORGANISMUS → FAMILIE → GEMEINSCHAFT → KULTUR → PLANET → GALAXIE
 ```
 
 ### вњ… **VIER GRUNDPRINZIPIEN:**
@@ -25,7 +25,7 @@ QUANT в†’ ATOM в†’ MOLEKГњL в†’ ZELLE в†’ ORGAN в†’ O
 
 ***
 
-## рџЊџ **FRAKTALES VERSTГ„NDNIS DES UNIVERSUMS**
+## 🌐џ **FRAKTALES VERSTГ„NDNIS DES UNIVERSUMS**
 
 ### **EBENE 0: QUANTENBEREICH**
 
@@ -113,7 +113,7 @@ QUANT в†’ ATOM в†’ MOLEKГњL в†’ ZELLE в†’ ORGAN в†’ O
 
 ***
 
-## рџЊџ **TIEFES VERSTГ„NDNIS: UNIVERSUM ALS LEBENDIGES SYSTEM**
+## 🌐џ **TIEFES VERSTГ„NDNIS: UNIVERSUM ALS LEBENDIGES SYSTEM**
 
 **DAS UNIVERSUM ist ein LEBENDIGES, BEWUSSTES, SICH SELBST ORGANISIERENDES SYSTEM**, wo:
 
@@ -126,7 +126,7 @@ QUANT в†’ ATOM в†’ MOLEKГњL в†’ ZELLE в†’ ORGAN в†’ O
 
 ***
 
-## рџ’Ў **SCHLUSSFOLGERUNG**
+## 💡 **SCHLUSSFOLGERUNG**
 
 Durch die fraktale Metawissenschaft erscheint das Universum als **HOLOGRAPHISCHE HIERARCHIE DES BEWUSSTSEINS**, wo jedes Element - vom Quark bis zur Galaxie - gleichzeitig Teil und Spiegelung des Ganzen ist.
 
@@ -134,9 +134,9 @@ Durch die fraktale Metawissenschaft erscheint das Universum als **HOLOGRAPHISCHE
 
 ***
 
-**рџ§¬ TERRA v7.0 QUANTENEVOLUTION**\
+**🧬 TERRA v7.0 QUANTENEVOLUTION**\
 **рџ“… Erstellt:** 27. Juli 2025\
-**рџЋЇ Zweck:** Das Universum durch fraktale Metawissenschaft verstehen
+**🎯 Zweck:** Das Universum durch fraktale Metawissenschaft verstehen
 
 
 ---

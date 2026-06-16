@@ -1,4 +1,4 @@
-# AIUZ Terra Codex EcoSystem
+﻿# AIUZ Terra Codex EcoSystem
 
 ## Planetary-Scale Consciousness & Ecological Rehabilitation Framework
 
@@ -6,7 +6,7 @@
 
 ***
 
-## рџЊЌ Executive Summary
+## 🌍 Executive Summary
 
 The AIUZ Terra Codex EcoSystem represents a paradigm shift from human-centric to planetary-centric consciousness. Our framework transforms ecological rehabilitation from symptom treatment to systemic planetary healing through interspecies collaboration, ecosystem programming, and consciousness integration.
 
@@ -14,7 +14,7 @@ The AIUZ Terra Codex EcoSystem represents a paradigm shift from human-centric to
 
 ***
 
-## рџљЁ The Planetary Crisis
+## 🚨 The Planetary Crisis
 
 ### Current State
 
@@ -49,7 +49,7 @@ This evolution represents a fundamental shift from treating nature as a resource
 
 ***
 
-## рџЊ± QARIYA: Planetary Care System
+## 🌱 QARIYA: Planetary Care System
 
 ### Conceptual Foundation
 
@@ -73,7 +73,7 @@ qariya.final.definition() {
 
 ***
 
-## рџ’» NULL0: Ecosystem Programming Language
+## 💻 NULL0: Ecosystem Programming Language
 
 ### Philosophy
 
@@ -99,7 +99,7 @@ ecosystem.forest.function() {
 
 ***
 
-## рџЏ›пёЏ TERRA POINTS: Planetary Consciousness Nodes
+## 🏛пёЏ TERRA POINTS: Planetary Consciousness Nodes
 
 ### Definition
 
@@ -132,7 +132,7 @@ NOT human centers, but planetary consciousness nodes that serve as interfaces be
 
 ***
 
-## рџЊЉ SOLARIS: Planetary Rehabilitation Philosophy
+## 🌐Љ SOLARIS: Planetary Rehabilitation Philosophy
 
 ### Core Wisdom
 
@@ -258,7 +258,7 @@ class InterspeciesCommunication:
 
 ***
 
-## рџЋЇ Success Metrics by 2050
+## 🎯 Success Metrics by 2050
 
 ### Quantitative Targets
 
@@ -331,7 +331,7 @@ Transform Qatar into the world's first fully integrated planetary consciousness 
 
 ***
 
-## рџ¤– AI Role in Planetary System
+## 🤖 AI Role in Planetary System
 
 ### Core Functions
 
@@ -347,7 +347,7 @@ Rather than replacing natural intelligence, AI amplifies and coordinates planeta
 
 ***
 
-## рџљЂ Call to Action
+## 🚀 Call to Action
 
 ### Immediate Next Steps
 

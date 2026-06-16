@@ -1,4 +1,4 @@
-# рџљЂ AIUZ TERRA OS v3.0
+﻿# 🚀 AIUZ TERRA OS v3.0
 
 ## O'rnatilgan Axloq bilan Birinchi Operatsion Tizim
 
@@ -9,7 +9,7 @@
 
 ***
 
-## рџЋЇ IJROCHI XULOSA
+## 🎯 IJROCHI XULOSA
 
 ### Inqilobiy Texnologiya
 
@@ -24,7 +24,7 @@
 
 ***
 
-## рџЊЌ BOZOR IMKONIYATLARI
+## 🌍 BOZOR IMKONIYATLARI
 
 ### Global OS Bozori
 
@@ -40,7 +40,7 @@
 
 * рџЋ“ **Ta'lim muassasalari** (maktablar, universitetlar)
 * рџЏў **Axloqiy kompaniyalar** (ESG-yo'naltirilgan)
-* рџЊђ **Xalqaro tashkilotlar** (BMT, YUNESKO)
+* 🌐ђ **Xalqaro tashkilotlar** (BMT, YUNESKO)
 * рџ‘¶ **Bolalar qurilmalari** (planshetlar, o'quv tizimlari)
 
 ***
@@ -75,7 +75,7 @@
 
 ***
 
-## рџ“Љ TEXNIK KO'RSATKICHLAR
+## 📊 TEXNIK KO'RSATKICHLAR
 
 ### Arxitektura Pishqanligi
 
@@ -120,7 +120,7 @@
 
 ***
 
-## рџ’° BIZNES MODEL
+## 💰 BIZNES MODEL
 
 ### Daromad Manbalari
 
@@ -150,7 +150,7 @@
 
 ***
 
-## рџЋЇ BOZORGA CHIQISH STRATEGIYASI
+## 🎯 BOZORGA CHIQISH STRATEGIYASI
 
 ### 1-bosqich: Pilot Loyihalar (Q3 2025)
 
@@ -194,7 +194,7 @@
 
 ***
 
-## рџ’Ў INVESTITSIYA IMKONIYATLARI
+## 💡 INVESTITSIYA IMKONIYATLARI
 
 ### A raundi: $10M (Joriy)
 
@@ -241,7 +241,7 @@
 
 ***
 
-## рџЊџ IJTIMOIY TA'SIR
+## 🌐џ IJTIMOIY TA'SIR
 
 ### Ta'limiy Ta'sir
 
@@ -263,16 +263,16 @@
 
 ***
 
-## рџЋЇ HARAKATLARGA CHAQIRUV
+## 🎯 HARAKATLARGA CHAQIRUV
 
 ### Investorlar uchun
 
 **Axloqiy texnologiyalar inqilobiga qo'shiling!**
 
-* рџ“§ **Aloqa:** <a.abdukarimov@fractal-metascience.org>
-* рџ’° **Investitsiyalar:** $500K dan $10M gacha
+* 📧 **Aloqa:** <a.abdukarimov@fractal-metascience.org>
+* 💰 **Investitsiyalar:** $500K dan $10M gacha
 * рџ¤ќ **Hamkorlik:** Strategik ittifoqlar
-* рџЊЌ **Ta'sir:** Axloqiy texnologiyalar orqali dunyoni o'zgartirish
+* 🌍 **Ta'sir:** Axloqiy texnologiyalar orqali dunyoni o'zgartirish
 
 ### Hamkorlar uchun
 
@@ -280,7 +280,7 @@
 
 * рџЋ“ **Ta'lim muassasalari** - pilot dasturlar
 * рџЏў **Korporatsiyalar** - ESG-muvofiqlik
-* рџЊђ **Tashkilotlar** - xalqaro loyihalar
+* 🌐ђ **Tashkilotlar** - xalqaro loyihalar
 
 ***
 
@@ -298,7 +298,7 @@
 ***
 
 *"Vijdonli birinchi operatsion tizim"*\
-**В© 2025 AIUZ Terra OS Project**
+**© 2025 AIUZ Terra OS Project**
 
 
 ---

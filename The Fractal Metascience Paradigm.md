@@ -10,7 +10,7 @@ This paper introduces the Fractal Metascience Paradigm (FMP), a novel epistemolo
 
 ### 1.1 The Crisis of Contemporary Science
 
-Contemporary science faces unprecedented challenges that strain the limits of traditional reductionist methodologies. Climate change, technological disruption, social inequality, artificial intelligence governance, and global pandemics represent what Rittel and Webber (1973) termed "wicked problems"вЂ”challenges characterized by their complex, multi-scale, and emergent properties that resist decomposition into manageable components.
+Contemporary science faces unprecedented challenges that strain the limits of traditional reductionist methodologies. Climate change, technological disruption, social inequality, artificial intelligence governance, and global pandemics represent what Rittel and Webber (1973) termed "wicked problems"—challenges characterized by their complex, multi-scale, and emergent properties that resist decomposition into manageable components.
 
 The reductionist paradigm, while successful in advancing understanding of isolated systems and linear relationships, increasingly demonstrates limitations when confronted with phenomena that exhibit:
 
@@ -62,11 +62,11 @@ Mandelbrot's (1983) pioneering work on fractal geometry revealed that many natur
 
 The enactive approach to cognition, developed by Varela, Thompson, and Rosch (1991), fundamentally challenges the subject-object distinction that underlies traditional scientific methodology:
 
-**Structural Coupling:** Living systems and their environments are structurally coupledвЂ”they co-evolve and mutually specify each other through ongoing interaction. This suggests that knowledge cannot be separated from the processes by which it is generated.
+**Structural Coupling:** Living systems and their environments are structurally coupled—they co-evolve and mutually specify each other through ongoing interaction. This suggests that knowledge cannot be separated from the processes by which it is generated.
 
 **Embodied Cognition:** Cognitive processes are fundamentally embodied and situated. The knower's biological, cultural, and historical situation shapes what can be known and how (Thompson, 2007).
 
-**Enaction and Knowledge:** Knowledge is not representation of an independent reality but enactionвЂ”the bringing forth of meaningful distinctions through embodied interaction with the world.
+**Enaction and Knowledge:** Knowledge is not representation of an independent reality but enaction—the bringing forth of meaningful distinctions through embodied interaction with the world.
 
 ### 2.4 Postmodern Science Studies
 
@@ -132,7 +132,7 @@ The second principle recognizes that knowledge emerges through recursive interac
 
 #### 3.2.1 Theoretical Framework
 
-Recursive co-construction builds on Maturana and Varela's (1980) concept of autopoiesisвЂ”the process by which living systems maintain themselves through continuous self-production. Extended to knowledge systems, this suggests that:
+Recursive co-construction builds on Maturana and Varela's (1980) concept of autopoiesis—the process by which living systems maintain themselves through continuous self-production. Extended to knowledge systems, this suggests that:
 
 **Observer-Observed Unity:** The observer and observed are not separate entities but aspects of a single recursive process. Knowledge emerges from their interaction rather than from observation of independent objects.
 

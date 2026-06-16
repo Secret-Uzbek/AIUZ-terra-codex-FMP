@@ -104,7 +104,7 @@ Cartwright, N. (1983). *How the laws of physics lie*. Oxford University Press.
 
 Cash, D. W., Adger, W. N., Berkes, F., Garden, P., Lebel, L., Olsson, P., ... & Young, O. (2006). Scale and cross-scale dynamics: Governance and information in a multilevel world. *Ecology and Society*, 11(2).
 
-Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health careвЂ”addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
+Char, D. S., Shah, N. H., & Magnus, D. (2018). Implementing machine learning in health care—addressing ethical challenges. *New England Journal of Medicine*, 378(11), 981-983.
 
 Charmaz, K. (2006). *Constructing grounded theory: A practical guide through qualitative analysis*. Sage.
 
@@ -182,7 +182,7 @@ Field, H. (1972). Tarski's theory of truth. *Journal of Philosophy*, 69(13), 347
 
 Fine, M. (2007). Feminist designs for difference. In S. N. Hesse-Biber (Ed.), *Handbook of feminist research: Theory and praxis* (pp. 613-619). Sage.
 
-Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitiveвЂ“developmental inquiry. *American Psychologist*, 34(10), 906-911.
+Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitive–developmental inquiry. *American Psychologist*, 34(10), 906-911.
 
 Floridi, L., & Cowls, J. (2019). A unified framework of five principles for AI in society. *Harvard Data Science Review*, 1(1).
 
@@ -424,7 +424,7 @@ O'Regan, J. K., & NoГ«, A. (2001). A sensorimotor account of vision and visual
 
 Ostrom, E. (2009). A general framework for analyzing sustainability of social-ecological systems. *Science*, 325(5939), 419-422.
 
-Pahl-Wostl, C. (2002). Towards sustainability in the water sectorвЂ“the importance of human actors and processes of social learning. *Aquatic Sciences*, 64(4), 394-411.
+Pahl-Wostl, C. (2002). Towards sustainability in the water sector–the importance of human actors and processes of social learning. *Aquatic Sciences*, 64(4), 394-411.
 
 Palmer, C. L. (2001). *Work at the boundaries of science: Information and the interdisciplinary research process*. Springer.
 
@@ -594,7 +594,7 @@ Vygotsky, L. S. (1978). *Mind in society: The development of higher psychologica
 
 Waldrop, M. M. (1992). *Complexity: The emerging science at the edge of order and chaos*. Simon & Schuster.
 
-Walker, B., Holling, C. S., Carpenter, S. R., & Kinzig, A. (2004). Resilience, adaptability and transformability in socialвЂ“ecological systems. *Ecology and Society*, 9(2).
+Walker, B., Holling, C. S., Carpenter, S. R., & Kinzig, A. (2004). Resilience, adaptability and transformability in social–ecological systems. *Ecology and Society*, 9(2).
 
 Wallerstein, I. M. (1996). *Open the social sciences: Report of the Gulbenkian Commission on the Restructuring of the Social Sciences*. Stanford University Press.
 

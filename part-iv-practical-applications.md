@@ -1,5 +1,14 @@
 # The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science
 
+
+> **Note (version 2.0, June 2026):** The case studies and statistical
+> results in this section are illustrative worked examples demonstrating
+> how FMP principles could be applied. They are not reports of completed
+> empirical studies. For the current reality-based framework and proposed
+> research programme replacing these examples, see the canonical 2026 article:
+> https://doi.org/10.5281/zenodo.18155672
+
+
 **Part IV: Practical Applications**
 
 ## 5. Applications and Case Studies
@@ -8,7 +17,7 @@
 
 #### Theoretical Foundation
 
-Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scalesвЂ”from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
+Fractal pedagogy applies FMP principles to create learning environments that exhibit self-similar structures across different scales—from individual cognitive processes to classroom dynamics to institutional organization (Davis & Sumara, 2006). This approach recognizes learning as a complex adaptive process that emerges through recursive interactions between learners, content, and context.
 
 **Neuroplasticity and Learning**: Research demonstrates that learning involves recursive strengthening and modification of neural connections through experience (Doidge, 2007; Pascual-Leone et al., 2005).
 
@@ -28,7 +37,7 @@ Fractal pedagogy applies FMP principles to create learning environments that exh
 
 **Zone of Proximal Development**: Vygotsky's (1978) concept illustrates how learning occurs through recursive interaction between individual capability and social support.
 
-*Mathematical Model*: *Learning = f(Individual Capacity Г— Social Support Г— Cultural Tools)*
+*Mathematical Model*: *Learning = f(Individual Capacity × Social Support × Cultural Tools)*
 
 *Fractal Application*:
 
@@ -544,7 +553,7 @@ Example explanation: "Your test results suggest that your cancer might respond w
 
 #### Complexity of Sustainability Challenges
 
-Sustainability challenges involve complex interactions across multiple scalesвЂ”from individual behaviors to global systemsвЂ”that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
+Sustainability challenges involve complex interactions across multiple scales—from individual behaviors to global systems—that resist traditional linear management approaches (Holling, 2001; Walker & Salt, 2006). Climate change, biodiversity loss, and resource depletion represent coupled human-natural systems that require integrated solutions (Liu et al., 2007; Ostrom, 2009).
 
 **Scale Mismatches**: Environmental problems often occur at different scales than governance and management institutions (Cash et al., 2006; Young, 2002).
 
@@ -584,9 +593,9 @@ Sustainability challenges involve complex interactions across multiple scalesв�
 * **Redundancy**: Multiple pathways ensuring system resilience
 * **Local Adaptation**: Global principles adapted to local conditions
 
-*Mathematical Framework*: Resource flow networks following fractal scaling laws: *Flow(scale) = Flowв‚Ђ Г— scale^ОІ*
+*Mathematical Framework*: Resource flow networks following fractal scaling laws: *Flow(scale) = Flowв‚Ђ × scale^β*
 
-where ОІ is the scaling exponent (typically 0.75-0.85 for sustainable systems).
+where β is the scaling exponent (typically 0.75-0.85 for sustainable systems).
 
 **Recursive Adaptation**: Management systems that can learn and adapt at multiple temporal scales (Holling & Gunderson, 2002; Folke et al., 2005).
 
@@ -643,7 +652,7 @@ where ОІ is the scaling exponent (typically 0.75-0.85 for sustainable systems)
 * 40% reduction in building energy consumption
 * 60% reduction in water consumption
 * 35% reduction in waste generation
-* 15В°C reduction in urban heat island effect
+* 15°C reduction in urban heat island effect
 
 **Neighborhood Level**: Microgrids and circular resource flows:
 

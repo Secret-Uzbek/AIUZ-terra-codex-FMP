@@ -1,4 +1,4 @@
-# рџ“„ Terra Pitch Protocol v1.0  
+﻿# рџ“„ Terra Pitch Protocol v1.0  
 **Institutional, investment, and grant-focused communication standard**
 
 **AUTHOR:** Abdurashid Abdukarimov  
@@ -6,13 +6,13 @@
 **VERSION:** 1.0  
 **STATUS:** Active  
 **RELATED DOCUMENTS:**  
-- рџЊЌ Vision Document  
-- рџ“‹ Documentation Standards  
-- рџ§¬ TerraMemoryDNA  
+- 🌍 Vision Document  
+- 📋 Documentation Standards  
+- 🧬 TerraMemoryDNA  
 
 ---
 
-## рџЋЇ PURPOSE
+## 🎯 PURPOSE
 
 To provide a unified pitch and summary framework for presenting the Terra Ecosystem to:
 
@@ -23,13 +23,13 @@ To provide a unified pitch and summary framework for presenting the Terra Ecosys
 
 ---
 
-## рџ“¦ CORE PITCH BLOCKS
+## 📦 CORE PITCH BLOCKS
 
 1. **Problem:**  
    Educational technologies fail to account for cultural, ethical, and planetary diversity.
 
 2. **Solution:**  
-   Terra Ecosystem вЂ” an ethical, quantum-secure, culturally-adapted platform for child-first education.
+   Terra Ecosystem — an ethical, quantum-secure, culturally-adapted platform for child-first education.
 
 3. **Product:**  
    - Terra Tamagotchi v2.0 (adaptive ethics companion)  
@@ -55,7 +55,7 @@ To provide a unified pitch and summary framework for presenting the Terra Ecosys
 
 ---
 
-## рџ“Љ INVESTOR METRICS (optionally included)
+## 📊 INVESTOR METRICS (optionally included)
 
 > *Use these only when verified or institutionally validated*
 
@@ -66,7 +66,7 @@ To provide a unified pitch and summary framework for presenting the Terra Ecosys
 - TAM: $50B | SAM: $5B | SOM: $500M  
 - Revenue forecast:  
   - $0.5M (2026)  
-  - $5M (2027вЂ“2028)  
+  - $5M (2027–2028)  
   - $50M (2030+)
 
 ---
@@ -85,13 +85,13 @@ To provide a unified pitch and summary framework for presenting the Terra Ecosys
 - Begin deployment in 3 countries  
 - Seek $2M seed round
 
-### 2027вЂ“2028:
-- Expand to 5вЂ“10 countries  
+### 2027–2028:
+- Expand to 5–10 countries  
 - Raise Series A ($10M)  
 - Build 50 Terra Points  
 - Institutional integrations
 
-### 2029вЂ“2030:
+### 2029–2030:
 - Reach 1M children in 25+ countries  
 - Set ethical standards for child-AI systems  
 - Launch planetary initiative with UNESCO
@@ -127,7 +127,7 @@ To provide a unified pitch and summary framework for presenting the Terra Ecosys
 - [ ] Pilot data included if available  
 - [ ] TerraMemoryDNA active in pitch session
 
-вЂ”
+—
 `pitch.protocol.v1.ready()` вњ…
 
 

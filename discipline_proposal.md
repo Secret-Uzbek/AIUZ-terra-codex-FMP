@@ -1,12 +1,12 @@
 # рџЋ“ Fractal Metascience: Proposal for New Academic Discipline
 
-## рџ“‹ **Executive Summary**
+## 📋 **Executive Summary**
 
 **Fractal Metascience (FMS)** represents an emerging transdisciplinary field that applies complexity science principles, fractal mathematics, and systems thinking to understand and improve scientific practice itself. This proposal outlines the theoretical foundations, methodological innovations, and institutional requirements for establishing FMS as a recognized academic discipline.
 
 ---
 
-## рџЏ›пёЏ **Disciplinary Justification**
+## 🏛пёЏ **Disciplinary Justification**
 
 ### **1. Unique Knowledge Domain**
 
@@ -35,7 +35,7 @@ FMS employs unique methodologies including:
 
 ---
 
-## рџ§  **Core Theoretical Framework**
+## 🧠 **Core Theoretical Framework**
 
 ### **Foundational Principles**
 
@@ -54,7 +54,7 @@ FMS employs unique methodologies including:
 
 ---
 
-## рџЋЇ **Academic Program Structure**
+## 🎯 **Academic Program Structure**
 
 ### **Undergraduate Minor Program (18 credits)**
 
@@ -173,7 +173,7 @@ Integration with existing PhD programs in:
 
 ---
 
-## рџ’° **Resource Requirements & Sustainability**
+## 💰 **Resource Requirements & Sustainability**
 
 ### **Startup Costs (Years 1-3)**
 - **Faculty positions**: $200K-400K annually per position
@@ -195,7 +195,7 @@ Integration with existing PhD programs in:
 
 ---
 
-## рџ“Љ **Evidence of Disciplinary Need**
+## 📊 **Evidence of Disciplinary Need**
 
 ### **Academic Indicators**
 - **Growing literature** in complexity science and transdisciplinary research

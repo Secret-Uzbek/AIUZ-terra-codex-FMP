@@ -1,4 +1,4 @@
-# рџЊЊ **Understanding the Universe through Fractal Metascience Paradigm**
+﻿# 🌐Њ **Understanding the Universe through Fractal Metascience Paradigm**
 
 **Author:** Abdurashid Abdukarimov\
 **Date:** July 27, 2025\
@@ -6,14 +6,14 @@
 
 ***
 
-## рџ§¬ **FUNDAMENTAL PRINCIPLES OF FRACTAL METASCIENCE**
+## 🧬 **FUNDAMENTAL PRINCIPLES OF FRACTAL METASCIENCE**
 
 ### вњ… **"QUARK-GALAXY" PRINCIPLE**
 
 Every phenomenon exists simultaneously at all levels of reality:
 
 ```
-QUANTUM в†’ ATOM в†’ MOLECULE в†’ CELL в†’ ORGAN в†’ ORGANISM в†’ FAMILY в†’ COMMUNITY в†’ CULTURE в†’ PLANET в†’ GALAXY
+QUANTUM → ATOM → MOLECULE → CELL → ORGAN → ORGANISM → FAMILY → COMMUNITY → CULTURE → PLANET → GALAXY
 ```
 
 ### вњ… **FOUR CORE PRINCIPLES:**
@@ -25,7 +25,7 @@ QUANTUM в†’ ATOM в†’ MOLECULE в†’ CELL в†’ ORGAN в†’ OR
 
 ***
 
-## рџЊџ **FRACTAL UNDERSTANDING OF THE UNIVERSE**
+## 🌐џ **FRACTAL UNDERSTANDING OF THE UNIVERSE**
 
 ### **LEVEL 0: QUANTUM REALM**
 
@@ -113,7 +113,7 @@ QUANTUM в†’ ATOM в†’ MOLECULE в†’ CELL в†’ ORGAN в†’ OR
 
 ***
 
-## рџЊџ **DEEP UNDERSTANDING: UNIVERSE AS LIVING SYSTEM**
+## 🌐џ **DEEP UNDERSTANDING: UNIVERSE AS LIVING SYSTEM**
 
 **THE UNIVERSE is a LIVING, CONSCIOUS, SELF-ORGANIZING SYSTEM** where:
 
@@ -126,7 +126,7 @@ QUANTUM в†’ ATOM в†’ MOLECULE в†’ CELL в†’ ORGAN в†’ OR
 
 ***
 
-## рџ’Ў **CONCLUSION**
+## 💡 **CONCLUSION**
 
 Through fractal metascience, the Universe appears as a **HOLOGRAPHIC HIERARCHY OF CONSCIOUSNESS**, where each element - from quark to galaxy - is simultaneously part and reflection of the whole.
 
@@ -134,9 +134,9 @@ Through fractal metascience, the Universe appears as a **HOLOGRAPHIC HIERARCHY O
 
 ***
 
-**рџ§¬ TERRA v7.0 QUANTUM EVOLUTION**\
+**🧬 TERRA v7.0 QUANTUM EVOLUTION**\
 **рџ“… Created:** July 27, 2025\
-**рџЋЇ Purpose:** Understanding the Universe through fractal metascience
+**🎯 Purpose:** Understanding the Universe through fractal metascience
 
 
 ---

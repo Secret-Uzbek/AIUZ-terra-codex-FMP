@@ -1,5 +1,14 @@
 # The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework for 21st Century Science
 
+
+> **Note (version 2.0, June 2026):** The case studies and statistical
+> results in this section are illustrative worked examples demonstrating
+> how FMP principles could be applied. They are not reports of completed
+> empirical studies. For the current reality-based framework and proposed
+> research programme replacing these examples, see the canonical 2026 article:
+> https://doi.org/10.5281/zenodo.18155672
+
+
 **Part V: Validation and Critical Perspectives**
 
 ## 8. Empirical Validation Strategies
@@ -148,14 +157,14 @@ def box_counting_dimension(data_points, box_sizes):
 
 * **Fourier Transform**: Converting time series to frequency domain
 * **Power Spectrum**: Calculating power at different frequencies
-* **Scaling Exponent**: Fitting power law P(f) в€ќ f^(-ОІ)
+* **Scaling Exponent**: Fitting power law P(f) в€ќ f^(-β)
 * **Fractal Dimension**: Relating scaling exponent to fractal properties
 
 **Multifractal Analysis**: Characterizing systems with multiple scaling behaviors (Kantelhardt et al., 2002):
 
 * **Multifractal Detrended Fluctuation Analysis (MF-DFA)**
 * **Wavelet Transform Modulus Maxima (WTMM)**
-* **Multifractal Spectrum**: f(О±) function characterizing scaling diversity
+* **Multifractal Spectrum**: f(α) function characterizing scaling diversity
 * **Generalized Dimensions**: Dq for different moment orders q
 
 **Research Program**: Systematic analysis of fractal properties across 15 diverse datasets:
@@ -190,13 +199,13 @@ def box_counting_dimension(data_points, box_sizes):
 
 * **Clustering Coefficient**: C = (number of triangles) / (number of possible triangles)
 * **Average Path Length**: L = average shortest path between all node pairs
-* **Small-World Index**: Пѓ = (C/C\_random) / (L/L\_random)
+* **Small-World Index**: σ = (C/C\_random) / (L/L\_random)
 
 *Small-World Criteria*:
 
 * High clustering: C >> C\_random
-* Short path lengths: L в‰€ L\_random
-* Small-world index: Пѓ >> 1
+* Short path lengths: L ≈ L\_random
+* Small-world index: σ >> 1
 
 **Scale-Free Distributions**: Analyzing degree distributions for power-law relationships (BarabГЎsi & Albert, 1999; Clauset et al., 2009):
 
@@ -239,7 +248,7 @@ def test_power_law(degree_sequence):
 *Findings*:
 
 * **Small-World Properties**: 89% of networks (C > 0.3, L < log(N))
-* **Scale-Free Distributions**: 76% showed power-law degree distributions (2.1 в‰¤ О± в‰¤ 3.0)
+* **Scale-Free Distributions**: 76% showed power-law degree distributions (2.1 ≤ α ≤ 3.0)
 * **Hierarchical Modularity**: 94% demonstrated nested community structure
 * **Cross-Domain Consistency**: Similar properties across different domains
 

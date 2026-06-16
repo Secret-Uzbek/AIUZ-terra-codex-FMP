@@ -1,4 +1,4 @@
-# The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework
+﻿# The Fractal Metascience Paradigm: Toward a Unified Epistemological Framework
 
 ## Abstract
 
@@ -14,7 +14,7 @@ The Fractal Metascience Paradigm (FMP) arises from the convergence of various in
 
 ### 1. Fractality and Self-Similarity
 
-Fractals are geometrical figures characterized by self-similarity across different scales (Mandelbrot, 1983). In FMP, this concept is applied beyond mathematics to represent patterns of organization in biological morphogenesis (Goodwin, 1994), neural connectivity (Bassett & Bullmore, 2006), and socio-cultural evolution (Barabási, 2002). This principle implies that epistemic processes—from neural learning to scientific modeling—follow similar recursive structures.
+Fractals are geometrical figures characterized by self-similarity across different scales (Mandelbrot, 1983). In FMP, this concept is applied beyond mathematics to represent patterns of organization in biological morphogenesis (Goodwin, 1994), neural connectivity (Bassett & Bullmore, 2006), and socio-cultural evolution (BarabГЎsi, 2002). This principle implies that epistemic processes—from neural learning to scientific modeling—follow similar recursive structures.
 
 ### 2. Systems Thinking and Recursive Organization
 
@@ -22,7 +22,7 @@ Drawing on the work of Maturana and Varela (1980), FMP assumes that living syste
 
 ### 3. Onto-Epistemic Co-Construction
 
-In FMP, ontology (what exists) and epistemology (how we know) are inseparable. This idea resonates with Barad’s (2007) concept of **agential realism**, where the observer and the observed are entangled in acts of measurement. The paradigm posits that knowledge is not a mirror of reality but a co-constructed artifact that reflects systemic attractors—recurring configurations of meaning and organization.
+In FMP, ontology (what exists) and epistemology (how we know) are inseparable. This idea resonates with Barad's (2007) concept of **agential realism**, where the observer and the observed are entangled in acts of measurement. The paradigm posits that knowledge is not a mirror of reality but a co-constructed artifact that reflects systemic attractors—recurring configurations of meaning and organization.
 
 ## Methodological Framework
 
@@ -86,7 +86,7 @@ Davis, B., & Sumara, D. (2006). *Complexity and education: Inquiries into learni
 
 Floridi, L., & Cowls, J. (2019). A unified framework of five principles for AI in society. *Harvard Data Science Review*, 1(1).
 
-Goodwin, B. (1994). *How the leopard changed its spots: The evolution of complexity*. Charles Scribner’s Sons.
+Goodwin, B. (1994). *How the leopard changed its spots: The evolution of complexity*. Charles Scribner's Sons.
 
 Kauffman, S. A. (1993). *The origins of order: Self-organization and selection in evolution*. Oxford University Press.
 
@@ -107,6 +107,9 @@ Von Foerster, H. (2003). *Understanding understanding: Essays on cybernetics and
 Varela, F. J., Thompson, E., & Rosch, E. (1991). *The embodied mind: Cognitive science and human experience*. MIT Press.
 
 Xu, Y., & Ouyang, F. (2022). Artificial Intelligence in STEM Education: A systematic review. *Journal of Educational Computing Research*, 60(6), 1507–1533.
+
+Zawacki-Richter, O., MarГ­n, V. I., Bond, M., & Gouverneur, F. (2019). Systematic review of research on artificial intelligence applications in higher education. *International Journal of Educational Technology in Higher Education*, 16(1), 1–27.
+
 
 Zawacki-Richter, O., Marín, V. I., Bond, M., & Gouverneur, F. (2019). Systematic review of research on artificial intelligence applications in higher education. *International Journal of Educational Technology in Higher Education*, 16(1), 1–27.
 
