@@ -101,7 +101,7 @@ It is a living ethical promise — a holographic expression of the commitment to
 
 **Signed:**  
 Abdurashid Abdukarimov  
-Zarafshan / Tashkent, Uzbekistan  
+Tashkent, Uzbekistan  
 19 February 2026
 
 **Contact:** a.abdukarimov@fractal-metascience.org  
